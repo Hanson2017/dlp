@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     tabText:{
-         color:'#666',
+         color:'#646f7c',
          fontSize:12
     },
     tabActive:{
@@ -77,6 +77,7 @@ const styles = StyleSheet.create({
     },
     tabActiveText:{
          color:'#fff',
-          fontSize:12
+          fontSize:12,
+          fontWeight:'bold',
     },
 });

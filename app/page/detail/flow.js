@@ -4,6 +4,7 @@ import { Text, StyleSheet, View, ScrollView } from 'react-native';
 import Loading from '../../component/Loading';
 import Title from '../../component/Title';
 import Util from '../../util/util'
+import Theme from '../../util/theme';
 import stylesList from '../../css/listData';
 import Icon from 'react-native-vector-icons/Icomoon';
 import Echarts from 'native-echarts';
@@ -161,9 +162,10 @@ const styles = StyleSheet.create({
     },
     td: {
         color: '#ABB7C4',
+        fontSize:12.5
     },
     td1: {
-        width: 76,
+        width: 65,
     },
     td2: {
         width: 80,
@@ -200,19 +202,19 @@ const styles = StyleSheet.create({
         height: 50,
     },
     flowListName: {
-        width: 90,
+        width: 80,
         color: '#abb7c4'
     },
     flowListChart: {
         position: 'relative',
-        width: 120,
+        width: 110,
     },
     flowListNum: {
         marginLeft: 20,
         flexDirection: 'row',
     },
     zhishuName: {
-        width: 50,
+        width: 40,
         color: '#abb7c4'
     },
     zhishuNum: {

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Text, StyleSheet, View, TouchableOpacity } from 'react-native';
 
 import Util from '../util/util';
+import Theme from '../util/theme';
 
 export default class Item extends React.Component {
     render() {
@@ -41,7 +42,7 @@ const styles = StyleSheet.create({
     listT: {
         marginRight: 10,
         marginBottom: 12,
-        width: 168,
+        width: (Theme.screenWidth-40)/2,
         height: 54,
         backgroundColor: '#f7f7f7',
         borderWidth: 1,

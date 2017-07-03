@@ -17,8 +17,18 @@ module.exports = {
                         if (response.ok) {
                             response.json()
                                 .then((responseData) => {
+              
                                     if (responseData.ret == 0) {
-                                        let urlN = Api.getUserinfo + '?fromtype=qq&connectid=' + result.openid + '&username=' + responseData.nickname;
+                                        let figureurl_qq;
+                                        if(responseData.figureurl_qq_2 !='' && responseData.figureurl_qq_2.length>0){
+                                            figureurl_qq=responseData.figureurl_qq_2;
+                                        }
+                                        else{
+                                            figureurl_qq=responseData.figureurl_qq_1;
+                                        }
+                                        
+                                        let urlN = Api.getUserinfo + '?fromtype=qq&connectid=' + result.openid + '&username=' + responseData.nickname+'&avatar='+figureurl_qq;
+                                
                                         fetch(urlN)
                                             .then((res) => {
                                                 if (res.ok) {
@@ -68,12 +78,14 @@ module.exports = {
                                     let access_token = res.access_token;
                                     let openid = res.openid;
                                     let urlInfo = 'https://api.weixin.qq.com/sns/userinfo?access_token=' + access_token + '&openid=' + openid;
+                                    
                                     fetch(urlInfo)
                                         .then((resInfo) => {
                                             if (resInfo.ok) {
                                                 resInfo.json()
                                                     .then((resInfo) => {
-                                                        let urlN = Api.getUserinfo + '?fromtype=wx&connectid=' + openid + '&username=' + resInfo.nickname;
+                                                        
+                                                        let urlN = Api.getUserinfo + '?fromtype=wx&connectid=' + openid + '&username=' + resInfo.nickname+'&unionid='+resInfo.unionid+'&avatar='+resInfo.headimgurl;
                                                         fetch(urlN)
                                                             .then((ress) => {
                                                                 if (ress.ok) {
@@ -89,7 +101,7 @@ module.exports = {
                                                                         })
                                                                 }
                                                                 else {
-                                                                    console.log('网络请求失败')
+                                                                    console.log('网络请求失败1')
                                                                 }
                                                             })
                                                             .catch((error) => {

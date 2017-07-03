@@ -134,12 +134,12 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     platname: {
-        width: 90,
+        width: 85,
         color: '#2D3640',
         fontSize: 13,
     },
     rate: {
-        width: 140,
+        width: 130,
         color: '#ccc',
         fontSize: 13,
     },

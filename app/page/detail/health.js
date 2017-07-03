@@ -10,6 +10,7 @@ import Title from '../../component/Title';
 import Icon from 'react-native-vector-icons/Icomoon';
 import Echarts from 'native-echarts';
 import LineChart from '../../echarts/line';
+import BarChart from '../../echarts/bar';
 import RadarChart from '../../echarts/radar';
 
 class Hexin extends React.Component {
@@ -80,7 +81,7 @@ class Hexin extends React.Component {
                                 </Text>
                                 <Text style={styles.diagnoseStateText}>后续趋势预判：<Icon name={inamountInfo.change == 'up' ? 'up' : 'down'} size={11} color={inamountInfo.change == 'up' ? '#ff0063' : '#009963'} /></Text>
                             </View>
-                            <Echarts option={LineChart.line2('资金净流入／流出(万元)', '资金净流入流出', dateTimeAll, dataInamount, 50)} height={180} />
+                            <Echarts option={BarChart.bar2('资金流(万元)','资金流',dateTimeAll, dataInamount,52)} height={180} />
                             <View style={styles.diagnoseInstruction}>
                                 <Text style={styles.diagnoseInstructionText}>说明：1. 如资金流长期处于正流入状态，则资金链健康；</Text>
                                 <Text style={styles.diagnoseInstructionText}>           2. 如资金流长期处于负流出状态，则可能引起资金链断裂。</Text>
@@ -239,7 +240,7 @@ class Fuzhu extends React.Component {
                                     </Text>
                                     <Text style={styles.diagnoseStateText}>后续趋势预判：<Icon name={mobility.change == 'up' ? 'up' : 'down'} size={11} color={mobility.change == 'up' ? '#ff0063' : '#009963'} /></Text>
                                 </View>
-                                <Echarts option={LineChart.line2('流动性(月)', '流动性', dateTimeAll, dataLoanPeriod, 30)} height={180} />
+                                <Echarts option={BarChart.bar2('借款期限(月)','借款期限', dateTimeAll, dataLoanPeriod, 30)} height={180} />
                                 <View style={styles.diagnoseInstruction}>
                                     <Text style={styles.diagnoseInstructionText}>说明：1. 借款期限数值越低代表流动性越好，资金的灵活性越高;</Text>
                                     <Text style={styles.diagnoseInstructionText}>           2. 借款期限数值越高代表流动性越差，资金的灵活性越低。</Text>
@@ -266,7 +267,7 @@ class Fuzhu extends React.Component {
                                     </Text>
                                     <Text style={styles.diagnoseStateText}>后续趋势预判：<Icon name={dispersion.change == 'up' ? 'up' : 'down'} size={11} color={dispersion.change == 'up' ? '#ff0063' : '#009963'} /></Text>
                                 </View>
-                                <Echarts option={LineChart.line2('分散度(万元)', '分散度', dateTimeAll, dataAvgBorrowMoney, 40)} height={180} />
+                                <Echarts option={BarChart.bar2('人均借款金额(万元)','人均借款金额', dateTimeAll, dataAvgBorrowMoney, 30)} height={180} />            
                                 <View style={styles.diagnoseInstruction}>
                                     <Text style={styles.diagnoseInstructionText}>说明：1. 借款金额数值越低代表分散度越好，系统性风险越低;</Text>
                                     <Text style={styles.diagnoseInstructionText}>           2. 借款金额数值越高代表分散度越差，系统性风险越高。</Text>
@@ -293,7 +294,7 @@ class Fuzhu extends React.Component {
                                     </Text>
                                     <Text style={styles.diagnoseStateText}>后续趋势预判：<Icon name={popularity.change == 'up' ? 'up' : 'down'} size={11} color={popularity.change == 'up' ? '#ff0063' : '#009963'} /></Text>
                                 </View>
-                                <Echarts option={LineChart.line2('投资人数(人)', '投资人数', dateTimeAll, dataBidderNum, 60)} height={180} />
+                                <Echarts option={BarChart.bar2('投资人数(人)','投资人数', dateTimeAll, dataBidderNum, 50)} height={180} />
                                 <View style={styles.diagnoseInstruction}>
                                     <Text style={styles.diagnoseInstructionText}>说明：1. 投资人数数值越高代表人气越好;</Text>
                                     <Text style={styles.diagnoseInstructionText}>           2. 投资人数数值越低代表人气越差。</Text>
@@ -320,7 +321,7 @@ class Fuzhu extends React.Component {
                                     </Text>
                                     <Text style={styles.diagnoseStateText}>后续趋势预判：<Icon name={stayStill.change == 'up' ? 'up' : 'down'} size={11} color={stayStill.change == 'up' ? '#ff0063' : '#009963'} /></Text>
                                 </View>
-                                <Echarts option={LineChart.line2('累计待还金额(万元)', '累计待还金额', dateTimeAll, dataStayStillOfTotal, 75)} height={180} />
+                                <Echarts option={BarChart.bar2('累计待还金额(万元)', '累计待还金额', dateTimeAll, dataStayStillOfTotal, 75)} height={180} />
                                 <View style={styles.diagnoseInstruction}>
                                     <Text style={styles.diagnoseInstructionText}>说明：1. 累计待还金额数值越高代表体量越大，系统性风险越低;</Text>
                                     <Text style={styles.diagnoseInstructionText}>           2. 累计待还金额数值越低代表体量越低，系统性风险越高。</Text>
@@ -347,7 +348,7 @@ class Fuzhu extends React.Component {
                                     </Text>
                                     <Text style={styles.diagnoseStateText}>后续趋势预判：<Icon name={loyalty.change == 'up' ? 'up' : 'down'} size={11} color={loyalty.change == 'up' ? '#ff0063' : '#009963'} /></Text>
                                 </View>
-                                <Echarts option={LineChart.line2('人均投资金额(万元)', '人均投资金额', dateTimeAll, dataAvgBidMoney, 35)} height={180} />
+                                <Echarts option={BarChart.bar2('人均投资金额(万元)', '人均投资金额', dateTimeAll, dataAvgBidMoney, 35)} height={180} />
                                 <View style={styles.diagnoseInstruction}>
                                     <Text style={styles.diagnoseInstructionText}>说明：1. 人均投资金额越高代表用户忠诚度越高，平台越健康;</Text>
                                     <Text style={styles.diagnoseInstructionText}>           2. 人均投资金额越低代表用户忠诚度越低，平台越不健康。</Text>
@@ -374,7 +375,7 @@ class Fuzhu extends React.Component {
                                     </Text>
                                     <Text style={styles.diagnoseStateText}>后续趋势预判：<Icon name={growth.change == 'up' ? 'up' : 'down'} size={11} color={growth.change == 'up' ? '#ff0063' : '#009963'} /></Text>
                                 </View>
-                                <Echarts option={LineChart.line2('待收投资人数(人)', '待收投资人数', dateTimeAll, dataBidderWaitNum, 60)} height={180} />
+                                <Echarts option={BarChart.bar2('待收投资人数(人)', '待收投资人数', dateTimeAll, dataBidderWaitNum, 60)} height={180} />
                                 <View style={styles.diagnoseInstruction}>
                                     <Text style={styles.diagnoseInstructionText}>说明：1. 待收投资人数数值越高代表用户体量健康，成长性越好;</Text>
                                     <Text style={styles.diagnoseInstructionText}>           2. 待收投资人数数值越低代表用户体量萎靡，成长性越差。</Text>
@@ -401,7 +402,7 @@ class Fuzhu extends React.Component {
                                     </Text>
                                     <Text style={styles.diagnoseStateText}>后续趋势预判：<Icon name={rate.change == 'up' ? 'up' : 'down'} size={11} color={rate.change == 'up' ? '#ff0063' : '#009963'} /></Text>
                                 </View>
-                                <Echarts option={LineChart.line2('利率(%)', '利率', dateTimeAll, dataRate, 38)} height={180} />
+                                <Echarts option={BarChart.bar2('利率(%)', '利率', dateTimeAll, dataRate, 38)} height={180} />
                                 <View style={styles.diagnoseInstruction}>
                                     <Text style={styles.diagnoseInstructionText}>说明：利率数据高低与平台安全性没有直接关系，仅作为数据参考</Text>
                                 </View>
@@ -445,19 +446,19 @@ class Other extends React.Component {
                         <ScrollView>
                             <Title titleText={'成交量走势'} />
                             <View style={styles.diagnoseBox}>
-                                <Echarts option={LineChart.line2('成交量走势(万元)', '成交量走势', dateTimeAll, dataAmount, 50)} height={180} />
+                                <Echarts option={BarChart.bar2('成交量走势(万元)', '成交量走势', dateTimeAll, dataAmount, 70)} height={180} />
                             </View>
                             <Title titleText={'每日借款人数走势'} />
                             <View style={styles.diagnoseBox}>
-                                <Echarts option={LineChart.line2('每日借款人数走势(人)', '每日借款人数走势', dateTimeAll, dataBorrowerNum, 50)} height={180} />
+                                <Echarts option={BarChart.bar2('每日借款人数走势(人)', '每日借款人数走势', dateTimeAll, dataBorrowerNum, 70)} height={180} />
                             </View>
                             <Title titleText={'待还借款人数走势'} />
                             <View style={styles.diagnoseBox}>
-                                <Echarts option={LineChart.line2('待还借款人数走势(人)', '待还借款人数走势', dateTimeAll, dataBorrowWaitNum, 70)} height={180} />
+                                <Echarts option={BarChart.bar2('待还借款人数走势(人)', '待还借款人数走势', dateTimeAll, dataBorrowWaitNum, 70)} height={180} />
                             </View>
                             <Title titleText={'满标用时走势'} />
                             <View style={styles.diagnoseBox}>
-                                <Echarts option={LineChart.line2('满标用时走势(分钟)', '满标用时走势', dateTimeAll, dataFullloanTime, 45)} height={180} />
+                                <Echarts option={BarChart.bar2('满标用时走势(分钟)', '满标用时走势', dateTimeAll, dataFullloanTime, 70)} height={180} />
                             </View>
                         </ScrollView>
                         :
@@ -597,9 +598,10 @@ const styles = StyleSheet.create({
     },
     td: {
         color: '#ABB7C4',
+        fontSize:12.5
     },
     td1: {
-        width: 76,
+        width: 65,
     },
     td2: {
         width: 80,

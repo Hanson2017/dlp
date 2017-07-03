@@ -203,7 +203,7 @@ const styles = StyleSheet.create({
         color: '#abb7c4'
     },
     paiming: {
-        width: 150,
+        width: 130,
     },
     jiantou: {
         width: 35,

@@ -64,7 +64,7 @@ export default class DetailScreen extends React.Component {
                     <Text style={[styles.detailTopText]}>上线日期：{dataInfo.uptime}</Text>
                     <TouchableOpacity
                         onPress={() => {
-                            if (dataInfo.acurl != '') {
+                            if (dataInfo.acurl != null &&  dataInfo.acurl != '') {
                                 Util.Linked(dataInfo.acurl)
                             }
                             else {

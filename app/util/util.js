@@ -57,18 +57,28 @@ module.exports = {
         }
         let url;
         if (id) {
-             url = Api[ApiType.column] + '?type=' + ApiType.type + '&id_dlp=' + id + '&page=' + that.page + '&pagesize=' + 50;
+             
+             if(ApiType.type != 'comment'){
+                 url = Api[ApiType.column] + '?type=' + ApiType.type + '&id_dlp=' + id + '&page=' + that.page + '&pagesize=' + 50;
+             }
+             else{
+                 url = Api[ApiType.column] + id + '&page=' + that.page + '&pagesize=' + 10;
+             }
         }
         else {
              url = Api[ApiType.column] + '?type=' + ApiType.type + '&page=' + that.page + '&pagesize=' + 50;
         }
 
+        console.log(url)
+
         fetch(url)
             .then((response) => {
-
+               
                 if (response.ok) {
+                    console.log('responseData')
                     response.json()
                         .then((responseData) => {
+                             
                             if (type == 3) {
                                 that.setState({
                                     dataSource: []
@@ -149,6 +159,7 @@ module.exports = {
                                 loading: false,
                                 dataSource: responseData,
                             })
+                            console.log(responseData)
                         })
                 }
                 else {

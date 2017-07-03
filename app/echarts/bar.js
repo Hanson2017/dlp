@@ -52,6 +52,90 @@ module.exports = {
 
         };
         return option;
+    },
+    // 主要给健康度指标
+    bar2(title,name, xdata, data, x) {
+        /**/
+        var option = {
+            title: {
+                x: 'left',
+                text: title,
+                textStyle: {
+                    color: '#999',
+                    fontSize: '12',
+                    fontWeight: 'normal',
+                    fontFamily: '微软雅黑'
+
+                }
+            },
+            tooltip: {},
+            calculable: true,
+            grid: {
+                borderWidth: 0,
+                x: x,
+                x2: 20,
+                y: 32,
+                y2: 40
+            },
+            xAxis: [
+                {
+                    type: 'category',
+                    axisLabel: {
+                        rotate: 30,
+                        textStyle: {
+                            color: '#777'
+                        }
+                    },
+                    axisLine: {
+                        show: true,
+
+                        lineStyle: {
+                            color: '#a0cdfa',
+                            width: 1,
+                            type: 'solid'
+                        }
+
+                    },
+                    axisTick: {
+
+                        lineStyle: {
+                            color: '#ccc'
+                        }
+                    },
+                    data: xdata
+                }
+            ],
+            yAxis: [
+                {
+                    type: 'value',
+                    splitNumber: 3,
+                    axisLine: {
+                        show: true,
+                        lineStyle: {
+                            color: '#999',
+                            width: 1,
+                            type: 'solid'
+                        }
+
+                    }
+
+                }
+            ],
+            series: [
+                {
+                    name: name,
+                    type: 'bar',
+                    itemStyle: {
+                        normal: {
+                            color: '#a0cdfa'
+                        }
+                    },
+                    data: data
+                }
+            ]
+
+        };
+        return option;
     }
 
 

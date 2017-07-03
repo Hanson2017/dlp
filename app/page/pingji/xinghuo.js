@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Icomoon';
 import stylesList from '../../css/listData';
+import Theme from '../../util/theme';
 
 module.exports = {
     renderItemR({ item, index }) {
@@ -13,14 +14,14 @@ module.exports = {
                     onPress={() => { navigation.navigate('Detail', { id: item.id_dlp, platName: item.plat_name, fundType: item.fund_type }) }}
 
                 >
-                    <Text style={[stylesList.C2D3640, { width: 205, paddingLeft: 40 }]}>{item.level}</Text>
+                    <Text style={[stylesList.C2D3640, { width: Theme.screenWidth-170, paddingLeft: 40 }]}>{item.level}</Text>
                 </TouchableOpacity>
             </View>
         )
     },
     ListHeaderComponentR() {
         let listTitle = [
-            { title: '星火评级', width: 205 }
+            { title: '星火评级', width: Theme.screenWidth-170}
 
         ]
         return (

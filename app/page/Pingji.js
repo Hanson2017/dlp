@@ -19,7 +19,7 @@ export default class PingjiScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            tabNames: ['综合评级', '之家', '天眼', '贷罗盘', '融360', '星火', '羿飞'],
+            tabNames: ['综合', '之家', '天眼', '贷罗盘', '融360', '星火', '羿飞'],
             totalNum: [0, 0, 0, 0, 0, 0, 0],
             index: 0,
             ref: false

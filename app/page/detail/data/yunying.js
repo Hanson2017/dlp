@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Text, StyleSheet, View, TouchableOpacity, ScrollView } from 'react-native';
 
 import Title from '../../../component/Title';
+import Theme from '../../../util/theme';
 
 export default class Yunying extends React.Component {
     render() {
@@ -11,21 +12,21 @@ export default class Yunying extends React.Component {
                 {
                     data != null ?
                         <View>
-                            <Title titleText={'交易类数据'} />
+                            <Title titleText={'交易类数据（万）'} />
                             <View style={styles.YunyingBox}>
-                                <Text style={styles.ListText}>成交量：{data.amount} 万</Text>
-                                <Text style={styles.ListText}>资金净流入/出：{data.inamount} 万</Text>
-                                <Text style={styles.ListText}>当日待还金额：{data.stayStill} 万</Text>
-                                <Text style={styles.ListText}>累计待还金额：{data.stayStillOfTotal} 万</Text>
-                                <Text style={styles.ListText}>平均投资金额：{data.avgBidMoney} 万</Text>
-                                <Text style={styles.ListText}>平均借款金额：{data.avgBorrowMoney} 万</Text>
+                                <Text style={styles.ListText}>成交量：{data.amount} </Text>
+                                <Text style={styles.ListText}>资金净流入/出：{data.inamount} </Text>
+                                <Text style={styles.ListText}>当日待还金额：{data.stayStill} </Text>
+                                <Text style={styles.ListText}>累计待还：{data.stayStillOfTotal} </Text>
+                                <Text style={styles.ListText}>平均投资金额：{data.avgBidMoney} </Text>
+                                <Text style={styles.ListText}>平均借款金额：{data.avgBorrowMoney} </Text>
                             </View>
-                            <Title titleText={'用户类数据'} />
+                            <Title titleText={'用户类数据（人）'} />
                             <View style={styles.YunyingBox}>
-                                <Text style={styles.ListText}>当日投资人数：{data.bidderNum} 人</Text>
-                                <Text style={styles.ListText}>当日借款人数：{data.borrowerNum} 人</Text>
-                                <Text style={styles.ListText}>待收投资人数：{data.bidderWaitNum} 人</Text>
-                                <Text style={styles.ListText}>待还借款人数：{data.borrowWaitNum} 人</Text>
+                                <Text style={styles.ListText}>当日投资人数：{data.bidderNum} </Text>
+                                <Text style={styles.ListText}>当日借款人数：{data.borrowerNum} </Text>
+                                <Text style={styles.ListText}>待收投资人数：{data.bidderWaitNum} </Text>
+                                <Text style={styles.ListText}>待还借款人数：{data.borrowWaitNum} </Text>
 
                             </View>
                             <Title titleText={'占比数据'} />
@@ -61,7 +62,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
     },
     ListText: {
-        width: 170,
+        width: (Theme.screenWidth-20)/2,
         color: '#ABB7C4',
         fontSize: 12,
         lineHeight: 24,

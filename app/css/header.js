@@ -28,13 +28,19 @@ const styles = StyleSheet.create({
     },
     headerText: {
         color: '#fff',
-        fontSize: 16,
+        fontSize: 16.5,
+        fontWeight:'bold',
     },
     headerRight: {
         width: 50,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
+    },
+    avatar:{
+        width:32,
+        height:32,
+        borderRadius:16,
     }
 })
 

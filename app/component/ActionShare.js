@@ -235,13 +235,14 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
         alignItems: 'center',
         justifyContent: 'center',
-        paddingLeft: 25,
+        paddingLeft: 10,
         height: 200,
         borderRadius: 10,
         backgroundColor: '#fff',
     },
     shareBtn: {
-        marginRight: 30,
+        width:(aWidth-20)/4,
+       
         alignItems: 'center',
         justifyContent: 'center'
     },

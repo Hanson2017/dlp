@@ -3,6 +3,7 @@ import { Text, StyleSheet, View, FlatList, TouchableOpacity, ScrollView, Refresh
 
 import Loading from '../../component/Loading';
 import Util from '../../util/util'
+import Theme from '../../util/theme'
 import stylesList from '../../css/listData';
 
 export default class BlackList extends React.Component {
@@ -127,8 +128,8 @@ const styles = StyleSheet.create({
     },
     listName: {
         marginBottom: 10,
-        paddingRight: 10,
-        width: 120,
+        paddingRight: 0,
+        width: (Theme.screenWidth-30)/3,
         height: 22,
     },
     listNameText: {

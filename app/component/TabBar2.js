@@ -46,13 +46,15 @@ export default class TabBar extends Component {
 
 const styles = StyleSheet.create({
    tabsWrap:{
+       paddingLeft:10,
+       paddingRight:10,
        marginBottom:16,
         height:30,
         justifyContent: 'center',
         alignItems: 'center',
     },
     tabsContainer: {
-        width:360,
+       
         borderWidth:1,
         borderColor:'#333',
         borderRightWidth:0,

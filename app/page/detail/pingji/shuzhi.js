@@ -481,9 +481,10 @@ const styles = StyleSheet.create({
     },
     td: {
         color: '#ABB7C4',
+        fontSize:12.5,
     },
     td1: {
-        width: 76,
+        width: 70,
     },
     td2: {
         width: 80,

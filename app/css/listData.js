@@ -6,14 +6,14 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     updateText: {
-
+        fontSize:12,
         color: '#ccc',
     },
     headerRow: {
         flexDirection: 'row',
         alignItems: 'center',
         height: 40,
-        backgroundColor: '#e0e5ea',
+        backgroundColor: '#e1e6eb',
     },
     tdID: {
         paddingLeft: 15,
@@ -27,10 +27,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     C2D3640: {
-        color: '#2D3640',
+        color: '#28323c',
+        fontSize:12
     },
     CABB7C4: {
-        color: '#ABB7C4',
+        color: '#8c96a0',
+        fontSize:12
     },
     fixed: {
         borderRightWidth: 2,
@@ -52,14 +54,14 @@ const styles = StyleSheet.create({
         position: 'relative',
         justifyContent: 'center',
         height: 70,
-        borderBottomColor: '#f2f2f2',
+        borderBottomColor: '#e1e6eb',
         borderBottomWidth: 1
     },
     itemRowNone: {
         position: 'relative',
         justifyContent: 'center',
         height: 44,
-        borderBottomColor: '#f2f2f2',
+        borderBottomColor: '#e1e6eb',
         borderBottomWidth: 1
     },
     shifan: {
@@ -73,7 +75,7 @@ const styles = StyleSheet.create({
     },
     shifanText: {
         color: '#fff',
-        fontSize: 12
+        fontSize: 11
     },
     Ttype: {
         marginRight: 5,
@@ -99,7 +101,7 @@ const styles = StyleSheet.create({
     },
     hongbaoText: {
         color: '#fff',
-        fontSize: 12
+        fontSize: 11
     }
 })
 

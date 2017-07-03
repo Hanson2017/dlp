@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Text, StyleSheet, View, ScrollView } from 'react-native';
 
 import Title from '../../../component/Title';
-
+import Theme from '../../../util/theme';
 
 export default class Basic extends React.Component {
     render() {
@@ -34,7 +34,7 @@ export default class Basic extends React.Component {
                                                 <View style={styles.areaDetailList}>
                                                     <View style={[styles.number, styles['number' + i]]}><Text style={styles.numberText}>{i + 1}</Text></View>
                                                     <Text style={styles.platName}>{list.province}</Text>
-                                                    <View style={[styles.progress, { width: 240 * list.perctent }]}></View>
+                                                    <View style={[styles.progress, { width: Theme.screenWidth/2 * list.perctent }]}></View>
                                                 </View>
                                             )
                                         })
@@ -51,7 +51,7 @@ export default class Basic extends React.Component {
                                                 <View style={styles.ageDetailList}>
                                                     <Text style={styles.ageNum}>{ageText[i]}</Text>
                                                     <Text style={styles.ageBili}>{list}%</Text>
-                                                    <View style={[styles.progress, styles.progressAge, { width: 180 * (list / maxValue) }]}></View>
+                                                    <View style={[styles.progress, styles.progressAge, { width: (Theme.screenWidth-50)/2 * (list / maxValue) }]}></View>
                                                 </View>
                                             )
                                         })
@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
         color: '#ABB7C4',
     },
     progress: {
-        width: 240,
+        width: (Theme.screenWidth)/2,
         height: 20,
         backgroundColor: '#ccc',
     },
@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
         color: '#ABB7C4',
     },
     progressAge: {
-        width: 180,
+        width: (Theme.screenWidth-50)/2,
     },
     sexDetail: {
         padding: 10,

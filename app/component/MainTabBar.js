@@ -12,7 +12,7 @@ import Health from '../page/Health'
 
 export default class TabBar extends Component {
     static defaultProps = {
-        selectedColor: '#dd0000',
+        selectedColor: '#408df3',
         normalColor: '#888',
         size: 22,
         normalColorText: '#666'

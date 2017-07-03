@@ -22,7 +22,14 @@ export default class Header extends React.Component {
                                     this.props.openControlPanel()
                                 }}
                             >
-                                <Image source={require('../../resources/images/portrait.png')} style={{ width: 32, height: 32 }} />
+                                {
+                                    this.props.loginState ?
+                                        <Image source={{ uri: signState.r_avatar_img }} style={styles.avatar} />
+                                        :
+                                        <Image source={require('../../resources/images/portrait.png')} style={styles.avatar} />
+                                }
+
+
                             </TouchableOpacity>
                             :
                             <TouchableOpacity style={styles.backBtn} onPress={() => { navigation.goBack() }}>

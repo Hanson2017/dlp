@@ -31,7 +31,7 @@ export default class SearchScreen extends React.Component {
                             <TextInput
                                 underlineColorAndroid="transparent"
                                 style={styles.searchInput}
-                                placeholder={'输入你关心平台的名称，如“陆金所”'}
+                                placeholder={'输入你关心平台的名称，如“人人贷”'}
                                 placeholderTextColor={'#536171'}
                                 clearButtonMode={'while-editing'}
                                 enablesReturnKeyAutomatically={true}

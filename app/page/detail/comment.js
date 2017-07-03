@@ -10,8 +10,15 @@ export default class Comment extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            loading: true,
+             loading: true,
+            isLoadMore: true,
+            isLoadMoreIng: true,
+            isRefreshing: false,
             dataSource: [],
+            pageCount: 1,
+            pageSize: 0,
+            totalNum: null,
+            updatetime: null,
         }
     }
     render() {
@@ -28,10 +35,11 @@ export default class Comment extends React.Component {
                         <Text style={[stylesList.updateText, { marginRight: 10, }]}>更新时间</Text>
                         <Text style={stylesList.updateText}>{platInfo.updatetime}</Text>
                     </View>
-                    <Title  titleText={'网友评论'} />
+                    <Title titleText={'网友评论'} />
                     {
                         this.state.dataSource != null && this.state.dataSource.length > 0 ?
                             <FlatList
+                                ListFooterComponent={this.ListFooterComponent.bind(this)}
                                 data={this.state.dataSource}
                                 renderItem={this.renderItem.bind(this)}
                             />
@@ -68,16 +76,35 @@ export default class Comment extends React.Component {
         )
 
     }
+    ListFooterComponent() {
+        return (
+            <View>
+                {
+                    this.state.isLoadMore ?
+                        <TouchableOpacity disabled={this.state.isLoadMoreIng ? true : false} style={stylesList.getMore} onPress={() => this.getMore()}>
+                            <Text style={stylesList.getMoreText}>{this.state.isLoadMoreIng ? '正在加载...' : '加载更多'}</Text>
+                        </TouchableOpacity>
+                        :
+                        <TouchableOpacity disabled={true} style={stylesList.getMore}>
+                            <Text style={stylesList.getMoreText}>没有更多了</Text>
+                        </TouchableOpacity>
+                }
+            </View>
+        )
+    }
     componentDidMount() {
         let id = this.props.platInfo.id;
-        Util.getDataDetail(this, 'comment', id)
+        Util.getDataList(this, { column: 'commentList', type: 'comment', dataName: 'comment' }, 1, id)
     }
-
+    getMore() {
+        let id = this.props.platInfo.id;
+        Util.getDataList(this, { column: 'commentList', type: 'comment', dataName: 'comment' }, 2, id)
+    }
 
 }
 
 const styles = StyleSheet.create({
-   
+
     list: {
         padding: 10,
         borderBottomWidth: 1,

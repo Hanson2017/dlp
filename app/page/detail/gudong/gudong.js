@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Text, StyleSheet, View, ScrollView } from 'react-native';
+import Theme from '../../../util/theme';
 
 export default class Gudong extends React.Component {
     render() {
@@ -28,6 +29,7 @@ export default class Gudong extends React.Component {
                                                         <Text style={styles.gudongInfoL} >{list.type}</Text>
                                                         <View style={styles.gudongInfoR}>
                                                             <Text style={styles.gudongInfoName}>{list.name}</Text>
+                                                            <Text style={styles.gudongInfoJ}><Text style={{ color: '#ABB7C4' }}>持股占比</Text>    {list.zhanbi != '' ? list.zhanbi : '--'}</Text>
                                                             <Text style={styles.gudongInfoJ}><Text style={{ color: '#ABB7C4' }}>认缴出资</Text>    {list.renjiao != '' ? list.renjiao : '--'}</Text>
                                                             <Text style={styles.gudongInfoJ}><Text style={{ color: '#ABB7C4' }}>实缴出资</Text>    {list.shijiao != '' ? list.shijiao : '--'}</Text>
                                                         </View>
@@ -123,7 +125,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginRight: 10,
         marginBottom: 10,
-        width: 110,
+        width: (Theme.screenWidth-30)/2,
         height: 50,
         backgroundColor: '#f7f7f7',
         borderColor: '#e4e4e4',

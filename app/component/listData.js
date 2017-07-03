@@ -46,7 +46,6 @@ export default class PingjiAll extends React.Component {
                             :
                             null
                     }
-
                     <View style={{ flexDirection: 'row', }}>
                         <View style={this.state.isFixed ? stylesList.fixed : null}>
                             <FlatList
@@ -95,7 +94,7 @@ export default class PingjiAll extends React.Component {
         let navigation = this.props.navigation;
         let fundType = null;
         let flmllist = item.flmllist;
-        
+
         switch (item.fund_type) {
             case 1:
                 fundType = '示1'
@@ -149,7 +148,7 @@ export default class PingjiAll extends React.Component {
                                     let url = 'http://m.fanlimofang.com/Activity/Detail/' + list.activityid
                                     return (
                                         list.investtype == 1 ? null :
-                                            <TouchableOpacity 
+                                            <TouchableOpacity
                                                 style={stylesList.hongbao}
                                                 onPress={() => {
                                                     Util.Linked(url)
@@ -177,7 +176,6 @@ export default class PingjiAll extends React.Component {
             this.setState({
                 isFixed: true
             })
-
         }
         else {
             this.setState({

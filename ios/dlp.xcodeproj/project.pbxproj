@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -773,10 +774,10 @@
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = BL4S7A2TL2;
+						ProvisioningStyle = Automatic;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = BL4S7A2TL2;
 						ProvisioningStyle = Manual;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
@@ -1237,6 +1238,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = BL4S7A2TL2;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1260,6 +1263,8 @@
 					"-lc++",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/dlp.app/dlp";
 			};
 			name = Debug;
@@ -1268,6 +1273,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = BL4S7A2TL2;
 				HEADER_SEARCH_PATHS = (
@@ -1288,6 +1295,8 @@
 					"-lc++",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/dlp.app/dlp";
 			};
 			name = Release;
@@ -1301,7 +1310,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Hua Li (D9WT8Y25PT)";
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = BL4S7A2TL2;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../node_modules/react-native-qq/ios/RCTQQAPI";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1341,7 +1350,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Hua Li (D9WT8Y25PT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Hua Li (D9WT8Y25PT)";
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = BL4S7A2TL2;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../node_modules/react-native-qq/ios/RCTQQAPI";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",

@@ -70,6 +70,7 @@ export default class QueryScreen extends React.Component {
                                 navigation={navigation}
                                 changeTotalNum={this.changeTotalNum.bind(this)}
                                 type={{ column: 'diqu', type: 'diqu', dataName: 'dataList' }}
+                                 tabWidth={{ width: (Theme.screenWidth-80)/6 }}
                             />
                         </View>
                         <View style={styles.content} tabLabel='key4'>
@@ -78,7 +79,7 @@ export default class QueryScreen extends React.Component {
                                 changeTotalNum={this.changeTotalNum.bind(this)}
                                 type={{ column: 'diqu', type: 'shangxian', dataName: 'dataList' }}
                                 titleText={'年'}
-                                tabWidth={{ width: 75 }}
+                                tabWidth={{ width: (Theme.screenWidth-60)/4 }}
                             />
                         </View>
                         <View style={styles.content} tabLabel='key5'>
@@ -86,7 +87,7 @@ export default class QueryScreen extends React.Component {
                                 navigation={navigation}
                                 changeTotalNum={this.changeTotalNum.bind(this)}
                                 type={{ column: 'diqu', type: 'cunguan', dataName: 'dataList' }}
-                                tabWidth={{ width: 108 }}
+                                tabWidth={{ width: (Theme.screenWidth-50)/3 }}
                             />
                         </View>
                     </ScrollableTabView>

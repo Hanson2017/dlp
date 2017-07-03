@@ -26,5 +26,6 @@ module.exports = {
     attentionAdd: host + '/Member_follow_addplat', //添加关注
     attentionDel: host + '/Member_follow_delplat', //取消关注
     isAttention: host + '/Member_follow_hasplat', //是否关注了该平台  
-    attentionList: host + '/Member_follow_getplatlist' //关注列表 
+    attentionList: host + '/Member_follow_getplatlist', //关注列表 
+    commentList:'http://www.76676.com/index.php?m=member&c=index&a=public_getcomment_dlp&p2pid='
 }

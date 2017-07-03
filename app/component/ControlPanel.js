@@ -20,17 +20,34 @@ export default class ControlPanel extends React.Component {
         let navigation = screenProps.navigation;
         return (
             <View style={styles.ControlPanelWp}>
-                {
-                    loginState ?
-                        <View style={{ flex: 1 }}>
-                            <TouchableOpacity style={styles.ControlPaneHeader}
-                                onPress={() => {
-                                    navigation.navigate('Account', { tab: 1 })
-                                }}
-                            >
-                                <Text style={styles.ControlPaneHeaderName}>{signState.r_username}</Text>
-                                <Icon name={'right'} size={16} color={'#616367'} />
-                            </TouchableOpacity>
+
+                <View style={{ flex: 1 }}>
+                    <TouchableOpacity style={styles.ControlPaneHeaderNologin}
+                        onPress={() => {
+                            if (loginState) {
+                                navigation.navigate('Account', { tab: 1 })
+                            }
+                            else {
+                                navigation.navigate('Login')
+                            }
+
+                        }}
+                    >
+                        <View style={styles.ControlPaneHeaderNologinPortrait}>
+                            {
+                                loginState ?
+                                    <Image source={{ uri: signState.r_avatar_img }} style={styles.avatar} />
+                                    :
+                                    <Image source={require('../../resources/images/portrait.png')} style={styles.avatar} />
+                            }
+                            <Text style={styles.loginText}>{loginState ? signState.r_username : '登录'}</Text>
+                        </View>
+
+                        <Icon name={'right'} size={16} color={'#616367'} />
+                    </TouchableOpacity>
+
+                    {
+                        loginState ?
                             <View style={styles.platTop}>
                                 <View style={styles.platTopL}>
                                     <Icon name={'set'} size={16} color={'#808a95'} />
@@ -49,21 +66,28 @@ export default class ControlPanel extends React.Component {
                                     }
                                 </TouchableOpacity>
                             </View>
-                            <View style={styles.ControlPaneBody}>
+                            : null
+                    }
 
-                                {
-                                    this.state.loading ?
-                                        <Loading />
+                    <View style={styles.ControlPaneBody}>
+                        {
+                            loginState ?
+                                this.state.loading ?
+                                    <Loading />
+                                    :
+                                    this.state.dataSource.length != 0 ?
+                                        <FlatList
+                                            data={this.state.dataSource}
+                                            renderItem={this.renderItem.bind(this)}
+                                        />
                                         :
-                                        this.state.dataSource.length != 0 ?
-                                            <FlatList
-                                                data={this.state.dataSource}
-                                                renderItem={this.renderItem.bind(this)}
-                                            />
-                                            :
-                                            <Text style={styles.null}>暂无关注平台</Text>
-                                }
-                            </View>
+                                        <Text style={styles.null}>暂无关注平台</Text>
+                                : null
+                        }
+
+                    </View>
+                    {
+                        loginState ?
                             <View style={styles.ControlPanefooter}>
                                 <TouchableOpacity style={styles.platTopL}
                                     onPress={() => {
@@ -77,24 +101,13 @@ export default class ControlPanel extends React.Component {
                                     <Image source={require('../../resources/images/logo2.png')} style={{ width: 68, height: 18 }} />
                                 </View>
                             </View>
-                        </View>
-                        :
-                        <View style={{ flex: 1 }}>
-                            <TouchableOpacity style={styles.ControlPaneHeaderNologin}
-                                onPress={() => {
-                                    navigation.navigate('Login')
-                                }}
-                            >
-                                <View style={styles.ControlPaneHeaderNologinPortrait}>
-                                    <Image source={require('../../resources/images/portrait.png')} style={{ width: 40, height: 40 }} />
-                                    <Text style={styles.loginText}>登录</Text>
-                                </View>
+                            :
+                            null
+                    }
 
-                                <Icon name={'right'} size={16} color={'#616367'} />
-                            </TouchableOpacity>
-                            <View style={styles.ControlPaneBody}></View>
-                        </View>
-                }
+                </View>
+
+
             </View>
         )
     }
@@ -248,6 +261,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     platTop: {
+        marginTop: 15,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
@@ -281,12 +295,15 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
     },
+    hdText:{
+        fontSize:13,
+    },
     platName: {
-        width: 100,
+        width: 90,
         color: '#fff',
     },
     state: {
-        width: 80,
+        width: 68,
         color: '#009900'
     },
     shifan: {
@@ -297,10 +314,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     bdText: {
-        color: '#666'
+        color: '#666',
+        fontSize:13,
     },
     paiming: {
-        width: 150,
+        width: 100,
     },
     jiantou: {
         width: 30,
@@ -319,5 +337,10 @@ const styles = StyleSheet.create({
         height: 20,
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    avatar: {
+        width: 40,
+        height: 40,
+        borderRadius: 20,
     }
 })
