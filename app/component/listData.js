@@ -55,15 +55,17 @@ export default class PingjiAll extends React.Component {
                             />
                         </View>
                         <View style={{ flex: 1, overflow: 'hidden' }}>
-                            <FlatList
-                                alwaysBounceVertical={false}
-                                alwaysBounceHorizontal={true}
-                                ListHeaderComponent={itemRow.ListHeaderComponentR.bind(this)}
-                                data={this.state.dataSource}
-                                renderItem={itemRow.renderItemR.bind(this)}
-                                onScroll={this._onScroll.bind(this)}
-                                style={{ flexDirection: 'row', }}
-                            />
+                            <ScrollView horizontal={true} onScroll={this._onScroll.bind(this)}>
+                                <FlatList
+                                    alwaysBounceVertical={false}
+                                    alwaysBounceHorizontal={true}
+                                    ListHeaderComponent={itemRow.ListHeaderComponentR.bind(this)}
+                                    data={this.state.dataSource}
+                                    renderItem={itemRow.renderItemR.bind(this)}
+                                    
+                                    style={{ flexDirection: 'row', }}
+                                />
+                            </ScrollView>
                         </View>
                     </View>
                     {
@@ -125,7 +127,7 @@ export default class PingjiAll extends React.Component {
                 {
                     item.fund_type != 0 || this.props.Ttype || flmllist.length > 0 ?
 
-                        <View style={{ position: 'absolute', bottom: 10, left: 15, flexDirection: 'row', }}>
+                        <View style={{ position: 'absolute', bottom: 10, left: 10, flexDirection: 'row', }}>
                             {
                                 this.props.Ttype ?
                                     <View style={stylesList.Ttype}>

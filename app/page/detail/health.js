@@ -17,7 +17,7 @@ class Hexin extends React.Component {
     render() {
         let data = this.props.data;
 
-        if (data.listdata.length > 0) {
+        if (data.listdata != null && data.listdata.length > 0 ) {
             var dateTimeAll = [] //时间列表
             var dataInamount = []   //资金流
             for (var i = 0; i < data.listdata.length; i++) {
@@ -61,7 +61,7 @@ class Hexin extends React.Component {
                 {/*概述 end*/}
                 <Title titleText={'资金流诊断'} />
                 {
-                    data.listdata.length > 0 ?
+                    data.listdata != null && data.listdata.length > 0 ?
                         <View style={styles.diagnoseBox}>
 
                             <Text style={styles.diagnoseText}>{inamountInfo.info}</Text>
@@ -179,7 +179,7 @@ class Fuzhu extends React.Component {
 
         let data = this.props.data;
 
-        if (data.listdata.length > 0) {
+        if (data.listdata != null && data.listdata.length > 0 ) {
             var dateTimeAll = [] //时间列表
             var dataLoanPeriod = [] //流动性
             var dataAvgBorrowMoney = []  //分散度
@@ -215,7 +215,7 @@ class Fuzhu extends React.Component {
         return (
             <View>
                 {
-                    data.listdata.length > 0 ?
+                    data.listdata != null && data.listdata.length > 0  ?
                         <ScrollView>
                             <View style={styles.healthTop}>
                                 <Text style={styles.healthTopText}>辅助指标为参考性指标，可辅助判断。</Text>
@@ -423,7 +423,7 @@ class Other extends React.Component {
     render() {
         let data = this.props.data;
 
-        if (data.listdata.length > 0) {
+        if (data.listdata != null && data.listdata.length > 0 ) {
             var dateTimeAll = [] //时间列表
             var dataAmount = []  //成交量走势
             var dataBorrowerNum = []  //每日借款人数走势
@@ -442,7 +442,7 @@ class Other extends React.Component {
         return (
             <View>
                 {
-                    data.listdata.length > 0 ?
+                    data.listdata != null && data.listdata.length > 0  ?
                         <ScrollView>
                             <Title titleText={'成交量走势'} />
                             <View style={styles.diagnoseBox}>

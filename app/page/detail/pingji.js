@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, View, TouchableOpacity, Alert ,ScrollView} from 'react-native';
+import { Text, StyleSheet, View, TouchableOpacity, Alert ,ScrollView,DeviceEventEmitter} from 'react-native';
 
 import ScrollableTabView from 'react-native-scrollable-tab-view';
 import TabBar from '../../component/TabBar2';
@@ -123,10 +123,20 @@ export default class DetailPjScreen extends React.Component {
         let id = this.props.platInfo.id;
         Util.getDataDetail(this, 'all', id)
 
+        this.subscription22 = DeviceEventEmitter.addListener('loginState', (data) => {
+            setTimeout(()=>{
+                this.isAttention() 
+            },300)
+             
+        })     
+    
         if (signState != null) {
             this.isAttention()
         }
 
+    }
+    componentWillUnmount() {
+         this.subscription22.remove();
     }
     goLogin() {
         let navigation = this.props.navigation;

@@ -50,9 +50,9 @@ export default class TabBar extends Component {
 const styles = StyleSheet.create({
     tabsContainer: {
         borderTopWidth:1,
-        borderTopColor:'#333',
+        borderTopColor:'#21272c',
         height: 40,
-        backgroundColor: '#000',
+        backgroundColor: '#14191e',
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',

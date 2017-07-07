@@ -69,16 +69,13 @@ module.exports = {
              url = Api[ApiType.column] + '?type=' + ApiType.type + '&page=' + that.page + '&pagesize=' + 50;
         }
 
-        console.log(url)
-
         fetch(url)
             .then((response) => {
                
-                if (response.ok) {
-                    console.log('responseData')
+                if (response.ok) {                     
                     response.json()
                         .then((responseData) => {
-                             
+                           
                             if (type == 3) {
                                 that.setState({
                                     dataSource: []
@@ -159,7 +156,7 @@ module.exports = {
                                 loading: false,
                                 dataSource: responseData,
                             })
-                            console.log(responseData)
+                            console.log('responseData',responseData)
                         })
                 }
                 else {

@@ -65,9 +65,9 @@ module.exports = {
                 {listTitle.map((text, i) => {
                     let width = text.width ? text.width : 140
                     return (
-                        <View>
-                            <Text style={[stylesList.C2D3640, { width: width}]} key={i + 10000}>{text.title}</Text>
-                            <Text style={[stylesList.C2D3640, { width: width ,marginTop:8}]} key={i}>{text.title2}</Text>
+                        <View key={i}>
+                            <Text style={[stylesList.C2D3640, { width: width}]}>{text.title}</Text>
+                            <Text style={[stylesList.C2D3640, { width: width ,marginTop:8}]}>{text.title2}</Text>
                         </View>
                     )
                 })}
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
         paddingTop: 15,
         position: 'relative',
         height: 70,
-        borderBottomColor: '#f2f2f2',
+        borderBottomColor: '#e1e6eb',
         borderBottomWidth: 1
     },
     mtT:{

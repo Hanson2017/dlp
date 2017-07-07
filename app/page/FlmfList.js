@@ -104,7 +104,7 @@ export default class DataScreen extends React.Component {
 
 const styles = StyleSheet.create({
     listViewContentWp: {
-        paddingLeft: 15,
+        paddingLeft: 10,
         marginBottom: 100,
     },
     listViewContent: {

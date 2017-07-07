@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     listTab: {
         flexDirection: 'row',
         flexWrap: 'wrap',
-        marginLeft: 15,
+        marginLeft: 10,
     },
     tab: {
         height: 24,
@@ -103,10 +103,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#f2f2f2',
         borderWidth: 1,
-        borderColor: '#333'
+        borderColor: '#14191e'
     },
     tabActive: {
-        backgroundColor: '#000',
+        backgroundColor: '#14191e',
     },
     tabText: {
         color: '#333',
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
         color: '#fff',
     },
     listContent: {
-        paddingLeft: 15,
+        paddingLeft: 10,
     },
     listTitle: {
         marginTop: 20,
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
     listName: {
         marginBottom: 10,
         paddingRight: 0,
-        width: (Theme.screenWidth-30)/3,
+        width: (Theme.screenWidth-20)/3,
         height: 22,
     },
     listNameText: {

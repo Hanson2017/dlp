@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
     infoHead: {
         flexDirection: 'row',
         alignItems: 'center',
-        paddingLeft: 15,
+        paddingLeft: 10,
         paddingRight: 10,
         height: 20,
     },
@@ -177,7 +177,7 @@ const styles = StyleSheet.create({
     },
     bijiao: {
         marginTop: 10,
-        paddingLeft: 15,
+        paddingLeft: 10,
         color: '#ccc',
         fontSize: 12,
     },
@@ -193,8 +193,8 @@ const styles = StyleSheet.create({
         borderTopColor: '#f2f2f2',
         marginTop: 15,
         paddingTop: 20,
-        paddingLeft: 15,
-        paddingRight: 15,
+        paddingLeft: 10,
+        paddingRight: 10,
     },
     flowList: {
         flexDirection: 'row',

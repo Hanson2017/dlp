@@ -54,28 +54,28 @@ export default class FundAll extends React.Component {
                         <Text style={styles.fundEchartTitleText}>1号示范投资（稳健型）</Text>
                         
                     </View>
-                    <Echarts option={PieEcharts.pieFund(fund1Data)} height={200} />
+                    <Echarts option={PieEcharts.pieFund(fund1Data)} height={175} />
                 </View>
                 <View style={styles.fundEchart}>
                     <View style={styles.fundEchartTitle}>
                         <Text style={styles.fundEchartTitleText}>2号示范投资（平衡型）</Text>
                        
                     </View>
-                    <Echarts option={PieEcharts.pieFund(fund2Data)} height={200} />
+                    <Echarts option={PieEcharts.pieFund(fund2Data)} height={175} />
                 </View>
                 <View style={styles.fundEchart}>
                     <View style={styles.fundEchartTitle}>
                         <Text style={styles.fundEchartTitleText}>3号示范投资（收益型）</Text>
                        
                     </View>
-                    <Echarts option={PieEcharts.pieFund(fund3Data)} height={200} />
+                    <Echarts option={PieEcharts.pieFund(fund3Data)} height={175} />
                 </View>
                 <View style={styles.fundEchart}>
                     <View style={styles.fundEchartTitle}>
                         <Text style={styles.fundEchartTitleText}>活期示范投资（高流动型）</Text>
                         
                     </View>
-                    <Echarts option={PieEcharts.pieFund(fund4Data)} height={200} />
+                    <Echarts option={PieEcharts.pieFund(fund4Data)} height={175} />
                 </View>
             </ScrollView>
         )
@@ -84,7 +84,7 @@ export default class FundAll extends React.Component {
 
 const styles = StyleSheet.create({
     fundTop: {
-        paddingLeft: 15,
+        paddingLeft: 10,
     },
     fundTopText: {
         lineHeight: 24,

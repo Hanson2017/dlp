@@ -2,6 +2,7 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
     update: {
         padding: 15,
+        paddingLeft:10,
         flexDirection: 'row',
         alignItems: 'center',
     },
@@ -16,7 +17,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#e1e6eb',
     },
     tdID: {
-        paddingLeft: 15,
+        paddingLeft: 10,
         width: 70,
     },
     tdName: {

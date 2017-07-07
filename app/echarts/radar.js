@@ -6,7 +6,7 @@ module.exports = {
             },
             legend: {
                 x: 'center',
-                data: [platname, '行业平均数值']
+                data: [{name: platname,icon: 'circle'}, {name: '行业平均数值',icon: 'circle'}]
             },
             grid: {
                 borderWidth: 0,

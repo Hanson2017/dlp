@@ -10,7 +10,7 @@ export default class Set extends React.Component {
         return (
             <View style={styles.container}>
                 <View style={styles.list}>
-                    <Text style={styles.label}>当前帐号</Text>
+                    <Text style={styles.label}>当前帐号：</Text>
                     <Text style={[styles.listR]}>{signState.r_username}
                         {
                             signState.r_fromtype == 'qq' ?
@@ -21,19 +21,20 @@ export default class Set extends React.Component {
                     </Text>
                 </View>
                 <TouchableOpacity style={styles.list} activeOpacity={0.5}
-                    onPress={()=>{
+                    onPress={() => {
                         navigation.navigate('Help')
                     }}
                 >
                     <Text style={styles.label}>常见问题</Text>
-                    <Icon name={'right'} size={16} color={'#ccc'} />
+                    <Icon name={'right'} size={13} color={'#c7c7cc'} />
                 </TouchableOpacity>
-             
+
                 <View style={[styles.list, { borderBottomColor: '#e4e4e4' }]}>
                     <Text style={styles.label}>版本号</Text>
-                    <Text style={[styles.listR]}>1.0.1</Text>
+                    <Text style={[styles.listR]}>2.0.1</Text>
                 </View>
                 <TouchableOpacity style={styles.logoutBtn}
+                    activeOpacity={0.6}
                     onPress={() => {
                         Alert.alert(
                             '',
@@ -61,7 +62,9 @@ export default class Set extends React.Component {
 }
 const styles = StyleSheet.create({
     container: {
+        flex: 1,
         paddingTop: 10,
+        backgroundColor: '#e1e6eb',
     },
     list: {
         paddingLeft: 15,
@@ -69,27 +72,32 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        height: 50,
+        height: 45,
+        backgroundColor: '#fff',
         borderBottomWidth: 1,
-        borderBottomColor: '#f2f2f2',
+        borderBottomColor: '#e1e6eb',
     },
     label: {
-        color: '#2D3640',
+        color: '#28323c',
+        fontWeight: 'bold',
     },
     listR: {
-        color: '#999',
+        color: '#8c96a0',
+        fontSize:13,
     },
     logoutBtn: {
+        marginTop: 10,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        height: 50,
+        height: 45,
         borderBottomWidth: 1,
         borderBottomColor: '#e4e4e4',
+        backgroundColor: '#fff',
     },
     logoutBtnText: {
-        color: '#2D3640',
-
+        color: '#28323c',
+        fontWeight: 'bold',
     }
 
 })

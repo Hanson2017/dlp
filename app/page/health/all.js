@@ -13,9 +13,9 @@ module.exports = {
                     onPress={() => { navigation.navigate('Detail', { id: item.id_dlp, platName: item.plat_name, fundType: item.fund_type }) }}
 
                 >
-                    <Text style={[stylesList.CABB7C4, { width: (Theme.screenWidth-170)/2 }]}>{item.score}</Text>
+                    <Text style={[stylesList.C2D3640, { width: (Theme.screenWidth-170)/2 }]}>{item.score}</Text>
                     <View style={[stylesList.tdUp, { width:(Theme.screenWidth-170)/2 }]}>
-                        <Text style={[stylesList.C2D3640, { width: 50 }]}>{item.changnum >= 0 ? item.changnum : -item.changnum}%</Text>
+                        <Text style={[stylesList.CABB7C4, { width: 50 }]}>{item.changnum >= 0 ? item.changnum : -item.changnum}%</Text>
                         <Icon name={item.changnum >= 0 ? 'up' : 'down'} size={12} color={item.changnum >= 0 ? '#ff0063' : '#009963'} />
                     </View>
 

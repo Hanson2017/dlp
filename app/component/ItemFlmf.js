@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     listT: {
         marginRight: 10,
         marginBottom: 12,
-        width: (Theme.screenWidth-40)/2,
+        width: (Theme.screenWidth-30)/2,
         height: 54,
         backgroundColor: '#f7f7f7',
         borderWidth: 1,

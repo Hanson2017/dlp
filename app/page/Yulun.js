@@ -233,7 +233,7 @@ const styles = StyleSheet.create({
     },
 
     listT: {
-        paddingLeft: 15,
+        paddingLeft: 10,
         paddingRight: 15,
         paddingTop: 10,
         paddingBottom: 10,

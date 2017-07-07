@@ -43,14 +43,14 @@ export default class ControlPanel extends React.Component {
                             <Text style={styles.loginText}>{loginState ? signState.r_username : '登录'}</Text>
                         </View>
 
-                        <Icon name={'right'} size={16} color={'#616367'} />
+                        <Icon name={'right'} size={16} color={'#616267'} />
                     </TouchableOpacity>
 
                     {
                         loginState ?
                             <View style={styles.platTop}>
                                 <View style={styles.platTopL}>
-                                    <Icon name={'set'} size={16} color={'#808a95'} />
+                                    <Icon name={'set'} size={16} color={'#8c96a0'} />
                                     <Text style={styles.platTopLText}>关注平台列表</Text>
                                 </View>
                                 <TouchableOpacity style={styles.platTopMore}
@@ -94,7 +94,7 @@ export default class ControlPanel extends React.Component {
                                         navigation.navigate('Account', { tab: 1 })
                                     }}
                                 >
-                                    <Icon name={'set'} size={16} color={'#808a95'} />
+                                    <Icon name={'set'} size={16} color={'#8c96a0'} />
                                     <Text style={styles.platTopLText}>设置</Text>
                                 </TouchableOpacity>
                                 <View style={styles.ControlPaneLogo}>
@@ -201,7 +201,6 @@ export default class ControlPanel extends React.Component {
         let that = this;
         let memberid = signState.r_id;
         let url = Api.attentionList + '?memberid=' + memberid + '&page=1&pagesize=' + this.state.pageSize;
-        console.log(url)
         fetch(url)
             .then((response) => {
                 if (response.ok) {
@@ -235,7 +234,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        paddingTop: 40,
+      
         height: 50,
     },
     ControlPaneHeaderNologinPortrait: {
@@ -272,7 +271,7 @@ const styles = StyleSheet.create({
     },
     platTopLText: {
         paddingLeft: 10,
-        color: '#ABB7C4',
+        color: '#8c96a0',
     },
     platTopMoreText: {
         color: '#666',

@@ -115,6 +115,7 @@ const styles = StyleSheet.create({
     },
     name: {
         width: 100,
+          color: '#333',
     },
     listTitle: {
         color: '#333',
@@ -122,7 +123,7 @@ const styles = StyleSheet.create({
     listCon: {
         lineHeight: 20,
         marginTop: 6,
-        color: '#ccc',
+        color: '#777',
     },
     null: {
         padding: 10,

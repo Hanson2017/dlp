@@ -117,6 +117,7 @@ const styles = StyleSheet.create({
     },
     jingyingfanwei: {
         lineHeight: 20,
+        color: '#333',
     },
     openMore: {
         marginTop: 10,

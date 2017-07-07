@@ -10,7 +10,7 @@ module.exports = {
     color: '#FF6666',
     container: {
         flex: 1,
-        backgroundColor: '#000',
+        backgroundColor: '#14191e',
     },
     content:{
          flex: 1,

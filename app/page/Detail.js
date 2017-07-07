@@ -46,7 +46,7 @@ export default class DetailScreen extends React.Component {
         const dataInfo = this.state.dataInfo;
         return (
             <View style={Theme.container}>
-                <Header headerOpt={{ title: params.platName, isflmf: dataInfo.isflmf, fund: dataInfo.fundtype }} navigation={navigation} showActionSheet={this.showActionSheet.bind(this)} />
+                <Header headerOpt={{ title: params.platName, dataInfo: dataInfo }} navigation={navigation} showActionSheet={this.showActionSheet.bind(this)} />
                 <ActionShare ref={'ActionShare'} />
                 <Toast ref={'Toast'} />
                 <View style={styles.detailTop}>
@@ -61,7 +61,7 @@ export default class DetailScreen extends React.Component {
                                     <Text style={{ color: '#FFFF00' }}>争议中，需谨慎</Text>
                         }
                     </Text>
-                    <Text style={[styles.detailTopText]}>上线日期：{dataInfo.uptime}</Text>
+                    <Text style={[styles.detailTopText]}>上线日期：{dataInfo.uptime != '1900-01-01'?dataInfo.uptime:'未知'}</Text>
                     <TouchableOpacity
                         onPress={() => {
                             if (dataInfo.acurl != null &&  dataInfo.acurl != '') {

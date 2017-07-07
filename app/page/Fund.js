@@ -34,7 +34,7 @@ export default class FundScreen extends React.Component {
         return (
             <View style={Theme.container}>
                 <Header headerOpt={{ back: '示范投资', title: '示范投资' }} navigation={navigation} />
-                <View style={{ marginBottom: 10, alignItems: 'center', justifyContent: 'center', }}>
+                <View style={{ marginBottom: 10, alignItems: 'center', justifyContent: 'center', paddingLeft:5, paddingRight:5}}>
                     <Text style={{ color: '#4C5763', fontSize: 12 }}>示范投资为贷罗盘自有资金进行投资示范，可供广大投资人参考。</Text>
                 </View>
                 <View style={Theme.content}>

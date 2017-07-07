@@ -2,15 +2,17 @@ import React, { Component } from 'react';
 import { Text, StyleSheet, View, TouchableOpacity, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/Icomoon';
 import styles from '../css/header';
+import Util from '../util/util';
 
 export default class Header extends React.Component {
     render() {
         const navigation = this.props.navigation;
         const headerOpt = this.props.headerOpt;
+        let dataInfo=headerOpt.dataInfo
         let showActionSheet=this.props.showActionSheet;
         let fundType = null;
 
-        switch (headerOpt.fund) {
+        switch (dataInfo.fundtype) {
             case 1:
                 fundType = '示1'
                 break;
@@ -32,15 +34,27 @@ export default class Header extends React.Component {
                 <View style={styles.textContainer}>
                     <Text style={styles.headerText}>{headerOpt.title}
                         {
-                            headerOpt.fund != 0 ?
+                            dataInfo.fundtype != 0 ?
                                 <Text style={{ color: '#009900' }}>({fundType})</Text>
                                 :
                                 null
                         }
                     </Text>
                     {
-                        headerOpt.isflmf == 1 ?
-                            <Image source={require('../../resources/images/redPacket.png')} style={{ width: 20, height: 20,marginLeft:8, }} />
+                        dataInfo.isflmf == 1 ?
+                            <TouchableOpacity
+                                 onPress={() => {
+                                    if (dataInfo.acurl != null &&  dataInfo.acurl != '') {
+                                        Util.Linked(dataInfo.acurl)
+                                    }
+                                    else {
+                                        Util.Linked('http://' + dataInfo.siteurl)
+                                    }
+
+                                }}
+                            >
+                                <Image source={require('../../resources/images/redPacket.png')} style={{ width: 20, height: 20,marginLeft:8, }} />
+                            </TouchableOpacity>
                             :
                             null
                     }

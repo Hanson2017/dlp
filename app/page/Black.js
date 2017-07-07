@@ -57,7 +57,7 @@ export default class BlackScreen extends React.Component {
                                 navigation={navigation}
                                 changeTotalNum={this.changeTotalNum.bind(this)}
                                 type={{ column: 'black', type: 'shengfen', dataName: 'dataList' }}
-                                 tabWidth={{ width: (Theme.screenWidth-80)/6 }}
+                                 tabWidth={{ width: (Theme.screenWidth-70)/6 }}
                             />
                         </View>
                         <View style={styles.content} tabLabel='key3'>
@@ -65,7 +65,7 @@ export default class BlackScreen extends React.Component {
                                 navigation={navigation}
                                 changeTotalNum={this.changeTotalNum.bind(this)}
                                 type={{ column: 'black', type: 'zimu', dataName: 'dataList' }}
-                                 tabWidth={{ width: (Theme.screenWidth-90)/7 }}
+                                 tabWidth={{ width: (Theme.screenWidth-81)/7 }}
                             />
                         </View>
                         <View style={styles.content} tabLabel='key4'>
@@ -74,7 +74,7 @@ export default class BlackScreen extends React.Component {
                                 changeTotalNum={this.changeTotalNum.bind(this)}
                                 type={{ column: 'black', type: 'shijian', dataName: 'dataList' }}
                                 titleText={'年'}
-                                tabWidth={{width:(Theme.screenWidth-60)/4}}
+                                tabWidth={{width:(Theme.screenWidth-50)/4}}
                             />
                         </View>
                     </ScrollableTabView>

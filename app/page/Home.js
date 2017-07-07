@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, View, Button, StatusBar, TextInput, TouchableOpacity, ScrollView, Image, ListView, Alert, DeviceEventEmitter } from 'react-native';
+import { Text, StyleSheet, View, Button, StatusBar, TextInput, TouchableOpacity, ScrollView, Image, ListView, Alert, DeviceEventEmitter, Platform } from 'react-native';
 import Header from '../component/Header'
 
 import Icon from 'react-native-vector-icons/Icomoon';
@@ -116,16 +116,38 @@ export default class HomeScreen extends React.Component {
                                         <View style={styles.searchListWp}>
                                             <ScrollView
                                                 onTouchStart={() => {
-                                                    this.setState({
-                                                        scrollEnabled: false,
-                                                        isSearchListHide: false
-                                                    })
+
+                                                    console.log('onTouchStart')
+                                                    
+                                                    
+                                                        this.setState({
+                                                            scrollEnabled: false,
+                                                            isSearchListHide: false
+                                                        })
+                                                    
+
+
                                                 }}
                                                 onTouchEnd={() => {
-                                                    this.setState({
-                                                        scrollEnabled: true
-                                                    })
+                                                    console.log('onTouchEnd')
+                                                    if (Platform.OS != 'android') {
+                                                        this.setState({
+                                                            scrollEnabled: true
+                                                        })
+                                                    }
+
                                                 }}
+                                                onScrollEndDrag={() => {
+                                                    console.log('onScrollEndDrag')
+                                                    if (Platform.OS == 'android') {
+                                                        this.setState({
+                                                            scrollEnabled: true
+                                                        })
+                                                    }
+                                                }}
+                                                
+
+
 
                                             >
                                                 <View style={styles.searchListCon}>
@@ -246,11 +268,11 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         flexWrap: 'wrap',
         marginBottom: 30,
-        paddingLeft:10,
+        paddingLeft: 10,
     },
     listRow: {
-        paddingRight:32,
-        width: (Theme.screenWidth-20) / 4,
+        paddingRight: 32,
+        width: (Theme.screenWidth - 20) / 4,
         alignItems: 'center',
         justifyContent: 'center',
         marginTop: 35,

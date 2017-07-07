@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, View, TouchableOpacity, Animated, Dimensions, Easing } from 'react-native';
+import { Text, StyleSheet, View, TouchableOpacity, Animated, Dimensions, Easing ,Platform} from 'react-native';
 
 import Icon from 'react-native-vector-icons/Icomoon';
 import * as QQAPI from 'react-native-qq';
@@ -32,7 +32,7 @@ export default class Share extends Component {
         }
         else {
             return (
-                <View style={styles.container}>
+                <View style={[styles.container,Platform.OS == 'android' ? { paddingBottom: 35 } : null]}>
                     <Animated.View style={[styles.mask, {
                         opacity: this.state.offset.interpolate({
                             inputRange: [0, 1],
@@ -202,6 +202,8 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-end',
         alignItems: 'center',
         zIndex: 999,
+       
+        paddingBottom:10,
     },
     mask: {
         justifyContent: "center",
@@ -218,7 +220,6 @@ const styles = StyleSheet.create({
     },
     tipBtn: {
         marginTop: 10,
-        marginBottom: 10,
         height: 53,
         flexDirection: 'row',
         alignItems: 'center',

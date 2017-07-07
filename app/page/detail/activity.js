@@ -77,7 +77,7 @@ export default class Activity extends React.Component {
 
 const styles = StyleSheet.create({
     listViewContent: {
-        paddingLeft: 15,
+        paddingLeft: 10,
         marginTop: 15,
         marginBottom: 5,
         flexDirection: 'row',

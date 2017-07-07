@@ -64,7 +64,7 @@ export default class FundList extends React.Component {
                         <Text style={styles.fundTopText}>适合人群：{fundRenqun}</Text>
                         <Text style={styles.fundTopText}>投资组成如下：</Text>
                     </View>
-                    <Echarts option={PieEcharts.pieFund(fundData)} height={200} />
+                    <Echarts option={PieEcharts.pieFund(fundData)} height={175} />
                     {
                         data.map((item) => {
                             return (
@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
         fontSize: 14,
     },
     fundTop: {
-        paddingLeft: 15,
+        paddingLeft: 10,
     },
     fundTopText: {
         color: '#ccc',
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
         fontSize: 13,
     },
     fundlist: {
-        paddingLeft: 15,
+        paddingLeft: 10,
         paddingRight: 10,
         paddingTop: 15,
         paddingBottom: 15,

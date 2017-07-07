@@ -126,14 +126,14 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1
     },
     tdName: {
-        paddingLeft: 15,
+        paddingLeft: 10,
         width: 120,
     },
     tdArea: {
         width: 100,
     },
     tdUrl: {
-        paddingLeft: 15,
+        paddingLeft: 10,
         paddingRight: 5,
         width: 180,
         fontSize: 12,

@@ -5,19 +5,29 @@ import Icon from 'react-native-vector-icons/Icomoon';
 import Header from '../component/Header';
 import Theme from '../util/theme';
 import Api from '../util/api';
-
 import * as QQAPI from 'react-native-qq';
 import * as WechatAPI from 'react-native-wx';
-
 import ThirdLogin from '../util/ThirdLogin'
+import styleshd from '../css/header';
 
 export default class Login extends Component {
     render() {
         let navigation = this.props.navigation;
         return (
-            <View style={Theme.container}>
-                <Header headerOpt={{ back: '个人中心', title: ' ', search: true }} navigation={navigation} />
-                <View style={[Theme.content, { backgroundColor: '#000' }]}>
+            <View style={styles.container}>
+                {/*<Header headerOpt={{ back: '个人中心', title: ' ', search: true }} navigation={navigation} />*/}
+                <View style={[styleshd.headerContainer, { backgroundColor: '101113', justifyContent: 'flex-start', }]}>
+                    {
+                        navigation.state.routeName == 'Main' ?
+                            <View style={{ width: 50 }}></View>
+                            :
+                            <TouchableOpacity style={styleshd.backBtn} onPress={() => { navigation.goBack() }}>
+                                <Icon name={'back'} size={18} color={'#fff'} />
+                            </TouchableOpacity>
+                    }
+
+                </View>
+                <View style={[Theme.content, { backgroundColor: '#101113' }]}>
                     <ScrollView style={styles.content}>
                         <View style={styles.loginlogo}>
                             <Image source={require('../../resources/images/logo.png')} style={{ width: 170, height: 45 }} />
@@ -28,7 +38,7 @@ export default class Login extends Component {
                                 style={{ alignItems: 'center', }}
                                 onPress={ThirdLogin._wechatlogin.bind(this, this)}
                             >
-                                <Icon name={'wechat'} size={60} color={'#444'} />
+                                <Icon name={'wechat'} size={60} color={'#606060'} />
                                 <Text style={styles.LoginText}>微信登陆</Text>
                             </TouchableOpacity>
                             <TouchableOpacity
@@ -36,7 +46,7 @@ export default class Login extends Component {
                                 activeOpacity={0.7}
                                 onPress={ThirdLogin._qqlogin.bind(this, this)}
                             >
-                                <Icon name={'qq'} size={60} color={'#444'} />
+                                <Icon name={'qq'} size={60} color={'#606060'} />
                                 <Text style={styles.LoginText}>QQ登陆</Text>
                             </TouchableOpacity>
                         </View>
@@ -48,12 +58,17 @@ export default class Login extends Component {
     goBackSuccee() {
         let navigation = this.props.navigation;
         window.EventEmitter.trigger('loginState', '登录好了')
+        DeviceEventEmitter.emit('loginState', '登录好了')
         navigation.goBack()
     }
 
 }
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#101113',
+    },
     loginlogo: {
         paddingTop: 70,
         justifyContent: 'center',
