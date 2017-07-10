@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, Image, View, Button, DeviceEventEmitter } from 'react-native';
+import { Text, StyleSheet, Image, View, Button, DeviceEventEmitter,Platform } from 'react-native';
 import { StackNavigator, TabNavigator } from "react-navigation";
 import Icon from 'react-native-vector-icons/Icomoon';
 import Drawer from 'react-native-drawer';
@@ -48,7 +48,7 @@ class DrawerScreen extends React.Component {
     render() {
         let status = this.state.status;
         if (this.state.loading) {
-            if (status == 1) {
+            if (status == 1 && Platform.OS != 'android') {
                 versionStatus=1
             }
             return (
