@@ -48,7 +48,7 @@ export default class DetailScreen extends React.Component {
             <View style={Theme.container}>
                 <Header headerOpt={{ title: params.platName, dataInfo: dataInfo }} navigation={navigation} showActionSheet={this.showActionSheet.bind(this)} />
                 <ActionShare ref={'ActionShare'} />
-                <Toast ref={'Toast'} />
+
                 <View style={styles.detailTop}>
                     <Text style={[styles.detailTopText]}> 状态：
                     {
@@ -61,10 +61,10 @@ export default class DetailScreen extends React.Component {
                                     <Text style={{ color: '#FFFF00' }}>争议中，需谨慎</Text>
                         }
                     </Text>
-                    <Text style={[styles.detailTopText]}>上线日期：{dataInfo.uptime != '1900-01-01'?dataInfo.uptime:'未知'}</Text>
+                    <Text style={[styles.detailTopText]}>上线日期：{dataInfo.uptime != '1900-01-01' ? dataInfo.uptime : '未知'}</Text>
                     <TouchableOpacity
                         onPress={() => {
-                            if (dataInfo.acurl != null &&  dataInfo.acurl != '') {
+                            if (dataInfo.acurl != null && dataInfo.acurl != '') {
                                 Util.Linked(dataInfo.acurl)
                             }
                             else {
@@ -111,20 +111,26 @@ export default class DetailScreen extends React.Component {
                                 <View style={styles.content} tabLabel='key7'>
                                     <Comment platInfo={{ id: params.id, platName: params.platName, updatetime: dataInfo.updatetime }} />
                                 </View>
-                                <View style={styles.content} tabLabel='key8'>
-                                    <Activity platInfo={{ id: params.id, platName: params.platName, updatetime: dataInfo.updatetime }} />
-                                </View>
+                                {versionStatus != 1 ?
+                                    <View style={styles.content} tabLabel='key8'>
+                                        <Activity platInfo={{ id: params.id, platName: params.platName, updatetime: dataInfo.updatetime }} />
+                                    </View>
+                                    :
+                                    null
+                                }
+
                             </ScrollableTabView>
                     }
 
                 </View>
+                <Toast ref={'Toast'} />
             </View>
         );
     }
-    toastShow(data){
+    toastShow(data) {
         this.refs.Toast.show(data)
     }
-    toastHide(){
+    toastHide() {
         this.refs.Toast.cancel();
     }
     showActionSheet() {
@@ -132,6 +138,11 @@ export default class DetailScreen extends React.Component {
     }
     componentDidMount() {
         this.getData()
+        if (versionStatus == 1) {
+            this.setState({
+                tabNames: ['评级', '健康度', '数据', '流量', '股东', '舆论', '评论'],
+            })
+        }
     }
     getData() {
         const { params } = this.props.navigation.state;

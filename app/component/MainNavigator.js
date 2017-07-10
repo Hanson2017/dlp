@@ -6,6 +6,7 @@ import Drawer from 'react-native-drawer';
 import '../config/asyncStorage';
 import StorageLoginInfo from '../config/storageLogin';
 
+import Loading from './Loading'
 import ControlPanel from './ControlPanel'
 import MainTabBar from './MainTabBar'
 
@@ -33,6 +34,8 @@ class DrawerScreen extends React.Component {
         super(props);
         this.state = {
             loginState: false,
+            loading: false,
+            status: 0,
             ref: false
         };
     }
@@ -43,24 +46,56 @@ class DrawerScreen extends React.Component {
         this._drawer.open()
     };
     render() {
-        return (
-            <Drawer
-                ref={(ref) => this._drawer = ref}
-                type="overlay"
-                content={<ControlPanel ref={'ControlPanel'} screenProps={{ loginState: this.state.loginState, navigation: this.props.navigation }} />}
-                openDrawerOffset={0.1}
-                closedDrawerOffset={0}
-                styles={drawerStyles}
-                tapToClose={true}
-                panCloseMask={0.13}
-            >
-                <MainTabBar screenProps={{ openControlPanel: this.openControlPanel.bind(this), loginState: this.state.loginState, navigation: this.props.navigation }} />
+        let status = this.state.status;
+        if (this.state.loading) {
+            if (status == 1) {
+                versionStatus=1
+            }
+            return (
+                <Drawer
+                    ref={(ref) => this._drawer = ref}
+                    type="overlay"
+                    content={<ControlPanel ref={'ControlPanel'} screenProps={{ loginState: this.state.loginState, navigation: this.props.navigation }} />}
+                    openDrawerOffset={0.1}
+                    closedDrawerOffset={0}
+                    styles={drawerStyles}
+                    tapToClose={true}
+                    panCloseMask={0.13}
+                >
+                    <MainTabBar screenProps={{ openControlPanel: this.openControlPanel.bind(this), loginState: this.state.loginState, navigation: this.props.navigation }} />
 
-            </Drawer>
-        )
+                </Drawer>
+            )
+        }
+        else {
+            return (
+                <Loading />
+            )
+        }
+
     }
     componentDidMount() {
         let that = this;
+        let url = 'http://www.dailuopan.com/MPAPI/GetVersion?version=2.0.1'
+        fetch(url)
+            .then((response) => {
+                if (response.ok) {
+                    response.json()
+                        .then((responseData) => {
+                            that.setState({
+                                status: responseData,
+                                loading: true
+                            })
+                        })
+                }
+                else {
+                    console.log('网络请求失败')
+                }
+            })
+            .catch((error) => {
+                console.log('error:', error)
+            })
+
         StorageLoginInfo.storageLoad(this)
         this.subscriptions = [
             window.EventEmitter.on('loginState', (data) => {
@@ -139,8 +174,8 @@ const AppDlp = StackNavigator({
     Help: {
         screen: Help
     },
-    HelpDetail:{
-        screen:HelpDetail
+    HelpDetail: {
+        screen: HelpDetail
     }
 }, {
         headerMode: 'none'

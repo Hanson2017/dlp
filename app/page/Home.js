@@ -10,7 +10,6 @@ export default class HomeScreen extends React.Component {
     constructor(props) {
         super(props);
         var data = [
-            // { title: '个人中心', iconName: 'user', iconColor: '#f15a4a', screenUrl: 'Account', tabId: null },
             { title: '综合评级', iconName: 'npingji', iconColor: '#408df3', screenUrl: 'Pingji', tabId: null },
             { title: '示范投资', iconName: 'nshifan', iconColor: '#408df3', screenUrl: 'Fund', tabId: null },
             { title: '优惠活动', iconName: 'nyouhui', iconColor: '#408df3', screenUrl: 'FlmfList', tabId: null },
@@ -39,6 +38,36 @@ export default class HomeScreen extends React.Component {
             { title: '黑名单', iconName: 'nblack', iconColor: '#408df3', screenUrl: 'Black' },
             { title: '争议名单', iconName: 'nzhengyi', iconColor: '#408df3', screenUrl: 'Zhengyi' }
         ];
+
+        if (versionStatus == 1) {
+             data = [
+                { title: '综合评级', iconName: 'npingji', iconColor: '#408df3', screenUrl: 'Pingji', tabId: null },
+                { title: '数据查询', iconName: 'nshuju', iconColor: '#408df3', screenUrl: 'Data', tabId: null },
+                { title: '健康指标', iconName: 'njiankang', iconColor: '#408df3', screenUrl: 'Health', tabId: null },
+                { title: '舆论监控', iconName: 'nyulun', iconColor: '#408df3', screenUrl: 'Yulun', tabId: null },
+                { title: '流量监控', iconName: 'nliuliang', iconColor: '#408df3', screenUrl: 'Flow', tabId: null },
+
+                { title: '风投系平台', iconName: 'nfengtou', iconColor: '#408df3', screenUrl: 'Query', tabId: { tab1: 0, tab2: 0 } },
+                { title: '上市系平台', iconName: 'nshangshi', iconColor: '#408df3', screenUrl: 'Query', tabId: { tab1: 0, tab2: 1 } },
+                { title: '国资系平台', iconName: 'nguozi', iconColor: '#408df3', screenUrl: 'Query', tabId: { tab1: 0, tab2: 2 } },
+                { title: '银行系平台', iconName: 'nyinhang', iconColor: '#408df3', screenUrl: 'Query', tabId: { tab1: 0, tab2: 3 } },
+
+                { title: '车贷类平台', iconName: 'nchedai', iconColor: '#408df3', screenUrl: 'Query', tabId: { tab1: 1, tab2: 0 } },
+                { title: '房贷类平台', iconName: 'nfangdai', iconColor: '#408df3', screenUrl: 'Query', tabId: { tab1: 1, tab2: 1 } },
+                { title: '票据类平台', iconName: 'npiaoju', iconColor: '#408df3', screenUrl: 'Query', tabId: { tab1: 1, tab2: 2 } },
+                { title: '个信类平台', iconName: 'ngexin', iconColor: '#408df3', screenUrl: 'Query', tabId: { tab1: 1, tab2: 3 } },
+
+                { title: '企贷系平台', iconName: 'nqidai', iconColor: '#408df3', screenUrl: 'Query', tabId: { tab1: 1, tab2: 4 } },
+                { title: '网基类平台', iconName: 'nwangji', iconColor: '#408df3', screenUrl: 'Query', tabId: { tab1: 1, tab2: 5 } },
+                { title: '活期类平台', iconName: 'nhuoqi', iconColor: '#408df3', screenUrl: 'Query', tabId: { tab1: 1, tab2: 6 } },
+
+                { title: '5年老平台', iconName: 'nfive', iconColor: '#408df3', screenUrl: 'FiveYears', tabId: null },
+
+                { title: '黑名单', iconName: 'nblack', iconColor: '#408df3', screenUrl: 'Black' },
+                { title: '争议名单', iconName: 'nzhengyi', iconColor: '#408df3', screenUrl: 'Zhengyi' }
+            ];
+
+        }
 
         this.state = {
             dataList: data,
@@ -118,13 +147,13 @@ export default class HomeScreen extends React.Component {
                                                 onTouchStart={() => {
 
                                                     console.log('onTouchStart')
-                                                    
-                                                    
-                                                        this.setState({
-                                                            scrollEnabled: false,
-                                                            isSearchListHide: false
-                                                        })
-                                                    
+
+
+                                                    this.setState({
+                                                        scrollEnabled: false,
+                                                        isSearchListHide: false
+                                                    })
+
 
 
                                                 }}
@@ -145,7 +174,7 @@ export default class HomeScreen extends React.Component {
                                                         })
                                                     }
                                                 }}
-                                                
+
 
 
 

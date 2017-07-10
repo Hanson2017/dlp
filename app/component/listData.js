@@ -62,7 +62,7 @@ export default class PingjiAll extends React.Component {
                                     ListHeaderComponent={itemRow.ListHeaderComponentR.bind(this)}
                                     data={this.state.dataSource}
                                     renderItem={itemRow.renderItemR.bind(this)}
-                                    
+
                                     style={{ flexDirection: 'row', }}
                                 />
                             </ScrollView>
@@ -115,7 +115,7 @@ export default class PingjiAll extends React.Component {
         }
 
         return (
-            <View style={item.fund_type != 0 || flmllist.length > 0 || this.props.columnDb || this.props.Ttype ? stylesList.itemRow : stylesList.itemRowNone} key={index}>
+            <View style={((item.fund_type != 0 || flmllist.length > 0 || this.props.Ttype) && versionStatus != 1) || this.props.columnDb ? stylesList.itemRow : stylesList.itemRowNone} key={index}>
                 <TouchableOpacity
                     style={{ flexDirection: 'row', }}
                     onPress={() => { navigation.navigate('Detail', { id: item.id_dlp, platName: item.plat_name, fundType: item.fund_type }) }}
@@ -125,7 +125,7 @@ export default class PingjiAll extends React.Component {
                     <Text style={[stylesList.tdName, stylesList.C2D3640]}>{item.plat_name}</Text>
                 </TouchableOpacity>
                 {
-                    item.fund_type != 0 || this.props.Ttype || flmllist.length > 0 ?
+                    (item.fund_type != 0 || this.props.Ttype || flmllist.length) && versionStatus != 1 > 0 ?
 
                         <View style={{ position: 'absolute', bottom: 10, left: 10, flexDirection: 'row', }}>
                             {

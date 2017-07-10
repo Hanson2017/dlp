@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, View, TouchableOpacity, Alert ,ScrollView,DeviceEventEmitter} from 'react-native';
+import { Text, StyleSheet, View, TouchableOpacity, Alert, ScrollView, DeviceEventEmitter } from 'react-native';
 
 import ScrollableTabView from 'react-native-scrollable-tab-view';
 import TabBar from '../../component/TabBar2';
@@ -61,9 +61,13 @@ export default class DetailPjScreen extends React.Component {
                             }
 
                         </View>
-                        <View tabLabel='key3'>
-                            <Shifan data={dataSource.fundDetail} platName={platInfo.platName} navigation={this.props.navigation} />
-                        </View>
+                        {versionStatus != 1 ?
+                            <View tabLabel='key3'>
+                                <Shifan data={dataSource.fundDetail} platName={platInfo.platName} navigation={this.props.navigation} />
+                            </View>
+                            :
+                            null
+                        }
                     </ScrollableTabView>
                     <TouchableOpacity style={styles.guanzhuBtn}
                         activeOpacity={0.4}
@@ -124,19 +128,25 @@ export default class DetailPjScreen extends React.Component {
         Util.getDataDetail(this, 'all', id)
 
         this.subscription22 = DeviceEventEmitter.addListener('loginState', (data) => {
-            setTimeout(()=>{
-                this.isAttention() 
-            },300)
-             
-        })     
-    
+            setTimeout(() => {
+                this.isAttention()
+            }, 300)
+
+        })
+
         if (signState != null) {
             this.isAttention()
         }
 
+        if (versionStatus == 1) {
+            this.setState({
+                tabNames: ['评级数值', '评级比较'],
+            })
+        }
+
     }
     componentWillUnmount() {
-         this.subscription22.remove();
+        this.subscription22.remove();
     }
     goLogin() {
         let navigation = this.props.navigation;

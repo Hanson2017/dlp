@@ -7,7 +7,7 @@ module.exports = {
     renderItemR({ item, index }) {
         let navigation = this.props.navigation;
         return (
-            <View style={stylesList.itemRow} key={index}>
+            <View style={versionStatus != 1 ? stylesList.itemRow : stylesList.itemRowNone} key={index}>
                 <TouchableOpacity
                     style={{ flexDirection: 'row', }}
                     onPress={() => { navigation.navigate('Detail', { id: item.id_dlp, platName: item.plat_name,fundType:item.fund_type }) }}

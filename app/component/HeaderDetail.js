@@ -8,8 +8,8 @@ export default class Header extends React.Component {
     render() {
         const navigation = this.props.navigation;
         const headerOpt = this.props.headerOpt;
-        let dataInfo=headerOpt.dataInfo
-        let showActionSheet=this.props.showActionSheet;
+        let dataInfo = headerOpt.dataInfo
+        let showActionSheet = this.props.showActionSheet;
         let fundType = null;
 
         switch (dataInfo.fundtype) {
@@ -41,26 +41,21 @@ export default class Header extends React.Component {
                         }
                     </Text>
                     {
-                        dataInfo.isflmf == 1 ?
+                        dataInfo.isflmf == 1 && versionStatus !=1 ?
                             <TouchableOpacity
-                                 onPress={() => {
-                                    if (dataInfo.acurl != null &&  dataInfo.acurl != '') {
-                                        Util.Linked(dataInfo.acurl)
-                                    }
-                                    else {
-                                        Util.Linked('http://' + dataInfo.siteurl)
-                                    }
-
+                                onPress={() => {
+                                    let url = 'http://m.fanlimofang.com/Activity/Detail/' + dataInfo.flmllist[0].activityid;
+                                    Util.Linked(url)
                                 }}
                             >
-                                <Image source={require('../../resources/images/redPacket.png')} style={{ width: 20, height: 20,marginLeft:8, }} />
+                                <Image source={require('../../resources/images/redPacket.png')} style={{ width: 26, height: 26, marginLeft: 8, }} />
                             </TouchableOpacity>
                             :
                             null
                     }
 
                 </View>
-                <TouchableOpacity style={styles.headerRight} onPress={() => {showActionSheet()}}>
+                <TouchableOpacity style={styles.headerRight} onPress={() => { showActionSheet() }}>
                     <Icon name={'share'} size={22} color={'#fff'} />
                 </TouchableOpacity>
             </View>
