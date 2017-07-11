@@ -46,7 +46,7 @@ export default class DetailPjScreen extends React.Component {
                         <View style={styles.content} tabLabel='key1'>
                             {
                                 platInfo.platstatus == 1 ?
-                                    <Shuzhi data={dataSource.dataDetail} platId={platInfo.id} navigation={this.props.navigation} />
+                                    <Shuzhi data={dataSource.dataDetail}  platName={platInfo.platName} platId={platInfo.id} navigation={this.props.navigation} />
                                     :
                                     <Text style={styles.black}>黑名单平台，已停止数据监控</Text>
                             }
