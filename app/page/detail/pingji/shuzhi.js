@@ -15,7 +15,7 @@ export default class Shuzhi extends React.Component {
         };
     }
     render() {
-
+        var navigation = this.props.navigation;
         var data = this.props.data;
         var dataWdzj = data.wdzj;
         var dataP2peye = data.p2peye;
@@ -466,30 +466,23 @@ export default class Shuzhi extends React.Component {
                         <Text style={styles.TitleText}>"{this.props.platName}"用户还关注  <Text style={{ color: '#999', fontSize: 12, paddingLeft: 10, }}>绿色背景为“示范投资”进入平台</Text></Text>
                     </View>
                     <View style={styles.relatedList}>
-                        <TouchableOpacity style={[styles.related,styles.relatedActive]}>
-                            <Text style={[styles.relatedText,styles.relatedTextActive]}>微贷网</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.related}>
-                            <Text style={styles.relatedText}>秒前</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.related}>
-                            <Text style={styles.relatedText}>积木盒子</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.related}>
-                            <Text style={styles.relatedText}>爱彩网</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.related}>
-                            <Text style={styles.relatedText}>新光历程带</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.related}>
-                            <Text style={styles.relatedText}>秒前</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.related}>
-                            <Text style={styles.relatedText}>积木盒子</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.related}>
-                            <Text style={styles.relatedText}>爱彩网</Text>
-                        </TouchableOpacity>
+                        {
+                            this.props.replatData != null && this.props.replatData.length > 0 ?
+                                this.props.replatData.map((text, i) => {
+                                    return (
+                                        <TouchableOpacity style={[styles.related, text.fundtype != 0 ? styles.relatedActive : null]} key={i}
+                                            onPress={() => {
+                                                navigation.navigate('Detail', { id: text.id_dlp, platName: text.plat_name })
+                                            }}
+
+                                        >
+                                            <Text style={[styles.relatedText, text.fundtype != 0 ? styles.relatedTextActive : null]}>{text.plat_name}</Text>
+                                        </TouchableOpacity>
+                                    )
+                                })
+                                :
+                                <Text style={styles.null}>暂无用户关注</Text>
+                        }
                     </View>
                     {/*羿飞评级 end*/}
                 </ScrollView >
@@ -557,7 +550,7 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
         flexDirection: 'row',
         padding: 10,
-        paddingTop:15,
+        paddingTop: 15,
 
     },
     related: {
@@ -565,24 +558,25 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         justifyContent: 'center',
         alignItems: 'center',
-        paddingLeft: 10,
-        paddingRight: 10,
-        height: 40,
+        paddingLeft: 15,
+        paddingRight: 15,
+        height: 36,
         backgroundColor: '#f7f7f7',
         borderWidth: 1,
         borderColor: '#e5e5e5',
     },
-    relatedActive:{
-        backgroundColor:'#00a400',
+    relatedActive: {
+        backgroundColor: '#00a400',
         borderColor: '#00a400',
     },
-    relatedText:{
-        color:'#444',
+    relatedText: {
+        color: '#444',
     },
-    relatedTextActive:{
-        color:'#fff',
+    relatedTextActive: {
+        color: '#fff',
     },
     Title: {
+        marginTop:15,
         paddingLeft: 10,
         flexDirection: 'row',
         alignItems: 'center',
