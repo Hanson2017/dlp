@@ -10,10 +10,14 @@ import Account from '../page/account/account'
 import Login from '../page/Login'
 import Health from '../page/Health'
 
+import Yulun from '../page/Yulun'
+import Fund from '../page/Fund'
+import FlmfList from '../page/FlmfList'
+
 export default class TabBar extends Component {
     static defaultProps = {
-        selectedColor: '#408df3',
-        normalColor: '#888',
+        selectedColor: '#5a6067',
+        normalColor: '#7a7e84',
         size: 22,
         normalColorText: '#666'
     };
@@ -21,11 +25,10 @@ export default class TabBar extends Component {
         super(props)
         this.state = {
             selectedTab: 'home',
-            tabName: ['首页', '评级', '数据', '健康度', '我的']
+            tabName: ['首页', '舆情', '示范', '活动', '我']
         }
     }
     render() {
-
         let screenProps = this.props.screenProps;
         let navigation = screenProps.navigation;
 
@@ -34,8 +37,8 @@ export default class TabBar extends Component {
             <TabNavigator>
                 <TabNavigator.Item
                     title={this.state.tabName[0]}
-                    renderIcon={() => <Icon name='home' size={size} color={normalColor} />}
-                    renderSelectedIcon={() => <Icon name='home' size={size} color={selectedColor} />}
+                    renderIcon={() => <Icon name='navhome' size={size} color={normalColor} />}
+                    renderSelectedIcon={() => <Icon name='navhome2' size={size} color={selectedColor} />}
                     selected={this.state.selectedTab === 'home'}
                     titleStyle={{ color: normalColorText }}
                     selectedTitleStyle={{ color: selectedColor }}
@@ -50,8 +53,8 @@ export default class TabBar extends Component {
                 </TabNavigator.Item>
                 <TabNavigator.Item
                     title={this.state.tabName[1]}
-                    renderIcon={() => <Icon name='pingji' size={23} color={normalColor} />}
-                    renderSelectedIcon={() => <Icon name='pingji' size={23} color={selectedColor} />}
+                    renderIcon={() => <Icon name='navyuqing' size={23} color={normalColor} />}
+                    renderSelectedIcon={() => <Icon name='navyuqing2' size={23} color={selectedColor} />}
                     selected={this.state.selectedTab === 'pingji'}
                     titleStyle={{ color: normalColorText }}
                     selectedTitleStyle={{ color: selectedColor }}
@@ -62,12 +65,12 @@ export default class TabBar extends Component {
                     }}
                 >
 
-                    <Pingji navigation={navigation} />
+                    <Yulun navigation={navigation} />
                 </TabNavigator.Item>
                 <TabNavigator.Item
                     title={this.state.tabName[2]}
-                    renderIcon={() => <Icon name='data' size={24} color={normalColor} />}
-                    renderSelectedIcon={() => <Icon name='data' size={24} color={selectedColor} />}
+                    renderIcon={() => <Icon name='navfund' size={24} color={normalColor} />}
+                    renderSelectedIcon={() => <Icon name='navfund2' size={24} color={selectedColor} />}
                     selected={this.state.selectedTab === 'data'}
                     titleStyle={{ color: normalColorText }}
                     selectedTitleStyle={{ color: selectedColor }}
@@ -76,13 +79,19 @@ export default class TabBar extends Component {
                             selectedTab: 'data'
                         })
                     }}
-                >                  
-                    <Data navigation={navigation} />
+                >         
+                    {
+                        versionStatus != 1 ?  
+                         <Fund navigation={navigation} />
+                         :
+                         <Pingji navigation={navigation} />
+                    }         
+                   
                 </TabNavigator.Item>
                 <TabNavigator.Item
                     title={this.state.tabName[3]}
-                    renderIcon={() => <Icon name='health' size={size} color={normalColor} />}
-                    renderSelectedIcon={() => <Icon name='health' size={size} color={selectedColor} />}
+                    renderIcon={() => <Icon name='navhuodong' size={23} color={normalColor} />}
+                    renderSelectedIcon={() => <Icon name='navhuodong2' size={23} color={selectedColor} />}
                     selected={this.state.selectedTab === 'health'}
                     titleStyle={{ color: normalColorText }}
                     selectedTitleStyle={{ color: selectedColor }}
@@ -91,13 +100,19 @@ export default class TabBar extends Component {
                             selectedTab: 'health'
                         })
                     }}
-                >                  
-                    <Health navigation={navigation} />
+                >                
+                     {
+                        versionStatus != 1 ?  
+                         <FlmfList navigation={navigation} />
+                         :
+                         <Data navigation={navigation} />
+                    }        
+                    
                 </TabNavigator.Item>
                 <TabNavigator.Item
                     title={this.state.tabName[4]}
-                    renderIcon={() => <Icon name='user' size={size} color={normalColor} />}
-                    renderSelectedIcon={() => <Icon name='user' size={size} color={selectedColor} />}
+                    renderIcon={() => <Icon name='navmy' size={size} color={normalColor} />}
+                    renderSelectedIcon={() => <Icon name='navmy2' size={size} color={selectedColor} />}
                     selected={this.state.selectedTab === 'user'}
                     titleStyle={{ color: normalColorText }}
                     selectedTitleStyle={{ color: selectedColor }}
@@ -116,4 +131,12 @@ export default class TabBar extends Component {
             </TabNavigator>
         )
     }
+    componentDidMount() {
+        if(versionStatus == 1){
+            this.setState({
+                 tabName: ['首页', '舆情', '评级', '数据', '我']
+            })
+        }
+    }
+    
 }

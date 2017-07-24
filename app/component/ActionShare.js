@@ -66,7 +66,7 @@ export default class Share extends Component {
                                 style={styles.shareBtn}
                                 onPress={this.shareToQzone.bind(this)}
                             >
-                                <Icon name={'kongjian1'} size={44} color={'#efbc4e'} />
+                                <Icon name={'kongjian'} size={44} color={'#efbc4e'} />
                                 <Text style={styles.shareText}>QQ空间</Text>
                             </TouchableOpacity>
                             <TouchableOpacity
@@ -80,7 +80,7 @@ export default class Share extends Component {
                                 style={styles.shareBtn}
                                 onPress={this.shareToTimeline.bind(this)}
                             >
-                                <Icon name={'pengyouquan2'} size={44} color={'#9ad122'} />
+                                <Icon name={'pengyouquan'} size={44} color={'#9ad122'} />
                                 <Text style={styles.shareText}>朋友圈</Text>
                             </TouchableOpacity>
                         </View>

@@ -16,21 +16,25 @@ export default class QueryScreen extends React.Component {
         super(props);
         this.state = {
             tabNames: ['融资背景', '业务类型', '地区', '上线时间', '银行存管'],
-            totalNum: [0, 0, 0, 0, 0],
+            totalNum: [
+                { type: '多维度', num: 0 },
+                { type: '多维度', num: 0 },
+                { type: '多维度', num: 0 },
+                { type: '多维度', num: 0 },
+                { type: '多维度', num: 0 }
+            ],
             index: 0,
+            type:'多维度',
             ref: false
         };
     }
-    changeTotalNum(totalNum) {
-        this.state.totalNum[this.state.index] = totalNum
+    changeTotalNum(type,totalNum, index) {
+        this.state.totalNum[index].num = totalNum
+        this.state.totalNum[index].type = type
         this.setState({
-            ref: !this.state.ref
+            ref:!this.state.ref
         })
-    }
-    changeIndex(index) {
-        this.setState({
-            index: index
-        })
+        console.log('totalNum', totalNum)
     }
     render() {
         let tabNames = this.state.tabNames;
@@ -40,21 +44,25 @@ export default class QueryScreen extends React.Component {
             <View style={Theme.container}>
                 <Header headerOpt={{ title: '多维度查询', }} navigation={this.props.navigation} />
                 <View style={{ marginBottom: 10, alignItems: 'center', justifyContent: 'center', }}>
-                    <Text style={{ color: '#4C5763', fontSize: 12 }}>多纬度统计平台数量：{this.state.totalNum[this.state.index]}家</Text>
+                    <Text style={{ color: '#4C5763', fontSize: 12 }}>统计{this.state.totalNum[this.state.index].type}平台数量：{this.state.totalNum[this.state.index].num}家</Text>
                 </View>
                 <View style={Theme.content}>
-                     
+
                     <ScrollableTabView
                         locked={true}
                         renderTabBar={() => <TabBar tabNames={tabNames} />}
                         initialPage={params.tabId.tab1}
+                        onChangeTab={(obj) => {
+                            this.setState({
+                                index: obj.i
+                            })
+                        }}
                     >
                         <View style={styles.content} tabLabel='key1'>
                             <Rongzi
                                 navigation={navigation}
                                 initialPage={params.tabId.tab2}
                                 changeTotalNum={this.changeTotalNum.bind(this)}
-                                changeIndex={this.changeIndex.bind(this)}
                             />
                         </View>
                         <View style={styles.content} tabLabel='key2'>
@@ -62,7 +70,6 @@ export default class QueryScreen extends React.Component {
                                 navigation={navigation}
                                 initialPage={params.tabId.tab2}
                                 changeTotalNum={this.changeTotalNum.bind(this)}
-                                changeIndex={this.changeIndex.bind(this)}
                             />
                         </View>
                         <View style={styles.content} tabLabel='key3'>
@@ -70,7 +77,8 @@ export default class QueryScreen extends React.Component {
                                 navigation={navigation}
                                 changeTotalNum={this.changeTotalNum.bind(this)}
                                 type={{ column: 'diqu', type: 'diqu', dataName: 'dataList' }}
-                                 tabWidth={{ width: (Theme.screenWidth-70)/6 }}
+                                tabWidth={{ width: (Theme.screenWidth - 70) / 6 }}
+                                tabIndex={2}
                             />
                         </View>
                         <View style={styles.content} tabLabel='key4'>
@@ -79,7 +87,8 @@ export default class QueryScreen extends React.Component {
                                 changeTotalNum={this.changeTotalNum.bind(this)}
                                 type={{ column: 'diqu', type: 'shangxian', dataName: 'dataList' }}
                                 titleText={'年'}
-                                tabWidth={{ width: (Theme.screenWidth-50)/4 }}
+                                tabWidth={{ width: (Theme.screenWidth - 50) / 4 }}
+                                 tabIndex={3}
                             />
                         </View>
                         <View style={styles.content} tabLabel='key5'>
@@ -87,13 +96,20 @@ export default class QueryScreen extends React.Component {
                                 navigation={navigation}
                                 changeTotalNum={this.changeTotalNum.bind(this)}
                                 type={{ column: 'diqu', type: 'cunguan', dataName: 'dataList' }}
-                                tabWidth={{ width: (Theme.screenWidth-40)/3 }}
+                                tabWidth={{ width: (Theme.screenWidth - 40) / 3 }}
+                                 tabIndex={4}
                             />
                         </View>
                     </ScrollableTabView>
                 </View>
             </View>
         );
+    }
+    componentDidMount() {
+        const { params } = this.props.navigation.state;
+        this.setState({
+            index: params.tabId.tab1
+        })
     }
 }
 

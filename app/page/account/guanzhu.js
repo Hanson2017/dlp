@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Text, StyleSheet, View, TouchableOpacity, FlatList } from 'react-native';
 import Icon from 'react-native-vector-icons/Icomoon';
 import Api from '../../util/api';
+import Theme from '../../util/theme';
 import Loading from '../../component/Loading';
 
 export default class Guanzhu extends React.Component {
@@ -83,24 +84,101 @@ export default class Guanzhu extends React.Component {
                     }
                 </View>
                 <View style={styles.bd}>
-                    <Text style={[styles.bdText, styles.paiming]}>
-                        综合排名：
+                    <View style={{ flexDirection: 'row', marginBottom: 12, }}>
+                        <Text>综合排名:</Text>
                         {
                             item.ordernum != 0 ?
-                                item.ordernum
+                                <View style={{ flexDirection: 'row', }}>
+                                    <Text>  第{item.ordernum}名  </Text>
+                                    <Icon name={item.changenum > 0 ? 'up' : 'down'} size={14} color={item.changenum > 0 ? '#ff0063' : '#009963'} />
+                                    <Text style={{ color: '#cdcdcd' }}>  (共{item.countnum}家)</Text>
+                                </View>
                                 :
-                                '暂无'
+                                <Text style={[styles.null, { fontSize: 14 }]}>  暂无</Text>
                         }
-                    </Text>
-                    <Text style={[styles.bdText, styles.jiantou]}>
-                        {
-                            item.ordernum != 0 ?
-                                <Icon name={item.changnum > 0 ? 'up' : 'down'} size={12} color={item.changnum >= 0 ? '#ff0063' : '#009963'} />
-                                :
-                                null
-                        }
-                    </Text>
-                    <Text style={[styles.bdText, styles.yulun]}>本周新舆论：{item.infonum}条</Text>
+                    </View>
+                    <View style={styles.paiming}>
+                        <View style={styles.paimingList}>
+                            <Text style={[styles.paimingText, { width: 45 }]}>之家: </Text>
+                            {
+                                item.wdzj != null ?
+                                    <View style={{ flexDirection: 'row', }}>
+                                        <Text style={[styles.paimingText, { width: 45 }]}>第{item.wdzj.ordernum}名</Text>
+                                        <Icon name={item.wdzj.changenum > 0 ? 'up' : 'down'} size={12} color={item.wdzj.changenum > 0 ? '#ff0063' : '#009963'} />
+                                        <Text style={styles.paimingText2}> (共{item.wdzj.countnum}家)</Text>
+                                    </View>
+                                    :
+                                    <Text style={styles.null}>暂无</Text>
+                            }
+                        </View>
+                        <View style={styles.paimingList}>
+                            <Text style={[styles.paimingText, { width: 45 }]}>天眼: </Text>
+                            {
+                                item.p2peye != null ?
+                                    <View style={{ flexDirection: 'row', }}>
+                                        <Text style={[styles.paimingText, { width: 45 }]}>第{item.p2peye.ordernum}名</Text>
+                                        <Icon name={item.p2peye.changenum > 0 ? 'up' : 'down'} size={12} color={item.p2peye.changenum > 0 ? '#ff0063' : '#009963'} />
+                                        <Text style={styles.paimingText2}> (共{item.p2peye.countnum}家)</Text>
+                                    </View>
+                                    :
+                                    <Text style={styles.null}>暂无</Text>
+                            }
+                        </View>
+                        <View style={styles.paimingList}>
+                            <Text style={[styles.paimingText, { width: 45 }]}>贷罗盘: </Text>
+                            {
+                                item.dlp != null ?
+                                    <View style={{ flexDirection: 'row', }}>
+                                        <Text style={[styles.paimingText, { width: 45 }]}>第{item.dlp.ordernum}名</Text>
+                                        <Icon name={item.dlp.changenum > 0 ? 'up' : 'down'} size={12} color={item.dlp.changenum > 0 ? '#ff0063' : '#009963'} />
+                                        <Text style={styles.paimingText2}> (共{item.dlp.countnum}家)</Text>
+                                    </View>
+                                    :
+                                    <Text style={styles.null}>暂无</Text>
+                            }
+                        </View>
+
+                        <View style={styles.paimingList}>
+                            <Text style={[styles.paimingText, { width: 45 }]}>融360: </Text>
+                            {
+                                item.rong360 != null ?
+                                    <View style={{ flexDirection: 'row', }}>
+                                        <Text style={[styles.paimingText, { width: 45 }]}>第{item.rong360.ordernum}名</Text>
+                                        <Icon name={item.rong360.changenum > 0 ? 'up' : 'down'} size={12} color={item.rong360.changenum > 0 ? '#ff0063' : '#009963'} />
+                                        <Text style={styles.paimingText2}> (共{item.rong360.countnum}家)</Text>
+                                    </View>
+                                    :
+                                    <Text style={styles.null}>暂无</Text>
+                            }
+                        </View>
+                        <View style={styles.paimingList}>
+                            <Text style={[styles.paimingText, { width: 45 }]}>星火: </Text>
+                            {
+                                item.xinghuo != null ?
+                                    <View style={{ flexDirection: 'row', }}>
+                                        <Text style={[styles.paimingText, { width: 45 }]}>第{item.xinghuo.ordernum}名</Text>
+                                        <Icon name={item.xinghuo.changenum > 0 ? 'up' : 'down'} size={12} color={item.xinghuo.changenum > 0 ? '#ff0063' : '#009963'} />
+                                        <Text style={styles.paimingText2}> (共{item.xinghuo.countnum}家)</Text>
+                                    </View>
+                                    :
+                                    <Text style={styles.null}>暂无</Text>
+                            }
+                        </View>
+                        <View style={styles.paimingList}>
+                            <Text style={[styles.paimingText, { width: 45 }]}>羿飞: </Text>
+                            {
+                                item.yifei != null ?
+                                    <View style={{ flexDirection: 'row', }}>
+                                        <Text style={[styles.paimingText, { width: 45 }]}>第{item.yifei.ordernum}名</Text>
+                                        <Icon name={item.yifei.changenum > 0 ? 'up' : 'down'} size={12} color={item.yifei.changenum > 0 ? '#ff0063' : '#009963'} />
+                                        <Text style={styles.paimingText2}> (共{item.yifei.countnum}家)</Text>
+                                    </View>
+                                    :
+                                    <Text style={styles.null}>暂无</Text>
+                            }
+                        </View>
+                    </View>
+                    <Text style={[styles.yulun]}>本周新舆论：{item.infonum}条</Text>
                 </View>
             </TouchableOpacity>
         )
@@ -142,12 +220,14 @@ export default class Guanzhu extends React.Component {
 
         let memberid = signState.r_id;
         let url = Api.attentionList + '?memberid=' + memberid + '&page=' + this.page + '&pagesize=' + this.state.pageSize;
+        console.log(url)
         fetch(url)
             .then((response) => {
                 if (response.ok) {
                     response.json()
                         .then((responseData) => {
                             if (responseData.result == 1) {
+                                console.log(responseData)
                                 let dataSource = that.state.dataSource;
                                 dataSource = dataSource.concat(responseData.dataList);
                                 that.setState({
@@ -174,7 +254,7 @@ const styles = StyleSheet.create({
         paddingTop: 20,
     },
     hd: {
-        paddingLeft: 20,
+        paddingLeft: 15,
         paddingTop: 8,
         paddingBottom: 8,
         flexDirection: 'row',
@@ -193,11 +273,9 @@ const styles = StyleSheet.create({
         color: '#009900'
     },
     bd: {
-        paddingLeft: 20,
+        paddingLeft: 15,
         paddingTop: 12,
         paddingBottom: 12,
-        flexDirection: 'row',
-        alignItems: 'center',
     },
     bdText: {
         color: '#abb7c4'
@@ -215,8 +293,25 @@ const styles = StyleSheet.create({
         color: 'red'
     },
     null: {
-        paddingLeft: 20,
-        color: '#ccc',
+        color: '#cdcdcd',
+        fontSize: 12,
+    },
+    paiming: {
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+    },
+    paimingList: {
+        flexDirection: 'row',
+        width: (Theme.screenWidth - 15) / 2,
+        marginBottom: 10,
+    },
+    paimingText: {
+        color: '#abb7c6',
+        fontSize: 12,
+    },
+    paimingText2: {
+        color: '#cdcdcd',
+        fontSize: 12,
     }
 
 })

@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
         left: Theme.screenWidth / 2,
         marginLeft: -115,
         marginTop: -55,
-        zIndex: 99,
+        zIndex: 1100,
         opacity: 0.9
     },
     toastText: {

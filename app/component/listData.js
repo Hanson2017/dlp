@@ -4,6 +4,7 @@ import { Text, StyleSheet, View, FlatList, TouchableOpacity, ScrollView, Refresh
 import Loading from './Loading';
 import Util from '../util/util'
 import stylesList from '../css/listData';
+import Icon from 'react-native-vector-icons/Icomoon';
 
 export default class PingjiAll extends React.Component {
     constructor(props) {
@@ -115,17 +116,17 @@ export default class PingjiAll extends React.Component {
         }
 
         return (
-            <View style={((item.fund_type != 0 || flmllist.length > 0 || this.props.Ttype) && versionStatus != 1) || this.props.columnDb ? stylesList.itemRow : stylesList.itemRowNone} key={index}>
+            <View style={((flmllist.length > 0 || this.props.Ttype) && versionStatus != 1) || this.props.columnDb ? stylesList.itemRow : stylesList.itemRowNone} key={index}>
                 <TouchableOpacity
                     style={{ flexDirection: 'row', }}
-                    onPress={() => { navigation.navigate('Detail', { id: item.id_dlp, platName: item.plat_name, fundType: item.fund_type }) }}
+                    onPress={() => { navigation.navigate('Detail', { id: item.id_dlp, platName: item.plat_name}) }}
 
                 >
                     <Text style={[stylesList.tdID, stylesList.C2D3640]}>{index + 1}</Text>
                     <Text style={[stylesList.tdName, stylesList.C2D3640]}>{item.plat_name}</Text>
                 </TouchableOpacity>
                 {
-                    (item.fund_type != 0 || this.props.Ttype || flmllist.length) && versionStatus != 1 > 0 ?
+                    (this.props.Ttype || flmllist.length) && versionStatus != 1 > 0 ?
 
                         <View style={{ position: 'absolute', bottom: 10, left: 10, flexDirection: 'row', }}>
                             {
@@ -135,14 +136,6 @@ export default class PingjiAll extends React.Component {
                                     </View>
                                     :
                                     null
-                            }
-
-                            {
-                                item.fund_type == 0 ? null
-                                    :
-                                    <View style={stylesList.shifan}>
-                                        <Text style={stylesList.shifanText}>{fundType}</Text>
-                                    </View>
                             }
 
                             {flmllist.length > 0 ?

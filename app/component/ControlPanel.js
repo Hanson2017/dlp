@@ -3,7 +3,9 @@ import { Text, StyleSheet, Image, View, TouchableOpacity, ScrollView, FlatList }
 import Icon from 'react-native-vector-icons/Icomoon';
 
 import Api from '../util/api';
+import Theme from '../util/theme';
 import Loading from '../component/Loading';
+import FriendsShare from '../component/FriendsShare';
 
 export default class ControlPanel extends React.Component {
     constructor(props) {
@@ -20,7 +22,7 @@ export default class ControlPanel extends React.Component {
         let navigation = screenProps.navigation;
         return (
             <View style={styles.ControlPanelWp}>
-
+                <FriendsShare ref={'FriendsShare'} />
                 <View style={{ flex: 1 }}>
                     <TouchableOpacity style={styles.ControlPaneHeaderNologin}
                         onPress={() => {
@@ -40,7 +42,7 @@ export default class ControlPanel extends React.Component {
                                     :
                                     <Image source={require('../../resources/images/portrait.png')} style={styles.avatar} />
                             }
-                            <Text style={styles.loginText}>{loginState ? signState.r_username : '登录'}</Text>
+                            <Text numberOfLines={1} style={[styles.loginText, { flex: 1 }]}>{loginState ? signState.r_username : '登录'}</Text>
                         </View>
 
                         <Icon name={'right'} size={16} color={'#616267'} />
@@ -86,24 +88,35 @@ export default class ControlPanel extends React.Component {
                         }
 
                     </View>
-                    {
-                        loginState ?
-                            <View style={styles.ControlPanefooter}>
-                                <TouchableOpacity style={styles.platTopL}
-                                    onPress={() => {
-                                        navigation.navigate('Account', { tab: 1 })
-                                    }}
-                                >
-                                    <Icon name={'set'} size={16} color={'#8c96a0'} />
-                                    <Text style={styles.platTopLText}>设置</Text>
-                                </TouchableOpacity>
-                                <View style={styles.ControlPaneLogo}>
-                                    <Image source={require('../../resources/images/logo2.png')} style={{ width: 68, height: 18 }} />
-                                </View>
-                            </View>
-                            :
-                            null
-                    }
+
+
+                    <View style={styles.ControlPanefooter}>
+                        <TouchableOpacity
+                            style={styles.platTopL}
+                            onPress={this.showActionSheet.bind(this)}
+                        >
+                            <Icon name={'gift'} size={14.5} color={'#8c96a0'} />
+                            <Text style={styles.platTopLText}>推荐给好友</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={[styles.platTopL, { marginTop: 2, }]}
+                            onPress={() => {
+                                if (loginState) {
+                                    navigation.navigate('Account', { tab: 1 })
+                                }
+                                else {
+                                    navigation.navigate('Login')
+                                }
+                            }}
+                        >
+                            <Icon name={'set'} size={16} color={'#8c96a0'} />
+                            <Text style={styles.platTopLText}>设置</Text>
+                        </TouchableOpacity>
+
+                        <View style={styles.ControlPaneLogo}>
+                            <Image source={require('../../resources/images/logo2.png')} style={{ width: 68, height: 18 }} />
+                        </View>
+                    </View>
+
 
                 </View>
 
@@ -175,6 +188,9 @@ export default class ControlPanel extends React.Component {
             </TouchableOpacity>
         )
     }
+    showActionSheet() {
+        this.refs.FriendsShare.show()
+    }
     loginData() {
         setTimeout(() => {
             if (signState != null) {
@@ -231,20 +247,23 @@ const styles = StyleSheet.create({
         paddingTop: 23,
     },
     ControlPaneHeaderNologin: {
+        marginTop: 37,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-      
-        height: 50,
+        height: 59,
     },
     ControlPaneHeaderNologinPortrait: {
+        flex: 1,
         flexDirection: 'row',
-        height: 40,
+        height: 59,
         alignItems: 'center',
+        overflow: 'hidden'
     },
     loginText: {
         paddingLeft: 10,
         color: '#fff',
+        fontWeight: 'bold',
     },
     ControlPaneHeader: {
         flexDirection: 'row',
@@ -283,7 +302,7 @@ const styles = StyleSheet.create({
         paddingTop: 20,
         borderTopWidth: 1,
         borderTopColor: '#2e3438',
-        height: 80,
+        height: 110,
         justifyContent: 'space-between',
     },
     list: {
@@ -294,8 +313,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
     },
-    hdText:{
-        fontSize:13,
+    hdText: {
+        fontSize: 13,
     },
     platName: {
         width: 90,
@@ -314,7 +333,7 @@ const styles = StyleSheet.create({
     },
     bdText: {
         color: '#666',
-        fontSize:13,
+        fontSize: 13,
     },
     paiming: {
         width: 100,
@@ -338,8 +357,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     avatar: {
-        width: 40,
-        height: 40,
-        borderRadius: 20,
-    }
+        width: 59,
+        height: 59,
+        borderRadius: 29.5,
+    },
+
 })

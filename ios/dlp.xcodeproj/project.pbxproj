@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -59,6 +58,8 @@
 		8F37AC781EE6AD600064ED7F /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F37AC771EE6AD600064ED7F /* libsqlite3.tbd */; };
 		8F37AC7A1EE6AD690064ED7F /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F37AC791EE6AD690064ED7F /* libz.tbd */; };
 		8F37AC7C1EE6AD720064ED7F /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F37AC7B1EE6AD720064ED7F /* libc++.tbd */; };
+		8F6AACB71F189FFD00DBDC74 /* libXG-SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F6AACB61F189FFD00DBDC74 /* libXG-SDK.a */; };
+		8F6AACB91F18A06600DBDC74 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F6AACB81F18A06600DBDC74 /* UserNotifications.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		8F95AB651EF3E4BF00B4AA34 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F95AB641EF3E4BF00B4AA34 /* SystemConfiguration.framework */; };
 		8FAFF1BF1EF7795C0027A134 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F37ACAC1EE7AA5E0064ED7F /* CoreTelephony.framework */; };
 		8FAFF1C11EF7798C0027A134 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FAFF1C01EF7798C0027A134 /* AdSupport.framework */; };
@@ -341,6 +342,11 @@
 		8F37AC791EE6AD690064ED7F /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		8F37AC7B1EE6AD720064ED7F /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		8F37ACAC1EE7AA5E0064ED7F /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		8F6AAC971F189FBB00DBDC74 /* XGPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XGPush.h; path = dlp/XGPush.h; sourceTree = "<group>"; };
+		8F6AAC981F189FBB00DBDC74 /* XGSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XGSetting.h; path = dlp/XGSetting.h; sourceTree = "<group>"; };
+		8F6AACB61F189FFD00DBDC74 /* libXG-SDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libXG-SDK.a"; sourceTree = "<group>"; };
+		8F6AACB81F18A06600DBDC74 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		8F6AACBA1F18A0BE00DBDC74 /* dlp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = dlp.entitlements; path = dlp/dlp.entitlements; sourceTree = "<group>"; };
 		8F95AB641EF3E4BF00B4AA34 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		8FAFF1C01EF7798C0027A134 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		8FAFF1CD1EF79A890027A134 /* MTA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTA.h; path = dlp/MTA.h; sourceTree = "<group>"; };
@@ -375,10 +381,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8FAFF1C11EF7798C0027A134 /* AdSupport.framework in Frameworks */,
-				8FAFF1BF1EF7795C0027A134 /* CoreTelephony.framework in Frameworks */,
-				8FAFF1D11EF79B400027A134 /* libmtasdk.a in Frameworks */,
+				8F6AACB91F18A06600DBDC74 /* UserNotifications.framework in Frameworks */,
 				8F95AB651EF3E4BF00B4AA34 /* SystemConfiguration.framework in Frameworks */,
+				8FAFF1BF1EF7795C0027A134 /* CoreTelephony.framework in Frameworks */,
+				8FAFF1C11EF7798C0027A134 /* AdSupport.framework in Frameworks */,
+				8FAFF1D11EF79B400027A134 /* libmtasdk.a in Frameworks */,
 				8F37AC781EE6AD600064ED7F /* libsqlite3.tbd in Frameworks */,
 				8F37AC7C1EE6AD720064ED7F /* libc++.tbd in Frameworks */,
 				8F37AC7A1EE6AD690064ED7F /* libz.tbd in Frameworks */,
@@ -398,6 +405,7 @@
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				644D8275633943F585D24709 /* libRNVectorIcons.a in Frameworks */,
 				668BC6DBE44646B29D3AE488 /* libRCTWeChat.a in Frameworks */,
+				8F6AACB71F189FFD00DBDC74 /* libXG-SDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -506,6 +514,9 @@
 		13B07FAE1A68108700A75B9A /* dlp */ = {
 			isa = PBXGroup;
 			children = (
+				8F6AACBA1F18A0BE00DBDC74 /* dlp.entitlements */,
+				8F6AAC971F189FBB00DBDC74 /* XGPush.h */,
+				8F6AAC981F189FBB00DBDC74 /* XGSetting.h */,
 				8FAFF1F01EF905050027A134 /* bundle */,
 				8FAFF1CD1EF79A890027A134 /* MTA.h */,
 				8FAFF1CE1EF79A890027A134 /* MTAConfig.h */,
@@ -629,6 +640,8 @@
 		8F37AC741EE6AD530064ED7F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8F6AACB81F18A06600DBDC74 /* UserNotifications.framework */,
+				8F6AACB61F189FFD00DBDC74 /* libXG-SDK.a */,
 				8FAFF1D01EF79B400027A134 /* libmtasdk.a */,
 				8FAFF1C01EF7798C0027A134 /* AdSupport.framework */,
 				8F95AB641EF3E4BF00B4AA34 /* SystemConfiguration.framework */,
@@ -778,7 +791,16 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = BL4S7A2TL2;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -1306,11 +1328,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = dlp/dlp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Hua Li (D9WT8Y25PT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Hua Li (D9WT8Y25PT)";
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = BL4S7A2TL2;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../node_modules/react-native-qq/ios/RCTQQAPI";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1334,10 +1357,10 @@
 					"-framework",
 					"\"TencentOpenAPI\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.bigbox.dailuopan;
+				PRODUCT_BUNDLE_IDENTIFIER = com.box.dailuopan;
 				PRODUCT_NAME = dlp;
-				PROVISIONING_PROFILE = "33472610-2032-486c-81b0-9125a61e1b32";
-				PROVISIONING_PROFILE_SPECIFIER = pptest;
+				PROVISIONING_PROFILE = "7c0deb6f-41f9-4f43-b198-6d58100f2418";
+				PROVISIONING_PROFILE_SPECIFIER = dlpTest;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1347,10 +1370,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = dlp/dlp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Hua Li (D9WT8Y25PT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Hua Li (D9WT8Y25PT)";
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = BL4S7A2TL2;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../node_modules/react-native-qq/ios/RCTQQAPI";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1374,10 +1398,10 @@
 					"-framework",
 					"\"TencentOpenAPI\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.bigbox.dailuopan;
+				PRODUCT_BUNDLE_IDENTIFIER = com.box.dailuopan;
 				PRODUCT_NAME = dlp;
-				PROVISIONING_PROFILE = "33472610-2032-486c-81b0-9125a61e1b32";
-				PROVISIONING_PROFILE_SPECIFIER = pptest;
+				PROVISIONING_PROFILE = "7c0deb6f-41f9-4f43-b198-6d58100f2418";
+				PROVISIONING_PROFILE_SPECIFIER = dlpTest;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

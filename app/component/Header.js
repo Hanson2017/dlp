@@ -26,7 +26,7 @@ export default class Header extends React.Component {
                                     this.props.loginState ?
                                         <Image source={{ uri: signState.r_avatar_img }} style={styles.avatar} />
                                         :
-                                        <Image source={require('../../resources/images/portrait.png')} style={styles.avatar} />
+                                        <Image source={require('../../resources/images/portrait2.png')} style={styles.avatar} />
                                 }
 
 
@@ -36,12 +36,12 @@ export default class Header extends React.Component {
                                 <Icon name={'back'} size={18} color={'#fff'} />
                             </TouchableOpacity>
                 }
-                <View style={styles.textContainer}>
+                <View style={[styles.textContainer,headerOpt.title ? null:styles.textContainerTx]}>
                     {
                         headerOpt.title ?
                             <Text style={styles.headerText}>{headerOpt.title} </Text>
                             :
-                            <Image source={require('../../resources/images/logo.png')} style={{ width: 83, height: 22 }} />
+                            <Image source={require('../../resources/images/logoico.png')} style={{ width: 24, height: 24 }} />
                     }
                 </View>
                 {
@@ -49,7 +49,7 @@ export default class Header extends React.Component {
                         <View style={styles.headerRight}></View>
                         :
                         <TouchableOpacity style={styles.headerRight} onPress={() => { navigation.navigate('Search') }}>
-                            <Icon name={'search'} size={18} color={'#fff'} />
+                            <Icon name={'search'} size={20.5} color={'#fff'} />
                         </TouchableOpacity>
                 }
 

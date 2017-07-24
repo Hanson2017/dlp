@@ -14,13 +14,13 @@ export default class BlackScreen extends React.Component {
         super(props);
         this.state = {
             tabNames: ['列表', '按省份', '按首字母', '按出事时间'],
-            totalNum: [0, 0, 0, 0],
+            totalNum: 0,
             index: 0,
             ref: false
         };
     }
     changeTotalNum(totalNum) {
-        this.state.totalNum[this.state.index] = totalNum
+        this.state.totalNum = totalNum
         this.setState({
             ref: !this.state.ref
         })
@@ -33,16 +33,11 @@ export default class BlackScreen extends React.Component {
 
                 <Header headerOpt={{ back: '黑名单', title: '黑名单' }} navigation={navigation} />
                 <View style={{ marginBottom: 10, alignItems: 'center', justifyContent: 'center', }}>
-                    <Text style={{ color: '#4C5763', fontSize: 12 }}>黑名单统计平台数量：{this.state.totalNum[this.state.index]}家</Text>
+                    <Text style={{ color: '#4C5763', fontSize: 12 }}>黑名单统计平台数量：{this.state.totalNum}家</Text>
                 </View>
                 <View style={Theme.content}>
                     <ScrollableTabView
                         renderTabBar={() => <TabBar tabNames={tabNames} />}
-                        onChangeTab={(obj) => {
-                            this.setState({
-                                index: obj.i
-                            })
-                        }}
                     >
                         <View style={styles.content} tabLabel='key1'>
                             <List
@@ -55,26 +50,23 @@ export default class BlackScreen extends React.Component {
                         <View style={styles.content} tabLabel='key2'>
                             <ListTab
                                 navigation={navigation}
-                                changeTotalNum={this.changeTotalNum.bind(this)}
                                 type={{ column: 'black', type: 'shengfen', dataName: 'dataList' }}
-                                 tabWidth={{ width: (Theme.screenWidth-70)/6 }}
+                                tabWidth={{ width: (Theme.screenWidth - 70) / 6 }}
                             />
                         </View>
                         <View style={styles.content} tabLabel='key3'>
-                           <ListTab
+                            <ListTab
                                 navigation={navigation}
-                                changeTotalNum={this.changeTotalNum.bind(this)}
                                 type={{ column: 'black', type: 'zimu', dataName: 'dataList' }}
-                                 tabWidth={{ width: (Theme.screenWidth-81)/7 }}
+                                tabWidth={{ width: (Theme.screenWidth - 81) / 7 }}
                             />
                         </View>
                         <View style={styles.content} tabLabel='key4'>
-                           <ListTab
+                            <ListTab
                                 navigation={navigation}
-                                changeTotalNum={this.changeTotalNum.bind(this)}
                                 type={{ column: 'black', type: 'shijian', dataName: 'dataList' }}
                                 titleText={'年'}
-                                tabWidth={{width:(Theme.screenWidth-50)/4}}
+                                tabWidth={{ width: (Theme.screenWidth - 50) / 4 }}
                             />
                         </View>
                     </ScrollableTabView>

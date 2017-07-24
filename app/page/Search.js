@@ -10,11 +10,20 @@ export default class SearchScreen extends React.Component {
         super(props);
         this.state = {
             dataSource: '',
-            searchText: ''
+            searchText: '',
+             searchHotList: [],
+            searchDemoList: [],
+            loading: true
         };
     }
     render() {
         const navigation = this.props.navigation;
+        var  searchDemoList=''
+        if(!this.state.loading){
+            for (var index = 0; index < this.state.searchDemoList.length; index++) {
+               searchDemoList+='"'+this.state.searchDemoList[index].plat_name+'"'             
+            }
+        }
         return (
             <View style={Theme.container}>
                 <StatusBar
@@ -31,7 +40,7 @@ export default class SearchScreen extends React.Component {
                             <TextInput
                                 underlineColorAndroid="transparent"
                                 style={styles.searchInput}
-                                placeholder={'输入你关心平台的名称，如“人人贷”'}
+                                placeholder={'输入你关心平台的名称，如'+searchDemoList}
                                 placeholderTextColor={'#536171'}
                                 clearButtonMode={'while-editing'}
                                 enablesReturnKeyAutomatically={true}
@@ -72,6 +81,7 @@ export default class SearchScreen extends React.Component {
         )
     }
     componentDidMount() {
+        this.getHotSearch();
         const { params } = this.props.navigation.state;
         if (params != null) {
             this.setState({
@@ -109,7 +119,31 @@ export default class SearchScreen extends React.Component {
                 dataSource: []
             })
         }
-
+    }
+    getHotSearch() {
+        let that = this;
+        let url = Api.getSearchTop;
+        fetch(url)
+            .then((response) => {
+                if (response.ok) {
+                    response.json()
+                        
+                        .then((responseData) => {
+                            console.log(responseData)
+                            that.setState({
+                                searchHotList: responseData.hotplat,
+                                searchDemoList:responseData.replat,
+                                loading: false
+                            })
+                        })
+                }
+                else {
+                    console.log('网络请求失败')
+                }
+            })
+            .catch((error) => {
+                console.log('error:', error)
+            })
     }
 }
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, View, ScrollView } from 'react-native';
+import { Text, StyleSheet, View, ScrollView, WebView } from 'react-native';
 
 import Header from '../component/Header'
 import Loading from '../component/Loading'
@@ -19,6 +19,11 @@ export default class HelpDetail extends React.Component {
     render() {
         let navigation = this.props.navigation;
         let data = this.state.dataSource;
+        if (!this.state.loading) {
+            var con_str = data.con_str.replace(/\/ueditor_net/g, 'http://www.dailuopan.com/ueditor_net').replace(/.png\\/g, '.png')
+            var HTML = "<html><style>img{width:100%}.code{width:auto}</style>" + con_str + "</html>";
+        }
+
         return (
             <View style={Theme.container}>
                 <Header headerOpt={{ back: '问答详情', title: '问答详情', search: 'null' }} navigation={navigation} />
@@ -32,11 +37,13 @@ export default class HelpDetail extends React.Component {
                             >
                                 <Text style={styles.HelpDetailTitle}>{data.title}</Text>
                                 <View>
-                                    <HTMLView
-                                        stylesheet={styles}
-                                        value={data.con_str.replace(/\/ueditor_net/g,'http://www.dailuopan.com/ueditor_net').replace(/.png\\/g,'.png')}
-                                     />
-                                    
+                                    <WebView
+                                        style={{
+                                            height: Theme.screenHeight-150,
+                                        }}
+                                        source={{ html: HTML }}
+                                    />
+
                                 </View>
 
                             </ScrollView>
@@ -79,17 +86,17 @@ export default class HelpDetail extends React.Component {
 
 const styles = StyleSheet.create({
     HelpDetailWp: {
-        paddingTop:20,
+        paddingTop: 20,
         paddingLeft: 15,
         paddingRight: 15
     },
-    HelpDetailTitle:{
-        fontSize:18,
-        paddingBottom:20,
+    HelpDetailTitle: {
+        fontSize: 18,
+        paddingBottom: 20,
     },
-    p:{
-        color:'#999',
-        lineHeight:20,
+    p: {
+        color: '#999',
+        lineHeight: 20,
     }
-    
+
 })

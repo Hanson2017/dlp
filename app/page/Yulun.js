@@ -22,6 +22,7 @@ export default class DataScreen extends React.Component {
             dataInfo: null,
             pageCount: 1,
             totalNum: 0,
+            platCount:0,
             updatetime: Util.setDate(new Date())
         };
     }
@@ -58,7 +59,7 @@ export default class DataScreen extends React.Component {
 
                 <Header headerOpt={{ back: '舆论监控', title: '舆论监控' }} navigation={navigation} />
                 <View style={{ marginBottom: 10, alignItems: 'center', justifyContent: 'center', }}>
-                    <Text style={{ color: '#4C5763', fontSize: 12 }}>舆论监控平台数量：{this.state.totalNum}家</Text>
+                    <Text style={{ color: '#4C5763', fontSize: 12 }}>舆论监控平台数量：{this.state.platCount}家</Text>
                 </View>
                 <View style={Theme.content}>
                     {
@@ -185,6 +186,7 @@ export default class DataScreen extends React.Component {
                                     dataSource: []
                                 })
                             }
+                            console.log(responseData)
                             let dataSource = that.state.dataSource;
                             let echartsData = [];
                             let echartsDataList = responseData.dataView.viewlist;
@@ -202,7 +204,8 @@ export default class DataScreen extends React.Component {
                                 totalNum: responseData.totalNum,
                                 pageSize: responseData.pageSize,
                                 echartsData: echartsData,
-                                dataInfo: responseData.dataView.viewinfo
+                                dataInfo: responseData.dataView.viewinfo,
+                                platCount:responseData.dataView.plat_count
                             })
                             if (that.state.pageCount == that.page) {
                                 that.setState({

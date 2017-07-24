@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, Image, View, Button, DeviceEventEmitter,Platform } from 'react-native';
+import { Text, StyleSheet, Image, View, Button, DeviceEventEmitter, Platform, BackAndroid, ToastAndroid } from 'react-native';
 import { StackNavigator, TabNavigator } from "react-navigation";
 import Icon from 'react-native-vector-icons/Icomoon';
 import Drawer from 'react-native-drawer';
@@ -28,6 +28,9 @@ import Detail from '../page/Detail'
 import Search from '../page/Search'
 import Help from '../page/Help'
 import HelpDetail from '../page/HelpDetail'
+import ReportsList from '../page/ReportsList'
+import ReportsDetail from '../page/ReportsDetail'
+
 
 class DrawerScreen extends React.Component {
     constructor(props) {
@@ -40,16 +43,18 @@ class DrawerScreen extends React.Component {
         };
     }
     closeControlPanel = () => {
+        console.log('关')
         this._drawer.close()
     };
     openControlPanel = () => {
+         console.log('开')
         this._drawer.open()
     };
     render() {
         let status = this.state.status;
         if (this.state.loading) {
             if (status == 1 && Platform.OS != 'android') {
-                versionStatus=1
+                versionStatus = 1
             }
             return (
                 <Drawer
@@ -76,7 +81,7 @@ class DrawerScreen extends React.Component {
     }
     componentDidMount() {
         let that = this;
-        let url = 'http://www.dailuopan.com/MPAPI/GetVersion?version=2.0.1'
+        let url = 'http://www.dailuopan.com/MPAPI/GetVersion?version=2.0.10'
         fetch(url)
             .then((response) => {
                 if (response.ok) {
@@ -110,9 +115,25 @@ class DrawerScreen extends React.Component {
                 console.log('退出登陆', signState)
             })
         ]
+        if (Platform.OS === 'android') {
+            BackAndroid.addEventListener('hardwareBackPress', this.onBackAndroid);
+        }
     }
     componentWillUnmount() {
         this.subscriptions.forEach((sub) => sub.off());
+        if (Platform.OS === 'android') {
+            BackAndroid.removeEventListener('hardwareBackPress', this.onBackAndroid);
+        }
+    }
+    onBackAndroid = () => {
+        if (this.lastBackPressed && this.lastBackPressed + 4000 >= Date.now()) {
+            //最近2秒内按过back键，可以退出应用。
+            return false;
+        }
+        this.lastBackPressed = Date.now();
+        ToastAndroid.show('再按一次退出应用', ToastAndroid.SHORT);
+        return true;
+
     }
 }
 
@@ -176,7 +197,13 @@ const AppDlp = StackNavigator({
     },
     HelpDetail: {
         screen: HelpDetail
-    }
+    },
+    ReportsList: {
+        screen: ReportsList
+    },
+    ReportsDetail: {
+        screen: ReportsDetail
+    },
 }, {
         headerMode: 'none'
     })

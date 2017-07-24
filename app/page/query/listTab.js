@@ -16,8 +16,11 @@ export default class BlackList extends React.Component {
             tabList: [],
             totalNum: null,
             updatetime: null,
+            tablNum: 0,
+            tabName: '',
         };
     }
+
     render() {
         if (this.state.loading) {
             return (
@@ -27,6 +30,17 @@ export default class BlackList extends React.Component {
         else {
             let dataSource = this.state.dataSource;
             let dataSourceTab = this.state.dataSourceTab;
+            let tabNameFj='';
+            switch (this.props.tabIndex) {
+                case 2:
+                    tabNameFj='省';
+                    break;
+                case 3:
+                    tabNameFj='年';
+                    break;
+                default:
+                    break;
+            }
             return (
                 <ScrollView>
                     <View style={stylesList.update}>
@@ -43,8 +57,10 @@ export default class BlackList extends React.Component {
                                         activeOpacity={0.4}
                                         onPress={() => {
                                             this.setState({
-                                                dataSourceTab: dataSource[i]
+                                                dataSourceTab: dataSource[i],
+                                                tablNum: dataSource[i].count
                                             })
+                                            this.props.changeTotalNum(dataSource[i].name+tabNameFj, dataSource[i].count, this.props.tabIndex)
                                         }}>
                                         <Text style={[styles.tabText, , dataSource[i].name == dataSourceTab.name ? styles.tabTextActive : null]}>
                                             {tab.name}{this.props.titleText ? this.props.titleText : null}
@@ -129,7 +145,7 @@ const styles = StyleSheet.create({
     listName: {
         marginBottom: 10,
         paddingRight: 0,
-        width: (Theme.screenWidth-20)/3,
+        width: (Theme.screenWidth - 20) / 3,
         height: 22,
     },
     listNameText: {

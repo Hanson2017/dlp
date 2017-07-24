@@ -7,10 +7,10 @@ module.exports = {
     renderItemR({ item, index }) {
         let navigation = this.props.navigation;
         return (
-            <View style={(item.fund_type != 0 || item.flmllist.length > 0) && versionStatus != 1 ? stylesList.itemRow : stylesList.itemRowNone} key={index}>
+            <View style={(item.flmllist.length > 0) && versionStatus != 1 ? stylesList.itemRow : stylesList.itemRowNone} key={index}>
                 <TouchableOpacity
                     style={{ flexDirection: 'row', }}
-                    onPress={() => { navigation.navigate('Detail', { id: item.id_dlp, platName: item.plat_name, fundType: item.fund_type }) }}
+                    onPress={() => { navigation.navigate('Detail', { id: item.id_dlp, platName: item.plat_name}) }}
 
                 >
                     <View style={[stylesList.tdUp, { width: 90 }]}>

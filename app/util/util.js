@@ -57,25 +57,25 @@ module.exports = {
         }
         let url;
         if (id) {
-             
-             if(ApiType.type != 'comment'){
-                 url = Api[ApiType.column] + '?type=' + ApiType.type + '&id_dlp=' + id + '&page=' + that.page + '&pagesize=' + 50;
-             }
-             else{
-                 url = Api[ApiType.column] + id + '&page=' + that.page + '&pagesize=' + 10;
-             }
+
+            if (ApiType.type != 'comment') {
+                url = Api[ApiType.column] + '?type=' + ApiType.type + '&id_dlp=' + id + '&page=' + that.page + '&pagesize=' + 50;
+            }
+            else {
+                url = Api[ApiType.column] + id + '&page=' + that.page + '&pagesize=' + 10;
+            }
         }
         else {
-             url = Api[ApiType.column] + '?type=' + ApiType.type + '&page=' + that.page + '&pagesize=' + 50;
+            url = Api[ApiType.column] + '?type=' + ApiType.type + '&page=' + that.page + '&pagesize=' + 50;
         }
 
         fetch(url)
             .then((response) => {
-               
-                if (response.ok) {                     
+
+                if (response.ok) {
                     response.json()
                         .then((responseData) => {
-                           
+
                             if (type == 3) {
                                 that.setState({
                                     dataSource: []
@@ -116,8 +116,18 @@ module.exports = {
             })
     },
     getDataListTab(that, ApiType) {
-
         let url = Api[ApiType.column] + '?type=' + ApiType.type;
+        let tabNameFj = '';
+        switch (that.props.tabIndex) {
+            case 2:
+                tabNameFj = '省';
+                break;
+            case 3:
+                tabNameFj = '年';
+                break;
+            default:
+                break;
+        }
 
         fetch(url)
             .then((response) => {
@@ -126,14 +136,17 @@ module.exports = {
                     response.json()
                         .then((responseData) => {
                             let dataSource = responseData[ApiType.dataName];
+                            console.log(responseData)
                             that.setState({
                                 loading: false,
                                 dataSource: dataSource,
                                 dataSourceTab: dataSource[0],
                                 totalNum: responseData.totalNum,
                                 updatetime: responseData.updatetime,
+                                tablNum: responseData.dataList[0].count,
+                                tabName: responseData.dataList[0].name
                             })
-                            that.props.changeTotalNum(that.state.totalNum)
+                            that.props.changeTotalNum(responseData.dataList[0].name+tabNameFj, responseData.dataList[0].count, that.props.tabIndex)
 
                         })
                 }
@@ -156,7 +169,7 @@ module.exports = {
                                 loading: false,
                                 dataSource: responseData,
                             })
-                            console.log('responseData',responseData)
+                            console.log('responseData', responseData)
                         })
                 }
                 else {

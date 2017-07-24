@@ -19,6 +19,7 @@ module.exports = {
     yulun: host + '/GetYulunList',//舆论监控
     fiveYears: host + '/GetOldList',//五年老平台
     search: host + '/GetSearch', //搜索
+    getSearchTop:host + '/GetSearchTop', //热门搜索
     detail: host + '/GetPlatdetail',//详情页
     helpList: host + '/GetHelpList',//常见问题列表
     helpDetail: host + '/GetHelpdetail',//常见问题详情
@@ -27,5 +28,9 @@ module.exports = {
     attentionDel: host + '/Member_follow_delplat', //取消关注
     isAttention: host + '/Member_follow_hasplat', //是否关注了该平台  
     attentionList: host + '/Member_follow_getplatlist', //关注列表 
-    commentList:'http://www.76676.com/index.php?m=member&c=index&a=public_getcomment_dlp&p2pid='
+    getqqun: host + '/GetQQqun', //获取QQ群信息 
+    getReportsList: host + '/GetReportsList', //数据报表列表
+    getReportsDetail: host + '/GetReportsDetail', //数据报表列表
+    getReportsDetail_dlp: host + '/GetReportsDetail_dlp', //贷罗盘数据报表列表
+    commentList: 'http://www.76676.com/index.php?m=member&c=index&a=public_getcomment_dlp&p2pid='
 }
