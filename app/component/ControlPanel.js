@@ -22,7 +22,7 @@ export default class ControlPanel extends React.Component {
         let navigation = screenProps.navigation;
         return (
             <View style={styles.ControlPanelWp}>
-                <FriendsShare ref={'FriendsShare'} />
+
                 <View style={{ flex: 1 }}>
                     <TouchableOpacity style={styles.ControlPaneHeaderNologin}
                         onPress={() => {
@@ -88,12 +88,31 @@ export default class ControlPanel extends React.Component {
                         }
 
                     </View>
-
-
                     <View style={styles.ControlPanefooter}>
                         <TouchableOpacity
                             style={styles.platTopL}
-                            onPress={this.showActionSheet.bind(this)}
+                            onPress={() => {
+                                let screenProps = this.props.screenProps;
+                                let loginState = screenProps.loginState;
+                                let data = {
+                                    type: 'news',
+                                    title: '邀请好友',
+                                    description: '我在用贷罗盘，网贷行业最专业的数据分析工具，一起来用吧。',
+                                    webpageUrl: 'http://m.dailuopan.com/about/appdown',
+                                    imageUrl: 'http://dailuopan.com/images/shareDlp.png',
+                                }
+                                if (loginState) {
+                                    data = {
+                                        type: 'news',
+                                        title: '邀请好友',
+                                        description: "我是" + signState.r_username + "，我在用贷罗盘，网贷行业最专业的数据分析工具，一起来用吧。",
+                                        webpageUrl: 'http://m.dailuopan.com/about/appdown',
+                                        imageUrl: 'http://dailuopan.com/images/shareDlp.png',
+                                    }
+                                }
+
+                                navigation.navigate('FriendsShare',{data:data})
+                            }}
                         >
                             <Icon name={'gift'} size={14.5} color={'#8c96a0'} />
                             <Text style={styles.platTopLText}>推荐给好友</Text>
@@ -116,11 +135,7 @@ export default class ControlPanel extends React.Component {
                             <Image source={require('../../resources/images/logo2.png')} style={{ width: 68, height: 18 }} />
                         </View>
                     </View>
-
-
                 </View>
-
-
             </View>
         )
     }
@@ -187,27 +202,6 @@ export default class ControlPanel extends React.Component {
                 </View>
             </TouchableOpacity>
         )
-    }
-    showActionSheet() {
-        let screenProps = this.props.screenProps;
-        let loginState = screenProps.loginState;
-        let data = {
-            type: 'news',
-            title: '邀请好友',
-            description: '我在用贷罗盘，网贷行业最专业的数据分析工具，一起来用吧。',
-            webpageUrl: 'http://m.dailuopan.com/about/appdown',
-            imageUrl: 'http://dailuopan.com/images/shareDlp.png',
-        }
-        if (loginState) {
-            data = {
-                type: 'news',
-                title: '邀请好友',
-                description: "我是" + signState.r_username + "，我在用贷罗盘，网贷行业最专业的数据分析工具，一起来用吧。",
-                webpageUrl: 'http://m.dailuopan.com/about/appdown',
-                imageUrl: 'http://dailuopan.com/images/shareDlp.png',
-            }
-        }
-        this.refs.FriendsShare.show(data)
     }
     loginData() {
         setTimeout(() => {

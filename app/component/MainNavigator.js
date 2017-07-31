@@ -30,7 +30,7 @@ import Help from '../page/Help'
 import HelpDetail from '../page/HelpDetail'
 import ReportsList from '../page/ReportsList'
 import ReportsDetail from '../page/ReportsDetail'
-
+import FriendsShare from './FriendsShare'
 
 class DrawerScreen extends React.Component {
     constructor(props) {
@@ -43,11 +43,10 @@ class DrawerScreen extends React.Component {
         };
     }
     closeControlPanel = () => {
-        console.log('关')
+
         this._drawer.close()
     };
     openControlPanel = () => {
-         console.log('开')
         this._drawer.open()
     };
     render() {
@@ -204,6 +203,9 @@ const AppDlp = StackNavigator({
     ReportsDetail: {
         screen: ReportsDetail
     },
+    FriendsShare:{
+        screen: FriendsShare
+    }
 }, {
         headerMode: 'none'
     })

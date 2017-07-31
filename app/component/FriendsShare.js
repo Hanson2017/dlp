@@ -42,6 +42,9 @@ export default class Share extends Component {
     componentWillUnMount() {
         this.timer && clearTimeout(this.timer);
     }
+    componentDidMount() {
+        this.show()
+    }
     render() {
 
         let that = this;
@@ -50,23 +53,9 @@ export default class Share extends Component {
         }
         else {
             return (
-                <Animated.View style={[styles.container,
-                {
-                    transform: [{
-                        translateY: this.state.offset.interpolate({
-                            inputRange: [0, 1],
-                            outputRange: [height, 0]
-                        }),
-                    }]
-                }
+                <Animated.View style={[styles.container
                 ]}>
-                    <Animated.View style={[styles.mask, {
-                        opacity: this.state.offset.interpolate({
-                            inputRange: [0, 1],
-                            outputRange: [0, 1]
-                        })
-
-                    }]} >
+                    <Animated.View style={[styles.mask, ]} >
                         <TouchableOpacity style={{ flex: 1 }} onPress={this.cancel.bind(this)}></TouchableOpacity>
                     </Animated.View>
                     <View style={styles.shareBox}>
@@ -174,15 +163,17 @@ export default class Share extends Component {
     //取消  
     cancel(event) {
         if (!this.state.hide) {
-            this.outAnimated();
+            this.props.navigation.goBack();
+            // this.outAnimated();
         }
     }
-    show(dataS) {
+    show() {
+        const { params } = this.props.navigation.state;
         if (this.state.hide) {
             this.setState({
                 hide: false,
-                data: dataS
-            }, this.inAnimated);
+                data: params.data
+            });
         }
     }
     shareToQQ() {

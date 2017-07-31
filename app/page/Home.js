@@ -88,7 +88,7 @@ export default class HomeScreen extends React.Component {
                 />
                 <Header headerOpt={{ back: 'home' }} navigation={navigation} openControlPanel={this.openControlPanel.bind(this)} loginState={loginState} />
                 <View style={Theme.content}>
-                    <Image source={require('../../resources/images/s-bg.jpg')} style={{ width: Theme.screenWidth, height: Theme.screenHeight - 100, }} >
+                    <Image source={require('../../resources/images/s-bg.jpg')} style={{ width: Theme.screenWidth,  height: Theme.screenHeight - (Platform.OS != 'android' ?100:130)}} >
                         <ScrollView
                             keyboardShouldPersistTaps={'handled'}
                             scrollEnabled={this.state.scrollEnabled}
