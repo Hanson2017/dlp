@@ -189,7 +189,25 @@ export default class ControlPanel extends React.Component {
         )
     }
     showActionSheet() {
-        this.refs.FriendsShare.show()
+        let screenProps = this.props.screenProps;
+        let loginState = screenProps.loginState;
+        let data = {
+            type: 'news',
+            title: '邀请好友',
+            description: '我在用贷罗盘，网贷行业最专业的数据分析工具，一起来用吧。',
+            webpageUrl: 'http://m.dailuopan.com/about/appdown',
+            imageUrl: 'http://dailuopan.com/images/shareDlp.png',
+        }
+        if (loginState) {
+            data = {
+                type: 'news',
+                title: '邀请好友',
+                description: "我是" + signState.r_username + "，我在用贷罗盘，网贷行业最专业的数据分析工具，一起来用吧。",
+                webpageUrl: 'http://m.dailuopan.com/about/appdown',
+                imageUrl: 'http://dailuopan.com/images/shareDlp.png',
+            }
+        }
+        this.refs.FriendsShare.show(data)
     }
     loginData() {
         setTimeout(() => {

@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -58,6 +59,15 @@
 		8F37AC781EE6AD600064ED7F /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F37AC771EE6AD600064ED7F /* libsqlite3.tbd */; };
 		8F37AC7A1EE6AD690064ED7F /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F37AC791EE6AD690064ED7F /* libz.tbd */; };
 		8F37AC7C1EE6AD720064ED7F /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F37AC7B1EE6AD720064ED7F /* libc++.tbd */; };
+		8F3A57C61F2ADA220073EF3E /* jcore-ios-1.1.5.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F3A57C41F2ADA220073EF3E /* jcore-ios-1.1.5.a */; };
+		8F3A57C71F2ADA220073EF3E /* jpush-ios-3.0.6.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F3A57C51F2ADA220073EF3E /* jpush-ios-3.0.6.a */; };
+		8F3A57C91F2ADA3F0073EF3E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F3A57C81F2ADA3E0073EF3E /* CFNetwork.framework */; };
+		8F3A57CB1F2ADA470073EF3E /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F3A57CA1F2ADA470073EF3E /* CoreFoundation.framework */; };
+		8F3A57CD1F2ADA600073EF3E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F3A57CC1F2ADA600073EF3E /* CoreGraphics.framework */; };
+		8F3A57CF1F2ADA690073EF3E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F3A57CE1F2ADA690073EF3E /* Foundation.framework */; };
+		8F3A57D11F2ADA700073EF3E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F3A57D01F2ADA700073EF3E /* UIKit.framework */; };
+		8F3A57D31F2ADA770073EF3E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F3A57D21F2ADA770073EF3E /* Security.framework */; };
+		8F3A57D51F2ADAC10073EF3E /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F3A57D41F2ADAC10073EF3E /* libresolv.tbd */; };
 		8F6AACB71F189FFD00DBDC74 /* libXG-SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F6AACB61F189FFD00DBDC74 /* libXG-SDK.a */; };
 		8F6AACB91F18A06600DBDC74 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F6AACB81F18A06600DBDC74 /* UserNotifications.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		8F95AB651EF3E4BF00B4AA34 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F95AB641EF3E4BF00B4AA34 /* SystemConfiguration.framework */; };
@@ -342,6 +352,15 @@
 		8F37AC791EE6AD690064ED7F /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		8F37AC7B1EE6AD720064ED7F /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		8F37ACAC1EE7AA5E0064ED7F /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		8F3A57C41F2ADA220073EF3E /* jcore-ios-1.1.5.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jcore-ios-1.1.5.a"; sourceTree = "<group>"; };
+		8F3A57C51F2ADA220073EF3E /* jpush-ios-3.0.6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-3.0.6.a"; sourceTree = "<group>"; };
+		8F3A57C81F2ADA3E0073EF3E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		8F3A57CA1F2ADA470073EF3E /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		8F3A57CC1F2ADA600073EF3E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		8F3A57CE1F2ADA690073EF3E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		8F3A57D01F2ADA700073EF3E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		8F3A57D21F2ADA770073EF3E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		8F3A57D41F2ADAC10073EF3E /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
 		8F6AAC971F189FBB00DBDC74 /* XGPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XGPush.h; path = dlp/XGPush.h; sourceTree = "<group>"; };
 		8F6AAC981F189FBB00DBDC74 /* XGSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XGSetting.h; path = dlp/XGSetting.h; sourceTree = "<group>"; };
 		8F6AACB61F189FFD00DBDC74 /* libXG-SDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libXG-SDK.a"; sourceTree = "<group>"; };
@@ -381,12 +400,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F3A57D51F2ADAC10073EF3E /* libresolv.tbd in Frameworks */,
 				8F6AACB91F18A06600DBDC74 /* UserNotifications.framework in Frameworks */,
+				8FAFF1C11EF7798C0027A134 /* AdSupport.framework in Frameworks */,
+				8F3A57D31F2ADA770073EF3E /* Security.framework in Frameworks */,
+				8F3A57D11F2ADA700073EF3E /* UIKit.framework in Frameworks */,
+				8F3A57CF1F2ADA690073EF3E /* Foundation.framework in Frameworks */,
+				8F3A57CD1F2ADA600073EF3E /* CoreGraphics.framework in Frameworks */,
 				8F95AB651EF3E4BF00B4AA34 /* SystemConfiguration.framework in Frameworks */,
 				8FAFF1BF1EF7795C0027A134 /* CoreTelephony.framework in Frameworks */,
-				8FAFF1C11EF7798C0027A134 /* AdSupport.framework in Frameworks */,
+				8F3A57CB1F2ADA470073EF3E /* CoreFoundation.framework in Frameworks */,
+				8F3A57C91F2ADA3F0073EF3E /* CFNetwork.framework in Frameworks */,
 				8FAFF1D11EF79B400027A134 /* libmtasdk.a in Frameworks */,
 				8F37AC781EE6AD600064ED7F /* libsqlite3.tbd in Frameworks */,
+				8F3A57C71F2ADA220073EF3E /* jpush-ios-3.0.6.a in Frameworks */,
 				8F37AC7C1EE6AD720064ED7F /* libc++.tbd in Frameworks */,
 				8F37AC7A1EE6AD690064ED7F /* libz.tbd in Frameworks */,
 				8F37AC761EE6AD530064ED7F /* libiconv.tbd in Frameworks */,
@@ -400,6 +427,7 @@
 				133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */,
 				00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */,
 				139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */,
+				8F3A57C61F2ADA220073EF3E /* jcore-ios-1.1.5.a in Frameworks */,
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
@@ -640,6 +668,15 @@
 		8F37AC741EE6AD530064ED7F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8F3A57D41F2ADAC10073EF3E /* libresolv.tbd */,
+				8F3A57D21F2ADA770073EF3E /* Security.framework */,
+				8F3A57D01F2ADA700073EF3E /* UIKit.framework */,
+				8F3A57CE1F2ADA690073EF3E /* Foundation.framework */,
+				8F3A57CC1F2ADA600073EF3E /* CoreGraphics.framework */,
+				8F3A57CA1F2ADA470073EF3E /* CoreFoundation.framework */,
+				8F3A57C81F2ADA3E0073EF3E /* CFNetwork.framework */,
+				8F3A57C41F2ADA220073EF3E /* jcore-ios-1.1.5.a */,
+				8F3A57C51F2ADA220073EF3E /* jpush-ios-3.0.6.a */,
 				8F6AACB81F18A06600DBDC74 /* UserNotifications.framework */,
 				8F6AACB61F189FFD00DBDC74 /* libXG-SDK.a */,
 				8FAFF1D01EF79B400027A134 /* libmtasdk.a */,
@@ -1334,6 +1371,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = BL4S7A2TL2;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../node_modules/react-native-qq/ios/RCTQQAPI";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1375,6 +1413,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Hua Li (D9WT8Y25PT)";
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = BL4S7A2TL2;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../node_modules/react-native-qq/ios/RCTQQAPI";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",

@@ -35,7 +35,7 @@ export default class Guanzhu extends React.Component {
                                 onEndReachedThreshold={10}
                             />
                             :
-                            <Text style={styles.null}>暂无关注平台</Text>
+                            <Text style={styles.nullP}>暂无关注平台</Text>
                     }
                 </View>
             )
@@ -312,6 +312,11 @@ const styles = StyleSheet.create({
     paimingText2: {
         color: '#cdcdcd',
         fontSize: 12,
+    },
+    nullP:{
+        color: '#cdcdcd',
+        fontSize: 12,
+        paddingLeft:15,
     }
 
 })

@@ -20,13 +20,7 @@ export default class Share extends Component {
             offset: new Animated.Value(0),
             opacity: new Animated.Value(0),
             hide: true,
-            data: {
-                type: 'news',
-                title: '邀请好友',
-                description: '邀请好友',
-                webpageUrl: 'http://m.dailuopan.com/about/appdown',
-                imageUrl: 'http://dailuopan.com/images/shareDlp.png',
-            }
+            data: null
         }
     }
     async _setClipboardContent() {
@@ -187,10 +181,8 @@ export default class Share extends Component {
         if (this.state.hide) {
             this.setState({
                 hide: false,
-
+                data: dataS
             }, this.inAnimated);
-
-
         }
     }
     shareToQQ() {

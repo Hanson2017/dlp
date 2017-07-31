@@ -81,7 +81,7 @@ class DrawerScreen extends React.Component {
     }
     componentDidMount() {
         let that = this;
-        let url = 'http://www.dailuopan.com/MPAPI/GetVersion?version=2.0.10'
+        let url = 'http://www.dailuopan.com/MPAPI/GetVersion?version=2.0.1'
         fetch(url)
             .then((response) => {
                 if (response.ok) {

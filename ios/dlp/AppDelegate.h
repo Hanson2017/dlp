@@ -9,6 +9,8 @@
 
 #import <UIKit/UIKit.h>
 
+static NSString *appKey = @"a39ac3af2b8394b72d147d25";
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (nonatomic, strong) UIWindow *window;
