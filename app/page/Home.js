@@ -88,7 +88,7 @@ export default class HomeScreen extends React.Component {
                 />
                 <Header headerOpt={{ back: 'home' }} navigation={navigation} openControlPanel={this.openControlPanel.bind(this)} loginState={loginState} />
                 <View style={Theme.content}>
-                    <Image source={require('../../resources/images/s-bg.jpg')} style={{ width: Theme.screenWidth,  height: Theme.screenHeight - (Platform.OS != 'android' ?100:130)}} >
+                    <Image source={require('../../resources/images/s-bg.jpg')} style={{ width: Theme.screenWidth,  height: Theme.screenHeight - 100}} >
                         <ScrollView
                             keyboardShouldPersistTaps={'handled'}
                             scrollEnabled={this.state.scrollEnabled}
@@ -137,24 +137,16 @@ export default class HomeScreen extends React.Component {
                                         <Text style={styles.searchBtnText}>搜索</Text>
                                     </TouchableOpacity>
                                     {
-                                        searchList.length > 0 && this.state.isSearchListHide != true ?
+                                        searchList.length > 0 && this.state.isSearchListHide != true && Platform.OS != 'android' ?
                                             <View style={styles.searchListWp}>
                                                 <ScrollView
                                                     onTouchStart={() => {
-
-                                                        console.log('onTouchStart')
-
-
                                                         this.setState({
                                                             scrollEnabled: false,
                                                             isSearchListHide: false
                                                         })
-
-
-
                                                     }}
                                                     onTouchEnd={() => {
-                                                        console.log('onTouchEnd')
                                                         if (Platform.OS != 'android') {
                                                             this.setState({
                                                                 scrollEnabled: true
@@ -162,18 +154,6 @@ export default class HomeScreen extends React.Component {
                                                         }
 
                                                     }}
-                                                    onScrollEndDrag={() => {
-                                                        console.log('onScrollEndDrag')
-                                                        if (Platform.OS == 'android') {
-                                                            this.setState({
-                                                                scrollEnabled: true
-                                                            })
-                                                        }
-                                                    }}
-
-
-
-
                                                 >
                                                     <View style={styles.searchListCon}>
                                                         {

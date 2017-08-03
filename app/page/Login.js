@@ -34,15 +34,21 @@ export default class Login extends Component {
                         </View>
 
                         <View style={styles.LoginT}>
-                            <TouchableOpacity activeOpacity={0.7}
-                                style={{ alignItems: 'center', }}
-                                onPress={ThirdLogin._wechatlogin.bind(this, this)}
-                            >
-                                <Icon name={'wechat'} size={60} color={'#606060'} />
-                                <Text style={styles.LoginText}>微信登陆</Text>
-                            </TouchableOpacity>
+                            {
+                                versionStatus == 1 ?
+                                    null
+                                    :
+                                    <TouchableOpacity activeOpacity={0.7}
+                                        style={{ alignItems: 'center', }}
+                                        onPress={ThirdLogin._wechatlogin.bind(this, this)}
+                                    >
+                                        <Icon name={'wechat'} size={60} color={'#606060'} />
+                                        <Text style={styles.LoginText}>微信登陆</Text>
+                                    </TouchableOpacity>
+                            }
+
                             <TouchableOpacity
-                                style={{ marginLeft: 80, alignItems: 'center', }}
+                                style={versionStatus == 1 ? { marginLeft: 0, alignItems: 'center', } : { marginLeft: 80, alignItems: 'center', }}
                                 activeOpacity={0.7}
                                 onPress={ThirdLogin._qqlogin.bind(this, this)}
                             >

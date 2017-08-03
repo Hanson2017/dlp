@@ -89,7 +89,10 @@ export default class ControlPanel extends React.Component {
 
                     </View>
                     <View style={styles.ControlPanefooter}>
-                        <TouchableOpacity
+                        {
+                            versionStatus == 1 ?
+                            null:
+                            <TouchableOpacity
                             style={styles.platTopL}
                             onPress={() => {
                                 let screenProps = this.props.screenProps;
@@ -117,6 +120,9 @@ export default class ControlPanel extends React.Component {
                             <Icon name={'gift'} size={14.5} color={'#8c96a0'} />
                             <Text style={styles.platTopLText}>推荐给好友</Text>
                         </TouchableOpacity>
+
+                        }
+                        
                         <TouchableOpacity style={[styles.platTopL, { marginTop: 2, }]}
                             onPress={() => {
                                 if (loginState) {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, View, StatusBar, TextInput, TouchableOpacity, FlatList, ScrollView, Image } from 'react-native';
+import { Text, StyleSheet, View, StatusBar, TextInput, TouchableOpacity, FlatList, ScrollView, Image ,Platform} from 'react-native';
 import Header from '../component/Header'
 import Theme from '../util/theme';
 import Api from '../util/api';
@@ -30,7 +30,7 @@ export default class SearchScreen extends React.Component {
                     backgroundColor="#000"
                     barStyle="light-content"
                 />
-                <View style={styles.headerContainer}>
+                 <View style={[styles.headerContainer,Platform.OS=='android'?{marginTop:0}:null]}>
                     <TouchableOpacity style={styles.backBtn} onPress={() => { navigation.goBack() }}>
                         <Icon name={'back'} size={18} color={'#fff'} />
                     </TouchableOpacity>

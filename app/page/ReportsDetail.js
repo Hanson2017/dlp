@@ -45,7 +45,7 @@ export default class ReportsDetail extends React.Component {
                                     {type != 'dlp' ?
                                         <WebView
                                             style={{
-                                                height: Theme.screenHeight - 150,
+                                                height: Theme.screenHeight - 180,
                                             }}
                                             source={{ html: HTML }}
                                         />

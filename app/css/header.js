@@ -15,9 +15,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
-    portrait:{
-        paddingTop:1,
-       width: 54, 
+    portrait: {
+        paddingTop: 1,
+        width: 54,
         justifyContent: 'flex-start',
         alignItems: 'center',
     },
@@ -27,26 +27,31 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
-    textContainerTx:{
-        paddingTop:7,
+    textContainerTx: {
+        paddingTop: 7,
         alignItems: 'flex-start',
     },
     headerText: {
         color: '#fff',
         fontSize: 16.5,
-        fontWeight:'bold',
+        fontWeight: 'bold',
     },
     headerRight: {
-        paddingTop:8,
+        paddingTop: 8,
         width: 50,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'flex-start',
     },
-    avatar:{
-        width:33,
-        height:33,
-        borderRadius:16.5,
+    headerRightAndorid: {
+        alignItems: 'center',
+        paddingTop: 0,
+        justifyContent: 'center',
+    },
+    avatar: {
+        width: 33,
+        height: 33,
+        borderRadius: 16.5,
     }
 })
 

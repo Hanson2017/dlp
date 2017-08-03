@@ -28,7 +28,7 @@ export default class Set extends React.Component {
                     <View style={styles.list}>
                         <Text style={styles.label}>当前帐号：</Text>
                         <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end' }}>
-                            <Text numberOfLines={1} style={[styles.listR,{flex:1,textAlign: 'right'}]}>{signState.r_username}</Text>
+                            <Text numberOfLines={1} style={[styles.listR, { flex: 1, textAlign: 'right' }]}>{signState.r_username}</Text>
                             <Text style={[styles.listR]}>
                                 {
                                     signState.r_fromtype == 'qq' ?
@@ -49,7 +49,9 @@ export default class Set extends React.Component {
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.list} activeOpacity={0.5}
                         onPress={() => {
-                            Util.Linked(this.state.qqInfo.qqqun_url)
+                            let key=this.state.qqInfo.qqqun_key;
+                            let linkUrl="mqqopensdkapi://bizAgent/qm/qr?url=http%3A%2F%2Fqm.qq.com%2Fcgi-bin%2Fqm%2Fqr%3Ffrom%3Dapp%26p%3Dandroid%26k%3D" + key;
+                            Util.Linked(linkUrl)
                         }}
                     >
                         <Text style={styles.label}>反馈</Text>
@@ -57,7 +59,7 @@ export default class Set extends React.Component {
                     </TouchableOpacity>
                     <View style={[styles.list, { borderBottomColor: '#e4e4e4' }]}>
                         <Text style={styles.label}>版本号</Text>
-                        <Text style={[styles.listR]}>2.0.2</Text>
+                        <Text style={[styles.listR]}>2.0.3</Text>
                     </View>
                     <TouchableOpacity style={styles.logoutBtn}
                         activeOpacity={0.6}
@@ -111,6 +113,8 @@ export default class Set extends React.Component {
         window.EventEmitter.trigger('logout', '退出登陆')
         navigation.goBack()
     }
+
+
 }
 const styles = StyleSheet.create({
     container: {

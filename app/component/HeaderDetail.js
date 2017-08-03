@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, View, TouchableOpacity, Image } from 'react-native';
+import { Text, StyleSheet, View, TouchableOpacity, Image ,Platform} from 'react-native';
 import Icon from 'react-native-vector-icons/Icomoon';
 import styles from '../css/header';
 import Util from '../util/util';
@@ -27,7 +27,7 @@ export default class Header extends React.Component {
                 break;
         }
         return (
-            <View style={styles.headerContainer}>
+            <View style={[styles.headerContainer, Platform.OS == 'android' ? { marginTop: 0 } : null]}>
                 <TouchableOpacity style={styles.backBtn} onPress={() => { navigation.goBack() }}>
                     <Icon name={'back'} size={18} color={'#fff'} />
                 </TouchableOpacity>
@@ -41,7 +41,7 @@ export default class Header extends React.Component {
                         }
                     </Text>
                     {
-                        dataInfo.isflmf == 1 && versionStatus !=1 ?
+                        dataInfo.isflmf == 1 && versionStatus != 1 ?
                             <TouchableOpacity
                                 onPress={() => {
                                     let url = 'http://m.fanlimofang.com/Activity/Detail/' + dataInfo.flmllist[0].activityid;
@@ -55,9 +55,14 @@ export default class Header extends React.Component {
                     }
 
                 </View>
-                <TouchableOpacity style={styles.headerRight} onPress={() => { showActionSheet() }}>
-                    <Icon name={'share'} size={22} color={'#fff'} />
-                </TouchableOpacity>
+                {versionStatus == 1 ?
+                    <View style={styles.headerRight}></View>
+                    :
+                    <TouchableOpacity style={styles.headerRight} onPress={() => { showActionSheet() }}>
+                        <Icon name={'share'} size={22} color={'#fff'} />
+                    </TouchableOpacity>
+                }
+
             </View>
         );
     }

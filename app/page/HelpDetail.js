@@ -35,7 +35,9 @@ export default class HelpDetail extends React.Component {
                             <ScrollView
                                 style={styles.HelpDetailWp}
                             >
-                                <Text style={styles.HelpDetailTitle}>{data.title}</Text>
+                                <View style={{height:30}}>
+                                    <Text style={styles.HelpDetailTitle}>{data.title}</Text>
+                                </View>
                                 <View>
                                     <WebView
                                         style={{
