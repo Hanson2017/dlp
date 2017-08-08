@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, View, TouchableOpacity, Image ,Platform} from 'react-native';
+import { Text, StyleSheet, View, TouchableOpacity, Image, Platform } from 'react-native';
 import Icon from 'react-native-vector-icons/Icomoon';
 import styles from '../css/header';
 import Util from '../util/util';
@@ -11,7 +11,6 @@ export default class Header extends React.Component {
         let dataInfo = headerOpt.dataInfo
         let showActionSheet = this.props.showActionSheet;
         let fundType = null;
-
         switch (dataInfo.fundtype) {
             case 1:
                 fundType = '示1'
@@ -28,7 +27,7 @@ export default class Header extends React.Component {
         }
         return (
             <View style={[styles.headerContainer, Platform.OS == 'android' ? { marginTop: 0 } : null]}>
-                <TouchableOpacity style={styles.backBtn} onPress={() => { navigation.goBack() }}>
+                <TouchableOpacity style={styles.backBtn} onPress={() => { headerOpt.noBack ? navigation.goBack() : null }}>
                     <Icon name={'back'} size={18} color={'#fff'} />
                 </TouchableOpacity>
                 <View style={styles.textContainer}>
@@ -56,10 +55,10 @@ export default class Header extends React.Component {
 
                 </View>
                 {versionStatus == 1 ?
-                    <View style={styles.headerRight}></View>
+                    <View style={[styles.headerRight]}></View>
                     :
-                    <TouchableOpacity style={styles.headerRight} onPress={() => { showActionSheet() }}>
-                        <Icon name={'share'} size={22} color={'#fff'} />
+                    <TouchableOpacity style={[styles.headerRight, styles.headerRightShare]} onPress={() => { showActionSheet() }}>
+                        <Icon name={'share'} size={18} color={'#fff'} />
                     </TouchableOpacity>
                 }
 

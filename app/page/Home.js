@@ -88,7 +88,7 @@ export default class HomeScreen extends React.Component {
                 />
                 <Header headerOpt={{ back: 'home' }} navigation={navigation} openControlPanel={this.openControlPanel.bind(this)} loginState={loginState} />
                 <View style={Theme.content}>
-                    <Image source={require('../../resources/images/s-bg.jpg')} style={{ width: Theme.screenWidth,  height: Theme.screenHeight - 100}} >
+                    <Image source={require('../../resources/images/s-bg.jpg')} style={{ width: Theme.screenWidth, height: Theme.screenHeight - 100 }} >
                         <ScrollView
                             keyboardShouldPersistTaps={'handled'}
                             scrollEnabled={this.state.scrollEnabled}
@@ -104,35 +104,53 @@ export default class HomeScreen extends React.Component {
                                     <Image source={require('../../resources/images/s-logo2.png')} style={{ width: 100, height: 100 }} />
                                 </View>
                                 <View style={{ position: 'relative', zIndex: 9999, }}>
-                                    <TextInput
-                                        placeholder={'输入你关心平台的名称，如' + searchDemoList}
-                                        style={styles.searchInput} underlineColorAndroid="transparent"
-                                        returnKeyType={'search'}
-                                        clearButtonMode={'while-editing'}
-                                        onChangeText={(text) => {
-                                            this.setState({
-                                                searchText: text,
-                                                isSearchListHide: false
-                                            })
-                                            if (text != '') {
-                                                this.getSearch(text)
-                                            }
-                                            else {
-                                                this.setState({
-                                                    searchList: []
-                                                })
-                                            }
-                                        }}
-                                        onFocus={() => {
-                                            this.setState({
-                                                isSearchListHide: false
-                                            })
-                                        }}
-                                        onSubmitEditing={this.onSubmit.bind(this)}
-                                    />
-
+                                    {
+                                        Platform.OS != 'android' ?
+                                            <TextInput
+                                                placeholder={'输入你关心平台的名称，如' + searchDemoList}
+                                                style={styles.searchInput} underlineColorAndroid="transparent"
+                                                returnKeyType={'search'}
+                                                clearButtonMode={'while-editing'}
+                                                onChangeText={(text) => {
+                                                    this.setState({
+                                                        searchText: text,
+                                                        isSearchListHide: false
+                                                    })
+                                                    if (text != '') {
+                                                        this.getSearch(text)
+                                                    }
+                                                    else {
+                                                        this.setState({
+                                                            searchList: []
+                                                        })
+                                                    }
+                                                }}
+                                                onFocus={() => {
+                                                    this.setState({
+                                                        isSearchListHide: false
+                                                    })
+                                                }}
+                                                onSubmitEditing={this.onSubmit.bind(this)}
+                                            />
+                                            :
+                                            <TouchableOpacity style={styles.searchInput}
+                                                activeOpacity={0.8}
+                                                onPress={() => {
+                                                    navigation.navigate('Search')
+                                                }}
+                                            >
+                                                <Text style={{ color: '#bbb' }}>输入你关心平台的名称，如{searchDemoList}</Text>
+                                            </TouchableOpacity>
+                                    }
                                     <TouchableOpacity style={styles.searchBtn}
-                                        onPress={this.onSubmit.bind(this)}
+                                        onPress={
+                                            Platform.OS != 'android' ?
+                                                this.onSubmit.bind(this)
+                                                :
+                                                () => {
+                                                    navigation.navigate('Search')
+                                                }
+                                        }
                                     >
                                         <Text style={styles.searchBtnText}>搜索</Text>
                                     </TouchableOpacity>

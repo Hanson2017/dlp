@@ -43,6 +43,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'flex-start',
     },
+    headerRightShare:{
+        height:28,
+    },
     headerRightAndorid: {
         alignItems: 'center',
         paddingTop: 0,

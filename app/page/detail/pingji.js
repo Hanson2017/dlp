@@ -46,7 +46,7 @@ export default class DetailPjScreen extends React.Component {
                         <View style={styles.content} tabLabel='key1'>
                             {
                                 platInfo.platstatus == 1 ?
-                                    <Shuzhi replatData={dataSource.replat} data={dataSource.dataDetail}  platName={platInfo.platName} platId={platInfo.id} navigation={this.props.navigation} />
+                                    <Shuzhi replatData={dataSource.replat} data={dataSource.dataDetail} platName={platInfo.platName} platId={platInfo.id} navigation={this.props.navigation} />
                                     :
                                     <Text style={styles.black}>黑名单平台，已停止数据监控</Text>
                             }
@@ -203,6 +203,7 @@ export default class DetailPjScreen extends React.Component {
         that.setState({
             disabled: true
         })
+        that.props.noBack(false);
         let url = Api.attentionAdd + '?id_dlp=' + id + '&memberid=' + memberid;
         fetch(url)
             .then((response) => {
@@ -217,11 +218,13 @@ export default class DetailPjScreen extends React.Component {
                                 window.EventEmitter.trigger('isAttention', '已关注')
                                 window.EventEmitter.trigger('isAttention2', '已关注')
                                 that.props.toastShow('关注成功')
+
                                 setTimeout(
                                     () => {
+                                        this.props.noBack(true);
                                         this.props.toastHide()
                                     },
-                                    2000
+                                    1000
                                 );
                             }
                         })
@@ -247,6 +250,7 @@ export default class DetailPjScreen extends React.Component {
         that.setState({
             disabled: true
         })
+        that.props.noBack(false);
         let url = Api.attentionDel + '?id_dlp=' + id + '&memberid=' + memberid;
         fetch(url)
             .then((response) => {
@@ -261,11 +265,13 @@ export default class DetailPjScreen extends React.Component {
                                 window.EventEmitter.trigger('isAttention', '取消关注')
                                 window.EventEmitter.trigger('isAttention2', '取消关注')
                                 that.props.toastShow('取消关注成功')
+
                                 setTimeout(
                                     () => {
+                                        this.props.noBack(true);
                                         this.props.toastHide()
                                     },
-                                    2000
+                                    1000
                                 );
                             }
                         })

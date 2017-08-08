@@ -35,8 +35,9 @@ export default class DetailScreen extends React.Component {
                 uptime: null,
                 updatetime: null,
                 pre_id: null,
-                plat_name: null
-            }
+                plat_name: null,               
+            },
+            noBack:true,
         };
     }
     render() {
@@ -44,9 +45,10 @@ export default class DetailScreen extends React.Component {
         const navigation = this.props.navigation;
         const { params } = this.props.navigation.state;
         const dataInfo = this.state.dataInfo;
+        const noBack = this.state.noBack;
         return (
             <View style={Theme.container}>
-                <Header headerOpt={{ title: params.platName, dataInfo: dataInfo }} navigation={navigation} showActionSheet={this.showActionSheet.bind(this)} />
+                <Header headerOpt={{ title: params.platName, dataInfo: dataInfo,noBack:noBack }} navigation={navigation} showActionSheet={this.showActionSheet.bind(this)} />
                 <ActionShare ref={'ActionShare'} />
 
                 <View style={styles.detailTop}>
@@ -91,6 +93,7 @@ export default class DetailScreen extends React.Component {
                                         navigation={navigation}
                                         toastShow={this.toastShow.bind(this)}
                                         toastHide={this.toastHide.bind(this)}
+                                        noBack={this.noBack.bind(this)}
                                     />
                                 </View>
                                 <View style={styles.content} tabLabel='key2'>
@@ -126,6 +129,11 @@ export default class DetailScreen extends React.Component {
                 <Toast ref={'Toast'} />
             </View>
         );
+    }
+    noBack(flt){
+        this.setState({
+           noBack:flt, 
+        })
     }
     toastShow(data) {
         this.refs.Toast.show(data)
