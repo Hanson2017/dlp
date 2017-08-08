@@ -1366,8 +1366,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = dlp/dlp.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Hua Li (D9WT8Y25PT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Hua Li (D9WT8Y25PT)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shenzhen Big Money Box Technology Co., Ltd. (BL4S7A2TL2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shenzhen Big Money Box Technology Co., Ltd. (BL4S7A2TL2)";
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = BL4S7A2TL2;
@@ -1397,8 +1397,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.box.dailuopan;
 				PRODUCT_NAME = dlp;
-				PROVISIONING_PROFILE = "7c0deb6f-41f9-4f43-b198-6d58100f2418";
-				PROVISIONING_PROFILE_SPECIFIER = dlpTest;
+				PROVISIONING_PROFILE = "9ab7d78a-66af-462e-9ad0-e2e812068396";
+				PROVISIONING_PROFILE_SPECIFIER = dailuopanProduct;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1409,8 +1409,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = dlp/dlp.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Hua Li (D9WT8Y25PT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Hua Li (D9WT8Y25PT)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shenzhen Big Money Box Technology Co., Ltd. (BL4S7A2TL2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shenzhen Big Money Box Technology Co., Ltd. (BL4S7A2TL2)";
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = BL4S7A2TL2;
 				ENABLE_BITCODE = NO;
@@ -1439,8 +1439,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.box.dailuopan;
 				PRODUCT_NAME = dlp;
-				PROVISIONING_PROFILE = "7c0deb6f-41f9-4f43-b198-6d58100f2418";
-				PROVISIONING_PROFILE_SPECIFIER = dlpTest;
+				PROVISIONING_PROFILE = "9ab7d78a-66af-462e-9ad0-e2e812068396";
+				PROVISIONING_PROFILE_SPECIFIER = dailuopanProduct;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
