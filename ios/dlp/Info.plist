@@ -29,7 +29,7 @@
 			<string>qq</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>tencent101402579</string>
+				<string>tencent1105656193</string>
 			</array>
 		</dict>
 		<dict>
@@ -45,6 +45,8 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>2.0.4</string>
+	<key>CodePushDeploymentKey</key>
+	<string>$(CODEPUSH_KEY)</string>
 	<key>Fonts provided by application</key>
 	<array>
 		<string>Entypo.ttf</string>

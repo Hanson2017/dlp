@@ -30,7 +30,7 @@ export default class Bijiao extends React.Component {
                     this.props.data != '' ?
                         < View style={styles.echartsWp}>
                             <View style={styles.BarChartBox}>
-                                <BarLine dataText={data[0]} dataName={'陆金所'} isPlat={true} height={data[0]/data[2]} />
+                                <BarLine dataText={data[0]} dataName={this.props.platName} isPlat={true} height={data[0]/data[2]} />
                                 <BarLine dataText={data[1]} dataName={'行业平均'}  height={data[1]/data[2]} />
                                 <BarLine dataText={data[2]} dataName={'行业最高'}  height={data[2]/data[2]} />
                                 <BarLine dataText={data[3]} dataName={'行业最低'}  height={data[3]/data[2]} />

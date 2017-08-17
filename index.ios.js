@@ -4,8 +4,21 @@
 
 import React, { Component } from 'react';
 import { AppRegistry } from 'react-native';
+import codePush from 'react-native-code-push'
 import App from './app/component/MainNavigator';
 var BackboneEvents = require("backbone-events-standalone");
 window.EventEmitter = BackboneEvents.mixin({});
 
-AppRegistry.registerComponent('dlp', () => App);
+export default class Dailuopan extends Component {
+    render() {
+        return (
+            <App />
+        );
+    }
+    componentDidMount() {
+        codePush.sync()
+    }
+
+}
+
+AppRegistry.registerComponent('dlp', () => Dailuopan);
