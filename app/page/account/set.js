@@ -59,7 +59,7 @@ export default class Set extends React.Component {
                     </TouchableOpacity>
                     <View style={[styles.list, { borderBottomColor: '#e4e4e4' }]}>
                         <Text style={styles.label}>版本号</Text>
-                        <Text style={[styles.listR]}>2.0.4</Text>
+                        <Text style={[styles.listR]}>2.0.5</Text>
                     </View>
                     <TouchableOpacity style={styles.logoutBtn}
                         activeOpacity={0.6}
