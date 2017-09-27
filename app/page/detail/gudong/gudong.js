@@ -28,10 +28,29 @@ export default class Gudong extends React.Component {
                                                     <View style={styles.gudongInfo} key={i}>
                                                         <Text style={styles.gudongInfoL} >{list.type}</Text>
                                                         <View style={styles.gudongInfoR}>
-                                                            <Text style={styles.gudongInfoName}>{list.name}</Text>
-                                                            <Text style={styles.gudongInfoJ}><Text style={{ color: '#ABB7C4' }}>持股占比</Text>    {list.zhanbi != '' ? list.zhanbi : '--'}</Text>
-                                                            <Text style={styles.gudongInfoJ}><Text style={{ color: '#ABB7C4' }}>认缴出资</Text>    {list.renjiao != '' ? list.renjiao : '--'}</Text>
-                                                            <Text style={styles.gudongInfoJ}><Text style={{ color: '#ABB7C4' }}>实缴出资</Text>    {list.shijiao != '' ? list.shijiao : '--'}</Text>
+                                                            <View style={{ flexDirection: 'row', }}>
+                                                                <Text style={styles.gudongInfoName}>{list.name}</Text>
+                                                                {
+                                                                    list.dagudong == 1 ?
+                                                                        <View style={styles.iconGd}><Text style={styles.iconGdText}>大股东</Text></View>
+                                                                        :
+                                                                        null
+                                                                }
+
+                                                            </View>
+                                                            <Text style={styles.gudongInfoJ}><Text style={{ color: '#ABB7C4' }}>持股比例</Text>    {list.renjiaobili != '' ? list.renjiaobili : '--'}</Text>
+                                                            <View style={{ flexDirection: 'row', marginTop: 8, }}>
+                                                                <Text style={{ fontSize: 12.5 }}><Text style={{ color: '#ABB7C4' }}>认缴出资</Text>    {list.renjiao != '' ? list.renjiao : '--'} </Text>
+                                                                {
+                                                                    list.renjiaoshijian != '-' ?
+                                                                    <Text style={{ color: '#ccc', fontSize: 12.5,marginLeft: 30, }}>{list.renjiaoshijian}</Text>
+                                                                    :
+                                                                    null
+                                                                }
+                                                               
+                                                            </View>
+
+
                                                         </View>
                                                     </View>
                                                 )
@@ -78,7 +97,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     gudongInfoTopT1: {
-        width: 90,
+        width: 75,
         color: '#ccc',
     },
     gudongInfo: {
@@ -88,7 +107,7 @@ const styles = StyleSheet.create({
         borderBottomColor: '#f2f2f2',
     },
     gudongInfoL: {
-        width: 90,
+        width: 75,
         lineHeight: 22,
         color: '#333'
     },
@@ -125,7 +144,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginRight: 10,
         marginBottom: 10,
-        width: (Theme.screenWidth-30)/2,
+        width: (Theme.screenWidth - 30) / 2,
         height: 50,
         backgroundColor: '#f7f7f7',
         borderColor: '#e4e4e4',
@@ -138,5 +157,19 @@ const styles = StyleSheet.create({
         marginTop: 5,
         color: '#ABB7C4',
         fontSize: 12
+    },
+    iconGd: {
+        marginLeft: 5,
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: 50,
+        height: 18,
+        backgroundColor: 'red',
+        borderRadius: 8,
+    },
+    iconGdText: {
+
+        color: '#fff',
+        fontSize: 12,
     }
 })

@@ -55,7 +55,7 @@ export default class Gongshang extends React.Component {
                                 <Text style={styles.text}>{data.xinyongdaima}</Text>
                             </View>
                             <View style={styles.GongshangList}>
-                                <Text style={styles.label}>发照日期：</Text>
+                                <Text style={styles.label}>核准日期：</Text>
                                 <Text style={styles.text}>{data.fazhaoriqi}</Text>
                             </View>
                             <View style={styles.GongshangList}>
