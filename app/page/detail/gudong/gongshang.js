@@ -48,11 +48,11 @@ export default class Gongshang extends React.Component {
                             </View>
                             <View style={styles.GongshangList}>
                                 <Text style={styles.label}>营业期限：</Text>
-                                <Text style={styles.text}>{data.zhuceziben} 万人民币</Text>
+                                <Text style={styles.text}>{data.yingyeqixian}</Text>
                             </View>
                             <View style={styles.GongshangList}>
                                 <Text style={styles.label}>注册资本：</Text>
-                                <Text style={styles.text}>{data.xinyongdaima}</Text>
+                                <Text style={styles.text}>{data.zhuceziben} 万人民币</Text>
                             </View>
                             <View style={styles.GongshangList}>
                                 <Text style={styles.label}>核准日期：</Text>
