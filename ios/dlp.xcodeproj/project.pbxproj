@@ -652,6 +652,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				E25B6343C7E349C289528DE5 /* Resources */,
 				8F37AC741EE6AD530064ED7F /* Frameworks */,
+				8F8E8B461F9ED6B000D9B99F /* Recovered References */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -724,6 +725,16 @@
 				8F8CE25D1EB9B301003C539C /* libRNVectorIcons.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		8F8E8B461F9ED6B000D9B99F /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				A6597D871D9B4471B91995F1 /* libRNVectorIcons.a */,
+				50B315AEBE204FC1AFDA2A62 /* libRCTWeChat.a */,
+				0A007259506D463E821A0EC3 /* libCodePush.a */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		8FE07BCA1F3D93D400219CA9 /* Products */ = {

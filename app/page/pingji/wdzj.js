@@ -18,11 +18,11 @@ module.exports = {
                         <Icon name={item.changnum >= 0 ? 'up' : 'down'} size={12} color={item.changnum >= 0 ? '#ff0063' : '#009963'} />
                     </View>
                     <Text style={[stylesList.CABB7C4, { width: 70 }]}>{item.chengjiao}</Text>
-                    <Text style={[stylesList.CABB7C4, { width: 80 }]}>{item.tmdu}</Text>
                     <Text style={[stylesList.CABB7C4, { width: 80 }]}>{item.renqi}</Text>
                     <Text style={[stylesList.CABB7C4, { width: 80 }]}>{item.ganggan}</Text>
                     <Text style={[stylesList.CABB7C4, { width: 80 }]}>{item.ldxing}</Text>
                     <Text style={[stylesList.CABB7C4, { width: 80 }]}>{item.fsdu}</Text>
+                    <Text style={[stylesList.CABB7C4, { width: 80 }]}>{item.tmdu}</Text>
                 </TouchableOpacity>
             </View>
         )
@@ -31,11 +31,11 @@ module.exports = {
         let listTitle = [
             { title: '网贷之家', width: 90 },
             { title: '成交', width: 70 },
-            { title: '透明度' },
             { title: '人气' },
-            { title: '杠杆' },
-            { title: '流动性' },
+            { title: '合规' },
+            { title: '品牌' },
             { title: '分散度' },
+            { title: '透明度' },
         ]
         return (
             <View style={stylesList.headerRow}>

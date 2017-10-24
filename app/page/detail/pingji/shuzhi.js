@@ -171,11 +171,11 @@ export default class Shuzhi extends React.Component {
                                          </Text>
                                             <View style={styles.info}>
                                                 <Text style={styles.infoText}>成    交：{dataWdzj.chengjiao}</Text>
-                                                <Text style={styles.infoText}>流动性：{dataWdzj.ldxing}</Text>
-                                                <Text style={styles.infoText}>杠    杆：{dataWdzj.ganggan}</Text>
                                                 <Text style={styles.infoText}>人  气：{dataWdzj.renqi}</Text>
-                                                <Text style={styles.infoText}>透明度：{dataWdzj.tmdu}</Text>
+                                                <Text style={styles.infoText}>合    规：{dataWdzj.ganggan}</Text>
+                                                <Text style={styles.infoText}>品    牌：{dataWdzj.ldxing}</Text>
                                                 <Text style={styles.infoText}>分散度：{dataWdzj.fsdu}</Text>
+                                                <Text style={styles.infoText}>透明度：{dataWdzj.tmdu}</Text>
                                             </View>
                                             <View style={{ marginTop: 5, }}>
                                                 <Echarts option={LineChart.line1('之家评级', '之家评级', echartDataTimeWdzj, echartDataWdzj)} height={180} />
@@ -224,15 +224,15 @@ export default class Shuzhi extends React.Component {
                                                 {dataP2peye.changnum >= 0 ? dataP2peye.changnum : -dataP2peye.changnum}%
                                          </Text>
                                             <View style={styles.info}>
-                                                <Text style={styles.infoText}>偿兑性：{dataP2peye.claims}</Text>
-                                                <Text style={styles.infoText}>成长性：{dataP2peye.standard}</Text>
+                                                <Text style={styles.infoText}>信    披：{dataP2peye.xscore}</Text>
+                                                <Text style={styles.infoText}>合    规：{dataP2peye.hscore}</Text>
                                                 <Text style={styles.infoText}>期    限：{dataP2peye.limit_t}</Text>
-                                                <Text style={styles.infoText}>投    资：{dataP2peye.investment}</Text>
-                                                <Text style={styles.infoText}>流动性：{dataP2peye.liquidity}</Text>
                                                 <Text style={styles.infoText}>利    率：{dataP2peye.rate}</Text>
+                                                <Text style={styles.infoText}>偿兑性：{dataP2peye.claims}</Text>
+                                               
                                                 <Text style={styles.infoText}>运    营：{dataP2peye.operation}</Text>
                                                 <Text style={styles.infoText}>地域性：{dataP2peye.regional}</Text>
-                                                <Text style={styles.infoText}>借    款：{dataP2peye.borrowing}</Text>
+                                                <Text style={styles.infoText}>资金流入率：{dataP2peye.standard}</Text>
                                             </View>
                                             <View style={{ marginTop: 5, }}>
                                                 <Echarts option={LineChart.line1('天眼评级', '天眼评级', echartDataTimeP2peye, echartDataP2peye)} height={180} />
@@ -576,7 +576,7 @@ const styles = StyleSheet.create({
         color: '#fff',
     },
     Title: {
-        marginTop:15,
+        marginTop: 15,
         paddingLeft: 10,
         flexDirection: 'row',
         alignItems: 'center',
