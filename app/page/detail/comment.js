@@ -10,7 +10,7 @@ export default class Comment extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-             loading: true,
+            loading: true,
             isLoadMore: true,
             isLoadMoreIng: true,
             isRefreshing: false,
@@ -66,8 +66,14 @@ export default class Comment extends React.Component {
         return (
             <View style={styles.list} key={index}>
                 <View style={styles.hd}>
-                    <Text style={styles.name} numberOfLines={1}>{item.username}</Text>
-                    <Image source={source} style={{ width: 16, height: 16 }} />
+                    <View style={{ flexDirection: 'row', }}>
+                        <Text style={styles.name} numberOfLines={1}>{item.username}</Text>
+                        <Image source={source} style={{ width: 16, height: 16 }} />
+                    </View>
+                    <View>
+                        <Text style={styles.creatdate} numberOfLines={1}>{item.creatdate}</Text>
+                    </View>
+
                 </View>
 
 
@@ -112,13 +118,18 @@ const styles = StyleSheet.create({
     },
     hd: {
         flexDirection: 'row',
+        justifyContent: 'space-between',
     },
     name: {
         width: 100,
-          color: '#333',
+        color: '#333',
     },
     listTitle: {
         color: '#333',
+    },
+    creatdate:{
+        color:'#ccc',
+        fontSize:13,
     },
     listCon: {
         lineHeight: 20,
