@@ -20,7 +20,7 @@ export default class HelpDetail extends React.Component {
         let navigation = this.props.navigation;
         let data = this.state.dataSource;
         if (!this.state.loading) {
-            var con_str = data.detailinfo.replace(/\/ueditor_net/g, 'http://www.dailuopan.com/ueditor_net').replace(/.png\\/g, '.png')
+            var con_str = data.detailinfo.replace(/\/atcpic/g, 'http://www.dailuopan.com/atcpic').replace(/.png\\/g, '.png')
             var HTML = "<html><style>img{width:100%}.code{width:auto}</style>" + con_str + "</html>";
         }
 
