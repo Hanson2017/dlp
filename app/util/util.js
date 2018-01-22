@@ -71,18 +71,19 @@ module.exports = {
 
         fetch(url)
             .then((response) => {
-
                 if (response.ok) {
                     response.json()
                         .then((responseData) => {
-
+                            
                             if (type == 3) {
                                 that.setState({
                                     dataSource: []
                                 })
                             }
                             let dataSource = that.state.dataSource;
-                            dataSource = dataSource.concat(responseData[ApiType.dataName]);
+                            
+                            dataSource = responseData[ApiType.dataName]?dataSource.concat(responseData[ApiType.dataName]):dataSource;
+
                             that.setState({
                                 loading: false,
                                 isLoadMoreIng: false,

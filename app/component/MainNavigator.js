@@ -31,6 +31,8 @@ import HelpDetail from '../page/HelpDetail'
 import ReportsList from '../page/ReportsList'
 import ReportsDetail from '../page/ReportsDetail'
 import FriendsShare from './FriendsShare'
+import PingCeList from '../page/pingCeList'
+import PingCeDetail from '../page/pingCeDetail'
 
 class DrawerScreen extends React.Component {
     constructor(props) {
@@ -205,6 +207,12 @@ const AppDlp = StackNavigator({
     },
     FriendsShare:{
         screen: FriendsShare
+    },
+    PingCeDetail:{
+        screen:PingCeDetail
+    },
+    PingCeList:{
+        screen:PingCeList
     }
 }, {
         headerMode: 'none'

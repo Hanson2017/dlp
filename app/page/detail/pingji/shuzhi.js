@@ -232,7 +232,10 @@ export default class Shuzhi extends React.Component {
                                                
                                                 <Text style={styles.infoText}>运    营：{dataP2peye.operation}</Text>
                                                 <Text style={styles.infoText}>地域性：{dataP2peye.regional}</Text>
-                                                <Text style={styles.infoText}>资金流入率：{dataP2peye.standard}</Text>
+                                                <Text style={styles.infoText}>资金流入：{dataP2peye.standard}</Text>
+                                                <Text style={styles.infoText}>投    资：{dataP2peye.investment}</Text>
+                                                <Text style={styles.infoText}>借    款：{dataP2peye.borrowing}</Text>
+                                                <Text style={styles.infoText}>流动性：{dataP2peye.liquidity}</Text>
                                             </View>
                                             <View style={{ marginTop: 5, }}>
                                                 <Echarts option={LineChart.line1('天眼评级', '天眼评级', echartDataTimeP2peye, echartDataP2peye)} height={180} />

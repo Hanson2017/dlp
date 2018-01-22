@@ -22,6 +22,9 @@ module.exports = {
                     <Text style={[stylesList.CABB7C4, { width: 70 }]}>{item.standard}</Text>   
                     <Text style={[stylesList.CABB7C4, { width: 70 }]}>{item.operation}</Text>  
                     <Text style={[stylesList.CABB7C4, { width: 70 }]}>{item.regional}</Text>
+                    <Text style={[stylesList.CABB7C4, { width: 70 }]}>{item.investment}</Text>   
+                    <Text style={[stylesList.CABB7C4, { width: 70 }]}>{item.borrowing}</Text>  
+                    <Text style={[stylesList.CABB7C4, { width: 70 }]}>{item.liquidity}</Text>
                 </TouchableOpacity>
             </View>
         )
@@ -37,6 +40,9 @@ module.exports = {
             { title: '资金流入率' },
             { title: '运营' },
             { title: '地域性' },
+            { title: '投资' },
+            { title: '借款' },
+            { title: '流动性' },
         ]
         return (
             <View style={stylesList.headerRow}>

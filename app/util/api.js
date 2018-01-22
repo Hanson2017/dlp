@@ -32,5 +32,7 @@ module.exports = {
     getReportsList: host + '/GetReportsList', //数据报表列表
     getReportsDetail: host + '/GetReportsDetail', //数据报表列表
     getReportsDetail_dlp: host + '/GetReportsDetail_dlp', //贷罗盘数据报表列表
+    pingCeList: host + '/GetMparticleList', //评测列表
+    pingCeDetail: host + '/GetArticledetail', //评测详情
     commentList: 'http://www.76676.com/index.php?m=member&c=index&a=public_getcomment_dlp&p2pid='
 }

@@ -3,6 +3,7 @@ import { Text, StyleSheet, View, Button, StatusBar, TextInput, TouchableOpacity,
 import Header from '../component/Header'
 
 import Icon from 'react-native-vector-icons/Icomoon';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import Theme from '../util/theme';
 import Api from '../util/api';
 
@@ -15,6 +16,8 @@ export default class HomeScreen extends React.Component {
             { title: '优惠活动', iconName: 'hhuodong', screenUrl: 'FlmfList', tabId: null },
             { title: '数据查询', iconName: 'hshuju', screenUrl: 'Data', tabId: null },
             { title: '健康指标', iconName: 'hjiankang', screenUrl: 'Health', tabId: null },
+            // { title: '评论监控', iconName: 'null', ionicons:'ios-create',screenUrl: 'PingCeList', tabId: null },
+            { title: '评测监控', iconName: 'null', ionicons:'ios-analytics',screenUrl: 'PingCeList', tabId: null },
             { title: '舆论监控', iconName: 'hyulun', screenUrl: 'Yulun', tabId: null },
             { title: '流量监控', iconName: 'hliuliang', screenUrl: 'Flow', tabId: null },
             { title: '风投系平台', iconName: 'hfengtou', screenUrl: 'Query', tabId: { tab1: 0, tab2: 0 } },
@@ -39,6 +42,8 @@ export default class HomeScreen extends React.Component {
                 { title: '综合评级', iconName: 'hpingji', screenUrl: 'Pingji', tabId: null },
                 { title: '数据查询', iconName: 'hshuju', screenUrl: 'Data', tabId: null },
                 { title: '健康指标', iconName: 'hjiankang', screenUrl: 'Health', tabId: null },
+                // { title: '评论监控', iconName: 'null', ionicons:'ios-create',screenUrl: 'PingCeList', tabId: null },
+                { title: '评测监控', iconName: 'null', ionicons:'ios-analytics',screenUrl: 'PingCeList', tabId: null },
                 { title: '舆论监控', iconName: 'hyulun', screenUrl: 'Yulun', tabId: null },
                 { title: '流量监控', iconName: 'hliuliang', screenUrl: 'Flow', tabId: null },
                 { title: '风投系平台', iconName: 'hfengtou', screenUrl: 'Query', tabId: { tab1: 0, tab2: 0 } },
@@ -245,7 +250,12 @@ export default class HomeScreen extends React.Component {
                                             style={[styles.listRow, { backgroundColor: 'rgba(52,52,52,0)' }]}
                                             key={i}
                                         >
-                                            <Icon name={column.iconName} size={25} color={'#4d93e1'} />
+                                            {
+                                                column.iconName == 'null' ?
+                                                <Ionicons name={column.ionicons} size={25} color={'#4d93e1'} />
+                                                :
+                                                <Icon name={column.iconName} size={25} color={'#4d93e1'} />
+                                            }
                                             <Text style={[styles.textStyle]}>{column.title}</Text>
                                         </TouchableOpacity>
                                     )

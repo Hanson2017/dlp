@@ -15,7 +15,7 @@ import ActionShare from '../component/ActionShare';
 import Pingji from './detail/pingji';
 import Health from './detail/health';
 import Data from './detail/data';
-import Flow from './detail/flow';
+import PingCe from './detail/pingce';
 import Gudong from './detail/gudong';
 import Yulun from './detail/yulun';
 import Comment from './detail/comment';
@@ -27,7 +27,7 @@ export default class DetailScreen extends React.Component {
         super(props);
         this.state = {
             loading: true,
-            tabNames: ['评级', '健康度', '数据', '流量', '股东', '舆论', '评论', '活动'],
+            tabNames: ['评级', '健康度', '数据', '股东','评测',  '舆论', '评论', '活动'],
             dataInfo: {
                 isflmf: 0,
                 negative_time: null,
@@ -102,11 +102,12 @@ export default class DetailScreen extends React.Component {
                                 <View style={styles.content} tabLabel='key3'>
                                     <Data platInfo={{ id: params.id, platName: params.platName, updatetime: dataInfo.updatetime, platstatus: dataInfo.platstatus }} />
                                 </View>
-                                <View style={styles.content} tabLabel='key4'>
-                                    <Flow platInfo={{ id: params.id, platName: params.platName, updatetime: dataInfo.updatetime, platstatus: dataInfo.platstatus }} />
-                                </View>
+                               
                                 <View style={styles.content} tabLabel='key5'>
                                     <Gudong platInfo={{ id: params.id, platName: params.platName, updatetime: dataInfo.updatetime }} />
+                                </View>
+                                <View style={styles.content} tabLabel='key4'>
+                                    <PingCe platInfo={{ id: params.id, platName: params.platName, updatetime: dataInfo.updatetime }} navigation={this.props.navigation} />
                                 </View>
                                 <View style={styles.content} tabLabel='key6'>
                                     <Yulun platInfo={{ id: params.id, platName: params.platName, updatetime: dataInfo.updatetime }} />

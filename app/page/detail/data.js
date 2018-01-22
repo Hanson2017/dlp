@@ -10,12 +10,13 @@ import Loading from '../../component/Loading';
 import Yunying from './data/yunying';
 import UserInfo from './data/userInfo';
 import Basic from './data/basic';
+import Flow from './data/flow';
 
 export default class DetailDataScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            tabNames: ['运营数据', '用户数据', '基础信息'],
+            tabNames: ['运营数据', '用户数据', '基础信息', '流量数据'],
             loading: true,
             dataSource: null
         };
@@ -59,6 +60,9 @@ export default class DetailDataScreen extends React.Component {
                         </View>
                         <View tabLabel='key3'>
                            <Basic data={dataSource.comDetail} />
+                        </View>
+                        <View tabLabel='key4'>
+                           <Flow platInfo={this.props.platInfo} />
                         </View>
                     </ScrollableTabView>
                 </View>
