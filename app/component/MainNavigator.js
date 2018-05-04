@@ -21,6 +21,7 @@ import Black from '../page/Black'
 import Zhengyi from '../page/Zhengyi'
 import FlmfList from '../page/FlmfList'
 import Yulun from '../page/Yulun'
+import YulunDetail from '../page/YulunDetail'
 import FiveYears from '../page/FiveYears'
 import Fund from '../page/Fund'
 import Query from '../page/Query'
@@ -33,6 +34,10 @@ import ReportsDetail from '../page/ReportsDetail'
 import FriendsShare from './FriendsShare'
 import PingCeList from '../page/pingCeList'
 import PingCeDetail from '../page/pingCeDetail'
+import PingCeCommentList from '../page/pingCe/commentList'
+import PingCeCommentForm from '../page/pingCe/commentForm'
+
+import CommentForm from '../page/detail/commentForm'
 
 class DrawerScreen extends React.Component {
     constructor(props) {
@@ -187,6 +192,9 @@ const AppDlp = StackNavigator({
     Yulun: {
         screen: Yulun
     },
+    YulunDetail:{
+        screen:YulunDetail
+    },
     FiveYears: {
         screen: FiveYears
     },
@@ -213,6 +221,15 @@ const AppDlp = StackNavigator({
     },
     PingCeList:{
         screen:PingCeList
+    },
+    CommentForm:{
+        screen:CommentForm
+    },
+    PingCeCommentList:{
+        screen:PingCeCommentList
+    },
+    PingCeCommentForm:{
+        screen:PingCeCommentForm
     }
 }, {
         headerMode: 'none'

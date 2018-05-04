@@ -110,10 +110,10 @@ export default class DetailScreen extends React.Component {
                                     <PingCe platInfo={{ id: params.id, platName: params.platName, updatetime: dataInfo.updatetime }} navigation={this.props.navigation} />
                                 </View>
                                 <View style={styles.content} tabLabel='key6'>
-                                    <Yulun platInfo={{ id: params.id, platName: params.platName, updatetime: dataInfo.updatetime }} />
+                                    <Yulun platInfo={{ id: params.id, platName: params.platName, updatetime: dataInfo.updatetime }} navigation={this.props.navigation} />
                                 </View>
                                 <View style={styles.content} tabLabel='key7'>
-                                    <Comment platInfo={{ id: params.id, platName: params.platName, updatetime: dataInfo.updatetime }} />
+                                    <Comment platInfo={{ id: params.id, platName: params.platName, updatetime: dataInfo.updatetime }} navigation={this.props.navigation} />
                                 </View>
                                 {versionStatus != 1 ?
                                     <View style={styles.content} tabLabel='key8'>

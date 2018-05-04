@@ -141,7 +141,6 @@ export default class DataScreen extends React.Component {
         }
         let url = Api.pingCeList + '?page=' + that.page + '&pagesize=' + 50;
 
-        console.log(url)
         fetch(url)
             .then((response) => {
 

@@ -79,13 +79,13 @@ export default class YulunScreen extends React.Component {
 
     }
     renderItem({ item, index }) {
+        let navigation = this.props.navigation;
         return (
             <TouchableOpacity
                 style={styles.list}
                 key={index}
-                onPress={() => {
-                    Util.Linked(item.siteurl)
-                }}>
+                onPress={() => { navigation.navigate('YulunDetail', { url: item.siteurl}) }}
+                >
                 <Text style={styles.listTitle}>{item.title}</Text>
                 <Text style={styles.listDate}>{Util.formatDate(item.pubtime)}</Text>
             </ TouchableOpacity>

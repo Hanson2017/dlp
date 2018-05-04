@@ -16,7 +16,7 @@ export default class FundScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            tabNames: ['综合', '稳健型', '平衡型', '收益型', '活期'],
+            tabNames: ['综合', '稳健型', '平衡型', '收益型'],
             loading: true,
             dataSource: null,
             index: 0
@@ -75,16 +75,6 @@ export default class FundScreen extends React.Component {
                                     <List data={data.fund3} fundType={3} navigation={navigation} />
                             }
                         </View>
-                        <View style={styles.content} tabLabel='key5'>
-                            {
-                                this.state.loading ?
-                                    <Loading />
-                                    :
-                                    <List data={data.fund4} fundType={4} navigation={navigation} />
-                            }
-                        </View>
-
-
                     </ScrollableTabView>
                 </View>
             </View>

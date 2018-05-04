@@ -57,13 +57,7 @@ module.exports = {
         }
         let url;
         if (id) {
-
-            if (ApiType.type != 'comment') {
-                url = Api[ApiType.column] + '?type=' + ApiType.type + '&id_dlp=' + id + '&page=' + that.page + '&pagesize=' + 50;
-            }
-            else {
-                url = Api[ApiType.column] + id + '&page=' + that.page + '&pagesize=' + 10;
-            }
+            url = Api[ApiType.column] + '?type=' + ApiType.type + '&id_dlp=' + id + '&page=' + that.page + '&pagesize=' + 50;
         }
         else {
             url = Api[ApiType.column] + '?type=' + ApiType.type + '&page=' + that.page + '&pagesize=' + 50;
@@ -74,15 +68,15 @@ module.exports = {
                 if (response.ok) {
                     response.json()
                         .then((responseData) => {
-                            
+
                             if (type == 3) {
                                 that.setState({
                                     dataSource: []
                                 })
                             }
                             let dataSource = that.state.dataSource;
-                            
-                            dataSource = responseData[ApiType.dataName]?dataSource.concat(responseData[ApiType.dataName]):dataSource;
+                            console.log(responseData)
+                            dataSource = responseData[ApiType.dataName] ? dataSource.concat(responseData[ApiType.dataName]) : dataSource;
 
                             that.setState({
                                 loading: false,
@@ -147,7 +141,7 @@ module.exports = {
                                 tablNum: responseData.dataList[0].count,
                                 tabName: responseData.dataList[0].name
                             })
-                            that.props.changeTotalNum(responseData.dataList[0].name+tabNameFj, responseData.dataList[0].count, that.props.tabIndex)
+                            that.props.changeTotalNum(responseData.dataList[0].name + tabNameFj, responseData.dataList[0].count, that.props.tabIndex)
 
                         })
                 }

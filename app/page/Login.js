@@ -16,7 +16,7 @@ export default class Login extends Component {
         return (
             <View style={styles.container}>
                 {/*<Header headerOpt={{ back: '个人中心', title: ' ', search: true }} navigation={navigation} />*/}
-                <View style={[styleshd.headerContainer, { backgroundColor: '101113', justifyContent: 'flex-start', }]}>
+                <View style={[styleshd.headerContainer, { backgroundColor: '#101113', justifyContent: 'flex-start', }]}>
                     {
                         navigation.state.routeName == 'Main' ?
                             <View style={{ width: 50 }}></View>

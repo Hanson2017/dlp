@@ -42,12 +42,6 @@ export default class FundList extends React.Component {
                 fundRenqun = '以收益为首选目标，能承受少量风险的人群';
                 star = '★★★';
                 break;
-            case 4:
-                fundType = '活期';
-                fundS = '高流动型';
-                fundRenqun = '高流动性为首选目标，0-3万资金暂存的人群';
-                star = '★★★';
-                break;
         }
         return (
             <ScrollView>

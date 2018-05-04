@@ -97,12 +97,11 @@ export default class DataScreen extends React.Component {
         )
     }
     renderItemL({ item, index }) {
+        let navigation = this.props.navigation;
         return (
             <TouchableOpacity style={styles.listT} activeOpacity={0.4}
-                key={index}
-                onPress={() => {
-                    Util.Linked(item.siteurl)
-                }}
+                key={index}              
+                onPress={() => { navigation.navigate('YulunDetail', { url: item.siteurl}) }}
             >
                 <Text style={styles.title}>{item.title}</Text>
                 <Text style={styles.dateTime}>

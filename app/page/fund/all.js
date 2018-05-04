@@ -19,7 +19,6 @@ export default class FundAll extends React.Component {
         let fund1Data = [];
         let fund2Data = [];
         let fund3Data = [];
-        let fund4Data = [];
         for (let i = 0; i < data.fund1.length; i++) {
             fund1Data.push({ value: data.fund1[i].fund_amount, name: data.fund1[i].plat_name + '\n' + '(' + data.fund1[i].fund_amount + '万)' })
         }
@@ -29,9 +28,7 @@ export default class FundAll extends React.Component {
         for (let i = 0; i < data.fund3.length; i++) {
             fund3Data.push({ value: data.fund3[i].fund_amount, name: data.fund3[i].plat_name + '\n' + '(' + data.fund3[i].fund_amount + '万)' })
         }
-        for (let i = 0; i < data.fund4.length; i++) {
-            fund4Data.push({ value: data.fund4[i].fund_amount, name: data.fund4[i].plat_name + '\n' + '(' + data.fund4[i].fund_amount + '万)' })
-        }
+        
 
         let navigation = this.props.navigation;
 
@@ -69,13 +66,6 @@ export default class FundAll extends React.Component {
                        
                     </View>
                     <Echarts option={PieEcharts.pieFund(fund3Data)} height={175} />
-                </View>
-                <View style={styles.fundEchart}>
-                    <View style={styles.fundEchartTitle}>
-                        <Text style={styles.fundEchartTitleText}>活期示范投资（高流动型）</Text>
-                        
-                    </View>
-                    <Echarts option={PieEcharts.pieFund(fund4Data)} height={175} />
                 </View>
             </ScrollView>
         )

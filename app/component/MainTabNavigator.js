@@ -19,6 +19,7 @@ import Black from '../page/Black'
 import Zhengyi from '../page/Zhengyi'
 import FlmfList from '../page/FlmfList'
 import Yulun from '../page/Yulun'
+import YulunDetail from '../page/YulunDetail'
 import FiveYears from '../page/FiveYears'
 import Fund from '../page/Fund'
 
@@ -195,6 +196,9 @@ const AppDlp = StackNavigator({
     },
     Yulun: {
         screen: Yulun
+    },
+    YulunDetail:{
+        screen:YulunDetail
     },
     FiveYears: {
         screen: FiveYears

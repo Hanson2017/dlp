@@ -34,5 +34,9 @@ module.exports = {
     getReportsDetail_dlp: host + '/GetReportsDetail_dlp', //贷罗盘数据报表列表
     pingCeList: host + '/GetMparticleList', //评测列表
     pingCeDetail: host + '/GetArticledetail', //评测详情
+    pingCeCommentList: host + '/Getcomment_article_page', //评测详情
+    pingCeCommentAdd: host + '/Addcomment_article_json', //评测详情
+    commentListNew:host+'/Getcomment_p2p_page', //评论列表
+    commentAdd:host+'/Addcomment_p2p_json', //添加评论
     commentList: 'http://www.76676.com/index.php?m=member&c=index&a=public_getcomment_dlp&p2pid='
 }

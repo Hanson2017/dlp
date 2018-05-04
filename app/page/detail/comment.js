@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, View, Image, TouchableOpacity, FlatList, ScrollView, RefreshControl } from 'react-native';
+import { Text, StyleSheet, View, Image, TouchableOpacity, FlatList, ScrollView, RefreshControl, Alert } from 'react-native';
 
 import stylesList from '../../css/listData';
 import Util from '../../util/util'
@@ -23,6 +23,7 @@ export default class Comment extends React.Component {
     }
     render() {
         let platInfo = this.props.platInfo;
+        let navigation = this.props.navigation;
         if (this.state.loading) {
             return (
                 <Loading />
@@ -44,9 +45,26 @@ export default class Comment extends React.Component {
                                 renderItem={this.renderItem.bind(this)}
                             />
                             :
-                            <Text style={styles.null}>暂无舆论</Text>
+                            <Text style={styles.null}>暂无评论</Text>
                     }
+                    {/* <TouchableOpacity style={styles.submitBtn} onPress={() => {
+                        if (signState != null) {
+                            navigation.navigate('CommentForm',{cid:platInfo.id})
+                        }
+                        else {
+                            Alert.alert(
+                                '提示',
+                                '请先登录后评论！',
+                                [
+                                    { text: '取消' },
+                                    { text: '确认', onPress: this.goLogin.bind(this) },
+                                ]
+                            )
+                        }
 
+                    }}>
+                        <Text style={styles.submitBtnText}>我要评论</Text>
+                    </TouchableOpacity> */}
                 </View>
             )
         }
@@ -71,13 +89,10 @@ export default class Comment extends React.Component {
                         <Image source={source} style={{ width: 16, height: 16 }} />
                     </View>
                     <View>
-                        <Text style={styles.creatdate} numberOfLines={1}>{item.creatdate}</Text>
+                        <Text style={styles.creatdate} numberOfLines={1}>{Util.formatDate(item.updatetime)}</Text>
                     </View>
-
                 </View>
-
-
-                <Text style={styles.listCon}>{item.content}</Text>
+                <Text style={styles.listCon}>{item.detail}</Text>
             </ View>
         )
 
@@ -100,13 +115,16 @@ export default class Comment extends React.Component {
     }
     componentDidMount() {
         let id = this.props.platInfo.id;
-        Util.getDataList(this, { column: 'commentList', type: 'comment', dataName: 'comment' }, 1, id)
+        Util.getDataList(this, { column: 'commentListNew', type: 'comment', dataName: 'dataList' }, 1, id)
     }
     getMore() {
         let id = this.props.platInfo.id;
-        Util.getDataList(this, { column: 'commentList', type: 'comment', dataName: 'comment' }, 2, id)
+        Util.getDataList(this, { column: 'commentListNew', type: 'comment', dataName: 'dataList' }, 2, id)
     }
-
+    goLogin() {
+        let navigation = this.props.navigation;
+        navigation.navigate('Login')
+    }
 }
 
 const styles = StyleSheet.create({
@@ -127,9 +145,9 @@ const styles = StyleSheet.create({
     listTitle: {
         color: '#333',
     },
-    creatdate:{
-        color:'#ccc',
-        fontSize:13,
+    creatdate: {
+        color: '#ccc',
+        fontSize: 13,
     },
     listCon: {
         lineHeight: 20,
@@ -139,5 +157,18 @@ const styles = StyleSheet.create({
     null: {
         padding: 10,
         color: '#ccc',
+    },
+    submitBtn: {
+        height: 40,
+        borderTopWidth: 1,
+        borderTopColor: '#ccc',
+        backgroundColor: '#f3f4f6',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    submitBtnText: {
+        color: '#333',
+        fontSize: 16,
+        fontWeight: 'bold',
     }
 })
