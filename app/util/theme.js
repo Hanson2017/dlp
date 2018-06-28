@@ -6,15 +6,23 @@ import { PixelRatio, Dimensions } from 'react-native';
 module.exports = {
     screenWidth: Dimensions.get('window').width,
     screenHeight: Dimensions.get('window').height,
-    bgColor: '#f2f2f2',
-    color: '#FF6666',
+    bgColor: '#f1f1f1',
+    color: '#0096E6',
+    color2:'#007DDC',
+    fund1Color:'#4AB3FF',
+    fund2Color:'#C69C6D',
+    fund3Color:'#916DDE',
     container: {
         flex: 1,
-        backgroundColor: '#14191e',
+        backgroundColor: '#007DDC',
     },
     content:{
          flex: 1,
-          backgroundColor: '#fff',
+          backgroundColor: '#f1f1f1',
+    },
+    box:{
+        backgroundColor: '#fff',
+        borderBottomColor:'#ddd',
     },
     flexDrow: {
         flexDirection: 'row',
@@ -41,5 +49,6 @@ module.exports = {
     c666: {
         color: '#666',
     },
-
+    upColor:'#E51C23',
+    downColor:'#009963',
 };

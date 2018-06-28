@@ -11,11 +11,15 @@ module.exports = {
         var year = date.getFullYear()
         var month = date.getMonth() + 1
         var day = date.getDate()
-        return year + '-' + month + '-' + day
+        return year + '/' + month + '/' + day
     },
     formatDate(date) {
         let d = this.setDate(new Date(parseInt(date.replace("/Date(", "").replace(")/", ""))));
         return d;
+    },
+    cutText(str, word) {
+        if (str.length > word) return str.substr(0, word) + "...";
+        return str;
     },
     // 去掉所有的html标记
     delHtmlTag(str) {
@@ -31,6 +35,7 @@ module.exports = {
         if (type == 1) {
             that.page = 1;
             that.setState({
+                dataSource: [],
                 loading: true
             })
         }
@@ -110,7 +115,7 @@ module.exports = {
                 console.log('error:', error)
             })
     },
-    getDataListTab(that, ApiType) {
+    getDataListTab(that, ApiType,tabN) {
         let url = Api[ApiType.column] + '?type=' + ApiType.type;
         let tabNameFj = '';
         switch (that.props.tabIndex) {
@@ -135,11 +140,12 @@ module.exports = {
                             that.setState({
                                 loading: false,
                                 dataSource: dataSource,
-                                dataSourceTab: dataSource[0],
+                                dataSourceTab: dataSource[tabN],
                                 totalNum: responseData.totalNum,
                                 updatetime: responseData.updatetime,
-                                tablNum: responseData.dataList[0].count,
-                                tabName: responseData.dataList[0].name
+                                tablNum: responseData.dataList[tabN].count,
+                                tabName: responseData.dataList[tabN].name,
+                                isRefreshing: false,
                             })
                             that.props.changeTotalNum(responseData.dataList[0].name + tabNameFj, responseData.dataList[0].count, that.props.tabIndex)
 
@@ -155,7 +161,6 @@ module.exports = {
     },
     getDataDetail(that, type, id) {
         let url = Api['detail'] + '?type=' + type + '&id_dlp=' + id
-        console.log(url)
         fetch(url)
             .then((response) => {
                 if (response.ok) {
@@ -164,8 +169,8 @@ module.exports = {
                             that.setState({
                                 loading: false,
                                 dataSource: responseData,
+                                isRefreshing: false,
                             })
-                            console.log('responseData', responseData)
                         })
                 }
                 else {

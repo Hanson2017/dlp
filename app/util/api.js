@@ -5,10 +5,17 @@ const host = 'http://www.dailuopan.com/MPAPI';
 
 module.exports = {
     domain: 'http://www.dailuopan.com',
+    home:host+'/GetHome',
+    gradeHome:host+'/GetGradeHome',
+    dataHome:host+'/GetdataHome',
+    sentHome:host+'/GetsentHome',
+    findHome:host+'/GetfindHome',
+    
     pingji: host + '/GetGradeList',  //评级
     data: host + '/GetDataList',    //数据详情
     health: host + '/GetHealthList',//健康度
     flow: host + '/GetFlowList',//流量
+    query: host + '/GetqueryHome',//多维度导航
     rongzi: host + '/GetPlatbackList',//融资背景
     yewu: host + '/GetServicetypeList',//业务类型
     diqu: host + '/GetPlatListAll',//地区、上线时间、存管
@@ -33,10 +40,14 @@ module.exports = {
     getReportsDetail: host + '/GetReportsDetail', //数据报表列表
     getReportsDetail_dlp: host + '/GetReportsDetail_dlp', //贷罗盘数据报表列表
     pingCeList: host + '/GetMparticleList', //评测列表
+    pingCeList_new: host + '/GetMparticleList_new', //评测列表(new)
+    pingCeList_hot: host + '/GetMparticleHotList', //评测列表(new)
     pingCeDetail: host + '/GetArticledetail', //评测详情
     pingCeCommentList: host + '/Getcomment_article_page', //评测详情
     pingCeCommentAdd: host + '/Addcomment_article_json', //评测详情
+    commentList_plat:host+'/Getcomment_p2p_page_list', //全部平台点评列表
     commentListNew:host+'/Getcomment_p2p_page', //评论列表
     commentAdd:host+'/Addcomment_p2p_json', //添加评论
-    commentList: 'http://www.76676.com/index.php?m=member&c=index&a=public_getcomment_dlp&p2pid='
+    commentList: 'http://www.76676.com/index.php?m=member&c=index&a=public_getcomment_dlp&p2pid=',
+    commentListAccount:host+'/Member_comment_list' //账户中心评论列表
 }

@@ -1,5 +1,17 @@
 import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
+    updateContainer:{
+        paddingTop:10,
+        paddingBottom:10,
+        paddingLeft:10,
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    updateContainerText:{
+        color:'#BBE2FF',
+        fontSize:11,
+    },
+    
     update: {
         padding: 10,
         paddingLeft:10,
@@ -7,21 +19,26 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     updateText: {
-        fontSize:12,
-        color: '#ccc',
+        fontSize:10,
+        color: '#AFAFAF',
     },
     headerRow: {
         flexDirection: 'row',
         alignItems: 'center',
-        height: 40,
-        backgroundColor: '#e1e6eb',
+        height: 30,
+        borderBottomColor: '#eee',
+        borderBottomWidth: 1
+    },
+    headerRowText:{
+        fontSize:11,
+        color:'#999',
     },
     tdID: {
         paddingLeft: 10,
-        width: 70,
+        width: 60,
     },
     tdName: {
-        width: 100,
+        width: 90,
     },
     tdUp: {
         flexDirection: 'row',
@@ -32,8 +49,16 @@ const styles = StyleSheet.create({
         fontSize:12
     },
     CABB7C4: {
-        color: '#8c96a0',
+        color: '#999',
         fontSize:12
+    },
+    C666: {
+        color: '#666',
+        fontSize:12
+    },
+    firstName:{
+        fontWeight:'bold',
+        color:'#0096e6',
     },
     fixed: {
         borderRightWidth: 2,
@@ -44,8 +69,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         height: 40,
-        borderWidth: 1,
-        borderColor: '#f2f2f2',
     },
     getMoreText: {
         color: '#999',
@@ -54,15 +77,15 @@ const styles = StyleSheet.create({
         paddingBottom: 20,
         position: 'relative',
         justifyContent: 'center',
-        height: 70,
-        borderBottomColor: '#e1e6eb',
+        height: 66,
+        borderBottomColor: '#eee',
         borderBottomWidth: 1
     },
     itemRowNone: {
         position: 'relative',
         justifyContent: 'center',
-        height: 44,
-        borderBottomColor: '#e1e6eb',
+        height: 40,
+        borderBottomColor: '#eee',
         borderBottomWidth: 1
     },
     shifan: {
@@ -92,18 +115,36 @@ const styles = StyleSheet.create({
         fontSize: 12,
     },
     hongbao: {
-        paddingLeft: 5,
-        paddingRight: 5,
-        height: 20,
+        width:120,
+        height: 18,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#ff9900'
+        backgroundColor: '#FFBC41',
+        borderRadius:4,
     },
     hongbaoText: {
         color: '#fff',
         fontSize: 11
-    }
+    },
+    tdName_black: {
+        paddingLeft:20,
+        width: 110,
+        lineHeight:16,
+    },
+    yygs:{
+        width:180,
+        paddingRight:15,
+        lineHeight:16,
+    },
+    province:{
+        width:60,
+        lineHeight:16,
+    },
+    city:{
+        width:70,
+        lineHeight:16,
+    },
 })
 
 module.exports = styles
