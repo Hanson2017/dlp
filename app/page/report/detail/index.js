@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Text, StyleSheet, View, ScrollView, WebView } from 'react-native';
+import { SafeAreaView } from "react-navigation";
 import Theme from '../../../util/theme';
 import Util from '../../../util/util';
 import Api from '../../../util/api';
@@ -28,40 +29,41 @@ export default class ReportsDetail extends React.Component {
         }
 
         return (
-            <View style={Theme.container}>
-                <Header headerOpt={{ back: '数据报表', title: '数据报表', search: 'null' }} navigation={navigation} />
-                <View style={styles.content}>
-                    {
-                        this.state.loading ?
-                            <Loading />
-                            :
-                            <ScrollView
-                                style={styles.reportDetailWp}
-                            >
-                                <View style={styles.reportHead}>
-                                    <Text style={styles.reportDetailTitle}>{data.title}</Text>
-                                    <Text style={styles.reportDetailTime}>发布时间     {Util.formatDate(data.addtime)}</Text>
-                                </View>
-                                <View>
-                                    {type != 'dlp' ?
-                                        <WebView
-                                            style={{
-                                                height: Theme.screenHeight - 180,
-                                            }}
-                                            source={{ html: HTML }}
-                                        />
-                                        :
-                                        <View>
-                                            <Text style={styles.dlpText}>本文因为数据过多，暂时只支持PC端查看。</Text>
-                                            <Text style={styles.dlpText}>贷罗盘PC端网址：Http://www.dailuopan.com</Text>
-                                        </View>
-                                    }
-                                </View>
-
-                            </ScrollView>
-                    }
+            <SafeAreaView style={{ flex: 1, backgroundColor: Theme.color2 }}>
+                <View style={Theme.container}>
+                    <Header headerOpt={{ back: '数据报表', title: '数据报表', search: 'null' }} navigation={navigation} />
+                    <View style={styles.content}>
+                        {
+                            this.state.loading ?
+                                <Loading />
+                                :
+                                <ScrollView
+                                    style={styles.reportDetailWp}
+                                >
+                                    <View style={styles.reportHead}>
+                                        <Text style={styles.reportDetailTitle}>{data.title}</Text>
+                                        <Text style={styles.reportDetailTime}>发布时间     {Util.formatDate(data.addtime)}</Text>
+                                    </View>
+                                    <View>
+                                        {type != 'dlp' ?
+                                            <WebView
+                                                style={{
+                                                    height: Theme.screenHeight - 180,
+                                                }}
+                                                source={{ html: HTML }}
+                                            />
+                                            :
+                                            <View>
+                                                <Text style={styles.dlpText}>本文因为数据过多，暂时只支持PC端查看。</Text>
+                                                <Text style={styles.dlpText}>贷罗盘PC端网址：Http://www.dailuopan.com</Text>
+                                            </View>
+                                        }
+                                    </View>
+                                </ScrollView>
+                        }
+                    </View>
                 </View>
-            </View>
+            </SafeAreaView>
         )
     }
     componentDidMount() {
@@ -104,8 +106,8 @@ export default class ReportsDetail extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    content:{
-        flex:1,
+    content: {
+        flex: 1,
         backgroundColor: '#fff',
     },
     reportDetailWp: {
@@ -129,9 +131,9 @@ const styles = StyleSheet.create({
         color: '#8e969f',
         fontSize: 13,
     },
-    dlpText:{
-        lineHeight:30,
-        fontSize:14,
+    dlpText: {
+        lineHeight: 30,
+        fontSize: 14,
     }
 
 })

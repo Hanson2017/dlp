@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Text, StyleSheet, View, FlatList, ScrollView, TouchableOpacity, RefreshControl } from 'react-native';
 import Echarts from 'native-echarts';
+import { SafeAreaView } from "react-navigation";
 import Util from '../../util/util';
 import Api from '../../util/api';
 import Theme from '../../util/theme';
@@ -54,56 +55,58 @@ export default class DataScreen extends React.Component {
             ]
         }
         return (
-            <View style={Theme.container}>
+            <SafeAreaView style={{ flex: 1, backgroundColor: Theme.color2 }}>
+                <View style={Theme.container}>
 
-                <Header headerOpt={{ back: '舆论监控', title: '舆论监控' }} navigation={navigation} />
-                <View style={styles.update}>
-                    <Text style={[styles.updateText]}>更新时间：{updatetime}</Text>
-                </View>
-                <View style={Theme.content}>
-                    {
-                        this.state.loading ?
-                            <Loading />
-                            :
-                            <ScrollView
-                                refreshControl={
-                                    <RefreshControl
-                                        refreshing={this.state.isRefreshing}
-                                        onRefresh={this.onRefresh.bind(this)}
-                                    />
-                                }
-                            >
-                                <View style={Theme.box}>
-                                    <View style={styles.echarts}>
-                                        <Echarts option={option} height={200} />
-                                        <View style={styles.echartsTitle}><Text style={styles.echartsTitleText}>过去48小时舆论热点分布</Text></View>
+                    <Header headerOpt={{ back: '舆论监控', title: '舆论监控' }} navigation={navigation} />
+                    <View style={styles.update}>
+                        <Text style={[styles.updateText]}>更新时间：{updatetime}</Text>
+                    </View>
+                    <View style={Theme.content}>
+                        {
+                            this.state.loading ?
+                                <Loading />
+                                :
+                                <ScrollView
+                                    refreshControl={
+                                        <RefreshControl
+                                            refreshing={this.state.isRefreshing}
+                                            onRefresh={this.onRefresh.bind(this)}
+                                        />
+                                    }
+                                >
+                                    <View style={Theme.box}>
+                                        <View style={styles.echarts}>
+                                            <Echarts option={option} height={200} />
+                                            <View style={styles.echartsTitle}><Text style={styles.echartsTitleText}>过去48小时舆论热点分布</Text></View>
+                                        </View>
+
+                                        <View style={styles.totalNum}>
+                                            <View style={[styles.totalNumT, styles.totalNumTol]}><Text style={styles.totalNumText}>舆论总条数：{this.state.dataInfo.all_num}</Text></View>
+                                            <View style={[styles.totalNumT, styles.totalNumTM]}><Text style={styles.totalNumText}>昨日条数：{this.state.dataInfo.date_num}</Text></View>
+                                        </View>
+                                    </View>
+                                    <View style={[Theme.box, Theme.mt10, styles.yulunList]}>
+                                        <FlatList
+                                            data={this.state.dataSource}
+                                            renderItem={this.renderItemL.bind(this)}
+                                            ListFooterComponent={this.ListFooterComponent.bind(this)}
+
+                                        />
                                     </View>
 
-                                    <View style={styles.totalNum}>
-                                        <View style={[styles.totalNumT, styles.totalNumTol]}><Text style={styles.totalNumText}>舆论总条数：{this.state.dataInfo.all_num}</Text></View>
-                                        <View style={[styles.totalNumT, styles.totalNumTM]}><Text style={styles.totalNumText}>昨日条数：{this.state.dataInfo.date_num}</Text></View>
-                                    </View>
-                                </View>
-                                <View style={[Theme.box,Theme.mt10,styles.yulunList]}>
-                                    <FlatList
-                                        data={this.state.dataSource}
-                                        renderItem={this.renderItemL.bind(this)}
-                                        ListFooterComponent={this.ListFooterComponent.bind(this)}
 
-                                    />
-                                </View>
-
-
-                            </ScrollView>
-                    }
+                                </ScrollView>
+                        }
+                    </View>
                 </View>
-            </View>
+            </SafeAreaView>
         )
     }
     renderItemL({ item, index }) {
         let navigation = this.props.navigation;
         return (
-           <Item data={item} navigation={navigation} />
+            <Item data={item} navigation={navigation} />
         )
     }
     ListFooterComponent() {
@@ -241,18 +244,18 @@ const styles = StyleSheet.create({
         width: Theme.screenWidth,
         height: 255,
     },
-    echartsTitle:{
-        marginTop:15,
-        width:160,
-        height:22,
-        borderRadius:4,
-        backgroundColor:'#F5F5F5',
+    echartsTitle: {
+        marginTop: 15,
+        width: 160,
+        height: 22,
+        borderRadius: 4,
+        backgroundColor: '#F5F5F5',
         justifyContent: 'center',
         alignItems: 'center',
     },
-    echartsTitleText:{
-        fontSize:12,
-        color:'#999',
+    echartsTitleText: {
+        fontSize: 12,
+        color: '#999',
     },
     totalNum: {
         borderTopWidth: 1,
@@ -267,18 +270,18 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
-    totalNumTol:{
-        borderRightWidth:1,
-        borderRightColor:'#eee',
+    totalNumTol: {
+        borderRightWidth: 1,
+        borderRightColor: '#eee',
     },
-    totalNumText:{
+    totalNumText: {
         fontSize: 12,
         color: '#bbb',
     },
-    yulunList:{
-        paddingLeft:15,
+    yulunList: {
+        paddingLeft: 15,
     },
-    
+
 })
 
 

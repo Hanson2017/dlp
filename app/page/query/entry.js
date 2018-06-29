@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Text, StyleSheet, View, TouchableOpacity, ScrollView } from 'react-native';
+import { SafeAreaView } from "react-navigation";
 
 import Api from '../../util/api';
 import Theme from '../../util/theme';
@@ -73,30 +74,30 @@ export default class DataScreen extends React.Component {
         const { navigation } = this.props;
         const { dataSource, loading, diquNav, dateTimeNav } = this.state;
         return (
-            <View style={Theme.container}>
-                <Header headerOpt={{ back: '多维度分析', title: '多维度分析' }} navigation={navigation} />
-                <View style={styles.content}>
-                    <ScrollView>
-                        <Title data={'多维度分析'} />
-                        {
-                            loading ?
-                                <View style={{ paddingTop: 60, }}>
-                                    <Loading />
-                                </View>
-                                :
-                                <View style={styles.navContainer}>
-                                    <List titleText={'按背景'} navigation={navigation} navList={beijingNav} n={6} />
-                                    <List titleText={'按业务类型'} navigation={navigation} navList={yewuNav} n={8} />
-                                    <List titleText={'按地区'} navigation={navigation} navList={diquNav} n={8} />
-                                    <List titleText={'按时间'} navigation={navigation} navList={dateTimeNav} n={5} />
-                                    <List titleText={'按银行存管'} navigation={navigation} navList={cunguanNav} n={4} />
-                                </View>
-                        }
-                    </ScrollView>
+            <SafeAreaView style={{ flex: 1, backgroundColor: Theme.color2 }}>
+                <View style={Theme.container}>
+                    <Header headerOpt={{ back: '多维度分析', title: '多维度分析' }} navigation={navigation} />
+                    <View style={styles.content}>
+                        <ScrollView>
+                            <Title data={'多维度分析'} />
+                            {
+                                loading ?
+                                    <View style={{ paddingTop: 60, }}>
+                                        <Loading />
+                                    </View>
+                                    :
+                                    <View style={styles.navContainer}>
+                                        <List titleText={'按背景'} navigation={navigation} navList={beijingNav} n={6} />
+                                        <List titleText={'按业务类型'} navigation={navigation} navList={yewuNav} n={8} />
+                                        <List titleText={'按地区'} navigation={navigation} navList={diquNav} n={8} />
+                                        <List titleText={'按时间'} navigation={navigation} navList={dateTimeNav} n={5} />
+                                        <List titleText={'按银行存管'} navigation={navigation} navList={cunguanNav} n={4} />
+                                    </View>
+                            }
+                        </ScrollView>
+                    </View>
                 </View>
-
-
-            </View>
+            </SafeAreaView>
         )
     }
     componentDidMount() {

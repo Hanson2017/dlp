@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Text, StyleSheet, View, ScrollView, WebView, TouchableOpacity } from 'react-native';
+import { SafeAreaView } from "react-navigation";
 import Icon from 'react-native-vector-icons/Icomoon';
 import Theme from '../../../util/theme';
 import Util from '../../../util/util';
@@ -26,68 +27,70 @@ export default class HelpDetail extends React.Component {
         }
 
         return (
-            <View style={Theme.container}>
-                <Header headerOpt={{ back: '评测文章', title: '评测文章', search: 'null' }} navigation={navigation} />
-                <View style={styles.content}>
-                    {
-                        this.state.loading ?
-                            <Loading />
-                            :
-                            <ScrollView
-                                style={styles.HelpDetailWp}
-                            >
-                                <View style={styles.header}>
-                                    <View style={styles.title}>
-                                        <Text style={styles.titleText}>{article.title}</Text>
-                                    </View>
-                                    <View style={styles.source}>
-                                        <Text style={styles.sourceText}>来源：微信公众号-{article.mpname}</Text>
-                                        <Text style={styles.sourceText}>发布时间：{Util.formatDate(article.updatetime)}</Text>
-                                    </View>
-                                    <View style={styles.relate}>
-                                        <Text style={styles.relateLabeltext}>相关：</Text>
-                                        <View style={styles.relateList}>
-                                        {
-                                            plats !== '' && plats.length > 0 ?
-                                                plats.map((item, i) => {
-                                                    return (
-                                                        <TouchableOpacity style={styles.relateplatName} key={i}
-                                                            onPress={()=>{
-                                                                navigation.navigate('Detail', { id: item.id_dlp, platName: item.plat_name })
-                                                            }}
-                                                        >
-                                                            <Text style={styles.relateplatNameText}>{item.plat_name}</Text>
-                                                        </TouchableOpacity>
-                                                    )
-                                                })
-                                                :
-                                                null
-                                        }
+            <SafeAreaView style={{ flex: 1, backgroundColor: Theme.color2 }}>
+                <View style={Theme.container}>
+                    <Header headerOpt={{ back: '评测文章', title: '评测文章', search: 'null' }} navigation={navigation} />
+                    <View style={styles.content}>
+                        {
+                            this.state.loading ?
+                                <Loading />
+                                :
+                                <ScrollView
+                                    style={styles.HelpDetailWp}
+                                >
+                                    <View style={styles.header}>
+                                        <View style={styles.title}>
+                                            <Text style={styles.titleText}>{article.title}</Text>
+                                        </View>
+                                        <View style={styles.source}>
+                                            <Text style={styles.sourceText}>来源：微信公众号-{article.mpname}</Text>
+                                            <Text style={styles.sourceText}>发布时间：{Util.formatDate(article.updatetime)}</Text>
+                                        </View>
+                                        <View style={styles.relate}>
+                                            <Text style={styles.relateLabeltext}>相关：</Text>
+                                            <View style={styles.relateList}>
+                                                {
+                                                    plats !== '' && plats.length > 0 ?
+                                                        plats.map((item, i) => {
+                                                            return (
+                                                                <TouchableOpacity style={styles.relateplatName} key={i}
+                                                                    onPress={() => {
+                                                                        navigation.navigate('Detail', { id: item.id_dlp, platName: item.plat_name })
+                                                                    }}
+                                                                >
+                                                                    <Text style={styles.relateplatNameText}>{item.plat_name}</Text>
+                                                                </TouchableOpacity>
+                                                            )
+                                                        })
+                                                        :
+                                                        null
+                                                }
+                                            </View>
                                         </View>
                                     </View>
-                                </View>
-                                <View>
-                                    <WebView
-                                        style={{
-                                            height: Theme.screenHeight - 215,
-                                        }}
-                                        source={{ html: HTML }}
-                                    />
-                                </View>
+                                    <View>
+                                        <WebView
+                                            style={{
+                                                height: Theme.screenHeight - 215,
+                                            }}
+                                            source={{ html: HTML }}
+                                        />
+                                    </View>
 
-                            </ScrollView>
+                                </ScrollView>
 
-                    }
-                    <TouchableOpacity style={styles.submitBtn}
-                        onPress={() => {
-                            navigation.navigate('PingCeCommentList', { cid: params.id })
+                        }
+                        <TouchableOpacity style={styles.submitBtn}
+                            onPress={() => {
+                                navigation.navigate('PingCeCommentList', { cid: params.id })
 
-                        }}>
-                        <Icon name={'comment-find'} size={16} color={'#73C3FF'} />
-                        <Text style={styles.submitBtnText}>查看评论</Text>
-                    </TouchableOpacity>
+                            }}>
+                            <Icon name={'comment-find'} size={16} color={'#73C3FF'} />
+                            <Text style={styles.submitBtnText}>查看评论</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
-            </View>
+            </SafeAreaView>
         )
     }
     componentDidMount() {
@@ -157,15 +160,15 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'flex-start'
     },
-    relateList:{
-        flex:1,
+    relateList: {
+        flex: 1,
         flexDirection: 'row',
         flexWrap: 'wrap',
     },
     relateLabeltext: {
         fontSize: 11,
         color: '#bbb',
-        lineHeight:16,
+        lineHeight: 16,
     },
     relateplatName: {
         marginRight: 10,
@@ -173,7 +176,7 @@ const styles = StyleSheet.create({
     relateplatNameText: {
         fontSize: 11,
         color: '#83CAFF',
-        lineHeight:16,
+        lineHeight: 16,
     },
     submitBtn: {
         borderTopWidth: 1,
@@ -183,10 +186,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
-    submitBtnText:{
-        paddingLeft:10,
-        color:Theme.color,
-        fontSize:14,
+    submitBtnText: {
+        paddingLeft: 10,
+        color: Theme.color,
+        fontSize: 14,
     },
     p: {
         color: '#999',

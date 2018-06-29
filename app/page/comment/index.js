@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, View,TouchableOpacity,ScrollView ,FlatList,RefreshControl} from 'react-native';
-
+import { Text, StyleSheet, View, TouchableOpacity, ScrollView, FlatList, RefreshControl } from 'react-native';
+import { SafeAreaView } from "react-navigation";
 import Api from '../../util/api';
 import Util from '../../util/util';
 import Theme from '../../util/theme';
@@ -10,7 +10,7 @@ import Item from './item/index2';
 import stylesList from '../../css/listData';
 
 export default class PingceScreen extends React.Component {
-    
+
     constructor(props) {
         super(props);
         this.state = {
@@ -28,37 +28,39 @@ export default class PingceScreen extends React.Component {
     }
     render() {
         const { navigation } = this.props;
-        const {  updatetime } = this.state;
-       
-        return (
-            <View style={Theme.container}>
-                <Header headerOpt={{ back: '全部平台点评', title: '全部平台点评' }} navigation={navigation} />
-                <View style={styles.update}>
-                    <Text style={[styles.updateText]}>更新时间：{updatetime}</Text>
-                </View>
-                <View style={styles.content}>
-                    {
-                        this.state.loading ?
-                            <Loading />
-                            :
-                            <ScrollView
-                                refreshControl={
-                                    <RefreshControl
-                                        refreshing={this.state.isRefreshing}
-                                        onRefresh={this.onRefresh.bind(this)}
-                                    />
-                                }
-                            >
-                                <FlatList
-                                    data={this.state.dataSource}
-                                    renderItem={this.renderItemL.bind(this)}
-                                    ListFooterComponent={this.ListFooterComponent.bind(this)}
+        const { updatetime } = this.state;
 
-                                />
-                            </ScrollView>
-                    }
+        return (
+            <SafeAreaView style={{ flex: 1, backgroundColor: Theme.color2 }}>
+                <View style={Theme.container}>
+                    <Header headerOpt={{ back: '全部平台点评', title: '全部平台点评' }} navigation={navigation} />
+                    <View style={styles.update}>
+                        <Text style={[styles.updateText]}>更新时间：{updatetime}</Text>
+                    </View>
+                    <View style={styles.content}>
+                        {
+                            this.state.loading ?
+                                <Loading />
+                                :
+                                <ScrollView
+                                    refreshControl={
+                                        <RefreshControl
+                                            refreshing={this.state.isRefreshing}
+                                            onRefresh={this.onRefresh.bind(this)}
+                                        />
+                                    }
+                                >
+                                    <FlatList
+                                        data={this.state.dataSource}
+                                        renderItem={this.renderItemL.bind(this)}
+                                        ListFooterComponent={this.ListFooterComponent.bind(this)}
+
+                                    />
+                                </ScrollView>
+                        }
+                    </View>
                 </View>
-            </View>
+            </SafeAreaView>
         )
     }
     renderItemL({ item, index }) {
@@ -178,8 +180,8 @@ export default class PingceScreen extends React.Component {
 }
 const styles = StyleSheet.create({
     content: {
-        paddingTop:15,
-        paddingLeft:15,
+        paddingTop: 15,
+        paddingLeft: 15,
         flex: 1,
         backgroundColor: '#fff',
     },

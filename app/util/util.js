@@ -147,7 +147,7 @@ module.exports = {
                                 tabName: responseData.dataList[tabN].name,
                                 isRefreshing: false,
                             })
-                            that.props.changeTotalNum(responseData.dataList[0].name + tabNameFj, responseData.dataList[0].count, that.props.tabIndex)
+                            that.props.changeTotalNum(responseData.totalNum)
 
                         })
                 }

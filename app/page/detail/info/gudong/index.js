@@ -62,7 +62,7 @@ export default class Gudong extends React.Component {
                                         <Text style={styles.null2}>暂无股权信息</Text>
                                 }
                             </View>
-                            <View style={[Theme.box, Theme.mt10,{borderBottomWidth:0,}]}>
+                            <View style={[Theme.box, Theme.mt10, { borderBottomWidth: 0, }]}>
                                 <Title data={'主要成员'} />
                                 {
                                     gudongchengyuan != null && gudongchengyuan.length > 0 ?
@@ -72,7 +72,7 @@ export default class Gudong extends React.Component {
                                                     gudongchengyuan.map((list, i) => {
 
                                                         return (
-                                                            <View style={[styles.memberInfoList, gudongchengyuan.length - 1 == i || gudongchengyuan.length - 2 == i ? { borderBottomWidth: 0 } : null]} key={i}>
+                                                            <View style={[styles.memberInfoList, gudongchengyuan.length - 1 == i || (gudongchengyuan.length - 2 == i && i % 2 == 0) ? { borderBottomWidth: 0 } : null]} key={i}>
                                                                 <Text numberOfLines={1} style={styles.memberInfoTextName}>{list.name}</Text>
                                                                 <View style={styles.memberInfoZhiwei}>
                                                                     <Text numberOfLines={1} style={styles.memberInfoTextZhiwei}>{list.zhiwei}</Text>
@@ -161,7 +161,7 @@ const styles = StyleSheet.create({
     gudongInfoBdTextChuzi: {
         width: 140,
     },
-    
+
     memberBox: {
         padding: 17,
         paddingRight: 0,
@@ -208,8 +208,8 @@ const styles = StyleSheet.create({
         fontSize: 14,
         color: '#bbb',
     },
-    null2:{
-        padding:17,
+    null2: {
+        padding: 17,
         fontSize: 14,
         color: '#bbb',
     },

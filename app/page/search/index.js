@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Text, StyleSheet, View, StatusBar, TextInput, TouchableOpacity, FlatList, ScrollView, Image, Platform, DeviceEventEmitter } from 'react-native';
 import Icon from 'react-native-vector-icons/Icomoon';
+import { SafeAreaView } from "react-navigation";
 import Theme from '../../util/theme';
 import Api from '../../util/api';
 import StorageLoginInfo from '../../config/storageLogin'
@@ -32,106 +33,108 @@ export default class SearchScreen extends React.Component {
             historys = historys.slice(0, 10)
         }
         return (
-            <View style={Theme.container}>
-                <StatusBar
-                    backgroundColor="#000"
-                    barStyle="light-content"
-                />
-                <View style={[styles.headerContainer, Platform.OS == 'android' ? { marginTop: 0 } : null]}>
-                    <TouchableOpacity style={styles.backBtn} onPress={() => { navigation.goBack() }}>
-                        <Icon name={'triangle-left'} size={18} color={'#fff'} />
-                    </TouchableOpacity>
-                    <View style={styles.textContainer}>
-                        <View style={styles.searchInputWp}>
-                            <Icon name={'ico-search'} size={13} color={'#bbb'} style={{ position: 'relative', top: -2 }} />
-                            <TextInput
-                                underlineColorAndroid="transparent"
-                                style={styles.searchInput}
-                                placeholder={'输入你关心平台的名称，如' + searchDemoList}
-                                placeholderTextColor={'#bbb'}
-                                clearButtonMode={'while-editing'}
-                                enablesReturnKeyAutomatically={true}
+            <SafeAreaView style={{ flex: 1, backgroundColor:Theme.color2 }}>
+                <View style={Theme.container}>
+                    <StatusBar
+                        backgroundColor="#000"
+                        barStyle="light-content"
+                    />
+                    <View style={[styles.headerContainer, Platform.OS == 'android' ? { marginTop: 0 } : null]}>
+                        <TouchableOpacity style={styles.backBtn} onPress={() => { navigation.goBack() }}>
+                            <Icon name={'triangle-left'} size={18} color={'#fff'} />
+                        </TouchableOpacity>
+                        <View style={styles.textContainer}>
+                            <View style={styles.searchInputWp}>
+                                <Icon name={'ico-search'} size={13} color={'#bbb'} style={{ position: 'relative', top: -2 }} />
+                                <TextInput
+                                    underlineColorAndroid="transparent"
+                                    style={styles.searchInput}
+                                    placeholder={'输入你关心平台的名称，如' + searchDemoList}
+                                    placeholderTextColor={'#bbb'}
+                                    clearButtonMode={'while-editing'}
+                                    enablesReturnKeyAutomatically={true}
 
-                                defaultValue={this.state.searchText}
-                                onChangeText={(text) => {
-                                    this.setState({
-                                        searchText: text
-                                    })
-                                    this.getData(text)
-                                }}
-                            />
+                                    defaultValue={this.state.searchText}
+                                    onChangeText={(text) => {
+                                        this.setState({
+                                            searchText: text
+                                        })
+                                        this.getData(text)
+                                    }}
+                                />
+                            </View>
                         </View>
                     </View>
-                </View>
-                <View style={styles.content}>
-                    <ScrollView>
-                        {
-                            dataSource == '' && dataSource.length <= 0 ?
-                                <View style={styles.hotplat}>
-                                    <Text style={styles.hotTitle}>热门搜索：</Text>
-                                    <View style={styles.hotList}>
-                                        {
-                                            searchHotList.map((item, i) => {
-                                                return (
-                                                    <TouchableOpacity
-                                                        style={styles.listHot} activeOpacity={0.4}
-                                                        onPress={() => { navigation.navigate('Detail', { id: item.id, platName: item.plat_name }) }}
-                                                        key={i}
-                                                    >
-                                                        <Text style={styles.listHotText}>{item.plat_name}</Text>
-                                                    </TouchableOpacity>
-                                                )
-                                            })
-                                        }
-                                    </View>
-                                </View>
-                                :
-                                null
-                        }
-                        {
-                            historys.length > 0 && dataSource.length <= 0 ?
-                                <View style={styles.historyContainer}>
-                                    <View style={styles.historyTitle}><Text style={styles.historyTitleText}>搜索历史：</Text></View>
-                                    <View style={styles.historyListContainer}>
-                                        {
-                                            historys.map((item, i) => {
-                                                return (
-                                                    <View key={i} style={styles.historyList}
-
-                                                    >
+                    <View style={styles.content}>
+                        <ScrollView>
+                            {
+                                dataSource == '' && dataSource.length <= 0 ?
+                                    <View style={styles.hotplat}>
+                                        <Text style={styles.hotTitle}>热门搜索：</Text>
+                                        <View style={styles.hotList}>
+                                            {
+                                                searchHotList.map((item, i) => {
+                                                    return (
                                                         <TouchableOpacity
-                                                            style={styles.historyListLeft}
-                                                            onPress={() => {
-                                                                navigation.navigate('Detail', { id: item.id, platName: item.platname });
-                                                            }}
+                                                            style={styles.listHot} activeOpacity={0.4}
+                                                            onPress={() => { navigation.navigate('Detail', { id: item.id_dlp, platName: item.plat_name }) }}
+                                                            key={i}
                                                         >
-                                                            <Icon name={'ico-dateTime'} size={16} color={'#bbb'} />
-                                                            <Text style={styles.historyListText}>{item.platname}</Text>
+                                                            <Text style={styles.listHotText}>{item.plat_name}</Text>
                                                         </TouchableOpacity>
-                                                        <TouchableOpacity onPress={() => {
-                                                            this.clearHistory(i)
-                                                        }}>
-                                                            <Icon name={'ico-closeX'} size={12} color={'#bbb'} />
-                                                        </TouchableOpacity>
-                                                    </View>
-                                                )
-                                            })
-                                        }
+                                                    )
+                                                })
+                                            }
+                                        </View>
                                     </View>
-                                </View>
-                                :
-                                null
-                        }
+                                    :
+                                    null
+                            }
+                            {
+                                historys.length > 0 && dataSource.length <= 0 ?
+                                    <View style={styles.historyContainer}>
+                                        <View style={styles.historyTitle}><Text style={styles.historyTitleText}>搜索历史：</Text></View>
+                                        <View style={styles.historyListContainer}>
+                                            {
+                                                historys.map((item, i) => {
+                                                    return (
+                                                        <View key={i} style={styles.historyList}
+
+                                                        >
+                                                            <TouchableOpacity
+                                                                style={styles.historyListLeft}
+                                                                onPress={() => {
+                                                                    navigation.navigate('Detail', { id: item.id, platName: item.platname });
+                                                                }}
+                                                            >
+                                                                <Icon name={'ico-dateTime'} size={16} color={'#bbb'} />
+                                                                <Text style={styles.historyListText}>{item.platname}</Text>
+                                                            </TouchableOpacity>
+                                                            <TouchableOpacity onPress={() => {
+                                                                this.clearHistory(i)
+                                                            }}>
+                                                                <Icon name={'ico-closeX'} size={12} color={'#bbb'} />
+                                                            </TouchableOpacity>
+                                                        </View>
+                                                    )
+                                                })
+                                            }
+                                        </View>
+                                    </View>
+                                    :
+                                    null
+                            }
 
 
-                        <FlatList
-                            data={this.state.dataSource}
-                            renderItem={this.renderItem.bind(this)}
-                        />
-                    </ScrollView>
+                            <FlatList
+                                data={this.state.dataSource}
+                                renderItem={this.renderItem.bind(this)}
+                            />
+                        </ScrollView>
 
+                    </View>
                 </View>
-            </View>
+            </SafeAreaView>
         )
     }
     renderItem({ item, index }) {
@@ -180,7 +183,7 @@ export default class SearchScreen extends React.Component {
                                 that.setState({
                                     dataSource: responseData
                                 })
-                                console.log(that.state.dataSource)
+                                console.log(responseData)
                             })
                     }
                     else {
@@ -253,7 +256,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
     },
     headerContainer: {
-        marginTop: 23,
         height: 50,
         backgroundColor: Theme.color2,
         flexDirection: 'row',
@@ -330,7 +332,7 @@ const styles = StyleSheet.create({
         marginTop: 30,
         paddingLeft: 30,
         paddingRight: 30,
-        paddingBottom:30,
+        paddingBottom: 30,
     },
     historyTitle: {
         marginBottom: 15,

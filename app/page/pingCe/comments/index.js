@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Text, StyleSheet, View, TouchableOpacity, FlatList, ScrollView, Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/Icomoon';
+import { SafeAreaView } from "react-navigation";
 
 import Api from '../../../util/api';
 import Util from '../../../util/util';
@@ -29,48 +30,50 @@ export default class CommentsList extends React.Component {
         let navigation = this.props.navigation;
         const { params } = this.props.navigation.state;
         return (
-            <View style={Theme.container}>
-                <Header headerOpt={{ back: '', title: '评论', search: 'null' }} navigation={navigation} />
-                <View style={styles.content}>
-                    {
+            <SafeAreaView style={{ flex: 1, backgroundColor: Theme.color2 }}>
+                <View style={Theme.container}>
+                    <Header headerOpt={{ back: '', title: '评论', search: 'null' }} navigation={navigation} />
+                    <View style={styles.content}>
+                        {
 
-                        this.state.loading ?
-                            <Loading />
-                            :
-                            <ScrollView contentContainerStyle={styles.contentContainer}>
-                                {this.state.totalNum > 0 ?
+                            this.state.loading ?
+                                <Loading />
+                                :
+                                <ScrollView contentContainerStyle={styles.contentContainer}>
+                                    {this.state.totalNum > 0 ?
 
-                                    <FlatList
-                                        data={this.state.dataSource}
-                                        renderItem={this.renderItemL.bind(this)}
-                                        ListFooterComponent={this.ListFooterComponent.bind(this)}
+                                        <FlatList
+                                            data={this.state.dataSource}
+                                            renderItem={this.renderItemL.bind(this)}
+                                            ListFooterComponent={this.ListFooterComponent.bind(this)}
 
-                                    />
-                                    :
-                                    <Text style={styles.null}>暂无评论</Text>
-                                }
-                            </ScrollView>
-                    }
-                    <TouchableOpacity style={styles.submitBtn} onPress={() => {
-                        if (signState != null) {
-                            navigation.navigate('PingCeCommentForm', { cid: params.cid })
+                                        />
+                                        :
+                                        <Text style={styles.null}>暂无评论</Text>
+                                    }
+                                </ScrollView>
                         }
-                        else {
-                            Alert.alert(
-                                '提示',
-                                '请先登录后评论！',
-                                [
-                                    { text: '取消' },
-                                    { text: '确认', onPress: this.goLogin.bind(this) },
-                                ]
-                            )
-                        }
+                        <TouchableOpacity style={styles.submitBtn} onPress={() => {
+                            if (signState != null) {
+                                navigation.navigate('PingCeCommentForm', { cid: params.cid })
+                            }
+                            else {
+                                Alert.alert(
+                                    '提示',
+                                    '请先登录后评论！',
+                                    [
+                                        { text: '取消' },
+                                        { text: '确认', onPress: this.goLogin.bind(this) },
+                                    ]
+                                )
+                            }
 
-                    }}>
-                        <Icon name={'comment-review'} size={26} color={'#fff'} />
-                    </TouchableOpacity>
+                        }}>
+                            <Icon name={'comment-review'} size={26} color={'#fff'} />
+                        </TouchableOpacity>
+                    </View>
                 </View>
-            </View>
+            </SafeAreaView>
         )
     }
     goLogin() {

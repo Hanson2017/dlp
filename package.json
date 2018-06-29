@@ -17,12 +17,13 @@
     "react-native-drawer": "^2.3.0",
     "react-native-htmlview": "^0.9.0",
     "react-native-qq": "^2.0.5",
+    "react-native-safe-area-view": "^0.9.0",
     "react-native-scrollable-tab-view": "^0.6.5",
     "react-native-storage": "^0.2.2",
     "react-native-tab-navigator": "^0.3.3",
     "react-native-vector-icons": "^4.0.1",
     "react-native-wx": "^3.0.3",
-    "react-navigation": "^1.0.0-beta.9"
+    "react-navigation": "^1.5.12"
   },
   "devDependencies": {
     "babel-jest": "19.0.0",

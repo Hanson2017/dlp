@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Text, StyleSheet, View, ScrollView, TouchableOpacity, RefreshControl } from 'react-native';
+import { SafeAreaView } from "react-navigation";
 import Api from '../../util/api';
 import Theme from '../../util/theme';
 import Header from '../../component/navBar';
@@ -64,87 +65,89 @@ export default class PingjiTab extends React.Component {
         const { navigation, loginState } = this.props;
         const { loading, dataSource } = this.state;
         return (
-            <View style={Theme.container}>
-                <Header headerOpt={{ back: '排行详情', title: '排行详情' }} navigation={navigation} openControlPanel={this.openControlPanel.bind(this)} loginState={loginState} />
-                <View style={Theme.content}>
-                    {
-                        loading ?
-                            <Loading />
-                            :
-                            <ScrollView
-                                refreshControl={
-                                    <RefreshControl
-                                        refreshing={this.state.isRefreshing}
-                                        onRefresh={this.onRefresh.bind(this)}
-                                    />
-                                }
-                            >
-                                <TabTop navigation={navigation} data={data} />
+            <SafeAreaView style={{ flex: 1, backgroundColor: Theme.color2 }}>
+                <View style={Theme.container}>
+                    <Header headerOpt={{ back: '排行详情', title: '排行详情' }} navigation={navigation} openControlPanel={this.openControlPanel.bind(this)} loginState={loginState} />
+                    <View style={Theme.content}>
+                        {
+                            loading ?
+                                <Loading />
+                                :
+                                <ScrollView
+                                    refreshControl={
+                                        <RefreshControl
+                                            refreshing={this.state.isRefreshing}
+                                            onRefresh={this.onRefresh.bind(this)}
+                                        />
+                                    }
+                                >
+                                    <TabTop navigation={navigation} data={data} />
 
-                                <View style={[styles.container, Theme.box, Theme.mt10]}>
-                                    <Title data={'机构评级概况'} navigation={navigation} screenUrlInfo={{ screenUrl: 'PingjiJG', tabId: null }} />
-                                    <View style={styles.listBox}>
-                                        <View style={styles.hdContainer}>
-                                            <View style={styles.listNo}><Text style={styles.hdText}>排名</Text></View>
-                                            <View style={styles.listplatName}><Text style={styles.hdText}>平台名称</Text></View>
-                                            <View style={styles.listscore}><Text style={styles.hdText}>综合指数</Text></View>
-                                            <View style={styles.listKeywords}><Text style={styles.hdText}>关键字</Text></View>
+                                    <View style={[styles.container, Theme.box, Theme.mt10]}>
+                                        <Title data={'机构评级概况'} navigation={navigation} screenUrlInfo={{ screenUrl: 'PingjiJG', tabId: null }} />
+                                        <View style={styles.listBox}>
+                                            <View style={styles.hdContainer}>
+                                                <View style={styles.listNo}><Text style={styles.hdText}>排名</Text></View>
+                                                <View style={styles.listplatName}><Text style={styles.hdText}>平台名称</Text></View>
+                                                <View style={styles.listscore}><Text style={styles.hdText}>综合指数</Text></View>
+                                                <View style={styles.listKeywords}><Text style={styles.hdText}>关键字</Text></View>
 
+                                            </View>
+                                            {
+                                                dataSource.gradelist.map((item, i) => {
+                                                    return (
+                                                        <List data={item} index={i} key={i} navigation={navigation} borderNot={dataSource.flowlist.length - 1 == i ? true : false} />
+                                                    )
+                                                })
+                                            }
                                         </View>
-                                        {
-                                            dataSource.gradelist.map((item, i) => {
-                                                return (
-                                                    <List data={item} index={i} key={i} navigation={navigation} borderNot={dataSource.flowlist.length - 1 == i ? true : false} />
-                                                )
-                                            })
-                                        }
                                     </View>
-                                </View>
 
-                                <View style={[styles.container, Theme.box, Theme.mt10]}>
-                                    <Title data={'健康度分析'} navigation={navigation} screenUrlInfo={{ screenUrl: 'Health', tabId: null }} />
-                                    <View style={styles.listBox}>
-                                        <View style={styles.hdContainer}>
-                                            <View style={styles.listNo}><Text style={styles.hdText}>排名</Text></View>
-                                            <View style={styles.listplatName}><Text style={styles.hdText}>平台名称</Text></View>
-                                            <View style={styles.listscore}><Text style={styles.hdText}>综合健康度</Text></View>
-                                            <View style={styles.listKeywords}><Text style={styles.hdText}>关键字</Text></View>
+                                    <View style={[styles.container, Theme.box, Theme.mt10]}>
+                                        <Title data={'健康度分析'} navigation={navigation} screenUrlInfo={{ screenUrl: 'Health', tabId: null }} />
+                                        <View style={styles.listBox}>
+                                            <View style={styles.hdContainer}>
+                                                <View style={styles.listNo}><Text style={styles.hdText}>排名</Text></View>
+                                                <View style={styles.listplatName}><Text style={styles.hdText}>平台名称</Text></View>
+                                                <View style={styles.listscore}><Text style={styles.hdText}>综合健康度</Text></View>
+                                                <View style={styles.listKeywords}><Text style={styles.hdText}>关键字</Text></View>
 
+                                            </View>
+                                            {
+                                                dataSource.dlplist.map((item, i) => {
+                                                    return (
+                                                        <List data={item} index={i} key={i} navigation={navigation} borderNot={dataSource.flowlist.length - 1 == i ? true : false} />
+                                                    )
+                                                })
+                                            }
                                         </View>
-                                        {
-                                            dataSource.dlplist.map((item, i) => {
-                                                return (
-                                                    <List data={item} index={i} key={i} navigation={navigation} borderNot={dataSource.flowlist.length - 1 == i ? true : false} />
-                                                )
-                                            })
-                                        }
                                     </View>
-                                </View>
 
-                                <View style={[styles.container, Theme.box, Theme.mt10]}>
-                                    <Title data={'流量监控'} navigation={navigation} screenUrlInfo={{ screenUrl: 'Flow', tabId: null }} />
-                                    <View style={styles.listBox}>
-                                        <View style={styles.hdContainer}>
-                                            <View style={styles.listNo}><Text style={styles.hdText}>排名</Text></View>
-                                            <View style={styles.listplatName}><Text style={styles.hdText}>平台名称</Text></View>
-                                            <View style={styles.listscore}><Text style={styles.hdText}>流量综合指数</Text></View>
-                                            <View style={styles.listKeywords}><Text style={styles.hdText}>关键字</Text></View>
+                                    <View style={[styles.container, Theme.box, Theme.mt10]}>
+                                        <Title data={'流量监控'} navigation={navigation} screenUrlInfo={{ screenUrl: 'Flow', tabId: null }} />
+                                        <View style={styles.listBox}>
+                                            <View style={styles.hdContainer}>
+                                                <View style={styles.listNo}><Text style={styles.hdText}>排名</Text></View>
+                                                <View style={styles.listplatName}><Text style={styles.hdText}>平台名称</Text></View>
+                                                <View style={styles.listscore}><Text style={styles.hdText}>流量综合指数</Text></View>
+                                                <View style={styles.listKeywords}><Text style={styles.hdText}>关键字</Text></View>
 
+                                            </View>
+                                            {
+                                                dataSource.flowlist.map((item, i) => {
+                                                    return (
+                                                        <List data={item} index={i} key={i} navigation={navigation} borderNot={dataSource.flowlist.length - 1 == i ? true : false} />
+                                                    )
+                                                })
+                                            }
                                         </View>
-                                        {
-                                            dataSource.flowlist.map((item, i) => {
-                                                return (
-                                                    <List data={item} index={i} key={i} navigation={navigation} borderNot={dataSource.flowlist.length - 1 == i ? true : false} />
-                                                )
-                                            })
-                                        }
                                     </View>
-                                </View>
 
-                            </ScrollView>
-                    }
+                                </ScrollView>
+                        }
+                    </View>
                 </View>
-            </View>
+            </SafeAreaView>
         )
     }
     openControlPanel() {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, View, TextInput, TouchableOpacity,DeviceEventEmitter } from 'react-native';
+import { Text, StyleSheet, View, TextInput, TouchableOpacity, DeviceEventEmitter } from 'react-native';
+import { SafeAreaView } from "react-navigation";
 import { Toast } from 'antd-mobile';
 import Header from '../../../../../component/navBar/detail';
 import Theme from '../../../../../util/theme';
@@ -16,23 +17,25 @@ export default class CommentForm extends React.Component {
         const navigation = this.props.navigation;
         const { params } = navigation.state;
         return (
-            <View style={[styles.container]}>
-                <Header headerOpt={{ title: params.platName + ' | 点评', noBack: true }} navigation={navigation} showActionSheet={false} />
-                <View style={styles.content}>
-                    <View style={styles.textInputContainer}>
-                        <TextInput style={styles.textInput} placeholder={'输入评论'} placeholderTextColor={'#666'} underlineColorAndroid="transparent" multiline={true} onChangeText={(value) => this.setState({ value })} />
+            <SafeAreaView style={{ flex: 1, backgroundColor: '#1A1A1A' }}>
+                <View style={[styles.container]}>
+                    <Header headerOpt={{ title: params.platName + ' | 点评', noBack: true }} navigation={navigation} showActionSheet={false} />
+                    <View style={styles.content}>
+                        <View style={styles.textInputContainer}>
+                            <TextInput style={styles.textInput} placeholder={'输入评论'} placeholderTextColor={'#666'} underlineColorAndroid="transparent" multiline={true} onChangeText={(value) => this.setState({ value })} />
+                        </View>
+                        <TouchableOpacity style={styles.submitBtn} activeOpacity={0.6} onPress={() => {
+                            this.onSubmit()
+                        }}>
+                            <Text style={styles.submitBtnText}>提交评论</Text>
+                        </TouchableOpacity>
                     </View>
-                    <TouchableOpacity style={styles.submitBtn} activeOpacity={0.6} onPress={() => {
-                        this.onSubmit()
-                    }}>
-                        <Text style={styles.submitBtnText}>提交评论</Text>
-                    </TouchableOpacity>
                 </View>
-            </View>
+            </SafeAreaView>
         )
     }
     onSubmit() {
-        const that=this;
+        const that = this;
         const { params } = this.props.navigation.state;
         const cid = params.cid;
         const type = this.state.type;
@@ -65,7 +68,7 @@ export default class CommentForm extends React.Component {
                 if (response.ok) {
                     response.json()
                         .then((responseData => {
-                            if(responseData.result == 1){
+                            if (responseData.result == 1) {
                                 Toast.success('提交成功!')
                                 setTimeout(
                                     () => {
@@ -73,9 +76,9 @@ export default class CommentForm extends React.Component {
                                     },
                                     1000
                                 );
-                               
+
                             }
-                            else{
+                            else {
                                 Toast.fail(responseData.resultmsg)
                             }
                         }))
@@ -106,29 +109,29 @@ const styles = StyleSheet.create({
     },
     textInputContainer: {
         padding: 10,
-        paddingTop:5,
+        paddingTop: 5,
         backgroundColor: '#F5F5F5',
         borderRadius: 8,
     },
     textInput: {
         padding: 0,
-        margin:0,
+        margin: 0,
         height: 180,
         fontSize: 14,
     },
     submitBtn: {
-        marginTop:20,
-        width: Theme.screenWidth-40,
+        marginTop: 20,
+        width: Theme.screenWidth - 40,
         height: 40,
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: Theme.color,
-        borderRadius:8,
+        borderRadius: 8,
     },
-    submitBtnText:{
-       
-        fontSize:14,
-        color:'#fff',
-        fontWeight:'bold',
+    submitBtnText: {
+
+        fontSize: 14,
+        color: '#fff',
+        fontWeight: 'bold',
     },
 })

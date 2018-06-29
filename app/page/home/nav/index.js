@@ -53,9 +53,9 @@ export default class Nav extends React.Component {
                                     >
                                         {
                                             column.iconName == 'null' ?
-                                                <Ionicons name={column.ionicons} size={30} color={'#007ddc'} />
+                                                <Ionicons name={column.ionicons} size={26} color={'#007ddc'} />
                                                 :
-                                                <Icon name={column.iconName} size={30} color={'#007ddc'} />
+                                                <Icon name={column.iconName} size={26} color={'#007ddc'} />
                                         }
                                         <Text style={[styles.textStyle]}>{column.title}</Text>
                                     </TouchableOpacity>
@@ -72,9 +72,9 @@ export default class Nav extends React.Component {
                                         >
                                             {
                                                 column.iconName == 'null' ?
-                                                    <Ionicons name={column.ionicons} size={30} color={'#007ddc'} />
+                                                    <Ionicons name={column.ionicons} size={26} color={'#007ddc'} />
                                                     :
-                                                    <Icon name={column.iconName} size={30} color={'#007ddc'} />
+                                                    <Icon name={column.iconName} size={26} color={'#007ddc'} />
                                             }
                                             <Text style={[styles.textStyle]}>{column.title}</Text>
                                         </TouchableOpacity>

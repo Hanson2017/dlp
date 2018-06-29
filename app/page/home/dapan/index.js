@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     },
     imgzhizhenContainer: {
         position: 'absolute',
-        bottom: -1,
+        bottom: -2,
     },
     imgkedu: {
         width: 240,

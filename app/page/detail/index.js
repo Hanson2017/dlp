@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Text, StyleSheet, View, TouchableOpacity } from 'react-native';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
+import { SafeAreaView } from "react-navigation";
 
 import TabBar from '../../component/tabBar';
 import Theme from '../../util/theme';
@@ -39,91 +40,93 @@ export default class DetailScreen extends React.Component {
         const { tabNames, dataInfo, noBack, coverIsHidden } = this.state;
         const { params } = navigation.state;
         return (
-            <View style={[styles.container]}>
-                <Header headerOpt={{ title: params.platName, noBack: noBack }} navigation={navigation} showActionSheet={this.showActionSheet.bind(this)} />
-                <ActionShare ref={'ActionShare'} />
-                {
-                    coverIsHidden ?
-                        null
-                        :
-                        <TouchableOpacity style={styles.detailCover}
-                            onPress={() => {
-                                this.setState({
-                                    coverIsHidden: true,
-                                })
-                            }}
-                        ></TouchableOpacity>
-                }
-                {
-                    this.state.loading ?
-                        null
-                        :
-                        <View style={styles.detailTop}>
-                            {
-                                dataInfo.platstatus != 1 ?
-                                    <Text style={styles.stateBlack}>黑名单，建议远离  |  更新：{dataInfo.updatetime}</Text>
-                                    :
-                                    dataInfo.negative_time == null ?
-                                        <Text style={styles.stateNormal}>状态：正常运营  |  更新：{dataInfo.updatetime}</Text>
-                                        :
-                                        <Text style={styles.stateZhengyi}>争议中，需谨慎  |  更新：{dataInfo.updatetime}</Text>
-                            }
-                        </View>
-                }
-
-                <View style={Theme.content}>
+            <SafeAreaView style={{ flex: 1, backgroundColor: '#1A1A1A' }}>
+                <View style={[styles.container]}>
+                    <Header headerOpt={{ title: params.platName, noBack: noBack }} navigation={navigation} showActionSheet={this.showActionSheet.bind(this)} />
+                    <ActionShare ref={'ActionShare'} />
+                    {
+                        coverIsHidden ?
+                            null
+                            :
+                            <TouchableOpacity style={styles.detailCover}
+                                onPress={() => {
+                                    this.setState({
+                                        coverIsHidden: true,
+                                    })
+                                }}
+                            ></TouchableOpacity>
+                    }
                     {
                         this.state.loading ?
-                            <Loading />
+                            null
                             :
-                            <ScrollableTabView
-                                renderTabBar={() => <TabBar tabNames={tabNames} black={true} />}
-                                locked={true}
-                            >
-                                <View style={styles.content} tabLabel='key0'>
-                                    <All platInfo={{ id: params.id, platName: params.platName, platstatus: dataInfo.platstatus }} dataInfo={dataInfo} navigation={navigation} />
-                                </View>
-                                <View style={styles.content} tabLabel='key1'>
-                                    <Pingji platInfo={{ id: params.id, platName: params.platName, platstatus: dataInfo.platstatus }} />
-                                </View>
-                                <View style={styles.content} tabLabel='key2'>
-                                    <Health platInfo={{ id: params.id, platName: params.platName, platstatus: dataInfo.platstatus }} />
-                                </View>
-                                <View style={styles.content} tabLabel='key3'>
-                                    <Data platInfo={{ id: params.id, platName: params.platName, platstatus: dataInfo.platstatus }} navigation={navigation} />
-                                </View>
-
-                                <View style={styles.content} tabLabel='key5'>
-                                    <Yuqing platInfo={{ id: params.id, platName: params.platName }} navigation={navigation} />
-                                </View>
+                            <View style={styles.detailTop}>
                                 {
-                                    versionStatus != 1 ?
-                                        <View style={styles.content} tabLabel='key4'>
-                                            <Activity platInfo={{ id: params.id, platName: params.platName }} navigation={navigation} />
-                                        </View>
+                                    dataInfo.platstatus != 1 ?
+                                        <Text style={styles.stateBlack}>黑名单，建议远离  |  更新：{dataInfo.updatetime}</Text>
                                         :
-                                        null
+                                        dataInfo.negative_time == null ?
+                                            <Text style={styles.stateNormal}>状态：正常运营  |  更新：{dataInfo.updatetime}</Text>
+                                            :
+                                            <Text style={styles.stateZhengyi}>争议中，需谨慎  |  更新：{dataInfo.updatetime}</Text>
                                 }
-
-                                <View style={styles.content} tabLabel='key6'>
-                                    <Info platInfo={{ id: params.id, platName: params.platName }} navigation={navigation} />
-                                </View>
-
-                            </ScrollableTabView>
+                            </View>
                     }
 
+                    <View style={Theme.content}>
+                        {
+                            this.state.loading ?
+                                <Loading />
+                                :
+                                <ScrollableTabView
+                                    renderTabBar={() => <TabBar tabNames={tabNames} black={true} />}
+                                    locked={true}
+                                >
+                                    <View style={styles.content} tabLabel='key0'>
+                                        <All platInfo={{ id: params.id, platName: params.platName, platstatus: dataInfo.platstatus }} dataInfo={dataInfo} navigation={navigation} />
+                                    </View>
+                                    <View style={styles.content} tabLabel='key1'>
+                                        <Pingji platInfo={{ id: params.id, platName: params.platName, platstatus: dataInfo.platstatus }} />
+                                    </View>
+                                    <View style={styles.content} tabLabel='key2'>
+                                        <Health platInfo={{ id: params.id, platName: params.platName, platstatus: dataInfo.platstatus }} />
+                                    </View>
+                                    <View style={styles.content} tabLabel='key3'>
+                                        <Data platInfo={{ id: params.id, platName: params.platName, platstatus: dataInfo.platstatus }} navigation={navigation} />
+                                    </View>
+
+                                    <View style={styles.content} tabLabel='key5'>
+                                        <Yuqing platInfo={{ id: params.id, platName: params.platName }} navigation={navigation} />
+                                    </View>
+                                    {
+                                        versionStatus != 1 ?
+                                            <View style={styles.content} tabLabel='key4'>
+                                                <Activity platInfo={{ id: params.id, platName: params.platName }} navigation={navigation} />
+                                            </View>
+                                            :
+                                            null
+                                    }
+
+                                    <View style={styles.content} tabLabel='key6'>
+                                        <Info platInfo={{ id: params.id, platName: params.platName }} navigation={navigation} />
+                                    </View>
+
+                                </ScrollableTabView>
+                        }
+
+                    </View>
+                    <Foot
+                        id={params.id}
+                        toastShow={this.toastShow.bind(this)}
+                        toastHide={this.toastHide.bind(this)}
+                        noBack={this.noBack.bind(this)}
+                        coverIsShow={this.coverIsShow.bind(this)}
+                        coverIsHidden={coverIsHidden}
+                        navigation={navigation}
+                    />
+                    <Toast ref={'Toast'} />
                 </View>
-                <Foot
-                    id={params.id}
-                    toastShow={this.toastShow.bind(this)}
-                    toastHide={this.toastHide.bind(this)}
-                    noBack={this.noBack.bind(this)}
-                    coverIsShow={this.coverIsShow.bind(this)}
-                    coverIsHidden={coverIsHidden}
-                    navigation={navigation}
-                />
-                <Toast ref={'Toast'} />
-            </View>
+            </SafeAreaView>
         );
     }
     coverIsShow(flt) {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Text, StyleSheet, View, ScrollView, RefreshControl } from 'react-native';
+import { SafeAreaView } from "react-navigation";
 import Api from '../../util/api';
 import Theme from '../../util/theme';
 import Header from '../../component/navBar';
@@ -31,29 +32,31 @@ export default class DataTab extends React.Component {
         const { navigation, loginState } = this.props;
         const { loading, dataSource } = this.state;
         return (
-            <View style={Theme.container}>
-                <Header headerOpt={{ back: '排行详情', title: '行业数据' }} navigation={navigation} openControlPanel={this.openControlPanel.bind(this)} loginState={loginState} />
-                <View style={Theme.content}>
-                    {
-                        loading ?
-                            <Loading />
-                            :
-                            <ScrollView
-                                refreshControl={
-                                    <RefreshControl
-                                        refreshing={this.state.isRefreshing}
-                                        onRefresh={this.onRefresh.bind(this)}
-                                    />
-                                }
-                            >
-                                <TabTop navigation={navigation} data={data} />
-                                <Data navigation={navigation} data={dataSource.datalist} />
-                                <Query navigation={navigation} />
-                                <Report navigation={navigation} data={dataSource.reportslist} />
-                            </ScrollView>
-                    }
+            <SafeAreaView style={{ flex: 1, backgroundColor: Theme.color2 }}>
+                <View style={Theme.container}>
+                    <Header headerOpt={{ back: '排行详情', title: '行业数据' }} navigation={navigation} openControlPanel={this.openControlPanel.bind(this)} loginState={loginState} />
+                    <View style={Theme.content}>
+                        {
+                            loading ?
+                                <Loading />
+                                :
+                                <ScrollView
+                                    refreshControl={
+                                        <RefreshControl
+                                            refreshing={this.state.isRefreshing}
+                                            onRefresh={this.onRefresh.bind(this)}
+                                        />
+                                    }
+                                >
+                                    <TabTop navigation={navigation} data={data} />
+                                    <Data navigation={navigation} data={dataSource.datalist} />
+                                    <Query navigation={navigation} />
+                                    <Report navigation={navigation} data={dataSource.reportslist} />
+                                </ScrollView>
+                        }
+                    </View>
                 </View>
-            </View>
+            </SafeAreaView>
         )
     }
     openControlPanel() {

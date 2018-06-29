@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Text, StyleSheet, View, StatusBar } from 'react-native';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
+import { SafeAreaView } from "react-navigation";
 
 import Theme from '../../../util/theme';
 import Header from '../../../component/navBar'
@@ -42,97 +43,99 @@ export default class PingjiScreen extends React.Component {
         let { tabNames, upDateTime } = this.state;
         let navigation = this.props.navigation;
         return (
-            <View style={Theme.container}>
+            <SafeAreaView style={{ flex: 1, backgroundColor: Theme.color2 }}>
+                <View style={Theme.container}>
 
-                <Header headerOpt={{ back: '评级', title: '机构评级' }} navigation={navigation} />
+                    <Header headerOpt={{ back: '评级', title: '机构评级' }} navigation={navigation} />
 
-                <View style={Theme.content}>
-                    <ScrollableTabView
-                        renderTabBar={() => <TabBar tabNames={tabNames} />}
-                        onChangeTab={(obj) => {
-                            this.setState({
-                                index: obj.i
-                            })
-                        }}
-                    >
-                        <View style={styles.content} tabLabel='key1'>
+                    <View style={Theme.content}>
+                        <ScrollableTabView
+                            renderTabBar={() => <TabBar tabNames={tabNames} />}
+                            onChangeTab={(obj) => {
+                                this.setState({
+                                    index: obj.i
+                                })
+                            }}
+                        >
+                            <View style={styles.content} tabLabel='key1'>
 
-                            <ListPage
-                                navigation={navigation}
-                                itemRow={All}
-                                changeTotalNum={this.changeTotalNum.bind(this)}
-                                changeUpDateTime={this.changeUpDateTime.bind(this)}
-                                type={{ column: 'pingji', type: 'all', dataName: 'gradeList' }}
-                                columnDb={false}
-                            >
-                                <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
-                            </ListPage>
-                        </View>
-                        <View style={styles.content} tabLabel='key2'>
+                                <ListPage
+                                    navigation={navigation}
+                                    itemRow={All}
+                                    changeTotalNum={this.changeTotalNum.bind(this)}
+                                    changeUpDateTime={this.changeUpDateTime.bind(this)}
+                                    type={{ column: 'pingji', type: 'all', dataName: 'gradeList' }}
+                                    columnDb={false}
+                                >
+                                    <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
+                                </ListPage>
+                            </View>
+                            <View style={styles.content} tabLabel='key2'>
 
-                            <ListPage
-                                navigation={navigation}
-                                itemRow={Wdzj}
-                                changeTotalNum={this.changeTotalNum.bind(this)}
-                                changeUpDateTime={this.changeUpDateTime.bind(this)}
-                                type={{ column: 'pingji', type: 'wdzj', dataName: 'gradeList' }}
-                                columnDb={false}
-                            >
-                                <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
-                            </ListPage>
-                        </View>
-                        <View style={styles.content} tabLabel='key3'>
-                            <ListPage
-                                navigation={navigation}
-                                itemRow={P2peye}
-                                changeTotalNum={this.changeTotalNum.bind(this)}
-                                changeUpDateTime={this.changeUpDateTime.bind(this)}
-                                type={{ column: 'pingji', type: 'p2peye', dataName: 'gradeList' }}
-                                columnDb={false}
-                            >
-                                <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
-                            </ListPage>
-                        </View>
-                        <View style={styles.content} tabLabel='key4'>
-                            <ListPage
-                                navigation={navigation}
-                                itemRow={Dlp}
-                                changeTotalNum={this.changeTotalNum.bind(this)}
-                                changeUpDateTime={this.changeUpDateTime.bind(this)}
-                                type={{ column: 'pingji', type: 'dlp', dataName: 'gradeList' }}
-                                columnDb={false}
-                            >
-                                <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
-                            </ListPage>
-                        </View>
-                        <View style={styles.content} tabLabel='key5'>
-                            <ListPage
-                                navigation={navigation}
-                                itemRow={R360}
-                                changeTotalNum={this.changeTotalNum.bind(this)}
-                                changeUpDateTime={this.changeUpDateTime.bind(this)}
-                                type={{ column: 'pingji', type: 'rong360', dataName: 'gradeList' }}
-                                columnDb={false}
-                            >
-                                <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
-                            </ListPage>
-                        </View>
-                        <View style={styles.content} tabLabel='key6'>
-                            <ListPage
-                                navigation={navigation}
-                                itemRow={Xinghuo}
-                                changeTotalNum={this.changeTotalNum.bind(this)}
-                                changeUpDateTime={this.changeUpDateTime.bind(this)}
-                                type={{ column: 'pingji', type: 'xinghuo', dataName: 'gradeList' }}
-                                columnDb={false}
-                            >
-                                <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
-                            </ListPage>
-                        </View>
-                        
-                    </ScrollableTabView>
+                                <ListPage
+                                    navigation={navigation}
+                                    itemRow={Wdzj}
+                                    changeTotalNum={this.changeTotalNum.bind(this)}
+                                    changeUpDateTime={this.changeUpDateTime.bind(this)}
+                                    type={{ column: 'pingji', type: 'wdzj', dataName: 'gradeList' }}
+                                    columnDb={false}
+                                >
+                                    <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
+                                </ListPage>
+                            </View>
+                            <View style={styles.content} tabLabel='key3'>
+                                <ListPage
+                                    navigation={navigation}
+                                    itemRow={P2peye}
+                                    changeTotalNum={this.changeTotalNum.bind(this)}
+                                    changeUpDateTime={this.changeUpDateTime.bind(this)}
+                                    type={{ column: 'pingji', type: 'p2peye', dataName: 'gradeList' }}
+                                    columnDb={false}
+                                >
+                                    <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
+                                </ListPage>
+                            </View>
+                            <View style={styles.content} tabLabel='key4'>
+                                <ListPage
+                                    navigation={navigation}
+                                    itemRow={Dlp}
+                                    changeTotalNum={this.changeTotalNum.bind(this)}
+                                    changeUpDateTime={this.changeUpDateTime.bind(this)}
+                                    type={{ column: 'pingji', type: 'dlp', dataName: 'gradeList' }}
+                                    columnDb={false}
+                                >
+                                    <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
+                                </ListPage>
+                            </View>
+                            <View style={styles.content} tabLabel='key5'>
+                                <ListPage
+                                    navigation={navigation}
+                                    itemRow={R360}
+                                    changeTotalNum={this.changeTotalNum.bind(this)}
+                                    changeUpDateTime={this.changeUpDateTime.bind(this)}
+                                    type={{ column: 'pingji', type: 'rong360', dataName: 'gradeList' }}
+                                    columnDb={false}
+                                >
+                                    <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
+                                </ListPage>
+                            </View>
+                            <View style={styles.content} tabLabel='key6'>
+                                <ListPage
+                                    navigation={navigation}
+                                    itemRow={Xinghuo}
+                                    changeTotalNum={this.changeTotalNum.bind(this)}
+                                    changeUpDateTime={this.changeUpDateTime.bind(this)}
+                                    type={{ column: 'pingji', type: 'xinghuo', dataName: 'gradeList' }}
+                                    columnDb={false}
+                                >
+                                    <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
+                                </ListPage>
+                            </View>
+
+                        </ScrollableTabView>
+                    </View>
                 </View>
-            </View>
+            </SafeAreaView>
         );
     }
 }

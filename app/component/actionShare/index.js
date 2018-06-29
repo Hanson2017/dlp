@@ -216,6 +216,7 @@ const styles = StyleSheet.create({
         top: top,
     },
     tip: {
+        marginBottom:20,
         width: aWidth,
     },
     tipBtn: {

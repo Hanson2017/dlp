@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, View,FlatList, TouchableOpacity } from 'react-native';
+import { Text, StyleSheet, View, FlatList, TouchableOpacity } from 'react-native';
+import { SafeAreaView } from "react-navigation";
 import Theme from '../../util/theme';
 import Api from '../../util/api';
 import Header from '../../component/navBar'
@@ -16,29 +17,31 @@ export default class Help extends React.Component {
     render() {
         let navigation = this.props.navigation;
         return (
-            <View style={Theme.container}>
-                <Header headerOpt={{ back: '常见问题', title: '常见问题', search: 'null' }} navigation={navigation} />
-                <View style={styles.content}>
-                    {
-                        this.state.loading ?
-                            <Loading />
-                            :
-                            <FlatList
-                                style={styles.help}
-                                data={this.state.dataSource}
-                                renderItem={this.renderItem.bind(this)}
-                            />
-                    }
+            <SafeAreaView style={{ flex: 1, backgroundColor: Theme.color2 }}>
+                <View style={Theme.container}>
+                    <Header headerOpt={{ back: '常见问题', title: '常见问题', search: 'null' }} navigation={navigation} />
+                    <View style={styles.content}>
+                        {
+                            this.state.loading ?
+                                <Loading />
+                                :
+                                <FlatList
+                                    style={styles.help}
+                                    data={this.state.dataSource}
+                                    renderItem={this.renderItem.bind(this)}
+                                />
+                        }
 
+                    </View>
                 </View>
-            </View>
+            </SafeAreaView>
         )
     }
     renderItem({ item, index }) {
-        let navigation = this.props.navigation; 
+        let navigation = this.props.navigation;
         return (
             <TouchableOpacity style={styles.helpList}
-                onPress={() => { navigation.navigate('HelpDetail', { id: item.id}) }}
+                onPress={() => { navigation.navigate('HelpDetail', { id: item.id }) }}
             >
                 <Text style={styles.helpListText}>{item.title}</Text>
             </TouchableOpacity>
@@ -73,13 +76,13 @@ export default class Help extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    content:{
-        paddingTop:10,
-        flex:1,
-        backgroundColor:'#fff',
+    content: {
+        paddingTop: 10,
+        flex: 1,
+        backgroundColor: '#fff',
     },
-    help:{
-        paddingLeft:18,
+    help: {
+        paddingLeft: 18,
     },
     helpList: {
         height: 50,
@@ -89,6 +92,6 @@ const styles = StyleSheet.create({
     },
     helpListText: {
         color: '#3B3B3B',
-        fontSize:14,
+        fontSize: 14,
     }
 })

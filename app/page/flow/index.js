@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Text, StyleSheet, View, StatusBar } from 'react-native';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
+import { SafeAreaView } from "react-navigation";
 
 import Theme from '../../util/theme';
 import Header from '../../component/navBar'
@@ -40,81 +41,83 @@ export default class FlowScreen extends React.Component {
         let { tabNames, upDateTime } = this.state;
         let navigation = this.props.navigation;
         return (
-            <View style={Theme.container}>
+            <SafeAreaView style={{ flex: 1, backgroundColor: Theme.color2 }}>
+                <View style={Theme.container}>
 
-                <Header headerOpt={{ back: '评级', title: '流量监控' }} navigation={navigation} />
-                <View style={Theme.content}>
-                    <ScrollableTabView
-                        renderTabBar={() => <TabBar tabNames={tabNames} />}
-                        onChangeTab={(obj) => {
-                            this.setState({
-                                index: obj.i
-                            })
-                        }}
-                    >
-                        <View style={styles.content} tabLabel='key1'>
-                            <ListPage
-                                navigation={navigation}
-                                itemRow={All}
-                                changeTotalNum={this.changeTotalNum.bind(this)}
-                                changeUpDateTime={this.changeUpDateTime.bind(this)}
-                                type={{ column: 'flow', type: 'all', dataName: 'dataList' }}
-                                columnDb={false}
-                            >
-                                <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
-                            </ListPage>
-                        </View>
-                        <View style={styles.content} tabLabel='key2'>
-                            <ListPage
-                                navigation={navigation}
-                                itemRow={Baidu}
-                                changeTotalNum={this.changeTotalNum.bind(this)}
-                                changeUpDateTime={this.changeUpDateTime.bind(this)}
-                                type={{ column: 'flow', type: 'baidu', dataName: 'dataList' }}
-                                columnDb={false}
-                            >
-                                <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
-                            </ListPage>
-                        </View>
-                        <View style={styles.content} tabLabel='key3'>
-                            <ListPage
-                                navigation={navigation}
-                                itemRow={Haosou}
-                                changeTotalNum={this.changeTotalNum.bind(this)}
-                                changeUpDateTime={this.changeUpDateTime.bind(this)}
-                                type={{ column: 'flow', type: 'haosou', dataName: 'dataList' }}
-                                columnDb={false}
-                            >
-                                <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
-                            </ListPage>
-                        </View>
-                        <View style={styles.content} tabLabel='key4'>
-                            <ListPage
-                                navigation={navigation}
-                                itemRow={Zhanzhang}
-                                changeTotalNum={this.changeTotalNum.bind(this)}
-                                changeUpDateTime={this.changeUpDateTime.bind(this)}
-                                type={{ column: 'flow', type: 'zhanzhang', dataName: 'dataList' }}
-                                columnDb={false}
-                            />
-                        </View>
-                        <View style={styles.content} tabLabel='key5'>
-                            <ListPage
-                                navigation={navigation}
-                                itemRow={Aizhan}
-                                changeTotalNum={this.changeTotalNum.bind(this)}
-                                changeUpDateTime={this.changeUpDateTime.bind(this)}
-                                type={{ column: 'flow', type: 'aizhan', dataName: 'dataList' }}
-                                columnDb={false}
-                            >
-                                <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
-                            </ListPage>
-                        </View>
-                        
+                    <Header headerOpt={{ back: '评级', title: '流量监控' }} navigation={navigation} />
+                    <View style={Theme.content}>
+                        <ScrollableTabView
+                            renderTabBar={() => <TabBar tabNames={tabNames} />}
+                            onChangeTab={(obj) => {
+                                this.setState({
+                                    index: obj.i
+                                })
+                            }}
+                        >
+                            <View style={styles.content} tabLabel='key1'>
+                                <ListPage
+                                    navigation={navigation}
+                                    itemRow={All}
+                                    changeTotalNum={this.changeTotalNum.bind(this)}
+                                    changeUpDateTime={this.changeUpDateTime.bind(this)}
+                                    type={{ column: 'flow', type: 'all', dataName: 'dataList' }}
+                                    columnDb={false}
+                                >
+                                    <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
+                                </ListPage>
+                            </View>
+                            <View style={styles.content} tabLabel='key2'>
+                                <ListPage
+                                    navigation={navigation}
+                                    itemRow={Baidu}
+                                    changeTotalNum={this.changeTotalNum.bind(this)}
+                                    changeUpDateTime={this.changeUpDateTime.bind(this)}
+                                    type={{ column: 'flow', type: 'baidu', dataName: 'dataList' }}
+                                    columnDb={false}
+                                >
+                                    <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
+                                </ListPage>
+                            </View>
+                            <View style={styles.content} tabLabel='key3'>
+                                <ListPage
+                                    navigation={navigation}
+                                    itemRow={Haosou}
+                                    changeTotalNum={this.changeTotalNum.bind(this)}
+                                    changeUpDateTime={this.changeUpDateTime.bind(this)}
+                                    type={{ column: 'flow', type: 'haosou', dataName: 'dataList' }}
+                                    columnDb={false}
+                                >
+                                    <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
+                                </ListPage>
+                            </View>
+                            <View style={styles.content} tabLabel='key4'>
+                                <ListPage
+                                    navigation={navigation}
+                                    itemRow={Zhanzhang}
+                                    changeTotalNum={this.changeTotalNum.bind(this)}
+                                    changeUpDateTime={this.changeUpDateTime.bind(this)}
+                                    type={{ column: 'flow', type: 'zhanzhang', dataName: 'dataList' }}
+                                    columnDb={false}
+                                />
+                            </View>
+                            <View style={styles.content} tabLabel='key5'>
+                                <ListPage
+                                    navigation={navigation}
+                                    itemRow={Aizhan}
+                                    changeTotalNum={this.changeTotalNum.bind(this)}
+                                    changeUpDateTime={this.changeUpDateTime.bind(this)}
+                                    type={{ column: 'flow', type: 'aizhan', dataName: 'dataList' }}
+                                    columnDb={false}
+                                >
+                                    <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
+                                </ListPage>
+                            </View>
 
-                    </ScrollableTabView>
+
+                        </ScrollableTabView>
+                    </View>
                 </View>
-            </View>
+            </SafeAreaView>
         );
     }
 }

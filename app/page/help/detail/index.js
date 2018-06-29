@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, StyleSheet, View, ScrollView, WebView } from 'react-native';
-
+import { SafeAreaView } from "react-navigation";
 import Theme from '../../../util/theme';
 import Api from '../../../util/api';
 import Header from '../../../component/navBar';
@@ -23,34 +23,35 @@ export default class HelpDetail extends React.Component {
         }
 
         return (
-            <View style={Theme.container}>
-                <Header headerOpt={{ back: '问答详情', title: '问答详情', search: 'null' }} navigation={navigation} />
-                <View style={styles.content}>
-                    {
-                        loading ?
-                            <Loading />
-                            :
-                            <ScrollView
-                                style={styles.HelpDetailWp}
-                            >
-                                <View style={styles.HelpDetailTitle}>
-                                    <Text style={styles.HelpDetailTitleText}>{dataSource.title}</Text>
-                                </View>
-                                <View>
-                                    <WebView
-                                        style={{
-                                            height: Theme.screenHeight - 150,
-                                        }}
-                                        source={{ html: HTML }}
-                                    />
+            <SafeAreaView style={{ flex: 1, backgroundColor: Theme.color2 }}>
+                <View style={Theme.container}>
+                    <Header headerOpt={{ back: '问答详情', title: '问答详情', search: 'null' }} navigation={navigation} />
+                    <View style={styles.content}>
+                        {
+                            loading ?
+                                <Loading />
+                                :
+                                <ScrollView
+                                    style={styles.HelpDetailWp}
+                                >
+                                    <View style={styles.HelpDetailTitle}>
+                                        <Text style={styles.HelpDetailTitleText}>{dataSource.title}</Text>
+                                    </View>
+                                    <View>
+                                        <WebView
+                                            style={{
+                                                height: Theme.screenHeight - 150,
+                                            }}
+                                            source={{ html: HTML }}
+                                        />
 
-                                </View>
+                                    </View>
 
-                            </ScrollView>
-                    }
-
+                                </ScrollView>
+                        }
+                    </View>
                 </View>
-            </View>
+            </SafeAreaView>
         )
     }
     componentDidMount() {
@@ -85,18 +86,18 @@ export default class HelpDetail extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    content:{
-        flex:1,
-        backgroundColor:'#fff',
+    content: {
+        flex: 1,
+        backgroundColor: '#fff',
     },
     HelpDetailWp: {
         paddingTop: 20,
         paddingLeft: 15,
         paddingRight: 15
     },
-    HelpDetailTitle:{
-        borderBottomWidth:1,
-        borderBottomColor:'#eee',
+    HelpDetailTitle: {
+        borderBottomWidth: 1,
+        borderBottomColor: '#eee',
     },
     HelpDetailTitleText: {
         fontSize: 16,

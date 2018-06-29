@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Text, StyleSheet, View, StatusBar, ScrollView, RefreshControl } from 'react-native';
+import { SafeAreaView} from "react-navigation";
 import Api from '../../util/api';
 import Theme from '../../util/theme';
 import Header from '../../component/navBar';
@@ -28,6 +29,7 @@ export default class HomeScreen extends React.Component {
         const { navigation, loginState } = this.props;
         const { loading, dataSource } = this.state;
         return (
+           <SafeAreaView style={{flex:1,backgroundColor:Theme.color2}}>
             <View style={Theme.container}>
                 <StatusBar
                     barStyle="light-content"
@@ -49,6 +51,10 @@ export default class HomeScreen extends React.Component {
                                 <Num data={dataSource.homenum} />
                                 <Nav navigation={navigation} />
                                 <Dapan data={{ inamount: dataSource.inamount, markent: dataSource.markent }} />
+                                
+                                <Pingce data={dataSource.mplisttop} navigation={navigation} />
+                                <Yulun data={dataSource.sentlist} navigation={navigation} />
+                                <Comment data={dataSource.commentlist} navigation={navigation} />
                                 {
                                     versionStatus != 1?
                                     <Activity data={dataSource.flmf} navigation={navigation}  />
@@ -61,13 +67,11 @@ export default class HomeScreen extends React.Component {
                                     :
                                     null
                                 }
-                                <Pingce data={dataSource.mplisttop} navigation={navigation} />
-                                <Yulun data={dataSource.sentlist} navigation={navigation} />
-                                <Comment data={dataSource.commentlist} navigation={navigation} />
                             </ScrollView>
                     }
                 </View>
             </View>
+            </SafeAreaView>
 
         );
     }

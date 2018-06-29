@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text, StyleSheet, View, StatusBar } from 'react-native';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
-
+import { SafeAreaView } from "react-navigation";
 import Theme from '../../util/theme';
 import Header from '../../component/navBar'
 import TabBar from '../../component/tabBar';
@@ -44,121 +44,123 @@ export default class HealthScreen extends React.Component {
         let { tabNames, upDateTime } = this.state;
         let navigation = this.props.navigation;
         return (
-            <View style={Theme.container}>
+            <SafeAreaView style={{ flex: 1, backgroundColor: Theme.color2 }}>
+                <View style={Theme.container}>
 
-                <Header headerOpt={{ back: '健康度', title: '健康度分析' }} navigation={navigation} />
+                    <Header headerOpt={{ back: '健康度', title: '健康度分析' }} navigation={navigation} />
 
-                <View style={Theme.content}>
-                    <ScrollableTabView
-                        renderTabBar={() => <TabBar tabNames={tabNames} />}
-                        onChangeTab={(obj) => {
-                            this.setState({
-                                index: obj.i
-                            })
-                        }}
-                    >
-                        <View style={styles.content} tabLabel='key1'>
-                            <ListPage
-                                navigation={navigation}
-                                itemRow={All}
-                                changeTotalNum={this.changeTotalNum.bind(this)}
-                                changeUpDateTime={this.changeUpDateTime.bind(this)}
-                                type={{ column: 'health', type: 'all', dataName: 'dataList' }}
-                            >
-                                <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
-                            </ListPage>
-                        </View>
-                        <View style={styles.content} tabLabel='key2'>
-                            <ListPage
-                                navigation={navigation}
-                                itemRow={Zijin}
-                                changeTotalNum={this.changeTotalNum.bind(this)}
-                                changeUpDateTime={this.changeUpDateTime.bind(this)}
-                                type={{ column: 'health', type: 'zijin', dataName: 'dataList' }}
-                            >
-                                <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
-                            </ListPage>
-                        </View>
-                        <View style={styles.content} tabLabel='key3'>
-                            <ListPage
-                                navigation={navigation}
-                                itemRow={Fensan}
-                                changeTotalNum={this.changeTotalNum.bind(this)}
-                                changeUpDateTime={this.changeUpDateTime.bind(this)}
-                                type={{ column: 'health', type: 'fensan', dataName: 'dataList' }}
-                            >
-                                <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
-                            </ListPage>
-                        </View>
-                        <View style={styles.content} tabLabel='key4'>
-                            <ListPage
-                                navigation={navigation}
-                                itemRow={Liudong}
-                                changeTotalNum={this.changeTotalNum.bind(this)}
-                                changeUpDateTime={this.changeUpDateTime.bind(this)}
-                                type={{ column: 'health', type: 'liudong', dataName: 'dataList' }}
-                            >
-                                <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
-                            </ListPage>
-                        </View>
-                        <View style={styles.content} tabLabel='key5'>
-                            <ListPage
-                                navigation={navigation}
-                                itemRow={Shouyi}
-                                changeTotalNum={this.changeTotalNum.bind(this)}
-                                changeUpDateTime={this.changeUpDateTime.bind(this)}
-                                type={{ column: 'health', type: 'shouyi', dataName: 'dataList' }}
-                            >
-                                <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
-                            </ListPage>
-                        </View>
-                        <View style={styles.content} tabLabel='key6'>
-                            <ListPage
-                                navigation={navigation}
-                                itemRow={Renqi}
-                                changeTotalNum={this.changeTotalNum.bind(this)}
-                                changeUpDateTime={this.changeUpDateTime.bind(this)}
-                                type={{ column: 'health', type: 'renqi', dataName: 'dataList' }}
-                            >
-                                <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
-                            </ListPage>
-                        </View>
-                        <View style={styles.content} tabLabel='key7'>
-                            <ListPage
-                                navigation={navigation}
-                                itemRow={Tiliang}
-                                changeTotalNum={this.changeTotalNum.bind(this)}
-                                changeUpDateTime={this.changeUpDateTime.bind(this)}
-                                type={{ column: 'health', type: 'tiliang', dataName: 'dataList' }}
-                            >
-                                <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
-                            </ListPage>
-                        </View>
-                        <View style={styles.content} tabLabel='key8'>
-                            <ListPage
-                                navigation={navigation}
-                                itemRow={Zhongcheng}
-                                changeTotalNum={this.changeTotalNum.bind(this)}
-                                changeUpDateTime={this.changeUpDateTime.bind(this)}
-                                type={{ column: 'health', type: 'zhongcheng', dataName: 'dataList' }}
-                            >
-                                <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
-                            </ListPage>
-                        </View>
-                        <View style={styles.content} tabLabel='key9'>
-                            <ListPage
-                                navigation={navigation}
-                                itemRow={Chengzhang}
-                                changeTotalNum={this.changeTotalNum.bind(this)}
-                                changeUpDateTime={this.changeUpDateTime.bind(this)}
-                                type={{ column: 'health', type: 'chengzhang', dataName: 'dataList' }}
-                            >
-                                <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
-                            </ListPage>
-                        </View>
-                    </ScrollableTabView>
+                    <View style={Theme.content}>
+                        <ScrollableTabView
+                            renderTabBar={() => <TabBar tabNames={tabNames} />}
+                            onChangeTab={(obj) => {
+                                this.setState({
+                                    index: obj.i
+                                })
+                            }}
+                        >
+                            <View style={styles.content} tabLabel='key1'>
+                                <ListPage
+                                    navigation={navigation}
+                                    itemRow={All}
+                                    changeTotalNum={this.changeTotalNum.bind(this)}
+                                    changeUpDateTime={this.changeUpDateTime.bind(this)}
+                                    type={{ column: 'health', type: 'all', dataName: 'dataList' }}
+                                >
+                                    <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
+                                </ListPage>
+                            </View>
+                            <View style={styles.content} tabLabel='key2'>
+                                <ListPage
+                                    navigation={navigation}
+                                    itemRow={Zijin}
+                                    changeTotalNum={this.changeTotalNum.bind(this)}
+                                    changeUpDateTime={this.changeUpDateTime.bind(this)}
+                                    type={{ column: 'health', type: 'zijin', dataName: 'dataList' }}
+                                >
+                                    <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
+                                </ListPage>
+                            </View>
+                            <View style={styles.content} tabLabel='key3'>
+                                <ListPage
+                                    navigation={navigation}
+                                    itemRow={Fensan}
+                                    changeTotalNum={this.changeTotalNum.bind(this)}
+                                    changeUpDateTime={this.changeUpDateTime.bind(this)}
+                                    type={{ column: 'health', type: 'fensan', dataName: 'dataList' }}
+                                >
+                                    <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
+                                </ListPage>
+                            </View>
+                            <View style={styles.content} tabLabel='key4'>
+                                <ListPage
+                                    navigation={navigation}
+                                    itemRow={Liudong}
+                                    changeTotalNum={this.changeTotalNum.bind(this)}
+                                    changeUpDateTime={this.changeUpDateTime.bind(this)}
+                                    type={{ column: 'health', type: 'liudong', dataName: 'dataList' }}
+                                >
+                                    <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
+                                </ListPage>
+                            </View>
+                            <View style={styles.content} tabLabel='key5'>
+                                <ListPage
+                                    navigation={navigation}
+                                    itemRow={Shouyi}
+                                    changeTotalNum={this.changeTotalNum.bind(this)}
+                                    changeUpDateTime={this.changeUpDateTime.bind(this)}
+                                    type={{ column: 'health', type: 'shouyi', dataName: 'dataList' }}
+                                >
+                                    <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
+                                </ListPage>
+                            </View>
+                            <View style={styles.content} tabLabel='key6'>
+                                <ListPage
+                                    navigation={navigation}
+                                    itemRow={Renqi}
+                                    changeTotalNum={this.changeTotalNum.bind(this)}
+                                    changeUpDateTime={this.changeUpDateTime.bind(this)}
+                                    type={{ column: 'health', type: 'renqi', dataName: 'dataList' }}
+                                >
+                                    <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
+                                </ListPage>
+                            </View>
+                            <View style={styles.content} tabLabel='key7'>
+                                <ListPage
+                                    navigation={navigation}
+                                    itemRow={Tiliang}
+                                    changeTotalNum={this.changeTotalNum.bind(this)}
+                                    changeUpDateTime={this.changeUpDateTime.bind(this)}
+                                    type={{ column: 'health', type: 'tiliang', dataName: 'dataList' }}
+                                >
+                                    <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
+                                </ListPage>
+                            </View>
+                            <View style={styles.content} tabLabel='key8'>
+                                <ListPage
+                                    navigation={navigation}
+                                    itemRow={Zhongcheng}
+                                    changeTotalNum={this.changeTotalNum.bind(this)}
+                                    changeUpDateTime={this.changeUpDateTime.bind(this)}
+                                    type={{ column: 'health', type: 'zhongcheng', dataName: 'dataList' }}
+                                >
+                                    <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
+                                </ListPage>
+                            </View>
+                            <View style={styles.content} tabLabel='key9'>
+                                <ListPage
+                                    navigation={navigation}
+                                    itemRow={Chengzhang}
+                                    changeTotalNum={this.changeTotalNum.bind(this)}
+                                    changeUpDateTime={this.changeUpDateTime.bind(this)}
+                                    type={{ column: 'health', type: 'chengzhang', dataName: 'dataList' }}
+                                >
+                                    <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
+                                </ListPage>
+                            </View>
+                        </ScrollableTabView>
+                    </View>
                 </View>
-            </View>
+            </SafeAreaView>
         );
     }
 }

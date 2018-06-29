@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Text, StyleSheet, View, TouchableOpacity, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/Icomoon';
+import { SafeAreaView } from "react-navigation";
 import Theme from '../../../util/theme';
 import Header from '../../../component/navBar/detail';
 import ActionShare from '../../../component/actionShare';
@@ -16,179 +17,181 @@ export default class DetailFund extends React.Component {
             len = 5
         }
         return (
-            <View style={[styles.container]}>
-                <Header headerOpt={{ title: params.platName + ' | 示范投资', noBack: true }} navigation={navigation} showActionSheet={this.showActionSheet.bind(this)} />
-                <ActionShare ref={'ActionShare'} />
-                <ScrollView style={Theme.content}>
-                    <View style={[Theme.box, styles.fundInfoContainer]}>
-                        <View style={styles.fundInfoHd}>
-                            <Icon name={'fund-icon'} size={20} color={Theme['fund' + fundData.fund_type + 'Color']} />
-                            <Text style={styles.platnameText}>{params.platName}</Text>
-                        </View>
-                        <View style={styles.fundInfoBd}>
-                            <View style={styles.fundInfoBdHd}>
-                                <Text style={[styles.fundInfoBodyHdText, styles.listIc1]}>投资状态</Text>
-                                <Text style={[styles.fundInfoBodyHdText, styles.listIc2]}>在投项目</Text>
-                                <Text style={[styles.fundInfoBodyHdText, styles.listIc3]}>投资额</Text>
-                                <Text style={[styles.fundInfoBodyHdText, styles.listIc4]}>年化收益率</Text>
+            <SafeAreaView style={{ flex: 1, backgroundColor: '#1A1A1A' }}>
+                <View style={[styles.container]}>
+                    <Header headerOpt={{ title: params.platName + ' | 示范投资', noBack: true }} navigation={navigation} showActionSheet={this.showActionSheet.bind(this)} />
+                    <ActionShare ref={'ActionShare'} />
+                    <ScrollView style={Theme.content}>
+                        <View style={[Theme.box, styles.fundInfoContainer]}>
+                            <View style={styles.fundInfoHd}>
+                                <Icon name={'fund-icon'} size={20} color={Theme['fund' + fundData.fund_type + 'Color']} />
+                                <Text style={styles.platnameText}>{params.platName}</Text>
                             </View>
-                            {
-                                fundData.investlist.map((item, i) => {
-                                    return (
-                                        <View style={styles.fundInfoBdList} key={i}>
-                                            <Text style={[styles.fundInfoBodyBdText, styles.listIc1]}>已参投</Text>
-                                            <Text style={[styles.fundInfoBodyBdText, styles.listIc2]}>{item.name}</Text>
-                                            <Text style={[styles.fundInfoBodyBdText, styles.listIc3]}>{item.invest}万</Text>
-                                            <Text style={[styles.fundInfoBodyBdText, styles.listIc4]}>{item.rate}%</Text>
-                                        </View>
-                                    )
-                                })
-                            }
-                        </View>
-                        <View style={styles.fundInfoReasons}>
-                            <Text style={styles.fundInfoReasonsTitleText}>投资理由</Text>
-                            <View style={styles.fundInfoReasonsBox}>
+                            <View style={styles.fundInfoBd}>
+                                <View style={styles.fundInfoBdHd}>
+                                    <Text style={[styles.fundInfoBodyHdText, styles.listIc1]}>投资状态</Text>
+                                    <Text style={[styles.fundInfoBodyHdText, styles.listIc2]}>在投项目</Text>
+                                    <Text style={[styles.fundInfoBodyHdText, styles.listIc3]}>投资额</Text>
+                                    <Text style={[styles.fundInfoBodyHdText, styles.listIc4]}>年化收益率</Text>
+                                </View>
                                 {
-                                    fundData.fund_reasons.split('<br />').map((list, i) => {
+                                    fundData.investlist.map((item, i) => {
                                         return (
-                                            <Text key={i} style={styles.fundInfoReasonsText}>{list}</Text>
+                                            <View style={styles.fundInfoBdList} key={i}>
+                                                <Text style={[styles.fundInfoBodyBdText, styles.listIc1]}>已参投</Text>
+                                                <Text style={[styles.fundInfoBodyBdText, styles.listIc2]}>{item.name}</Text>
+                                                <Text style={[styles.fundInfoBodyBdText, styles.listIc3]}>{item.invest}万</Text>
+                                                <Text style={[styles.fundInfoBodyBdText, styles.listIc4]}>{item.rate}%</Text>
+                                            </View>
                                         )
                                     })
                                 }
                             </View>
-                        </View >
-                    </View>
-
-
-                    <View style={[styles.fundOther, Theme.box, Theme.mt10]}>
-                        <View style={styles.fundHeader}>
-                            <View style={styles.fundHeaderLeft}>
-                                <View style={[styles.fundType, styles['fundType' + fundData.fund_type]]}>
-                                    <Text style={styles.fundTypeText}>{fundData.fund_type}号</Text>
+                            <View style={styles.fundInfoReasons}>
+                                <Text style={styles.fundInfoReasonsTitleText}>投资理由</Text>
+                                <View style={styles.fundInfoReasonsBox}>
+                                    {
+                                        fundData.fund_reasons.split('<br />').map((list, i) => {
+                                            return (
+                                                <Text key={i} style={styles.fundInfoReasonsText}>{list}</Text>
+                                            )
+                                        })
+                                    }
                                 </View>
-                                <View style={styles.fundTitle}>
-                                    <Text style={styles.fundTitleText}>
+                            </View >
+                        </View>
+
+
+                        <View style={[styles.fundOther, Theme.box, Theme.mt10]}>
+                            <View style={styles.fundHeader}>
+                                <View style={styles.fundHeaderLeft}>
+                                    <View style={[styles.fundType, styles['fundType' + fundData.fund_type]]}>
+                                        <Text style={styles.fundTypeText}>{fundData.fund_type}号</Text>
+                                    </View>
+                                    <View style={styles.fundTitle}>
+                                        <Text style={styles.fundTitleText}>
+                                            {
+                                                fundData.fund_type == 1 ?
+                                                    '稳健型'
+                                                    :
+                                                    fundData.fund_type == 2 ?
+                                                        '平衡型'
+                                                        :
+                                                        '收益型'
+                                            }
+                                            示范投资
+                                    </Text>
+                                    </View>
+                                </View>
+                            </View>
+                            <View style={styles.fundSm}>
+                                <View style={styles.fundSmList}>
+                                    <Text style={styles.fundSmLabelText}>安全指数</Text>
+                                    <View style={styles.fundStart}>
+                                        <Icon name={'fund-dunpai'} size={14} color={'#FF9800'} />
+                                        <Icon name={'fund-dunpai'} size={14} color={'#FF9800'} />
+                                        <Icon name={'fund-dunpai'} size={14} color={'#FF9800'} />
                                         {
                                             fundData.fund_type == 1 ?
-                                                '稳健型'
+                                                <Icon name={'fund-dunpai'} size={14} color={'#FF9800'} />
+                                                :
+                                                null
+                                        }
+                                        {
+                                            fundData.fund_type == 1 ?
+                                                <Icon name={'fund-dunpai'} size={14} color={'#FF9800'} />
+                                                :
+                                                null
+                                        }
+                                        {
+                                            fundData.fund_type == 2 ?
+                                                <Icon name={'fund-dunpai'} size={14} color={'#FF9800'} />
+                                                :
+                                                null
+                                        }
+
+                                    </View>
+                                </View>
+                                <View style={styles.fundSmList}>
+                                    <Text style={styles.fundSmLabelText}>适合人群</Text>
+                                    <Text style={styles.fundSmText}>
+                                        {
+                                            fundData.fund_type == 1 ?
+                                                '适合以稳健安全为首选目标，风险厌恶型的人群。'
                                                 :
                                                 fundData.fund_type == 2 ?
-                                                    '平衡型'
+                                                    '适合以平衡为首选目标，能承受低风险的人群。'
                                                     :
-                                                    '收益型'
+                                                    '适合以收益为首选目标，能承受少量风险的人群。'
                                         }
-                                        示范投资
+
+
+
                                     </Text>
                                 </View>
                             </View>
-                        </View>
-                        <View style={styles.fundSm}>
-                            <View style={styles.fundSmList}>
-                                <Text style={styles.fundSmLabelText}>安全指数</Text>
-                                <View style={styles.fundStart}>
-                                    <Icon name={'fund-dunpai'} size={14} color={'#FF9800'} />
-                                    <Icon name={'fund-dunpai'} size={14} color={'#FF9800'} />
-                                    <Icon name={'fund-dunpai'} size={14} color={'#FF9800'} />
-                                    {
-                                        fundData.fund_type == 1 ?
-                                            <Icon name={'fund-dunpai'} size={14} color={'#FF9800'} />
-                                            :
-                                            null
-                                    }
-                                    {
-                                        fundData.fund_type == 1 ?
-                                            <Icon name={'fund-dunpai'} size={14} color={'#FF9800'} />
-                                            :
-                                            null
-                                    }
-                                    {
-                                        fundData.fund_type == 2 ?
-                                            <Icon name={'fund-dunpai'} size={14} color={'#FF9800'} />
-                                            :
-                                            null
-                                    }
+                            <View style={styles.fundList}>
+                                <View style={styles.fundListLeft}>
+                                    <View style={styles.fundListHd}>
+                                        <Text style={[styles.listHdText, styles.fundIc1]}>在投平台</Text>
+                                        <Text style={[styles.listHdText, styles.fundIc2]}>利率</Text>
+                                    </View>
+                                    <View style={styles.fundListBd}>
+                                        {
+                                            fundelse.map((item, i) => {
+                                                if (i < len) {
+                                                    return (
+                                                        <View key={i} style={styles.list}>
+                                                            <TouchableOpacity style={styles.fundIc1}
+                                                                onPress={() => {
+                                                                    navigation.navigate('Detail', { id: item.id_dlp, platName: item.plat_name })
+                                                                }}
+                                                            >
+                                                                <Text style={[styles.listPlatText, styles.listText]}>{item.plat_name}</Text>
+                                                            </TouchableOpacity>
+                                                            <Text style={[styles.fundIc2, styles.listRateText, styles['listRateText' + fundData.fund_type]]}>{item.fund_rate}%</Text>
+                                                        </View>
+                                                    )
+                                                }
 
+                                            })
+                                        }
+
+                                    </View>
                                 </View>
-                            </View>
-                            <View style={styles.fundSmList}>
-                                <Text style={styles.fundSmLabelText}>适合人群</Text>
-                                <Text style={styles.fundSmText}>
-                                    {
-                                        fundData.fund_type == 1 ?
-                                            '适合以稳健安全为首选目标，风险厌恶型的人群。'
-                                            :
-                                            fundData.fund_type == 2 ?
-                                                '适合以平衡为首选目标，能承受低风险的人群。'
-                                                :
-                                                '适合以收益为首选目标，能承受少量风险的人群。'
-                                    }
+                                <View style={styles.fundListRight}>
+                                    <View style={styles.fundListHd}>
+                                        <Text style={[styles.listHdText, styles.fundIc1]}>在投平台</Text>
+                                        <Text style={[styles.listHdText, styles.fundIc2]}>利率</Text>
+                                    </View>
+                                    <View style={styles.fundListBd}>
+                                        {
+                                            fundelse.map((item, i) => {
+                                                if (i >= len) {
+                                                    return (
+                                                        <View key={i} style={styles.list}>
+                                                            <TouchableOpacity style={styles.fundIc1}
+                                                                onPress={() => {
+                                                                    navigation.navigate('Detail', { id: item.id_dlp, platName: item.plat_name })
+                                                                }}
+                                                            >
+                                                                <Text style={[styles.listPlatText, styles.listText]}>{item.plat_name}</Text>
+                                                            </TouchableOpacity>
+                                                            <Text style={[styles.fundIc2, styles.listRateText, styles['listRateText' + fundData.fund_type]]}>{item.fund_rate}%</Text>
+                                                        </View>
+                                                    )
+                                                }
 
+                                            })
+                                        }
 
-
-                                </Text>
-                            </View>
-                        </View>
-                        <View style={styles.fundList}>
-                            <View style={styles.fundListLeft}>
-                                <View style={styles.fundListHd}>
-                                    <Text style={[styles.listHdText, styles.fundIc1]}>在投平台</Text>
-                                    <Text style={[styles.listHdText, styles.fundIc2]}>利率</Text>
-                                </View>
-                                <View style={styles.fundListBd}>
-                                    {
-                                        fundelse.map((item, i) => {
-                                            if (i < len) {
-                                                return (
-                                                    <View key={i} style={styles.list}>
-                                                        <TouchableOpacity style={styles.fundIc1}
-                                                            onPress={() => {
-                                                                navigation.navigate('Detail', { id: item.id_dlp, platName: item.plat_name })
-                                                            }}
-                                                        >
-                                                            <Text style={[styles.listPlatText, styles.listText]}>{item.plat_name}</Text>
-                                                        </TouchableOpacity>
-                                                        <Text style={[styles.fundIc2, styles.listRateText, styles['listRateText' + fundData.fund_type]]}>{item.fund_rate}%</Text>
-                                                    </View>
-                                                )
-                                            }
-
-                                        })
-                                    }
-
-                                </View>
-                            </View>
-                            <View style={styles.fundListRight}>
-                                <View style={styles.fundListHd}>
-                                    <Text style={[styles.listHdText, styles.fundIc1]}>在投平台</Text>
-                                    <Text style={[styles.listHdText, styles.fundIc2]}>利率</Text>
-                                </View>
-                                <View style={styles.fundListBd}>
-                                    {
-                                        fundelse.map((item, i) => {
-                                            if (i >= len) {
-                                                return (
-                                                    <View key={i} style={styles.list}>
-                                                        <TouchableOpacity style={styles.fundIc1}
-                                                            onPress={() => {
-                                                                navigation.navigate('Detail', { id: item.id_dlp, platName: item.plat_name })
-                                                            }}
-                                                        >
-                                                            <Text style={[styles.listPlatText, styles.listText]}>{item.plat_name}</Text>
-                                                        </TouchableOpacity>
-                                                        <Text style={[styles.fundIc2, styles.listRateText, styles['listRateText' + fundData.fund_type]]}>{item.fund_rate}%</Text>
-                                                    </View>
-                                                )
-                                            }
-
-                                        })
-                                    }
-
+                                    </View>
                                 </View>
                             </View>
                         </View>
-                    </View>
-                </ScrollView>
-            </View>
+                    </ScrollView>
+                </View>
+            </SafeAreaView>
         )
     }
     showActionSheet() {

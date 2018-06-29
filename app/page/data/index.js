@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Text, StyleSheet, View } from 'react-native';
+import { SafeAreaView } from "react-navigation";
 
 import Theme from '../../util/theme';
 import Header from '../../component/navBar'
@@ -30,21 +31,23 @@ export default class DataScreen extends React.Component {
         let { upDateTime } = this.state;
         let navigation = this.props.navigation;
         return (
-            <View style={Theme.container}>
-                <Header headerOpt={{ back: '数据', title: '数据详情' }} navigation={navigation} />
-                <View style={styles.content}>
-                    <ListPage
-                        navigation={navigation}
-                        itemRow={All}
-                        changeTotalNum={this.changeTotalNum.bind(this)}
-                        changeUpDateTime={this.changeUpDateTime.bind(this)}
-                        type={{ column: 'data', type: 'all', dataName: 'dataList' }}
-                        columnDb={true}
+            <SafeAreaView style={{ flex: 1, backgroundColor: Theme.color2 }}>
+                <View style={Theme.container}>
+                    <Header headerOpt={{ back: '数据', title: '数据详情' }} navigation={navigation} />
+                    <View style={styles.content}>
+                        <ListPage
+                            navigation={navigation}
+                            itemRow={All}
+                            changeTotalNum={this.changeTotalNum.bind(this)}
+                            changeUpDateTime={this.changeUpDateTime.bind(this)}
+                            type={{ column: 'data', type: 'all', dataName: 'dataList' }}
+                            columnDb={true}
                         >
-                        <Update upDateTime={upDateTime} totalNum={this.state.totalNum} />
-                    </ListPage>
+                            <Update upDateTime={upDateTime} totalNum={this.state.totalNum} />
+                        </ListPage>
+                    </View>
                 </View>
-            </View>
+            </SafeAreaView>
         );
     }
 }

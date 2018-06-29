@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Text, StyleSheet, View, ScrollView, RefreshControl } from 'react-native';
+import { SafeAreaView } from "react-navigation";
 import Api from '../../util/api';
 import Theme from '../../util/theme';
 import Header from '../../component/navBar';
@@ -24,27 +25,29 @@ export default class FindTab extends React.Component {
         const { navigation, loginState } = this.props;
         const { loading, dataSource } = this.state;
         return (
-            <View style={Theme.container}>
-                <Header headerOpt={{ back: '发现', title: '发现' }} navigation={navigation} openControlPanel={this.openControlPanel.bind(this)} loginState={loginState} />
-                <View style={Theme.content}>
-                    {
-                        loading ?
-                            <Loading />
-                            :
-                            <ScrollView
-                                refreshControl={
-                                    <RefreshControl
-                                        refreshing={this.state.isRefreshing}
-                                        onRefresh={this.onRefresh.bind(this)}
-                                    />
-                                }
-                            >
-                                <Fund navigation={navigation} data={dataSource.fundcount} />
-                                <Activity navigation={navigation} data={dataSource.flmf} />
-                            </ScrollView>
-                    }
+            <SafeAreaView style={{ flex: 1, backgroundColor: Theme.color2 }}>
+                <View style={Theme.container}>
+                    <Header headerOpt={{ back: '发现', title: '发现' }} navigation={navigation} openControlPanel={this.openControlPanel.bind(this)} loginState={loginState} />
+                    <View style={Theme.content}>
+                        {
+                            loading ?
+                                <Loading />
+                                :
+                                <ScrollView
+                                    refreshControl={
+                                        <RefreshControl
+                                            refreshing={this.state.isRefreshing}
+                                            onRefresh={this.onRefresh.bind(this)}
+                                        />
+                                    }
+                                >
+                                    <Fund navigation={navigation} data={dataSource.fundcount} />
+                                    <Activity navigation={navigation} data={dataSource.flmf} />
+                                </ScrollView>
+                        }
+                    </View>
                 </View>
-            </View>
+            </SafeAreaView>
         )
     }
     openControlPanel() {

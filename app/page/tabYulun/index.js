@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Text, StyleSheet, View, ScrollView, RefreshControl } from 'react-native';
+import { SafeAreaView } from "react-navigation";
 import Api from '../../util/api';
 import Theme from '../../util/theme';
 import Header from '../../component/navBar';
@@ -30,29 +31,31 @@ export default class YulunTab extends React.Component {
         const { navigation, loginState } = this.props;
         const { loading, dataSource } = this.state;
         return (
-            <View style={Theme.container}>
-                <Header headerOpt={{ back: '网贷行业舆情', title: '网贷行业舆情' }} navigation={navigation} openControlPanel={this.openControlPanel.bind(this)} loginState={loginState} />
-                <View style={Theme.content}>
-                    {
-                        loading ?
-                            <Loading />
-                            :
-                            <ScrollView
-                                refreshControl={
-                                    <RefreshControl
-                                        refreshing={this.state.isRefreshing}
-                                        onRefresh={this.onRefresh.bind(this)}
-                                    />
-                                }
-                            >
-                                <TabTop navigation={navigation} data={data} />
-                                <Pingce navigation={navigation} data={dataSource.mplist} />
-                                <Yulun navigation={navigation} data={dataSource.sentlist} />
-                                <Comment navigation={navigation} data={dataSource.commentlist} />
-                            </ScrollView>
-                    }
+            <SafeAreaView style={{ flex: 1, backgroundColor: Theme.color2 }}>
+                <View style={Theme.container}>
+                    <Header headerOpt={{ back: '网贷行业舆情', title: '网贷行业舆情' }} navigation={navigation} openControlPanel={this.openControlPanel.bind(this)} loginState={loginState} />
+                    <View style={Theme.content}>
+                        {
+                            loading ?
+                                <Loading />
+                                :
+                                <ScrollView
+                                    refreshControl={
+                                        <RefreshControl
+                                            refreshing={this.state.isRefreshing}
+                                            onRefresh={this.onRefresh.bind(this)}
+                                        />
+                                    }
+                                >
+                                    <TabTop navigation={navigation} data={data} />
+                                    <Pingce navigation={navigation} data={dataSource.mplist} />
+                                    <Yulun navigation={navigation} data={dataSource.sentlist} />
+                                    <Comment navigation={navigation} data={dataSource.commentlist} />
+                                </ScrollView>
+                        }
+                    </View>
                 </View>
-            </View>
+            </SafeAreaView>
         )
     }
     openControlPanel() {

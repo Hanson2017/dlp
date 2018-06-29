@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text, StyleSheet, View } from 'react-native';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
-
+import { SafeAreaView } from "react-navigation";
 import Theme from '../../../util/theme';
 import Header from '../../../component/navBar';
 import TabBar from '../../../component/tabBar';
@@ -27,26 +27,28 @@ export default class AccountScreen extends React.Component {
         }
         console.log('params', params)
         return (
-            <View style={Theme.container}>
-                <Header headerOpt={{ back: '个人中心', title: '个人中心', search: true }} navigation={navigation} />
-                <View style={Theme.content}>
-                    <ScrollableTabView
-                        initialPage={tab}
-                        renderTabBar={() => <TabBar tabNames={tabNames} />}
-                    >
+            <SafeAreaView style={{ flex: 1, backgroundColor: Theme.color2 }}>
+                <View style={Theme.container}>
+                    <Header headerOpt={{ back: '个人中心', title: '个人中心', search: true }} navigation={navigation} />
+                    <View style={Theme.content}>
+                        <ScrollableTabView
+                            initialPage={tab}
+                            renderTabBar={() => <TabBar tabNames={tabNames} />}
+                        >
 
-                        <View style={styles.content} tabLabel='key1'>
-                            <Guanzhu navigation={navigation} />
-                        </View>
-                        <View style={styles.content} tabLabel='key2'>
-                            <Comments navigation={navigation} />
-                        </View>
-                        <View style={styles.content} tabLabel='key3'>
-                            <Set navigation={navigation} />
-                        </View>
-                    </ScrollableTabView>
+                            <View style={styles.content} tabLabel='key1'>
+                                <Guanzhu navigation={navigation} />
+                            </View>
+                            <View style={styles.content} tabLabel='key2'>
+                                <Comments navigation={navigation} />
+                            </View>
+                            <View style={styles.content} tabLabel='key3'>
+                                <Set navigation={navigation} />
+                            </View>
+                        </ScrollableTabView>
+                    </View>
                 </View>
-            </View>
+            </SafeAreaView>
         );
     }
 }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, StyleSheet, View, ScrollView, FlatList, RefreshControl } from 'react-native';
-
+import { SafeAreaView } from "react-navigation";
 import Api from '../../util/api';
 import Util from '../../util/util';
 import Theme from '../../util/theme';
@@ -26,35 +26,37 @@ export default class PingceScreen extends React.Component {
         const { updatetime } = this.state;
 
         return (
-            <View style={Theme.container}>
-                <Header headerOpt={{ back: '热门活动', title: '热门活动' }} navigation={navigation} />
-                <View style={styles.update}>
-                    <Text style={[styles.updateText]}>更新时间：{updatetime}</Text>
+            <SafeAreaView style={{ flex: 1, backgroundColor: Theme.color2 }}>
+                <View style={Theme.container}>
+                    <Header headerOpt={{ back: '热门活动', title: '热门活动' }} navigation={navigation} />
+                    <View style={styles.update}>
+                        <Text style={[styles.updateText]}>更新时间：{updatetime}</Text>
+                    </View>
+                    <View style={Theme.content}>
+                        {
+                            this.state.loading ?
+                                <Loading />
+                                :
+                                <ScrollView>
+                                    <View style={styles.totalNum}>
+                                        <Text style={styles.totalNumText}>活动平台数量 65</Text>
+                                    </View>
+                                    <FlatList
+                                        contentContainerStyle={styles.listViewContent}
+                                        data={this.state.dataSource}
+                                        renderItem={this.renderItemL.bind(this)}
+                                        refreshControl={
+                                            <RefreshControl
+                                                refreshing={this.state.isRefreshing}
+                                                onRefresh={this.onRefresh.bind(this)}
+                                            />
+                                        }
+                                    />
+                                </ScrollView>
+                        }
+                    </View>
                 </View>
-                <View style={Theme.content}>
-                    {
-                        this.state.loading ?
-                            <Loading />
-                            :
-                            <ScrollView>
-                                <View style={styles.totalNum}>
-                                    <Text style={styles.totalNumText}>活动平台数量 65</Text>
-                                </View>
-                                <FlatList
-                                    contentContainerStyle={styles.listViewContent}
-                                    data={this.state.dataSource}
-                                    renderItem={this.renderItemL.bind(this)}
-                                    refreshControl={
-                                        <RefreshControl
-                                            refreshing={this.state.isRefreshing}
-                                            onRefresh={this.onRefresh.bind(this)}
-                                        />
-                                    }
-                                />
-                            </ScrollView>
-                    }
-                </View>
-            </View>
+            </SafeAreaView>
         )
     }
     renderItemL({ item, index }) {
@@ -106,15 +108,15 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         flexWrap: 'wrap',
     },
-    totalNum:{
-        paddingLeft:15,
-        paddingRight:15,
-        paddingTop:10,
-        paddingBottom:10,
+    totalNum: {
+        paddingLeft: 15,
+        paddingRight: 15,
+        paddingTop: 10,
+        paddingBottom: 10,
     },
-    totalNumText:{
-        color:'#999',
-        fontSize:11,
+    totalNumText: {
+        color: '#999',
+        fontSize: 11,
     },
     update: {
         position: 'relative',
