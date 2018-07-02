@@ -14,13 +14,12 @@ import Wdzj from '../temp/wdzj'
 import P2peye from '../temp/p2peye'
 import Dlp from '../temp/dlp'
 import R360 from '../temp/r360'
-import Xinghuo from '../temp/xinghuo'
 
 export default class PingjiScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            tabNames: ['综合', '之家', '天眼', '贷罗盘', '融360', '星火'],
+            tabNames: ['综合', '之家', '天眼', '贷罗盘', '融360'],
             totalNum: [0, 0, 0, 0, 0, 0, 0],
             index: 0,
             upDateTime: '',
@@ -119,18 +118,7 @@ export default class PingjiScreen extends React.Component {
                                     <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
                                 </ListPage>
                             </View>
-                            <View style={styles.content} tabLabel='key6'>
-                                <ListPage
-                                    navigation={navigation}
-                                    itemRow={Xinghuo}
-                                    changeTotalNum={this.changeTotalNum.bind(this)}
-                                    changeUpDateTime={this.changeUpDateTime.bind(this)}
-                                    type={{ column: 'pingji', type: 'xinghuo', dataName: 'gradeList' }}
-                                    columnDb={false}
-                                >
-                                    <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
-                                </ListPage>
-                            </View>
+                        
 
                         </ScrollableTabView>
                     </View>

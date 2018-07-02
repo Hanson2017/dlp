@@ -128,8 +128,6 @@ const styles = StyleSheet.create({
         padding: 8,
         color: '#333',
         backgroundColor: '#f5f5f5',
-        borderWidth: 1,
-        borderColor: '#E6E6E6',
     },
     jingyingfanweiText: {
         fontSize: 12,

@@ -37,7 +37,7 @@ export default class Header extends React.Component {
                 <View style={[styles.textContainer,headerOpt.title && Platform.OS=='android' ? null:styles.textContainerTx]}>
                     {
                         headerOpt.title ?
-                            <Text style={styles.headerText}>{headerOpt.title} </Text>
+                            <Text style={styles.headerText}>{headerOpt.title}</Text>
                             :
                             <Image source={require('../../../resources/images/logo.png')} style={{ width: 90.85, height: 24 }} />
                     }

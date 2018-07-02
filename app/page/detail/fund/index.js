@@ -264,8 +264,6 @@ const styles = StyleSheet.create({
         paddingTop: 8,
         paddingBottom: 8,
         backgroundColor: '#F5F5F5',
-        borderWidth: 1,
-        borderColor: '#E6E6E6',
     },
     fundInfoReasonsText: {
         lineHeight: 18,

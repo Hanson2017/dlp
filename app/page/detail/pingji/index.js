@@ -355,7 +355,7 @@ export default class DetailPingji extends React.Component {
                             </View>
                             {/* 贷罗盘 end */}
 
-                            <View style={styles.listContainer}>
+                            <View style={[styles.listContainer, { borderBottomWidth: 0, }]}>
                                 <View style={styles.listHeader}>
                                     <Text style={styles.name}>融360评级</Text>
                                     {
@@ -396,43 +396,7 @@ export default class DetailPingji extends React.Component {
                             </View>
                             {/* 融360 end */}
 
-                            <View style={[styles.listContainer, { borderBottomWidth: 0, }]}>
-                                <View style={styles.listHeader}>
-                                    <Text style={styles.name}>星火评级</Text>
-                                    {
-                                        xinghuo !== null ?
-                                            <View style={styles.listHeaderCon}>
-                                                <Text style={styles.score}>{xinghuo.level}</Text>
-                                                <Text style={styles.totalNum}>统计{xinghuo.totalNum}家平台中排名</Text>
-                                                <Text style={styles.ordernum}>{xinghuo.ordernum}</Text>
-                                                <TouchableOpacity
-                                                    onPress={() => {
-                                                        this.state.isHidden[5] = !this.state.isHidden[5];
-                                                        this.setState({
-                                                            ref: !this.state.ref
-                                                        })
-                                                    }}
-                                                >
-                                                    <Icon name={isHidden[5] ? 'triangleCircle-down' : 'triangleCircle-up'} size={23} color={isHidden[5] ? '#bbb' : '#4AB3FF'} />
-                                                </TouchableOpacity>
-                                            </View>
-                                            :
-                                            <Text style={styles.null}>暂无</Text>
-                                    }
-                                </View>
-                                {
-                                    isHidden[5] ?
-                                        null
-                                        :
-                                        <View style={styles.listBody}>
-
-                                            <View style={styles.echartContainer}>
-                                                <Echarts option={LineChart.line1('星火评级', '星火评级', echartDataTimeXinghuo, echartDataXinghuo, echartDataTextXinghuo)} height={180} />
-                                            </View>
-                                        </View>
-                                }
-                            </View>
-                            {/* 星火评级 end */}
+                            
                         </View>
                     </View>
 
@@ -493,7 +457,7 @@ export default class DetailPingji extends React.Component {
                             </View>
                             {/* 羿飞评级 end */}
 
-                            <View style={[styles.listContainer, { borderBottomWidth: 0, }]}>
+                            <View style={[styles.listContainer]}>
                                 <View style={styles.listHeader}>
                                     <Text style={styles.name}>远望评级</Text>
                                     {
@@ -509,6 +473,43 @@ export default class DetailPingji extends React.Component {
                                 </View>
                             </View>
                             {/* 融360 end */}
+                            <View style={[styles.listContainer, { borderBottomWidth: 0, }]}>
+                                <View style={styles.listHeader}>
+                                    <Text style={styles.name}>星火评级</Text>
+                                    {
+                                        xinghuo !== null ?
+                                            <View style={styles.listHeaderCon}>
+                                                <Text style={styles.score}>{xinghuo.level}</Text>
+                                                <Text style={styles.totalNum}>统计{xinghuo.totalNum}家平台中排名</Text>
+                                                <Text style={styles.ordernum}>{xinghuo.ordernum}</Text>
+                                                <TouchableOpacity
+                                                    onPress={() => {
+                                                        this.state.isHidden[5] = !this.state.isHidden[5];
+                                                        this.setState({
+                                                            ref: !this.state.ref
+                                                        })
+                                                    }}
+                                                >
+                                                    <Icon name={isHidden[5] ? 'triangleCircle-down' : 'triangleCircle-up'} size={23} color={isHidden[5] ? '#bbb' : '#4AB3FF'} />
+                                                </TouchableOpacity>
+                                            </View>
+                                            :
+                                            <Text style={styles.null}>暂无</Text>
+                                    }
+                                </View>
+                                {
+                                    isHidden[5] ?
+                                        null
+                                        :
+                                        <View style={styles.listBody}>
+
+                                            <View style={styles.echartContainer}>
+                                                <Echarts option={LineChart.line1('星火评级', '星火评级', echartDataTimeXinghuo, echartDataXinghuo, echartDataTextXinghuo)} height={180} />
+                                            </View>
+                                        </View>
+                                }
+                            </View>
+                            {/* 星火评级 end */}
                         </View>
                     </View>
                 </ScrollView>

@@ -10,13 +10,14 @@ import Update from '../../listData/update';
 
 import Yifei from '../temp/yifei';
 import Yuanwang from '../temp/yuanwang';
+import Xinghuo from '../temp/xinghuo';
 
 
 export default class PingjiMTScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            tabNames: ['羿飞评级', '远望评级'],
+            tabNames: ['羿飞评级', '远望评级','星火评级'],
             totalNum: [0, 0],
             index: 0,
             upDateTime: '',
@@ -74,6 +75,19 @@ export default class PingjiMTScreen extends React.Component {
                                     changeTotalNum={this.changeTotalNum.bind(this)}
                                     changeUpDateTime={this.changeUpDateTime.bind(this)}
                                     type={{ column: 'pingji', type: 'yuanwang', dataName: 'gradeList' }}
+                                    columnDb={false}
+                                >
+                                    <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
+                                </ListPage>
+                            </View>
+                            <View style={styles.content} tabLabel='key3'>
+
+                                <ListPage
+                                    navigation={navigation}
+                                    itemRow={Xinghuo}
+                                    changeTotalNum={this.changeTotalNum.bind(this)}
+                                    changeUpDateTime={this.changeUpDateTime.bind(this)}
+                                    type={{ column: 'pingji', type: 'xinghuo', dataName: 'gradeList' }}
                                     columnDb={false}
                                 >
                                     <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />

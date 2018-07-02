@@ -161,6 +161,7 @@ module.exports = {
     },
     getDataDetail(that, type, id) {
         let url = Api['detail'] + '?type=' + type + '&id_dlp=' + id
+        console.log(url)
         fetch(url)
             .then((response) => {
                 if (response.ok) {
@@ -172,6 +173,7 @@ module.exports = {
                                 isRefreshing: false,
                             })
                         })
+                        console.log(responseData)
                 }
                 else {
                     console.log('网络请求失败')

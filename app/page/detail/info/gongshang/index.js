@@ -76,20 +76,10 @@ export default class Gongshang extends React.Component {
                             <View style={styles.jingyingfanweiContainer}>
                                 <View style={styles.jingyingfanwei}>
                                     <Text style={styles.jingyingfanweiText}>
-                                        {this.state.isShowMore ? data.jingyingfanwei : data.jingyingfanwei.substr(0, 74) + '...'}
+                                      {data.jingyingfanwei}
                                     </Text>
                                 </View>
-                                <View style={styles.openContainer}>
-                                    <TouchableOpacity style={styles.openBtn}
-                                        onPress={() => {
-                                            this.setState({
-                                                isShowMore: !this.state.isShowMore
-                                            })
-                                        }}>
-                                         <Icon name={this.state.isShowMore?'triangleHollow-up':'triangleHollow-down'} size={14} color={!this.state.isShowMore?'#bbb':Theme.color} />
-                                        <Text style={[styles.openBtnText,this.state.isShowMore?{color:Theme.color}:null]}>{this.state.isShowMore ? '收起' : '展开'}</Text>
-                                    </TouchableOpacity>
-                                </View>
+                               
                             </View>
                         </ScrollView>
                         :
@@ -132,10 +122,7 @@ const styles = StyleSheet.create({
     },
     jingyingfanwei: {
         padding: 8,
-        color: '#333',
         backgroundColor: '#f5f5f5',
-        borderWidth: 1,
-        borderColor: '#E6E6E6',
     },
     jingyingfanweiText: {
         fontSize: 12,

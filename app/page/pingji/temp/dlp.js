@@ -17,8 +17,14 @@ module.exports = {
                     <Text style={[stylesList.tdID, stylesList.headerRowText]}></Text>
                     <Text style={[stylesList.tdName, stylesList.headerRowText]}></Text>
                     <View style={[stylesList.tdUp, { width: (Theme.screenWidth - 150) * 0.36 }]}>
-                        <Text style={[stylesList.firstName, { width: 45 }]}>{item.score} </Text>
-                        <Icon name={item.changnum >= 0 ? 'up' : 'down'} size={12} color={item.changnum >= 0 ? '#ff0063' : '#009963'} />
+                        <Text style={[stylesList.firstName, { width: 45 }]}>{item.score != 0 ? item.score : '暂无'} </Text>
+                        {
+                            item.score != 0 ?
+                                <Icon name={item.changnum >= 0 ? 'up' : 'down'} size={12} color={item.changnum >= 0 ? '#ff0063' : '#009963'} />
+                                :
+                                null
+                        }
+
                     </View>
                     <Text style={[stylesList.CABB7C4, { width: (Theme.screenWidth - 150) * 0.29 }]}>{item.inamount}</Text>
                     <Text style={[stylesList.CABB7C4, { width: (Theme.screenWidth - 150) * 0.29 }]}>{item.dispersion}</Text>
@@ -34,9 +40,9 @@ module.exports = {
     },
     ListHeaderComponentR() {
         let listTitle = [
-            { title: '贷罗盘', width: (Theme.screenWidth - 150) * 0.36  },
-            { title: '资金流', width: (Theme.screenWidth - 150) * 0.29  },
-            { title: '分散度', width: (Theme.screenWidth - 150) * 0.29  },
+            { title: '贷罗盘', width: (Theme.screenWidth - 150) * 0.36 },
+            { title: '资金流', width: (Theme.screenWidth - 150) * 0.29 },
+            { title: '分散度', width: (Theme.screenWidth - 150) * 0.29 },
             { title: '流动性' },
             { title: '收益率' },
             { title: '人气' },

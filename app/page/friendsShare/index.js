@@ -77,7 +77,7 @@ export default class Share extends Component {
                             style={styles.shareBtn}
                             onPress={this.shareToSession.bind(this)}
                         >
-                            <Icon name={'share-wechat'} size={50} color={'#00d10d'} />
+                            <Icon name={'share-wechat'} size={54} color={'#00d10d'} />
                             <Text style={styles.shareText}>微信</Text>
                         </TouchableOpacity>
                         <TouchableOpacity
