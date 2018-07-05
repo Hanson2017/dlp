@@ -69,7 +69,7 @@ export default class ZonglanHealth extends React.Component {
                                             <Text style={styles.topLabelScore}>{dataDlp.ordernum}</Text>
                                         </View>
                                         <View style={{ marginTop: 6, }}>
-                                            <Text style={styles.topText}>在统计的{dataDlp.totalNum}家平台中</Text>
+                                            <Text style={styles.topLabelText}>在统计的{dataDlp.totalNum}家平台中</Text>
                                         </View>
 
                                     </View>
@@ -90,12 +90,12 @@ export default class ZonglanHealth extends React.Component {
                         :
                         <View style={styles.black}>
                             <Icon name={'ico-close2'} size={26} color={'#999'} />
-                             <View style={styles.blackRight}>
+                            <View style={styles.blackRight}>
                                 <Text style={styles.blackText}>黑名单平台</Text>
                                 <Text style={styles.blackText}>已停止数据监控</Text>
-                             </View>
+                            </View>
                         </View>
-                       
+
                 }
 
 
@@ -104,17 +104,17 @@ export default class ZonglanHealth extends React.Component {
     }
 }
 const styles = StyleSheet.create({
-    black:{
-        paddingTop:15,
-        paddingBottom:20,
-        paddingLeft:17,
+    black: {
+        paddingTop: 15,
+        paddingBottom: 20,
+        paddingLeft: 17,
         flexDirection: 'row',
     },
-    blackRight:{
-        marginLeft:10,
+    blackRight: {
+        marginLeft: 10,
     },
-    blackText:{
-        lineHeight:24,
+    blackText: {
+        lineHeight: 24,
         fontSize: 16,
         color: '#999',
         fontWeight: 'bold',
@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     topLeft: {
-        width: 190,
+        width: Theme.screenWidth >= 375 ? 190 : 165,
     },
     topLabelText: {
         paddingRight: 6,
@@ -148,13 +148,15 @@ const styles = StyleSheet.create({
         color: '#333',
         fontWeight: 'bold',
     },
+
+    topText: {
+        fontSize: 11,
+        color: '#999',
+    },
     topTextBj: {
         paddingRight: 6,
         paddingLeft: 31,
-    },
-    topText: {
-        fontSize: 10,
-        color: '#999',
+        fontSize: 12,
     },
     body: {
         flexDirection: 'row',

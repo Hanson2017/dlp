@@ -6,7 +6,6 @@ import { SafeAreaView } from "react-navigation";
 import TabBar from '../../component/tabBar';
 import Theme from '../../util/theme';
 import Api from '../../util/api';
-import Util from '../../util/util';
 
 import Header from '../../component/navBar/detail'
 import Loading from '../../component/loading';
@@ -33,7 +32,13 @@ export default class DetailScreen extends React.Component {
             dataInfo: '',
             noBack: true,
             coverIsHidden: true,
+            footNot: 0,
         };
+    }
+    isFootNot(index) {
+        this.setState({
+            footNot: index,
+        })
     }
     render() {
         const { navigation } = this.props;
@@ -81,6 +86,9 @@ export default class DetailScreen extends React.Component {
                                 <ScrollableTabView
                                     renderTabBar={() => <TabBar tabNames={tabNames} black={true} />}
                                     locked={true}
+                                    onChangeTab={(obj) => {
+                                        this.isFootNot(obj.i)
+                                    }}
                                 >
                                     <View style={styles.content} tabLabel='key0'>
                                         <All platInfo={{ id: params.id, platName: params.platName, platstatus: dataInfo.platstatus }} dataInfo={dataInfo} navigation={navigation} />
@@ -96,7 +104,7 @@ export default class DetailScreen extends React.Component {
                                     </View>
 
                                     <View style={styles.content} tabLabel='key5'>
-                                        <Yuqing platInfo={{ id: params.id, platName: params.platName }} navigation={navigation} />
+                                        <Yuqing platInfo={{ id: params.id, platName: params.platName }} navigation={navigation} isFootNot={this.isFootNot.bind(this)} />
                                     </View>
                                     {
                                         versionStatus != 1 ?
@@ -115,15 +123,23 @@ export default class DetailScreen extends React.Component {
                         }
 
                     </View>
-                    <Foot
-                        id={params.id}
-                        toastShow={this.toastShow.bind(this)}
-                        toastHide={this.toastHide.bind(this)}
-                        noBack={this.noBack.bind(this)}
-                        coverIsShow={this.coverIsShow.bind(this)}
-                        coverIsHidden={coverIsHidden}
-                        navigation={navigation}
-                    />
+                    {
+                        this.state.footNot == 'null' ?
+                            
+                            null
+                            :
+                            <Foot
+                                id={params.id}
+                                toastShow={this.toastShow.bind(this)}
+                                toastHide={this.toastHide.bind(this)}
+                                noBack={this.noBack.bind(this)}
+                                coverIsShow={this.coverIsShow.bind(this)}
+                                coverIsHidden={coverIsHidden}
+                                navigation={navigation}
+                            />
+                            
+                    }
+
                     <Toast ref={'Toast'} />
                 </View>
             </SafeAreaView>
@@ -146,7 +162,15 @@ export default class DetailScreen extends React.Component {
         this.refs.Toast.cancel();
     }
     showActionSheet() {
-        this.refs.ActionShare.show(this.state.dataInfo)
+        let dataInfo = this.state.dataInfo;
+        let data = {
+            type: 'news',
+            title: dataInfo.plat_name + '评级／数据／健康度／流量（每日更新）',
+            description: '包含：1.各个主流评级机构对' + dataInfo.plat_name + '的评级数据；2.' + dataInfo.plat_name + '运营数据监控、分析、诊断及未来趋势预测；' + '3.' + dataInfo.plat_name + '网站流量分析',
+            webpageUrl: 'http://m.dailuopan.com/detail/' + dataInfo.pre_id,
+            imageUrl: 'http://dailuopan.com/images/shareDlp.png',
+        }
+        this.refs.ActionShare.show(data)
     }
     componentDidMount() {
         this.getData()
@@ -170,7 +194,6 @@ export default class DetailScreen extends React.Component {
                                 dataInfo: responseData,
                                 loading: false
                             })
-                            console.log(responseData)
                         })
                 }
                 else {

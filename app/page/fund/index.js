@@ -95,7 +95,6 @@ export default class FundScreen extends React.Component {
                                 loading: false,
                                 dataSource: responseData,
                             })
-                            console.log(responseData)
                         })
                 }
                 else {

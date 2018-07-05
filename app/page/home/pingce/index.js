@@ -7,9 +7,9 @@ import Item from '../../pingCe/item';
 
 class List extends React.Component {
     render() {
-        const { data, index, navigation } = this.props;
+        const { data, index, navigation,borderNot } = this.props;
         return (
-            <View style={[styles.listContainer]}>
+            <View style={[styles.listContainer,borderNot?{borderBottomWidth:0,}:null]}>
 
                 <View style={styles.listImg}>
                     <Image
@@ -52,20 +52,15 @@ export default class Pingce extends React.Component {
         const { data, navigation } = this.props;
         return (
             <View style={[styles.container, Theme.box, Theme.mt10]}>
-                <Title data={'评测监控'} navigation={navigation} screenUrlInfo={{screenUrl:'PingCe',tabId:null}}  />
+                <Title data={'评测监控'} navigation={navigation} screenUrlInfo={{ screenUrl: 'PingCe', tabId: null }} />
                 <View style={styles.pingceContainer}>
                     {
                         data.map((item, i) => {
-                            if (i > 3) {
-                                return (
-                                    <Item key={i} data={item} navigation={navigation} borderNot={data.length - 1 == i ? true : false} />
-                                )
-                            }
-                            else {
-                                return (
-                                    <List key={i} data={item} navigation={navigation} />
-                                )
-                            }
+
+                            return (
+                                <List key={i} data={item} navigation={navigation} borderNot={data.length - 1 == i ? true : false} />
+                            )
+
                         })
                     }
                 </View>
@@ -75,8 +70,8 @@ export default class Pingce extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    container:{
-        paddingBottom:10,
+    container: {
+        paddingBottom: 10,
     },
     pingceContainer: {
         paddingLeft: 17,
@@ -121,7 +116,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
-    listPlatNameText:{
+    listPlatNameText: {
         fontSize: 11,
         color: '#bbb',
     },
@@ -129,5 +124,5 @@ const styles = StyleSheet.create({
         fontSize: 11,
         color: '#bbb',
     },
-   
+
 })

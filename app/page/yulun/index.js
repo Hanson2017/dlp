@@ -171,7 +171,6 @@ export default class DataScreen extends React.Component {
         }
         let url = Api.yulun + '?page=' + that.page + '&pagesize=' + 50;
 
-        console.log(url)
         fetch(url)
             .then((response) => {
 
@@ -183,7 +182,6 @@ export default class DataScreen extends React.Component {
                                     dataSource: []
                                 })
                             }
-                            console.log(responseData)
                             let dataSource = that.state.dataSource;
                             let echartsData = [];
                             let echartsDataList = responseData.dataView.viewlist;
@@ -209,7 +207,6 @@ export default class DataScreen extends React.Component {
                                     isLoadMore: false
                                 })
                             }
-                            console.log(responseData)
                         })
                 }
                 else {

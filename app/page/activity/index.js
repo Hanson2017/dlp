@@ -89,7 +89,7 @@ export default class PingceScreen extends React.Component {
                                 dataSource: responseData.dataList,
                                 totalNum: responseData.totalNum,
                             })
-                            console.log(responseData)
+              
                         })
                 }
                 else {

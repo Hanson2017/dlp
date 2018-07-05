@@ -149,8 +149,7 @@ export default class PingceScreen extends React.Component {
                             }
                             let dataSource = that.state.dataSource;
 
-                            dataSource = dataSource.concat(responseData['dataList']);
-                            console.log(responseData)
+                            dataSource = dataSource.concat(responseData['dataList']);                        
 
                             that.setState({
                                 loading: false,

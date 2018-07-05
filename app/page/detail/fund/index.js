@@ -85,7 +85,7 @@ export default class DetailFund extends React.Component {
                                 </View>
                             </View>
                             <View style={styles.fundSm}>
-                                <View style={styles.fundSmList}>
+                                <View style={[styles.fundSmList,styles.fundSmListZs]}>
                                     <Text style={styles.fundSmLabelText}>安全指数</Text>
                                     <View style={styles.fundStart}>
                                         <Icon name={'fund-dunpai'} size={14} color={'#FF9800'} />
@@ -196,7 +196,15 @@ export default class DetailFund extends React.Component {
     }
     showActionSheet() {
         const { params } = this.props.navigation.state;
-        this.refs.ActionShare.show(params.dataInfo)
+        let dataInfo = params.dataInfo;
+        let data = {
+            type: 'news',
+            title: dataInfo.plat_name + '评级／数据／健康度／流量（每日更新）',
+            description: '包含：1.各个主流评级机构对' + dataInfo.plat_name + '的评级数据；2.' + dataInfo.plat_name + '运营数据监控、分析、诊断及未来趋势预测；' + '3.' + dataInfo.plat_name + '网站流量分析',
+            webpageUrl: 'http://m.dailuopan.com/detail/' + dataInfo.pre_id,
+            imageUrl: 'http://dailuopan.com/images/shareDlp.png',
+        }
+        this.refs.ActionShare.show(data)
     }
 
 }
@@ -248,7 +256,7 @@ const styles = StyleSheet.create({
         width: 90,
     },
     listIc3: {
-        width: 80,
+        width: Theme.screenWidth >= 375 ? 80 : 65,
     },
     fundInfoReasons: {
         marginTop: 20,
@@ -326,9 +334,13 @@ const styles = StyleSheet.create({
     fundSmList: {
         marginBottom: 10,
         flexDirection: 'row',
+        
+    },
+    fundSmListZs:{
         alignItems: 'center',
     },
     fundSmLabelText: {
+        width:55,
         paddingRight: 5,
         fontSize: 12,
         color: '#A1A1A1'
@@ -337,6 +349,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     fundSmText: {
+        flex:1,
         fontSize: 12,
         color: '#707070'
     },
@@ -349,7 +362,7 @@ const styles = StyleSheet.create({
     },
     fundListLeft: {
         paddingRight: 5,
-        marginRight: 30,
+        marginRight: Theme.screenWidth >= 375 ? 30 : 10,
         borderRightWidth: 1,
         borderRightColor: '#f2f2f2',
     },
@@ -366,7 +379,7 @@ const styles = StyleSheet.create({
         width: 90,
     },
     fundIc2: {
-        width: 65,
+        width: Theme.screenWidth >= 375 ? 65 : 45,
     },
     listHdText: {
         fontSize: 12,

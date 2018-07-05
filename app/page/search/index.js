@@ -183,7 +183,7 @@ export default class SearchScreen extends React.Component {
                                 that.setState({
                                     dataSource: responseData
                                 })
-                                console.log(responseData)
+                               
                             })
                     }
                     else {
@@ -209,7 +209,7 @@ export default class SearchScreen extends React.Component {
                     response.json()
 
                         .then((responseData) => {
-                            console.log(responseData)
+                           
                             that.setState({
                                 searchHotList: responseData.hotplat,
                                 searchDemoList: responseData.replat,
@@ -315,9 +315,9 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
     },
     listHot: {
-        marginRight: 25,
+        marginRight: 22,
         marginBottom: 10,
-        width: 90,
+        width: (Theme.screenWidth-90)/3,
         height: 22,
         backgroundColor: '#E6F4FF',
         borderRadius: 4,

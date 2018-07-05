@@ -3,6 +3,7 @@ import { Text, StyleSheet, View, ScrollView } from 'react-native';
 import Theme from '../../../../util/theme';
 import Fenxi from './fenxi';
 import Top from './top';
+import Hexin from '../hexin';
 
 export default class DetailHealth extends React.Component {
     render(){
@@ -11,6 +12,7 @@ export default class DetailHealth extends React.Component {
             <ScrollView contentContainerStyle={styles.container}>
                 <Top data={data} platName={platName} platstatus={platstatus} />
                 <Fenxi data={data} platstatus={platstatus} />
+                <Hexin data={data} />
             </ScrollView>
         )
     }

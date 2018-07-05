@@ -155,7 +155,8 @@ const styles = StyleSheet.create({
         width: 90,
     },
     listIc3: {
-        width: 80,
+        width: Theme.screenWidth >= 375 ? 80 : 65,
+        
     },
 
 })

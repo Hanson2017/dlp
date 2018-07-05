@@ -111,7 +111,6 @@ export default class BlackList extends React.Component {
     componentDidMount() {
         const tabN = this.props.tabN ? this.props.tabN : 0;
         Util.getDataListTab(this, this.props.type, tabN)
-        console.log(this.props.tab222)
     }
     componentWillReceiveProps(nextProps){
        

@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, View, ScrollView, TouchableOpacity } from 'react-native';
+import { Text, StyleSheet, View, } from 'react-native';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
-import Util from '../../../util/util';
 import TabBar from '../../../component/tabBar/detail';
-import Loading from '../../../component/loading';
 
+import All from './all';
 import Pingce from './pingce';
 import Yulun from './yulun';
 import Comments from './comments';
@@ -13,7 +12,7 @@ export default class DetailData extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            tabNames: ['评测监控', '舆论监控', '点评监控'],
+            tabNames: ['全部', '评测监控', '舆论监控', '点评监控'],
         };
     }
     render() {
@@ -21,17 +20,29 @@ export default class DetailData extends React.Component {
         const { platInfo, navigation } = this.props;
         return (
             <View style={styles.container}>
-               <ScrollableTabView
-                        renderTabBar={() => <TabBar tabNames={tabNames} />}
-                    >
-                    <View style={styles.content} tabLabel='key1'>
+                <ScrollableTabView
+                    renderTabBar={() => <TabBar tabNames={tabNames} />}
+                    onChangeTab={(obj) => {
+                        if (obj.i == (tabNames.length - 1)) {
+                            this.props.isFootNot('null')
+                        }
+                        else{
+                            this.props.isFootNot(obj.i)
+                        }
                         
+                    }}
+                >
+                    <View style={styles.content} tabLabel='key1'>
+                        <All navigation={navigation} platInfo={platInfo} />
+                    </View>
+                    <View style={styles.content} tabLabel='key2'>
+
                         <Pingce navigation={navigation} platInfo={platInfo} />
                     </View>
-                    <View tabLabel='key2'>
+                    <View style={styles.content} tabLabel='key3'>
                         <Yulun navigation={navigation} platInfo={platInfo} />
                     </View>
-                    <View tabLabel='key3'>
+                    <View style={styles.content} tabLabel='key4'>
                         <Comments navigation={navigation} platInfo={platInfo} />
                     </View>
                 </ScrollableTabView>

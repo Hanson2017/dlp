@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
         color: '#999',
     },
     score: {
-        width: 80,
+        width: Theme.screenWidth >= 375 ?80:70,
         fontSize: 14,
         color: '#666',
     },

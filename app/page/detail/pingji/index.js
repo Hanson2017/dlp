@@ -396,7 +396,7 @@ export default class DetailPingji extends React.Component {
                             </View>
                             {/* 融360 end */}
 
-                            
+
                         </View>
                     </View>
 
@@ -558,18 +558,18 @@ const styles = StyleSheet.create({
         color: '#999',
     },
     score: {
-        width: 70,
-        fontSize: 14,
+        width: Theme.screenWidth >= 375 ? 70 : 55,
+        fontSize: Theme.screenWidth >= 375 ? 14 : 12,
         color: '#666',
     },
     totalNum: {
-        width: 134,
+        width: Theme.screenWidth >= 375 ? 134 : 128,
         fontSize: 11,
         color: '#999',
     },
     ordernum: {
-        width: 50,
-        fontSize: 14,
+        width: Theme.screenWidth >= 375 ? 50 : 30,
+        fontSize: Theme.screenWidth >= 375 ? 14 : 13,
         color: Theme.color,
     },
     nameZh: {
@@ -577,7 +577,7 @@ const styles = StyleSheet.create({
         color: '#303030',
     },
     scoreZh: {
-        fontSize: 18,
+        fontSize: Theme.screenWidth >= 375 ? 18 : 16,
         color: '#333',
         fontWeight: 'bold',
     },

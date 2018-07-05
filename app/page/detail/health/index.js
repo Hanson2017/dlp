@@ -10,7 +10,6 @@ import Title from '../../../component/title';
 import DashLine from '../../../component/dashLine';
 
 import All from './all';
-import Hexin from './hexin';
 import Fuzhu from './fuzhu';
 import Other from './other';
 
@@ -18,7 +17,7 @@ export default class DetailHealth extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            tabNames: ['概览', '核心指标', '辅助指标', '其他指标'],
+            tabNames: ['概览', '辅助指标', '其他指标'],
             loading: true,
             dataSource: null
         };
@@ -39,9 +38,7 @@ export default class DetailHealth extends React.Component {
                                 <View style={styles.content} tabLabel='key1'>
                                     <All data={dataSource} platName={platInfo.platName} platstatus={platInfo.platstatus} />
                                 </View>
-                                <View tabLabel='key2'>
-                                    <Hexin data={dataSource} />
-                                </View>
+                             
                                 <View tabLabel='key3'>
                                     <Fuzhu data={dataSource} />
                                 </View>

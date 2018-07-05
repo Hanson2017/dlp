@@ -43,10 +43,11 @@ export default class DetailHealthHexin extends React.Component {
 
         return (
             <ScrollView contentContainerStyle={styles.container}>
-                <View style={[Theme.box]}>
+                <View style={[Theme.box,Theme.mt10]}>
+                    <Title data={'核心指标'} />
                     <View style={styles.healthTop}>
                         <Text style={styles.healthTopText}>核心指标为安全性指标，是平台运营的核心指标，建议重点关注。</Text>
-                        <Text style={styles.healthTopText}>数据说明：极强 > 强 > 偏强 > 正常 > 偏弱 > 弱 > 极弱</Text>
+                     
                     </View>
                     {
                         data.listdata != null && data.listdata.length > 0 ?
@@ -117,9 +118,9 @@ export default class DetailHealthHexin extends React.Component {
                                 </View>
                                 <View style={styles.rongziInfo}>
                                     {
-                                        brand.financing_info.split('<br />').map((text) => {
+                                        brand.financing_info.split('<br />').map((text,i) => {
                                             return (
-                                                <Text style={styles.rongziInfoText}>{text}</Text>
+                                                <Text style={styles.rongziInfoText} key={i}>{text}</Text>
                                             )
                                         })
                                     }
@@ -148,10 +149,9 @@ const styles = StyleSheet.create({
     },
     healthTop: {
         paddingLeft: 17,
-        paddingBottom: 10,
+        paddingTop:10,
+        
         marginBottom: 10,
-        borderBottomWidth: 1,
-        borderBottomColor: '#eee',
     },
     healthTopText: {
         fontSize: 11,

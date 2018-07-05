@@ -80,7 +80,7 @@ module.exports = {
                                 })
                             }
                             let dataSource = that.state.dataSource;
-                            console.log(responseData)
+                           
                             dataSource = responseData[ApiType.dataName] ? dataSource.concat(responseData[ApiType.dataName]) : dataSource;
 
                             that.setState({
@@ -136,7 +136,7 @@ module.exports = {
                     response.json()
                         .then((responseData) => {
                             let dataSource = responseData[ApiType.dataName];
-                            console.log(responseData)
+                           
                             that.setState({
                                 loading: false,
                                 dataSource: dataSource,
@@ -161,19 +161,19 @@ module.exports = {
     },
     getDataDetail(that, type, id) {
         let url = Api['detail'] + '?type=' + type + '&id_dlp=' + id
-        console.log(url)
         fetch(url)
             .then((response) => {
                 if (response.ok) {
                     response.json()
                         .then((responseData) => {
+                            
                             that.setState({
                                 loading: false,
                                 dataSource: responseData,
                                 isRefreshing: false,
                             })
                         })
-                        console.log(responseData)
+                       
                 }
                 else {
                     console.log('网络请求失败')

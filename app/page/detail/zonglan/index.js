@@ -13,6 +13,8 @@ import Comment from './comment';
 import Yulun from './yulun';
 import Flow from './flow';
 import User from './user';
+import Gudong from './gudong';
+import Shouyiren from './shouyiren';
 
 export default class Zonglan extends React.Component {
     constructor(props) {
@@ -55,7 +57,7 @@ export default class Zonglan extends React.Component {
                         dataInfo: dataInfo
                     }} />
                     {
-                        versionStatus != 1 && platInfo.platstatus == 1 ?
+                        versionStatus != 1 && platInfo.platstatus == 1 && dataSource.fund !== null ?
                             <Fund data={dataSource.fund} dataInfo={dataInfo} fundelse={dataSource.fundelse} platName={platInfo.platName} navigation={navigation} />
                             :
                             null
@@ -72,9 +74,13 @@ export default class Zonglan extends React.Component {
                     <Pingce data={dataSource.mplist} navigation={navigation} />
                     <Yulun data={dataSource.sentlist} navigation={navigation} />
                     <Comment data={dataSource.commentlist} navigation={navigation} />
-
+                    <Gudong data={dataSource.gudongxinxi} navigation={navigation} />
+                    <Shouyiren data={dataSource.shouyiren} navigation={navigation} />
+                    
                     <Flow data={dataSource.flow} navigation={navigation} />
                     <User dataAge={dataSource.age} dataReplat={dataSource.replat} navigation={navigation} platName={platInfo.platName} />
+
+                    
                 </ScrollView>
             )
         }

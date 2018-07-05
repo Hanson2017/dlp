@@ -16,11 +16,11 @@ module.exports = {
                 >
                     <Text style={[stylesList.tdID, stylesList.headerRowText]}></Text>
                     <Text style={[stylesList.tdName, stylesList.headerRowText]}></Text>
-                    <View style={[stylesList.tdUp, { width: (Theme.screenWidth - 150) * 0.38 }]}>
+                    <View style={[stylesList.tdUp, { width: Theme.screenWidth >= 375 ? (Theme.screenWidth - 150) * 0.38 : (Theme.screenWidth - 150) * 0.5 }]}>
                         <Text style={[stylesList.firstName, { width: 53 }]}>{item.score}</Text>
                         <Icon name={item.changnum >= 0 ? 'up' : 'down'} size={12} color={item.changnum >= 0 ? '#ff0063' : '#009963'} />
                     </View>
-                    <Text style={[stylesList.CABB7C4, { width: (Theme.screenWidth - 150) * 0.28 }]}>{item.zs_baidu}</Text>
+                    <Text style={[stylesList.CABB7C4, { width: Theme.screenWidth >= 375 ? (Theme.screenWidth - 150) * 0.28 : (Theme.screenWidth - 150) * 0.32 }]}>{item.zs_baidu}</Text>
                     <Text style={[stylesList.CABB7C4, { width: (Theme.screenWidth - 150) * 0.28 }]}>{item.zs_so}</Text>
                     <Text style={[stylesList.CABB7C4, { width: 85 }]}>{item.pr_zz}</Text>
                     <Text style={[stylesList.CABB7C4, { width: 85 }]}>{item.pr_az}</Text>
@@ -30,8 +30,8 @@ module.exports = {
     },
     ListHeaderComponentR() {
         let listTitle = [
-            { title: '流量', width: (Theme.screenWidth - 150) * 0.38 },
-            { title: '百度指数', width: (Theme.screenWidth - 150) * 0.28 },
+            { title: '流量', width: Theme.screenWidth >= 375 ? (Theme.screenWidth - 150) * 0.38 : (Theme.screenWidth - 150) * 0.5 },
+            { title: '百度指数', width: Theme.screenWidth >= 375 ? (Theme.screenWidth - 150) * 0.28 : (Theme.screenWidth - 150) * 0.32 },
             { title: '好搜指数', width: (Theme.screenWidth - 150) * 0.28 },
             { title: '站长工具' },
             { title: '爱站指数' },

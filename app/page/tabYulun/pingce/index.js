@@ -9,7 +9,6 @@ export default class Report extends React.Component {
 
     render() {
         const { navigation, data } = this.props;
-        console.log('data', data)
         return (
             <View style={[styles.container, Theme.box, Theme.mt10]}>
                 <Title data={'热门评测'} navigation={navigation} screenUrlInfo={{ screenUrl: 'PingCe', tabId: 0 }} />

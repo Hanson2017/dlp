@@ -34,7 +34,7 @@ export default class DetailDataUser extends React.Component {
                                         data.age != '' ?
                                             age.map((list, i) => {
                                                 return (
-                                                    <View style={styles.ageDetailList}>
+                                                    <View style={styles.ageDetailList} key={i}>
                                                         <Text style={styles.ageNum}>{ageText[i]}</Text>
                                                         <Text style={styles.ageBili}>{list}%</Text>
                                                         <View style={[styles.progress, styles.progressAge, { width: (Theme.screenWidth - 50) / 2 * (list / maxValue) }]}></View>
@@ -78,7 +78,7 @@ export default class DetailDataUser extends React.Component {
                                         areaData != null ?
                                             areaData.list.map((list, i) => {
                                                 return (
-                                                    <View style={styles.areaDetailList}>
+                                                    <View style={styles.areaDetailList} key={i}>
                                                         <View style={[styles.number, styles['number' + i]]}><Text style={styles.numberText}>{i + 1}</Text></View>
                                                         <Text style={styles.platName}>{list.province}</Text>
                                                         <View style={[styles.progress, styles['progressArea' + i], { width: Theme.screenWidth / 2 * list.perctent }]}></View>

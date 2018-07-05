@@ -89,7 +89,7 @@ export default class DataScreen extends React.Component {
                                     <View style={styles.navContainer}>
                                         <List titleText={'按背景'} navigation={navigation} navList={beijingNav} n={6} />
                                         <List titleText={'按业务类型'} navigation={navigation} navList={yewuNav} n={8} />
-                                        <List titleText={'按地区'} navigation={navigation} navList={diquNav} n={8} />
+                                        <List titleText={'按地区'} navigation={navigation} navList={diquNav} n={Theme.screenWidth >= 375 ? 8 : 6} />
                                         <List titleText={'按时间'} navigation={navigation} navList={dateTimeNav} n={5} />
                                         <List titleText={'按银行存管'} navigation={navigation} navList={cunguanNav} n={4} />
                                     </View>

@@ -29,7 +29,7 @@ export default class ControlPanel extends React.Component {
                             loginState ?
                                 <TouchableOpacity style={styles.ControlPaneHeaderlogin}
                                     onPress={() => {
-                                        navigation.navigate('Account', { tab: 2 })
+                                        navigation.navigate('Account', { tabId: 3 })
                                     }}
                                 >
                                     <View style={styles.ControlPaneHeaderloginPortrait}>
@@ -53,7 +53,7 @@ export default class ControlPanel extends React.Component {
                                     <View style={styles.guanzhuListContainer}>
                                         <TouchableOpacity style={styles.guanzhuListHeader}
                                             onPress={() => {
-                                                navigation.navigate('Account', { tab: 0 })
+                                                navigation.navigate('Account', { tabId: 0 })
                                             }}
                                         >
                                             <Text style={styles.guanzhuListHeaderText}>关注平台</Text>
@@ -110,7 +110,7 @@ export default class ControlPanel extends React.Component {
                             <View style={styles.ControlPanefooter}>
                                 <TouchableOpacity style={[styles.ControlPanefooterBtn]}
                                     onPress={() => {
-                                        navigation.navigate('Account', { tab: 2 })
+                                        navigation.navigate('Account', { tabId: 3 })
                                     }}
                                 >
                                     <Icon name={'ico-set'} size={18} color={Theme.color2} />
@@ -255,10 +255,14 @@ export default class ControlPanel extends React.Component {
         window.EventEmitter.on('isAttention2', (data) => {
             that.getData();
         })
+        window.EventEmitter.on('isAttention33', (data) => {
+            that.getData();
+        })
 
     }
     componentWillUnmount() {
         window.EventEmitter.off('isAttention2')
+        window.EventEmitter.off('isAttention33')
     }
     getData() {
         let that = this;

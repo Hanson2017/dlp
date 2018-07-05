@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, View, TouchableOpacity, Image,Platform } from 'react-native';
+import { Text, StyleSheet, View, TouchableOpacity, Image, Platform } from 'react-native';
 import Icon from 'react-native-vector-icons/Icomoon';
 import Theme from '../../util/theme';
 
 export default class Header extends React.Component {
     render() {
-        const {navigation,headerOpt,black}=this.props;
+        const { navigation, headerOpt, black } = this.props;
         return (
-            <View style={[styles.headerContainer,Platform.OS=='android'?{marginTop:0}:null,black?{backgroundColor:'#1A1A1A'}:null]}>
+            <View style={[styles.headerContainer, Platform.OS == 'android' ? { marginTop: 0 } : null, black ? { backgroundColor: '#1A1A1A' } : null]}>
                 {
                     headerOpt.back == 'null' ?
                         <View style={{ width: 50 }}></View>
@@ -15,7 +15,7 @@ export default class Header extends React.Component {
                         navigation.state.routeName == 'Main' ?
                             <TouchableOpacity
                                 activeOpacity={0.4}
-                                style={[styles.portrait,Platform.OS=='android'?styles.headerRightAndorid:null]}
+                                style={[styles.portrait, Platform.OS == 'android' ? styles.headerRightAndorid : null]}
                                 onPress={() => {
                                     this.props.openControlPanel()
                                 }}
@@ -34,7 +34,7 @@ export default class Header extends React.Component {
                                 <Icon name={'triangle-left'} size={18} color={'#fff'} />
                             </TouchableOpacity>
                 }
-                <View style={[styles.textContainer,headerOpt.title && Platform.OS=='android' ? null:styles.textContainerTx]}>
+                <View style={[styles.textContainer]}>
                     {
                         headerOpt.title ?
                             <Text style={styles.headerText}>{headerOpt.title}</Text>
@@ -44,11 +44,20 @@ export default class Header extends React.Component {
                 </View>
                 {
                     headerOpt.search ?
-                        <View style={[styles.headerRight,Platform.OS=='android'?styles.headerRightAndorid:null]}></View>
+                        this.props.children ?
+                            null
+                            :
+                            <View style={[styles.headerRight, Platform.OS == 'android' ? styles.headerRightAndorid : null]}></View>
                         :
                         <TouchableOpacity style={styles.headerRight} onPress={() => { navigation.navigate('Search') }}>
                             <Icon name={'ico-search'} size={20.5} color={'#fff'} />
                         </TouchableOpacity>
+                }
+                {
+                    this.props.children ?
+                        this.props.children
+                        :
+                        null
                 }
 
             </View>
@@ -59,7 +68,7 @@ export default class Header extends React.Component {
 
 const styles = StyleSheet.create({
     headerContainer: {
-       
+
         height: 42,
         backgroundColor: Theme.color2,
         flexDirection: 'row',
@@ -99,8 +108,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'flex-start',
     },
-    headerRightShare:{
-        height:28,
+    headerRightShare: {
+        height: 28,
     },
     headerRightAndorid: {
         alignItems: 'center',

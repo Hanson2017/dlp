@@ -59,7 +59,7 @@ const styles=StyleSheet.create({
     },
     title:{
         flex:1,
-        fontSize:12,
+        fontSize:14,
         color:'#101010',
     },
     dateTime:{

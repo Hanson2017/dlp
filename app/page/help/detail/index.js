@@ -71,7 +71,6 @@ export default class HelpDetail extends React.Component {
                                 loading: false,
                                 dataSource: responseData.data,
                             })
-                            console.log(responseData)
                         })
                 }
                 else {

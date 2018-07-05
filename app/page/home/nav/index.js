@@ -20,7 +20,7 @@ var data = [
     { title: '媒体评级', iconName: 'nav-pingjiMT', screenUrl: 'PingjiMT', tabId: null },
     { title: '黑名单', iconName: 'nav-black', screenUrl: 'Black' },
     { title: '争议名单', iconName: 'nav-zhengyi', screenUrl: 'Zhengyi' },
-    { title: '个人中心', iconName: 'nav-personal', screenUrl: 'Account' },
+    { title: '个人中心', iconName: 'nav-personal', screenUrl: 'Account' ,tabId: 0 },
 
 ];
 
@@ -110,6 +110,6 @@ const styles = StyleSheet.create({
     textStyle: {
         marginTop: 6,
         color: '#30333b',
-        fontSize: 12,
+        fontSize: Theme.screenWidth >= 375 ? 12 : 11,
     },
 })

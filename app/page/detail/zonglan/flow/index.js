@@ -32,7 +32,7 @@ export default class ZonglanFlow extends React.Component {
                                         <Text style={styles.topLabelScore}>{data.ordernum}</Text>
                                     </View>
                                     <View style={{marginTop:6,}}>
-                                        <Text style={styles.topText}>在统计的{data.totalNum}家平台中</Text>
+                                        <Text style={styles.topLabelText}>在统计的{data.totalNum}家平台中</Text>
                                     </View>
 
                                 </View>
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     topLeft:{
-       width:190, 
+        width: Theme.screenWidth >= 375 ? 190 : 165,
     },
     topLabelText:{
         paddingRight:6,
@@ -73,13 +73,15 @@ const styles = StyleSheet.create({
         color:'#333',
         fontWeight:'bold',
     },
+    
+    topText:{
+        fontSize:11,
+        color:'#999',
+    },
     topTextBj:{
         paddingRight:6,
         paddingLeft:31,
-    },
-    topText:{
-        fontSize:10,
-        color:'#999',
+        fontSize:12,
     },
     null:{
         padding:17,

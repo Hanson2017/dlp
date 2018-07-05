@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
     ageNum: {
         width: 65,
         color: '#666',
-        fontSize: 10,
+        fontSize: 12,
     },
     ageBili: {
         paddingRight:8,
@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
     },
     replatTitle: {
         paddingBottom: 14,
-        fontSize: 10,
+        fontSize: 11,
         color: '#999',
     },
     replatList: {

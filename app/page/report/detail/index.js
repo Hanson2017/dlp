@@ -91,7 +91,7 @@ export default class ReportsDetail extends React.Component {
                                 loading: false,
                                 dataSource: responseData.data,
                             })
-                            console.log(responseData)
+                         
                         })
                 }
                 else {

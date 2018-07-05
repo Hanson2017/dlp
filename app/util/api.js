@@ -49,5 +49,9 @@ module.exports = {
     commentListNew:host+'/Getcomment_p2p_page', //评论列表
     commentAdd:host+'/Addcomment_p2p_json', //添加评论
     commentList: 'http://www.76676.com/index.php?m=member&c=index&a=public_getcomment_dlp&p2pid=',
-    commentListAccount:host+'/Member_comment_list' //账户中心评论列表
+    commentListAccount:host+'/Member_comment_list', //账户中心评论列表
+    isCollection:host+'/Member_collection_hasmp', //是否已收藏(?memberid=3&cid=4701)
+    collectionAdd:host+'/Member_collection_addmp', //添加收藏(?memberid=3&cid=4701)
+    collectiondel:host+'/Member_collection_delmp', //取消收藏(?memberid=3&cid=4701)
+    collectionList:host+'/Member_collection_getmplist', //获取用户收藏列表(?memberid=3&page=1&pagesize=10)
 }

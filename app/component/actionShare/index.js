@@ -150,16 +150,8 @@ export default class Share extends Component {
         if (this.state.hide) {
             this.setState({
                 hide: false,
-                data: {
-                    type: 'news',
-                    title: dataS.plat_name + '评级／数据／健康度／流量（每日更新）',
-                    description: '包含：1.各个主流评级机构对' + dataS.plat_name + '的评级数据；2.' + dataS.plat_name + '运营数据监控、分析、诊断及未来趋势预测；' + '3.' + dataS.plat_name + '网站流量分析',
-                    webpageUrl: 'http://m.dailuopan.com/p2p/' + dataS.pre_id,
-                    imageUrl: 'http://dailuopan.com/images/shareDlp.png',
-                }
+                data: dataS
             }, this.inAnimated);
-
-
         }
     }
     shareToQQ() {

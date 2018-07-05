@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     },
     bodyText: {
         color: '#666',
-        fontSize: 12,
+        fontSize: 14,
         lineHeight: 18,
     },
     footer: {

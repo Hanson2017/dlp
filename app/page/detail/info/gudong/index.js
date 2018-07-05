@@ -106,26 +106,30 @@ export default class Gudong extends React.Component {
                                                                 <Text style={[styles.shouyirenListText, styles.shouyirenListNumText]}>[{list.number}]</Text>
                                                                 <Text style={styles.shouyirenListText}>最终受益人：<Text style={styles.shouyirenListTextC}>{list.name}</Text></Text>
                                                                 <Text style={styles.shouyirenListText}>持股比例：<Text style={styles.shouyirenListTextC}>{list.bili}</Text></Text>
-                                                                <Text style={styles.shouyirenListText}>股权连：</Text>
+                                                                <Text style={styles.shouyirenListText}>股权链：</Text>
                                                                 {
                                                                     list.guquan.map((item, j) => {
                                                                         return (
                                                                             <View style={styles.guquanlianList}>
-                                                                                <Text style={styles.guquanlianListText}>路径 {item.number}（占比约 {item.bili}）</Text>
-                                                                                <Text style={styles.guquanlianBiliName}>{item.name}</Text>
-                                                                                {
-                                                                                    item.guquan_detail.map((list3, z) => {
-                                                                                        return (
-                                                                                            <View>
-                                                                                                <View style={styles.guquanlianBili}>
-                                                                                                    <Icon name={'down'} size={16} color={'#999'} />
-                                                                                                    <Text style={styles.guquanlianBiliText}>{list3.bili}</Text>
+                                                                                <View style={styles.guquanlianListLujing}>
+                                                                                    <Text style={styles.guquanlianListText}>路径 {item.number}（占比约 {item.bili}）</Text>
+                                                                                </View>
+                                                                                <View style={styles.guquanlianListCon}>
+                                                                                    <Text style={styles.guquanlianBiliName}>{item.name}</Text>
+                                                                                    {
+                                                                                        item.guquan_detail.map((list3, z) => {
+                                                                                            return (
+                                                                                                <View>
+                                                                                                    <View style={styles.guquanlianBili}>
+                                                                                                        <Icon name={'down'} size={16} color={'#999'} />
+                                                                                                        <Text style={styles.guquanlianBiliText}>{list3.bili}</Text>
+                                                                                                    </View>
+                                                                                                    <Text style={styles.guquanlianBiliName}>{list3.name}</Text>
                                                                                                 </View>
-                                                                                                <Text style={styles.guquanlianBiliName}>{list3.name}</Text>
-                                                                                            </View>
-                                                                                        )
-                                                                                    })
-                                                                                }
+                                                                                            )
+                                                                                        })
+                                                                                    }
+                                                                                </View>
                                                                             </View>
                                                                         )
                                                                     })
@@ -174,7 +178,7 @@ const styles = StyleSheet.create({
     },
     gudongInfoName: {
         color: '#666',
-        fontSize: 12,
+        fontSize: 14,
         lineHeight: 16,
         fontWeight: 'bold',
     },
@@ -189,7 +193,7 @@ const styles = StyleSheet.create({
     },
     iconGdText: {
         color: '#fff',
-        fontSize: 10,
+        fontSize: 11,
     },
     gudongInfotype: {
         paddingTop: 8,
@@ -197,7 +201,7 @@ const styles = StyleSheet.create({
     },
     gudongInfotypeText: {
         color: '#999',
-        fontSize: 10,
+        fontSize: 11,
     },
     gudongInfoBd: {
         flexDirection: 'row',
@@ -205,7 +209,7 @@ const styles = StyleSheet.create({
     },
     gudongInfoBdText: {
         color: '#999',
-        fontSize: 10,
+        fontSize: 11,
     },
     gudongInfoBdTextBili: {
         width: 120,
@@ -274,14 +278,24 @@ const styles = StyleSheet.create({
     },
     shouyirenListTextC: {
         color: '#666',
+        fontSize: 14,
     },
     guquanlianList: {
         marginBottom: 10,
-        padding: 10,
+        
         backgroundColor: '#F5F5F5',
     },
+    guquanlianListLujing:{
+        paddingLeft:10,
+        height:30,
+        backgroundColor:'#eee',
+        justifyContent:'center',
+    
+    },
+    guquanlianListCon:{
+        padding:10,
+    },
     guquanlianListText: {
-        paddingBottom:10,
         color: '#999',
         fontSize: 12,
     },

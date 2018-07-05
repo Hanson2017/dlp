@@ -15,9 +15,9 @@ module.exports = {
                 >
                     <Text style={[stylesList.tdID, stylesList.headerRowText]}></Text>
                     <Text style={[stylesList.tdName, stylesList.headerRowText]}></Text>
-                    <Text style={[stylesList.firstName, { width: (Theme.screenWidth - 150) * 0.4 }]}>{item.level}/{item.level_p2peye}</Text>
-                    <Text style={[stylesList.CABB7C4, { width: (Theme.screenWidth - 150) * 0.27 }]}>{item.xscore}</Text>
-                    <Text style={[stylesList.CABB7C4, { width: (Theme.screenWidth - 150) * 0.27 }]}>{item.hscore}</Text>
+                    <Text style={[stylesList.firstName, { width: Theme.screenWidth >= 375 ? (Theme.screenWidth - 150) * 0.4 : (Theme.screenWidth - 150) * 0.52 }]}>{item.level}/{item.level_p2peye}</Text>
+                    <Text style={[stylesList.CABB7C4, { width: Theme.screenWidth >= 375 ? (Theme.screenWidth - 150) * 0.27 : (Theme.screenWidth - 150) * 0.31 }]}>{item.xscore}</Text>
+                    <Text style={[stylesList.CABB7C4, { width: Theme.screenWidth >= 375 ? (Theme.screenWidth - 150) * 0.27 : (Theme.screenWidth - 150) * 0.31 }]}>{item.hscore}</Text>
                     <Text style={[stylesList.CABB7C4, { width: 70 }]}>{item.limit_t}</Text>
                     <Text style={[stylesList.CABB7C4, { width: 70 }]}>{item.rate}</Text>
                     <Text style={[stylesList.CABB7C4, { width: 70 }]}>{item.claims}</Text>
@@ -33,9 +33,9 @@ module.exports = {
     },
     ListHeaderComponentR() {
         let listTitle = [
-            { title: '网贷天眼', width: (Theme.screenWidth - 150) * 0.4 },
-            { title: '信披', width: (Theme.screenWidth - 150) * 0.27 },
-            { title: '合规', width: (Theme.screenWidth - 150) * 0.27 },
+            { title: '网贷天眼', width: Theme.screenWidth >= 375 ? (Theme.screenWidth - 150) * 0.4 : (Theme.screenWidth - 150) * 0.52 },
+            { title: '信披', width: Theme.screenWidth >= 375 ? (Theme.screenWidth - 150) * 0.27 : (Theme.screenWidth - 150) * 0.31 },
+            { title: '合规', width: Theme.screenWidth >= 375 ? (Theme.screenWidth - 150) * 0.27 : (Theme.screenWidth - 150) * 0.31 },
             { title: '期限' },
             { title: '利率' },
             { title: '偿兑性' },

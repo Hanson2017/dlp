@@ -204,7 +204,6 @@ export default class Comments extends React.Component {
                             let dataSource = that.state.dataSource;
 
                             dataSource = dataSource.concat(responseData['dataList']);
-                            console.log(responseData)
 
                             that.setState({
                                 loading: false,

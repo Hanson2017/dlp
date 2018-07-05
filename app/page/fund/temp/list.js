@@ -107,9 +107,9 @@ export default class FundList extends React.Component {
                 </View>
 
                 {
-                    data.map((item) => {
+                    data.map((item,j) => {
                         return (
-                            <View style={[styles.fundlist, Theme.box, Theme.mt10]}>
+                            <View key={j} style={[styles.fundlist, Theme.box, Theme.mt10]}>
                                 <TouchableOpacity style={styles.fundlistHd} activeOpacity={0.5}
                                     onPress={() => {
                                         navigation.navigate('Detail', { id: item.id_dlp, platName: item.plat_name })
@@ -145,9 +145,9 @@ export default class FundList extends React.Component {
                                     <Text style={styles.fundlistReasonsTitleText}>[投资理由]</Text>
                                     <View style={styles.fundlistReasonsBox}>
                                         {
-                                            item.fund_reasons.split('<br />').map((list) => {
+                                            item.fund_reasons.split('<br />').map((list,z) => {
                                                 return (
-                                                    <Text style={styles.fundlistReasonsText}>{list}</Text>
+                                                    <Text style={styles.fundlistReasonsText} key={z}>{list}</Text>
                                                 )
                                             })
                                         }

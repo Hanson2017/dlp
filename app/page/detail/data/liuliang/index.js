@@ -205,7 +205,6 @@ const styles = StyleSheet.create({
         width: 60,
         height: 22,
         backgroundColor: '#bbb',
-        color: '#abb7c4',
         borderRadius: 4,
     },
     flowListNameText: {

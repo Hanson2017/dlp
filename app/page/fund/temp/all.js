@@ -41,7 +41,7 @@ class List extends React.Component {
                     <Echarts option={PieEcharts.pieFund(echartsData)} height={175} />
                 </View>
                 <View style={styles.fundSm}>
-                    <View style={styles.fundSmList}>
+                    <View style={[styles.fundSmList,styles.fundSmListZs]}>
                         <Text style={styles.fundSmLabelText}>安全指数</Text>
                         <View style={styles.fundStart}>
                             <Icon name={'fund-dunpai'} size={14} color={'#FF9800'} />
@@ -274,9 +274,12 @@ const styles = StyleSheet.create({
     fundSmList: {
         marginBottom: 10,
         flexDirection: 'row',
+    },
+    fundSmListZs:{
         alignItems: 'center',
     },
     fundSmLabelText: {
+        width:55,
         paddingRight: 5,
         fontSize: 12,
         color: '#A1A1A1'
@@ -285,6 +288,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     fundSmText: {
+        paddingRight:10,
+        flex:1,
         fontSize: 12,
         color: '#707070'
     },

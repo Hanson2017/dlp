@@ -76,6 +76,7 @@ export default class Left extends React.Component {
                                     return (
                                         list.investtype == 1 ? null :
                                             <TouchableOpacity
+                                                key={i}
                                                 style={stylesList.hongbao}
                                                 onPress={() => {
                                                     Util.Linked(url)

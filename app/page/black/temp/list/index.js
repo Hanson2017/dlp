@@ -113,13 +113,15 @@ const styles = StyleSheet.create({
         position: 'relative',
     },
     leftContainer: {
+        backgroundColor:'#fff',
         position: 'absolute',
         left: 0,
         top: 0,
-        zIndex: 99,
+        zIndex: 999,
     },
     rightContainer: {
         flex: 1,
+        backgroundColor:'#fff',
     },
     fixed: {
         shadowColor: '#ccc',

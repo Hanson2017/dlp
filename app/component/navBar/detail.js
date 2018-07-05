@@ -6,15 +6,23 @@ import Util from '../../util/util';
 
 export default class Header extends React.Component {
     render() {
-        const {navigation,headerOpt,showActionSheet}=this.props;
+        const { navigation, headerOpt, showActionSheet } = this.props;
         return (
-            <View style={[styles.headerContainer,styless.headerContainer, Platform.OS == 'android' ? { marginTop: 0 } : null]}>
+            <View style={[styles.headerContainer, styless.headerContainer, Platform.OS == 'android' ? { marginTop: 0 } : null]}>
                 <TouchableOpacity style={styles.backBtn} onPress={() => { headerOpt.noBack ? navigation.goBack() : null }}>
                     <Icon name={'triangle-left'} size={18} color={'#fff'} />
                 </TouchableOpacity>
-                <View style={styles.textContainer}>
+                <View style={[styles.textContainer,{paddingLeft:50,}]}>
                     <Text style={styles.headerText}>{headerOpt.title}</Text>
                 </View>
+                {
+                    headerOpt.search ?
+                        <View style={[styles.headerRight, Platform.OS == 'android' ? styles.headerRightAndorid : null]}></View>
+                        :
+                        <TouchableOpacity style={styles.headerRight} onPress={() => { navigation.navigate('Search') }}>
+                            <Icon name={'ico-search'} size={19} color={'#fff'} />
+                        </TouchableOpacity>
+                }
                 {versionStatus == 1 || !showActionSheet ?
                     <View style={[styles.headerRight]}></View>
                     :
@@ -27,8 +35,8 @@ export default class Header extends React.Component {
         );
     }
 }
-const styless=StyleSheet.create({
-    headerContainer:{
+const styless = StyleSheet.create({
+    headerContainer: {
         backgroundColor: '#1A1A1A',
     },
 })

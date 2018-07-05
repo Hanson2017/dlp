@@ -91,7 +91,7 @@ export default class ZonglanTop extends React.Component {
                         <View style={styles.tags}>
                             {data.platinfo.map((item, i) => {
                                 return (
-                                    <View style={styles.tag}>
+                                    <View style={styles.tag} key={i}>
                                         <Text key={i} style={styles.tagText}>{item}</Text>
                                         {
                                             data.platinfo.length - 1 !== i ?
@@ -153,7 +153,7 @@ export default class ZonglanTop extends React.Component {
                         <View style={styles.blackiTime}>
                             {
                                 data.dataInfo.negative_time != null && data.dataInfo.negative_time != '' ?
-                                    <Text style={[styles.blackiTimeText,{color:'#A81616'}]}>争议时间：{Util.formatDate(data.dataInfo.negative_time)}</Text>
+                                    <Text style={[styles.blackiTimeText, { color: '#A81616' }]}>争议时间：{Util.formatDate(data.dataInfo.negative_time)}</Text>
                                     :
                                     null
                             }
@@ -186,7 +186,7 @@ const styles = StyleSheet.create({
         borderLeftColor: '#eee',
     },
     platInfoLeft: {
-        width: 210,
+        width: Theme.screenWidth >= 375 ? 210 : 180,
     },
     platName: {
         marginBottom: 10,
@@ -251,12 +251,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     tagText: {
-        fontSize: 12,
+        fontSize: Theme.screenWidth >= 375 ? 12 : 11,
         color: '#666',
     },
     tagLine: {
-        paddingLeft: 9,
-        paddingRight: 9,
+        paddingLeft: Theme.screenWidth >= 375 ? 9 : 7,
+        paddingRight: Theme.screenWidth >= 375 ? 9 : 7,
     },
     activityList: {
         paddingLeft: 15,
@@ -333,7 +333,7 @@ const styles = StyleSheet.create({
         paddingTop: 7,
         color: '#1A1A1A',
         fontSize: 13,
-        fontWeight:'bold',
+        fontWeight: 'bold',
         backgroundColor: 'rgba(52, 52, 52, 0)',
     },
     blackiTime: {

@@ -89,17 +89,18 @@ const styles = StyleSheet.create({
     listplatName: {
         paddingRight: 6,
         width: 76,
+        width: Theme.screenWidth >= 375 ? 76 : 60,
     },
     listplatNameText: {
-        fontSize: 12,
+        fontSize: Theme.screenWidth >= 375 ? 12 : 11,
         color: '#666',
     },
     listText: {
-        fontSize: 14,
+        fontSize: Theme.screenWidth >= 375 ? 14 : 12,
         color: '#999'
     },
     listChengjiao: {
-        width: 86,
+        width: Theme.screenWidth >= 375 ? 86 : 70,
     },
     listRate: {
         width: 70,

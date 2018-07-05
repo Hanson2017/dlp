@@ -4,6 +4,7 @@ import { Text, StyleSheet, View, TouchableOpacity, FlatList, ScrollView, Refresh
 import Theme from '../../../../util/theme';
 import Util from '../../../../util/util';
 import Loading from '../../../../component/loading';
+import Item from './item';
 import stylesList from '../../../../css/listData';
 
 export default class YulunScreen extends React.Component {
@@ -77,14 +78,7 @@ export default class YulunScreen extends React.Component {
     renderItem({ item, index }) {
         let navigation = this.props.navigation;
         return (
-            <TouchableOpacity
-                style={styles.list}
-                key={index}
-                onPress={() => { navigation.navigate('YulunDetail', { url: item.siteurl }) }}
-            >
-                <Text style={styles.listTitle}>{item.title}</Text>
-                <Text style={styles.listDate}>{Util.formatDate(item.pubtime)}</Text>
-            </ TouchableOpacity>
+            <Item  navigation={navigation} item={item} key={index} />
         )
 
     }
@@ -110,24 +104,8 @@ const styles = StyleSheet.create({
         paddingLeft: 15,
     },
 
-    list: {
-        padding: 10,
-        paddingLeft: 0,
-        borderBottomWidth: 1,
-        borderBottomColor: '#f2f2f2',
-    },
-    listTitle: {
-        lineHeight: 20,
-        color: '#101010',
-        fontSize: 14,
-    },
-    listDate: {
-        marginTop: 10,
-        color: '#bbb',
-        fontSize: 11,
-    },
     null: {
-        paddingLeft: (Theme.screenWidth - 240) / 2,
+        paddingLeft: (Theme.screenWidth - 320) / 2,
         color: '#ccc',
     }
 })

@@ -15,11 +15,11 @@ module.exports = {
                 >
                 <Text style={[stylesList.tdID, stylesList.headerRowText]}></Text>
                 <Text style={[stylesList.tdName, stylesList.headerRowText]}></Text>
-                    <View style={{ width: (Theme.screenWidth - 150) * 0.47 }}>
+                    <View style={{ width: Theme.screenWidth>=375?(Theme.screenWidth - 150) * 0.47 :(Theme.screenWidth - 150) * 0.6 }}>
                         <Text style={[stylesList.CABB7C4]}>{item.amount}</Text>
                         <Text style={[stylesList.CABB7C4,styles.mtT]}>{item.inamount}</Text>
                     </View>
-                     <View style={{ width: (Theme.screenWidth - 150) * 0.47 }}>
+                     <View style={{ width: Theme.screenWidth>=375?(Theme.screenWidth - 150) * 0.47 :(Theme.screenWidth - 150) * 0.6 }}>
                         <Text style={[stylesList.CABB7C4]}>{item.stayStill}</Text>
                         <Text style={[stylesList.CABB7C4,styles.mtT]}>{item.stayStillOfTotal}</Text>
                     </View>
@@ -53,8 +53,8 @@ module.exports = {
     },
     ListHeaderComponentR() {
         let listTitle = [
-            { title: '成交量(万)', title2: '资金流(万)' , width: (Theme.screenWidth - 150) * 0.47},
-            { title: '当日待还金额(万)', title2: '累计待还金额(万)', width: (Theme.screenWidth - 150) * 0.47},
+            { title: '成交量(万)', title2: '资金流(万)' , width: Theme.screenWidth>=375?(Theme.screenWidth - 150) * 0.47 :(Theme.screenWidth - 150) * 0.6},
+            { title: '当日待还金额(万)', title2: '累计待还金额(万)', width: Theme.screenWidth>=375?(Theme.screenWidth - 150) * 0.47 :(Theme.screenWidth - 150) * 0.6},
             { title: '平均投资金额(万)', title2: '平均借款金额(万)' },
             { title: '当日投资人数(人)', title2: '当日借款人数(人)' },
             { title: '待收投资人数(人)', title2: '待还借款人数(人)' },

@@ -35,7 +35,7 @@ export default class Comment extends React.Component {
         }
         else {
             return (
-                <View>
+                <View style={{flex:1}}>
                     <ScrollView contentContainerStyle={styles.contentContainer}>
 
                         {
@@ -51,24 +51,27 @@ export default class Comment extends React.Component {
 
 
                     </ScrollView>
-                    <TouchableOpacity style={styles.submitBtn} onPress={() => {
-                        if (signState != null) {
-                            navigation.navigate('CommentForm', { cid: platInfo.id, platName: platInfo.platName })
-                        }
-                        else {
-                            Alert.alert(
-                                '提示',
-                                '请先登录后评论！',
-                                [
-                                    { text: '取消' },
-                                    { text: '确认', onPress: this.goLogin.bind(this) },
-                                ]
-                            )
-                        }
+                    <View style={styles.foot}>
+                        <TouchableOpacity style={styles.inputBtn} onPress={() => {
+                            if (signState != null) {
+                                navigation.navigate('CommentForm', { cid: platInfo.id, platName: platInfo.platName })
+                            }
+                            else {
+                                Alert.alert(
+                                    '提示',
+                                    '请先登录后评论！',
+                                    [
+                                        { text: '取消' },
+                                        { text: '确认', onPress: this.goLogin.bind(this) },
+                                    ]
+                                )
+                            }
 
-                    }}>
-                        <Icon name={'comment-review'} size={26} color={'#fff'} />
-                    </TouchableOpacity>
+                        }}>
+                           
+                           <Text style={styles.inputBtnText}>我也要发表评论</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
             )
         }
@@ -125,6 +128,31 @@ const styles = StyleSheet.create({
     contentContainer: {
         paddingLeft: 15,
     },
+    foot: {
+        padding: 10,
+        paddingLeft: 15,
+        paddingRight: 15,
+        height: 50,
+        borderTopWidth: 1,
+        borderTopColor: '#fdfdfd',
+        flexDirection: 'row',
+        alignItems: 'center',
+        backgroundColor:'#fff',
+    },
+
+    inputBtn: {
+        flex: 1,
+        marginRight: 15,
+        paddingLeft: 10,
+        height: 30,
+        backgroundColor: '#eee',
+        borderRadius: 15,
+        justifyContent: 'center',
+    },
+    inputBtnText: {
+        fontSize: 12,
+        color: '#bbb',
+    },
     submitBtn: {
         position: 'absolute',
         bottom: 25,
@@ -141,7 +169,7 @@ const styles = StyleSheet.create({
         shadowRadius: 1,
     },
     null: {
-        paddingLeft: (Theme.screenWidth - 240) / 2,
+        paddingLeft: (Theme.screenWidth - 320) / 2,
         color: '#ccc',
     }
 })

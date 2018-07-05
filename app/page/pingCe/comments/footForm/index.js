@@ -28,6 +28,7 @@ export default class CommentForm extends React.Component {
                         }}>
                             <Text style={styles.submitBtnText}>提交评论</Text>
                         </TouchableOpacity>
+
                     </View>
                 </View>
             </SafeAreaView>
@@ -90,9 +91,20 @@ export default class CommentForm extends React.Component {
     }
     goBackSuccee() {
         let navigation = this.props.navigation;
+        const { params } = navigation.state;
+        const cid = params.cid;
+        const routeName = params.routeName;
         window.EventEmitter.trigger('commentAddPC', '提交成功')
+        window.EventEmitter.trigger('commentAddPC222', '提交成功')
         DeviceEventEmitter.emit('commentAddPC', '提交成功')
-        navigation.goBack()
+        if (routeName == 'PingCeDetail') {
+            navigation.replace('PingCeCommentList', { cid: cid })
+        }
+        else if (routeName == 'PingCeCommentList') {
+            navigation.goBack();
+        }
+
+
     }
 }
 

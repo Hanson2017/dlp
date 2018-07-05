@@ -33,6 +33,7 @@ export default class CommentsList extends React.Component {
             <SafeAreaView style={{ flex: 1, backgroundColor: Theme.color2 }}>
                 <View style={Theme.container}>
                     <Header headerOpt={{ back: '', title: '评论', search: 'null' }} navigation={navigation} />
+                    
                     <View style={styles.content}>
                         {
 
@@ -53,9 +54,12 @@ export default class CommentsList extends React.Component {
                                     }
                                 </ScrollView>
                         }
-                        <TouchableOpacity style={styles.submitBtn} onPress={() => {
+
+                    </View>
+                    <View style={styles.foot}>
+                        <TouchableOpacity style={styles.inputBtn} onPress={() => {
                             if (signState != null) {
-                                navigation.navigate('PingCeCommentForm', { cid: params.cid })
+                                navigation.navigate('PingCeCommentForm', { cid: params.cid,routeName:navigation.state.routeName })
                             }
                             else {
                                 Alert.alert(
@@ -69,7 +73,8 @@ export default class CommentsList extends React.Component {
                             }
 
                         }}>
-                            <Icon name={'comment-review'} size={26} color={'#fff'} />
+                           
+                           <Text style={styles.inputBtnText}>我也要发表评论</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -149,8 +154,6 @@ export default class CommentsList extends React.Component {
 
         let url = Api.pingCeCommentList + '?id_dlp=' + params.cid + '&page=' + that.page + '&pagesize=' + 50;
 
-        console.log(url)
-
         fetch(url)
             .then((response) => {
 
@@ -161,7 +164,6 @@ export default class CommentsList extends React.Component {
                             let dataSource = that.state.dataSource;
 
                             dataSource = dataSource.concat(responseData['dataList']);
-                            console.log(responseData)
 
                             that.setState({
                                 loading: false,
@@ -196,6 +198,31 @@ const styles = StyleSheet.create({
         paddingTop: 10,
         flex: 1,
         backgroundColor: '#fff',
+    },
+    foot: {
+        padding: 10,
+        paddingLeft: 15,
+        paddingRight: 15,
+        height: 50,
+        borderTopWidth: 1,
+        borderTopColor: '#fdfdfd',
+        flexDirection: 'row',
+        alignItems: 'center',
+        backgroundColor:'#fff',
+    },
+
+    inputBtn: {
+        flex: 1,
+        marginRight: 15,
+        paddingLeft: 10,
+        height: 30,
+        backgroundColor: '#eee',
+        borderRadius: 15,
+        justifyContent: 'center',
+    },
+    inputBtnText: {
+        fontSize: 12,
+        color: '#bbb',
     },
     submitBtn: {
         position: 'absolute',

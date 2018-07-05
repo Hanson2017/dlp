@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, View, FlatList, ScrollView, TouchableOpacity, Image,RefreshControl } from 'react-native';
+import { Text, StyleSheet, View, FlatList, ScrollView, TouchableOpacity, Image, RefreshControl } from 'react-native';
 import Icon from 'react-native-vector-icons/Icomoon';
 import Util from '../../../util/util'
 import Theme from '../../../util/theme';
@@ -17,23 +17,29 @@ class List extends React.Component {
                     Util.Linked(url)
                 }}
             >
-                <View style={[styles.activityContainer, data.investtype == 1 ? styles.activityContainerFt : null]} >
-                    <View style={styles.activityIconOut}>
-                        <View style={styles.activityIconIn}></View>
+                <View style={styles.listItemLeft}>
+                    <View style={[styles.activityContainer, data.investtype == 1 ? styles.activityContainerFt : null]} >
+                        <View style={styles.activityIconOut}>
+                            <View style={styles.activityIconIn}></View>
+                        </View>
+                        <View style={styles.activityTextCon}>
+                            <Text style={styles.activityText}>
+                                {data.investtype == 0 ? '首投' : '复投'}
+                            </Text>
+                        </View>
                     </View>
-                    <View style={styles.activityTextCon}>
-                        <Text style={styles.activityText}>
-                            {data.investtype == 0 ? '首投活动' : '复投活动'}
-                        </Text>
+                    <View style={styles.listinvest}>
+                        <Text style={styles.listinvestText}>{data.invest}</Text>
+                        <Text style={styles.listinvestText2}>出借金额</Text>
                     </View>
-                </View>
-                <View style={styles.listinvest}>
-                    <Text style={styles.listinvestText}>出借{data.invest}</Text>
-                    <Text style={styles.listinvestText2}>获{data.rebate}</Text>
-                </View>
-                <View style={styles.listrate}>
-                    <Text style={styles.listrateText}>相当于年化</Text>
-                    <Text style={styles.listrateText2}>{data.rate}%</Text>
+                    <View style={styles.listrebate}>
+                        <Text style={[styles.listinvestText, styles.rebateText]}>{data.rebate}</Text>
+                        <Text style={styles.listinvestText2}>获取回报</Text>
+                    </View>
+                    <View style={styles.listrate}>
+                        <Text style={[styles.listinvestText, styles.listrateText]}>{data.rate}%</Text>
+                        <Text style={styles.listinvestText2}>相当于年华</Text>
+                    </View>
                 </View>
                 <View style={styles.listIcon}>
                     <Icon name={'triangle-right22'} size={14} color={'#bbb'} />
@@ -67,15 +73,15 @@ export default class Activity extends React.Component {
             return (
                 <View style={{ flex: 1 }}>
                     <ScrollView
-                     refreshControl={
-                        <RefreshControl
-                            refreshing={this.state.isRefreshing}
-                            onRefresh={this.onRefresh.bind(this)}
-                        />
-                    }
+                        refreshControl={
+                            <RefreshControl
+                                refreshing={this.state.isRefreshing}
+                                onRefresh={this.onRefresh.bind(this)}
+                            />
+                        }
                     >
                         <View style={[Theme.box, styles.topContainer]}>
-                            <Title data={'平台当前活动'} borderNot={true}  />
+                            <Title data={'平台当前活动'} borderNot={true} />
                             <View style={styles.listViewContentD}>
                                 {
                                     platActivity.length > 0 ?
@@ -119,7 +125,7 @@ export default class Activity extends React.Component {
                         </View>
                         <View style={[Theme.box, Theme.mt10]}>
                             <Title data={'其他热门活动'} mfTag={true} borderNot={true} linkUrl={'http://m.fanlimofang.com'} />
-                            
+
                             <View style={styles.listViewContent}>
                                 {
                                     otherActivity.length > 0 ?
@@ -167,57 +173,72 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         flexWrap: 'wrap',
     },
-    listViewContentD:{
+    listViewContentD: {
         paddingTop: 15,
         paddingLeft: 15,
     },
     listItem: {
         flexDirection: 'row',
+        justifyContent: 'space-between',
         paddingBottom: 10,
-        paddingLeft:10,
+        paddingLeft: 10,
         marginBottom: 15,
         borderBottomWidth: 1,
         borderBottomColor: '#eee',
     },
+    listItemLeft:{
+        flex: 1,
+        flexDirection: 'row',
+    },
     listinvest: {
-        marginRight:20,
-        borderRightWidth: 1,
-        borderRightColor: '#eee',
         width: 85,
     },
-    listinvestText: {
-        fontSize: 12,
-        color: '#666',
-        fontWeight: 'bold',
+    listrebate: {
+        width: 80,
     },
-    listinvestText2: {
-        paddingTop:5,
-        fontSize: 16,
+    listrate: {
+
+    },
+    listinvestText: {
+        height: 24,
+        fontSize: 20,
         color: '#101010',
         fontWeight: 'bold',
     },
-    listrate: {
-        width: 100,
+    listinvestText2: {
+        paddingTop: 5,
+        fontSize: 12,
+        color: '#999',
     },
+    listrateText2: {
+        paddingTop: 5,
+        fontSize: 16,
+        color: '#101010',
+    },
+    rebateText: {
+        color: '#D51920'
+    },
+
     listrateText: {
         fontSize: 12,
         color: '#666',
     },
-    listrateText2: {
-        paddingTop:5,
-        fontSize: 16,
-        color: '#101010',
+
+    listrateText: {
+        fontSize: 18,
+        color: '#999',
     },
-    listIcon:{
-        paddingRight:20,
+    listIcon: {
+        paddingRight: 15,
         flexDirection: 'row',
-        justifyContent:'flex-end',
+        justifyContent: 'flex-end',
         alignItems: 'center',
-        flex:1,
     },
     activityContainer: {
-        marginRight: 40,
-        width: 70,
+        position: 'relative',
+        top: 4,
+        marginRight: 20,
+        width: 45,
         height: 18,
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -287,7 +308,7 @@ const styles = StyleSheet.create({
         height: 94.3,
     },
     null: {
-        paddingBottom:16,
+        paddingBottom: 16,
         color: '#bbb',
         fontSize: 14,
     },

@@ -34,8 +34,8 @@ export default class Dapan extends React.Component {
                             <Text style={styles.statusLeftTextState}>{inamount.status}</Text>
                         </View>
                         <View style={styles.statusRight}>
-                            <Image source={require('../../../../resources/images/kedu.png')} style={styles.imgkedu} />
-                            <View style={[styles.imgzhizhenContainer, { left: inamount.score / 180 * 240 }]}>
+                            <Image source={require('../../../../resources/images/kedu.png')} style={(Theme.screenWidth-35-94)>240?styles.imgkedu:styles.imgkedu2} />
+                            <View style={[styles.imgzhizhenContainer, (Theme.screenWidth-35-94)>240?{ left: inamount.score / 180 * 240 }:{ left: inamount.score / 180 * (Theme.screenWidth-35-94) }]}>
                                 <Image source={require('../../../../resources/images/zhizhen.png')} style={styles.imgzhizhen} />
                             </View>
                         </View>
@@ -97,6 +97,10 @@ const styles = StyleSheet.create({
     imgkedu: {
         width: 240,
         height: 64,
+    },
+    imgkedu2:{
+        width:Theme.screenWidth-35-94,
+        height:(Theme.screenWidth-35-94)*(64/240)
     },
     imgzhizhen: {
 

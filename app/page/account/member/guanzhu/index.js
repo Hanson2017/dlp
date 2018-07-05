@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, View, TouchableOpacity, ScrollView, FlatList, RefreshControl } from 'react-native';
+import { Text, StyleSheet, View, TouchableOpacity, ScrollView, FlatList, RefreshControl ,Alert} from 'react-native';
 import Icon from 'react-native-vector-icons/Icomoon';
 import Api from '../../../../util/api';
 import Util from '../../../../util/util';
@@ -20,6 +20,7 @@ export default class Guanzhu extends React.Component {
         };
     }
     render() {
+        const { guanzhuDel } = this.props;
         if (this.state.loading) {
             return (
                 <Loading />
@@ -53,11 +54,32 @@ export default class Guanzhu extends React.Component {
     }
     renderItem({ item, index }) {
 
-        const { navigation } = this.props;
+        const { navigation, guanzhuDel } = this.props;
         return (
             <View style={[Theme.box, styles.listContainer]}>
 
                 <View style={styles.header}>
+                    {
+                        guanzhuDel ?
+                            <TouchableOpacity style={styles.delBtn}
+                                onPress={()=>{
+                                    Alert.alert(
+                                        '提示',
+                                        '你确认要取消关注该平台吗',
+                                        [
+                                            { text: '取消' },
+                                            { text: '确认', onPress: this.attentionDel.bind(this,item.id_dlp) },
+                                        ]
+                                    )
+                                }}
+                            >
+                                <Icon name={'ico-del'} size={25} color={'#D51920'} />
+                            </TouchableOpacity>
+                            :
+                            null
+
+                    }
+
                     <View style={styles.headerLeft}>
                         <View style={styles.platNameContainer}>
                             <TouchableOpacity
@@ -96,7 +118,7 @@ export default class Guanzhu extends React.Component {
 
                     {
                         item.flmflist.length > 0 && versionStatus != 1 ?
-                            <View style={styles.headerRight}>
+                            <View style={[styles.headerRight,guanzhuDel?{paddingRight:40,}:null]}>
                                 {
                                     item.flmflist.map((list, i) => {
                                         let url = 'http://m.fanlimofang.com/Activity/Detail/' + list.activityid;
@@ -269,6 +291,42 @@ export default class Guanzhu extends React.Component {
     componentWillUnmount() {
         window.EventEmitter.off('isAttention')
     }
+    // 取消关注
+    attentionDel(id) {
+        let that = this;
+        let thatt = this.props.that;
+        let memberid = signState.r_id;
+
+        let url = Api.attentionDel + '?id_dlp=' + id + '&memberid=' + memberid;
+        fetch(url)
+            .then((response) => {
+                if (response.ok) {
+                    response.json()
+                        .then((responseData) => {
+                            if (responseData.result == 1) {
+                               
+                                window.EventEmitter.trigger('isAttention33', '取消关注')
+                                thatt.toastShow('已取消关注')
+
+                                setTimeout(
+                                    () => {
+                                        thatt.toastHide()
+                                        that.getData(1);
+                                    },
+                                    1000
+                                );
+                            }
+                        })
+                }
+                else {
+                    console.log('网络请求失败')
+                }
+            })
+            .catch((error) => {
+                console.log('error:', error)
+            })
+    }
+    
     getData(type) {
         let that = this;
 
@@ -290,7 +348,7 @@ export default class Guanzhu extends React.Component {
 
         let memberid = signState.r_id;
         let url = Api.attentionList + '?memberid=' + memberid + '&page=' + this.page + '&pagesize=' + this.state.pageSize;
-        console.log(url)
+
         fetch(url)
             .then((response) => {
                 if (response.ok) {
@@ -325,6 +383,7 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
     header: {
+        position: 'relative',
         paddingRight: 20,
         paddingTop: 14,
         paddingBottom: 10,
@@ -385,6 +444,12 @@ const styles = StyleSheet.create({
     },
     stateBlack: {
         color: 'red'
+    },
+    delBtn: {
+        right: 20,
+        top: 12,
+        position: 'absolute',
+        zIndex:999,
     },
     activityContainer: {
         width: 116,

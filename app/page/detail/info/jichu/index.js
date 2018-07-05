@@ -126,7 +126,6 @@ const styles = StyleSheet.create({
     },
     jingyingfanwei: {
         padding: 8,
-        color: '#333',
         backgroundColor: '#f5f5f5',
     },
     jingyingfanweiText: {

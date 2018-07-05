@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, View, ScrollView, WebView, TouchableOpacity } from 'react-native';
+import { Text, StyleSheet, View, ScrollView, WebView, TextInput, TouchableOpacity, Keyboard } from 'react-native';
 import { SafeAreaView } from "react-navigation";
 import Icon from 'react-native-vector-icons/Icomoon';
 import Theme from '../../../util/theme';
@@ -7,6 +7,9 @@ import Util from '../../../util/util';
 import Api from '../../../util/api';
 import Header from '../../../component/navBar';
 import Loading from '../../../component/loading';
+import Toast from '../../../component/toast';
+import ActionShare from '../../../component/actionShare';
+import Foot from './foot';
 
 export default class HelpDetail extends React.Component {
     constructor(props) {
@@ -15,12 +18,14 @@ export default class HelpDetail extends React.Component {
             loading: true,
             article: '',
             plats: '',
+            commentcount: 0,
         };
     }
     render() {
         const { navigation } = this.props;
-        const { article, plats } = this.state;
+        const { article, plats, commentcount } = this.state;
         const { params } = this.props.navigation.state;
+      
         if (!this.state.loading) {
             var con_str = article.detailinfo.replace(/\/atcpic/g, 'http://www.dailuopan.com/atcpic').replace(/.png\\/g, '.png')
             var HTML = "<html><style>img{width:100%}.code{width:auto}</style>" + con_str + "</html>";
@@ -80,21 +85,47 @@ export default class HelpDetail extends React.Component {
                                 </ScrollView>
 
                         }
-                        <TouchableOpacity style={styles.submitBtn}
-                            onPress={() => {
-                                navigation.navigate('PingCeCommentList', { cid: params.id })
-
-                            }}>
-                            <Icon name={'comment-find'} size={16} color={'#73C3FF'} />
-                            <Text style={styles.submitBtnText}>查看评论</Text>
-                        </TouchableOpacity>
+                        <Foot
+                            navigation={navigation}
+                            cid={params.id}
+                            commentcount={commentcount}
+                            that={this}
+                            routeName={navigation.state.routeName}
+                        />
                     </View>
+                    <Toast ref={'Toast'} />
+                    <ActionShare ref={'ActionShare'} />
                 </View>
             </SafeAreaView>
         )
     }
     componentDidMount() {
+        let that = this;
         this.getData()
+        window.EventEmitter.on('commentAddPC222', (data) => {
+            that.getData();
+        })
+    }
+    componentWillUnmount() {
+        window.EventEmitter.off('commentAddPC222')
+    }
+    toastShow(data) {
+        this.refs.Toast.show(data)
+    }
+    toastHide() {
+        this.refs.Toast.cancel();
+    }
+    showActionSheet() {
+        const { article} = this.state;
+    
+        let data={
+            type: 'news',
+            title: article.title,
+            description: article.digest,
+            webpageUrl: 'http://m.dailuopan.com/pingce/' + article.id,
+            imageUrl: article.cover,
+        }
+        this.refs.ActionShare.show(data)
     }
     getData() {
         let that = this;
@@ -110,8 +141,11 @@ export default class HelpDetail extends React.Component {
                                 loading: false,
                                 article: responseData.data.article,
                                 plats: responseData.data.plats,
+                                commentcount: responseData.data.commentcount
                             })
+
                         })
+
                 }
                 else {
                     console.log('网络请求失败')
@@ -124,6 +158,21 @@ export default class HelpDetail extends React.Component {
 }
 
 const styles = StyleSheet.create({
+    footContainer: {
+        padding: 10,
+        height: 50,
+        borderTopWidth: 1,
+        borderTopColor: '#ddd',
+        flexDirection: 'row',
+
+        alignItems: 'center',
+    },
+    footInput: {
+        width: 300,
+        height: 30,
+        backgroundColor: '#eee',
+        borderRadius: 5,
+    },
     content: {
         flex: 1,
         backgroundColor: '#fff',

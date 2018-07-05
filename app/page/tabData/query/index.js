@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     btn: {
-        marginRight: 19,
+        marginRight: Theme.screenWidth >= 375 ? 19 : 10,
     },
     btnText: {
         fontSize: 12,

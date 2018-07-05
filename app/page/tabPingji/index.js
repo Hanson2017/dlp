@@ -129,7 +129,7 @@ export default class PingjiTab extends React.Component {
                                             <View style={styles.hdContainer}>
                                                 <View style={styles.listNo}><Text style={styles.hdText}>排名</Text></View>
                                                 <View style={styles.listplatName}><Text style={styles.hdText}>平台名称</Text></View>
-                                                <View style={styles.listscore}><Text style={styles.hdText}>流量综合指数</Text></View>
+                                                <View style={styles.listscore}><Text style={styles.hdText}>综合指数</Text></View>
                                                 <View style={styles.listKeywords}><Text style={styles.hdText}>关键字</Text></View>
 
                                             </View>
@@ -221,17 +221,17 @@ const styles = StyleSheet.create({
     },
     listplatName: {
         paddingRight: 6,
-        width: 76,
+        width: Theme.screenWidth >= 375 ? 76 : 60,
     },
     listplatNameText: {
-        fontSize: 12,
+        fontSize: Theme.screenWidth >= 375 ? 12 : 11,
         color: '#666',
     },
     listscore: {
-        width: 80,
+        width: Theme.screenWidth >= 375 ? 80 : 60,
     },
     listscoreText: {
-        fontSize: 14,
+        fontSize: Theme.screenWidth >= 375 ? 14 : 12,
         color: Theme.color,
         fontWeight: 'bold',
     },
