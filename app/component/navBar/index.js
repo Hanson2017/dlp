@@ -6,6 +6,7 @@ import Theme from '../../util/theme';
 export default class Header extends React.Component {
     render() {
         const { navigation, headerOpt, black } = this.props;
+        console.log('this.props.children',this.props.children)
         return (
             <View style={[styles.headerContainer, Platform.OS == 'android' ? { marginTop: 0 } : null, black ? { backgroundColor: '#1A1A1A' } : null]}>
                 {
@@ -81,9 +82,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     portrait: {
-        paddingTop: 1,
         width: 54,
-        justifyContent: 'flex-start',
+        justifyContent: 'center',
         alignItems: 'center',
     },
     textContainer: {
@@ -102,11 +102,10 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     headerRight: {
-        paddingTop: 8,
         width: 50,
         flexDirection: 'row',
         justifyContent: 'center',
-        alignItems: 'flex-start',
+        alignItems: 'center',
     },
     headerRightShare: {
         height: 28,

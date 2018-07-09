@@ -40,6 +40,7 @@ export default class Title extends React.Component {
 
                             }}
                         >
+                            <Text style={styles.moreText}>查看更多</Text>
                             <Icon name={'triangle-right22'} size={14} color={'#bbb'} />
                         </TouchableOpacity>
                         :
@@ -75,7 +76,7 @@ const styles = StyleSheet.create({
         backgroundColor: Theme.color
     },
     text: {
-        color: '#515151',
+        color: '#333',
         fontSize: 16,
         fontWeight:'bold',
     },
@@ -85,6 +86,10 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'flex-end',
+    },
+    moreText:{
+        color: '#999',
+        fontSize: 13,
     },
     mfTag: {
         marginLeft: 8,

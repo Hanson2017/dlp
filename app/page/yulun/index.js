@@ -7,6 +7,7 @@ import Api from '../../util/api';
 import Theme from '../../util/theme';
 import Header from '../../component/navBar'
 import Loading from '../../component/loading';
+import PieEcharts from '../../echarts/pie';
 
 import Item from './item';
 
@@ -31,29 +32,8 @@ export default class DataScreen extends React.Component {
     }
     render() {
         const { navigation } = this.props;
-        const { updatetime } = this.state;
-        const option = {
-            tooltip: {
-                trigger: 'item',
-                formatter: "{a} <br/>{b} : {c} ({d}%)"
-            },
-            series: [
-                {
-                    name: '舆论分布',
-                    type: 'pie',
-                    radius: '55%',
-                    center: ['50%', '60%'],
-                    data: this.state.echartsData,
-                    itemStyle: {
-                        emphasis: {
-                            shadowBlur: 10,
-                            shadowOffsetX: 0,
-                            shadowColor: 'rgba(0, 0, 0, 0.5)'
-                        }
-                    }
-                }
-            ]
-        }
+        const { updatetime,echartsData } = this.state;
+        
         return (
             <SafeAreaView style={{ flex: 1, backgroundColor: Theme.color2 }}>
                 <View style={Theme.container}>
@@ -77,13 +57,13 @@ export default class DataScreen extends React.Component {
                                 >
                                     <View style={Theme.box}>
                                         <View style={styles.echarts}>
-                                            <Echarts option={option} height={200} />
+                                            <Echarts option={PieEcharts.pieYulun(echartsData)} height={200} />
                                             <View style={styles.echartsTitle}><Text style={styles.echartsTitleText}>过去48小时舆论热点分布</Text></View>
                                         </View>
 
                                         <View style={styles.totalNum}>
-                                            <View style={[styles.totalNumT, styles.totalNumTol]}><Text style={styles.totalNumText}>舆论总条数：{this.state.dataInfo.all_num}</Text></View>
-                                            <View style={[styles.totalNumT, styles.totalNumTM]}><Text style={styles.totalNumText}>昨日条数：{this.state.dataInfo.date_num}</Text></View>
+                                            <View style={[styles.totalNumT, styles.totalNumTol]}><Text style={styles.totalNumText}>舆论总条数：<Text style={styles.totalNumTextN}>{this.state.dataInfo.all_num}</Text></Text></View>
+                                            <View style={[styles.totalNumT, styles.totalNumTM]}><Text style={styles.totalNumText}>昨日条数：<Text style={styles.totalNumTextN}>{this.state.dataInfo.date_num}</Text></Text></View>
                                         </View>
                                     </View>
                                     <View style={[Theme.box, Theme.mt10, styles.yulunList]}>
@@ -177,6 +157,7 @@ export default class DataScreen extends React.Component {
                 if (response.ok) {
                     response.json()
                         .then((responseData) => {
+                            
                             if (type == 3) {
                                 that.setState({
                                     dataSource: []
@@ -274,6 +255,9 @@ const styles = StyleSheet.create({
     totalNumText: {
         fontSize: 12,
         color: '#bbb',
+    },
+    totalNumTextN:{
+        color: Theme.color,
     },
     yulunList: {
         paddingLeft: 15,

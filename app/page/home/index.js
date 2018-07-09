@@ -13,6 +13,7 @@ import Fund from './fund';
 import Pingce from './pingce';
 import Yulun from './yulun';
 import Comment from './comment';
+import Report from './report';
 
 export default class HomeScreen extends React.Component {
     constructor(props) {
@@ -48,13 +49,14 @@ export default class HomeScreen extends React.Component {
                                 />
                             }
                             >
-                                <Num data={dataSource.homenum} />
+                                <Num data={dataSource.homenum} navigation={navigation} />
                                 <Nav navigation={navigation} />
                                 <Dapan data={{ inamount: dataSource.inamount, markent: dataSource.markent }} />
                                 
                                 <Pingce data={dataSource.mplisttop} navigation={navigation} />
-                                <Yulun data={dataSource.sentlist} navigation={navigation} />
+                                <Yulun data={{list:dataSource.sentlist,echart:dataSource.sentviewlist,num:dataSource.sentday}} navigation={navigation} />
                                 <Comment data={dataSource.commentlist} navigation={navigation} />
+                                <Report data={dataSource.reportslist} navigation={navigation}  />
                                 {
                                     versionStatus != 1?
                                     <Activity data={dataSource.flmf} navigation={navigation}  />
@@ -90,6 +92,7 @@ export default class HomeScreen extends React.Component {
     getData() {
         let that = this;
         let url = Api.home;
+        
         fetch(url)
             .then((response) => {
                 if (response.ok) {
@@ -100,6 +103,7 @@ export default class HomeScreen extends React.Component {
                                 loading: false,
                                 isRefreshing: false,
                             })
+                           
                         })
                 }
                 else {

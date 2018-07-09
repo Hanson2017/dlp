@@ -57,21 +57,18 @@ export default class AccountScreen extends React.Component {
                                     <Text style={styles.headerRightText}>{guanzhuDel ? '完成' : '编辑'}</Text>
                                 </TouchableOpacity>
                                 :
-                                null
-                        }
-                        {
-                            index == 2 ?
-                                <TouchableOpacity style={styles.headerRight}
-                                    onPress={() => {
-                                        this.setState({
-                                            collectionDel: !collectionDel,
-                                        })
-                                    }}
-                                >
-                                    <Text style={styles.headerRightText}>{collectionDel ? '完成' : '编辑'}</Text>
-                                </TouchableOpacity>
-                                :
-                                null
+                                index == 2 ?
+                                    <TouchableOpacity style={styles.headerRight}
+                                        onPress={() => {
+                                            this.setState({
+                                                collectionDel: !collectionDel,
+                                            })
+                                        }}
+                                    >
+                                        <Text style={styles.headerRightText}>{collectionDel ? '完成' : '编辑'}</Text>
+                                    </TouchableOpacity>
+                                    :
+                                    null
                         }
                     </Header>
                     <View style={Theme.content}>

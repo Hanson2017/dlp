@@ -5,7 +5,7 @@ import Theme from '../../../../util/theme';
 
 export default class ZonglanFund extends React.Component {
     render() {
-        const { navigation, data, fundelse, platName, dataInfo } = this.props;
+        const { navigation, data, fundelse, platName, platId,dataInfo } = this.props;
        
         if (data !== null) {
             const type = data.fund_type;
@@ -34,7 +34,7 @@ export default class ZonglanFund extends React.Component {
                         <TouchableOpacity
                             style={styles.fundInfoHeaderRight}
                             activeOpacity={0.5}
-                            onPress={() => { navigation.navigate('DetailFund', { data: data, fundelse: fundelse, platName: platName, dataInfo: dataInfo }) }}
+                            onPress={() => { navigation.navigate('DetailFund', { data: data, fundelse: fundelse, platName: platName, dataInfo: dataInfo,platId:platId }) }}
                         >
                             <Icon name={'triangle-right'} size={12} color={'#bbb'} />
                         </TouchableOpacity>

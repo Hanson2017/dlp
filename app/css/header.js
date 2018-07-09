@@ -35,14 +35,10 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     headerRight: {
-        paddingTop: 8,
         width: 50,
         flexDirection: 'row',
         justifyContent: 'center',
-        alignItems: 'flex-start',
-    },
-    headerRightShare:{
-        height:28,
+        alignItems: 'center',
     },
     headerRightAndorid: {
         alignItems: 'center',

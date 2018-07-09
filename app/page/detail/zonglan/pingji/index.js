@@ -5,7 +5,7 @@ import Title from '../../../../component/title';
 
 export default class ZonglanPingji extends React.Component {
     render() {
-        const { navigation, data } = this.props;
+        const { navigation, data, platInfo } = this.props;
         const wdzj = data.wdzj;
         const p2peye = data.p2peye;
         const dlp = data.dlp;
@@ -18,13 +18,13 @@ export default class ZonglanPingji extends React.Component {
                 <Title data={'评级情况'} navigation={navigation} />
                 <View style={styles.listContainer}>
                     <View style={styles.list}>
-                        <Text style={[styles.name,styles.nameZh]}>综合指数</Text>
+                        <Text style={[styles.name, styles.nameZh]}>综合指数</Text>
                         {
-                            data.score !== null && data.score !== 0 ?
+                            data.score !== null && data.score !== 0 && platInfo.platstatus == 1 ?
                                 <View style={styles.listCon}>
-                                    <Text style={[styles.score,styles.scoreZh]}>{data.score}</Text>
-                                    <Text style={[styles.totalNum,styles.totalNumZh]}>统计{data.totalNum}家平台中排名</Text>
-                                    <Text style={[styles.ordernum,styles.ordernumZh]}>{data.ordernum}</Text>
+                                    <Text style={[styles.score, styles.scoreZh]}>{data.score}</Text>
+                                    <Text style={[styles.totalNum, styles.totalNumZh]}>统计{data.totalNum}家平台中排名</Text>
+                                    <Text style={[styles.ordernum, styles.ordernumZh]}>{data.ordernum}</Text>
                                 </View>
                                 :
                                 <Text style={styles.null}>暂无</Text>
@@ -62,7 +62,7 @@ export default class ZonglanPingji extends React.Component {
                     <View style={styles.list}>
                         <Text style={styles.name}>贷罗盘指数</Text>
                         {
-                            dlp !== null ?
+                            dlp !== null && platInfo.platstatus == 1 ?
                                 <View style={styles.listCon}>
                                     <Text style={styles.score}>{dlp.score}</Text>
                                     <Text style={styles.totalNum}>统计{dlp.totalNum}家平台中排名</Text>
@@ -87,7 +87,7 @@ export default class ZonglanPingji extends React.Component {
                         }
 
                     </View>
-                   
+
                     <View style={styles.list}>
                         <Text style={styles.name}>羿飞评级</Text>
                         {
@@ -129,7 +129,7 @@ export default class ZonglanPingji extends React.Component {
                                 <Text style={styles.null}>暂无</Text>
                         }
 
-                    </View>   
+                    </View>
                 </View>
             </View>
         )
@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
         color: '#999',
     },
     score: {
-        width: Theme.screenWidth >= 375 ?80:70,
+        width: Theme.screenWidth >= 375 ? 80 : 70,
         fontSize: 14,
         color: '#666',
     },
@@ -177,14 +177,14 @@ const styles = StyleSheet.create({
     scoreZh: {
         fontSize: 18,
         color: Theme.color2,
-        fontWeight:'bold',
+        fontWeight: 'bold',
     },
     totalNumZh: {
         fontSize: 12,
     },
     ordernumZh: {
         fontSize: 18,
-        fontWeight:'bold',
+        fontWeight: 'bold',
     },
     null: {
         fontSize: 12,

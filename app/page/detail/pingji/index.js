@@ -136,7 +136,7 @@ export default class DetailPingji extends React.Component {
                                 <View style={styles.listHeader}>
                                     <Text style={[styles.name, styles.nameZh]}>综合指数</Text>
                                     {
-                                        data.score != 0 && data.score != '' && data !== null ?
+                                        data.score != 0 && data.score != '' && data !== null && platInfo.platstatus == 1 ?
                                             <View style={styles.listHeaderCon}>
                                                 <Text style={[styles.score, styles.scoreZh]}>{data.score}</Text>
                                                 <Text style={[styles.totalNum, styles.totalNumZh]}>统计{data.totalNum}家平台中排名</Text>
@@ -306,7 +306,7 @@ export default class DetailPingji extends React.Component {
                                 <View style={styles.listHeader}>
                                     <Text style={styles.name}>贷罗盘指数</Text>
                                     {
-                                        dlp !== null ?
+                                        dlp !== null && platInfo.platstatus == 1 ?
                                             <View style={styles.listHeaderCon}>
                                                 <Text style={styles.score}>{dlp.score}</Text>
                                                 <Text style={styles.totalNum}>统计{dlp.totalNum}家平台中排名</Text>

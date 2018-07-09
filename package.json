@@ -9,7 +9,7 @@
   "dependencies": {
     "antd-mobile": "^2.1.6",
     "backbone-events-standalone": "^0.2.7",
-    "native-echarts": "^0.3.0",
+    "native-echarts": "^0.4.0",
     "react": "16.0.0-alpha.6",
     "react-native": "0.44.0",
     "react-native-chart": "^1.0.8-beta",

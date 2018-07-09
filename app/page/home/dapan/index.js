@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, View, Image } from 'react-native';
+import { Text, StyleSheet, View, Image, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Icomoon';
 import Theme from '../../../util/theme';
 import Title from '../../../component/title';
 
 class List extends React.Component {
     render() {
-        const {labelText,data}=this.props;
+        const { labelText, data } = this.props;
         return (
             <View style={styles.list}>
                 <Text style={styles.listlabel}>{labelText}</Text>
@@ -20,8 +20,15 @@ class List extends React.Component {
 }
 
 export default class Dapan extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isHidden: true,
+        };
+    }
     render() {
         const { data } = this.props;
+        const { isHidden } = this.state;
         const inamount = data.inamount;
         const markent = data.markent;
         return (
@@ -34,8 +41,8 @@ export default class Dapan extends React.Component {
                             <Text style={styles.statusLeftTextState}>{inamount.status}</Text>
                         </View>
                         <View style={styles.statusRight}>
-                            <Image source={require('../../../../resources/images/kedu.png')} style={(Theme.screenWidth-35-94)>240?styles.imgkedu:styles.imgkedu2} />
-                            <View style={[styles.imgzhizhenContainer, (Theme.screenWidth-35-94)>240?{ left: inamount.score / 180 * 240 }:{ left: inamount.score / 180 * (Theme.screenWidth-35-94) }]}>
+                            <Image source={require('../../../../resources/images/kedu.png')} style={(Theme.screenWidth - 35 - 94) > 240 ? styles.imgkedu : styles.imgkedu2} />
+                            <View style={[styles.imgzhizhenContainer, (Theme.screenWidth - 35 - 94) > 240 ? { left: inamount.score / 180 * 240 } : { left: inamount.score / 180 * (Theme.screenWidth - 35 - 94) }]}>
                                 <Image source={require('../../../../resources/images/zhizhen.png')} style={styles.imgzhizhen} />
                             </View>
                         </View>
@@ -43,16 +50,30 @@ export default class Dapan extends React.Component {
                     <View style={styles.statusTextContainer}>
                         <Text style={styles.statusTextContainerText}>{inamount.detailinfo}</Text>
                     </View>
-                    <View style={styles.dataList}>
-                        <List labelText={'资金流指数'} data={markent.inamount} />
-                        <List labelText={'交易指数'} data={markent.amount} />
-                        <List labelText={'人气指数'} data={markent.popularity} />
-                        <List labelText={'流动性指数'} data={markent.mobility} />
-                        <List labelText={'分散度指数'} data={markent.dispersion} />
-                        <List labelText={'忠诚度指数'} data={markent.loyalty} />
-                        <List labelText={'利率指数'} data={markent.rate} />
-                       
-                    </View>
+                    <TouchableOpacity style={styles.openBtn}
+                        onPress={() => {
+                            this.setState({
+                                isHidden: !this.state.isHidden
+                            })
+                        }}
+                    >
+                        <Text style={styles.openBtnText}>{isHidden?'展开大盘参数':'收起大盘参数'}</Text>
+                    </TouchableOpacity>
+                    {
+                        isHidden ?
+                            null
+                            :
+                            <View style={styles.dataList}>
+                                <List labelText={'资金流指数'} data={markent.inamount} />
+                                <List labelText={'交易指数'} data={markent.amount} />
+                                <List labelText={'人气指数'} data={markent.popularity} />
+                                <List labelText={'流动性指数'} data={markent.mobility} />
+                                <List labelText={'分散度指数'} data={markent.dispersion} />
+                                <List labelText={'忠诚度指数'} data={markent.loyalty} />
+                                <List labelText={'利率指数'} data={markent.rate} />
+                            </View>
+                    }
+
                 </View>
             </View>
         )
@@ -64,7 +85,7 @@ const styles = StyleSheet.create({
         paddingLeft: 15,
         paddingRight: 20,
         paddingTop: 15,
-        paddingBottom: 10,
+        paddingBottom: 15,
     },
     statusContainer: {
         flexDirection: 'row',
@@ -98,9 +119,9 @@ const styles = StyleSheet.create({
         width: 240,
         height: 64,
     },
-    imgkedu2:{
-        width:Theme.screenWidth-35-94,
-        height:(Theme.screenWidth-35-94)*(64/240)
+    imgkedu2: {
+        width: Theme.screenWidth - 35 - 94,
+        height: (Theme.screenWidth - 35 - 94) * (64 / 240)
     },
     imgzhizhen: {
 
@@ -115,20 +136,30 @@ const styles = StyleSheet.create({
         fontSize: 14,
         lineHeight: 18,
     },
+    openBtn: {
+        marginTop: 15,
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: 90,
+        height: 22,
+        borderRadius: 4,
+        backgroundColor: '#83CAFF',
+    },
+    openBtnText: {
+        fontSize: 12,
+        color: '#fff',
+    },
     dataList: {
-        paddingTop:15,
-        marginTop:15,
-        borderTopWidth: 1,
-        borderTopColor: '#eee',
+        marginTop: 15,
         flexDirection: 'row',
         flexWrap: 'wrap',
     },
-    list:{
-        paddingBottom:12,
+    list: {
+        paddingBottom: 12,
         width: (Theme.screenWidth - 35) / 4,
     },
     listlabel: {
-        paddingBottom:5,
+        paddingBottom: 5,
         fontSize: 12,
         color: '#bbb',
     },
@@ -136,14 +167,14 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
     },
-    listNum:{
-        paddingRight:5,
-        fontWeight:'bold',
-        fontSize:14,
-        color:'#666',
+    listNum: {
+        paddingRight: 5,
+        fontWeight: 'bold',
+        fontSize: 14,
+        color: '#666',
     },
-    listChangenum:{
-        fontSize:10,
+    listChangenum: {
+        fontSize: 10,
     }
 
 })

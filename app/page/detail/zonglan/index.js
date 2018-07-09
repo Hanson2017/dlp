@@ -58,12 +58,12 @@ export default class Zonglan extends React.Component {
                     }} />
                     {
                         versionStatus != 1 && platInfo.platstatus == 1 && dataSource.fund !== null ?
-                            <Fund data={dataSource.fund} dataInfo={dataInfo} fundelse={dataSource.fundelse} platName={platInfo.platName} navigation={navigation} />
+                            <Fund data={dataSource.fund} dataInfo={dataInfo} fundelse={dataSource.fundelse} platName={platInfo.platName} platId={platInfo.id} navigation={navigation} />
                             :
                             null
                     }
 
-                    <Pingji data={dataSource.dataDetail} navigation={navigation} />
+                    <Pingji data={dataSource.dataDetail} navigation={navigation} platInfo={platInfo} />
                     {
                         platInfo.platstatus == 1 ?
                             <Health data={dataSource.healthDetail} dataDlp={dataSource.dataDetail.dlp} platstatus={platInfo.platstatus} navigation={navigation} />

@@ -11,38 +11,25 @@ export default class FundList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            fundData: '',
             updatetime: Util.setDate(new Date())
         };
     }
-    render() {
-        let navigation = this.props.navigation;
+    componentWillMount() {
         let data = this.props.data;
-        let type = this.props.fundType;
         let fundData = [];
         for (let i = 0; i < data.length; i++) {
             fundData.push({ value: data[i].fund_amount, name: data[i].plat_name + '\n' + '(' + data[i].fund_amount + '万)' })
         }
-        let fundType, fundS, fundRenqun, star;
-        switch (type) {
-            case 1:
-                fundType = '1号';
-                fundS = '稳健型';
-                fundRenqun = '以稳健安全为首选目标，风险厌恶型的人群';
-                star = '★★★★★';
-                break;
-            case 2:
-                fundType = '2号';
-                fundS = '平衡型';
-                fundRenqun = '以平衡为首选目标，能承受低风险的人群';
-                star = '★★★★';
-                break;
-            case 3:
-                fundType = '3号';
-                fundS = '收益型';
-                fundRenqun = '以收益为首选目标，能承受少量风险的人群';
-                star = '★★★';
-                break;
-        }
+        this.setState({
+            fundData: fundData
+        })
+    }
+    render() {
+
+        const { navigation, data,echartColor } = this.props;
+        const { fundData } = this.state;
+        const type = this.props.fundType;
         return (
             <ScrollView>
                 <View style={[styles.fundTop, Theme.box]}>
@@ -94,20 +81,30 @@ export default class FundList extends React.Component {
                         </View>
                         <View style={styles.fundSmList}>
                             <Text style={styles.fundSmLabelText}>适合人群</Text>
-                            <Text style={styles.fundSmText}>{fundRenqun}</Text>
+                            <Text style={styles.fundSmText}>
+                                {
+                                    type == 1 ?
+                                        '以稳健安全为首选目标，风险厌恶型的人群'
+                                        :
+                                        type == 2 ?
+                                            '以平衡为首选目标，能承受低风险的人群'
+                                            :
+                                            '以收益为首选目标，能承受少量风险的人群'
+                                }
+                            </Text>
                         </View>
+                       
                     </View>
-                    <View style={styles.echart}>
-                        <Echarts option={PieEcharts.pieFund(fundData)} height={175} />
-                        <View style={styles.echartBtn}>
-                            <Text style={styles.echartBtnText}>投资组成</Text>
-                        </View>
-                    </View>
-
                 </View>
-
+                <View style={styles.echart}>
+                   
+                    <Echarts option={PieEcharts.pieFund(fundData,echartColor)} height={175} width={Theme.screenWidth} />
+                    <View style={styles.echartBtn}>
+                        <Text style={styles.echartBtnText}>投资组成</Text>
+                    </View>
+                </View>
                 {
-                    data.map((item,j) => {
+                    data.map((item, j) => {
                         return (
                             <View key={j} style={[styles.fundlist, Theme.box, Theme.mt10]}>
                                 <TouchableOpacity style={styles.fundlistHd} activeOpacity={0.5}
@@ -145,7 +142,7 @@ export default class FundList extends React.Component {
                                     <Text style={styles.fundlistReasonsTitleText}>[投资理由]</Text>
                                     <View style={styles.fundlistReasonsBox}>
                                         {
-                                            item.fund_reasons.split('<br />').map((list,z) => {
+                                            item.fund_reasons.split('<br />').map((list, z) => {
                                                 return (
                                                     <Text style={styles.fundlistReasonsText} key={z}>{list}</Text>
                                                 )
@@ -166,7 +163,7 @@ export default class FundList extends React.Component {
 const styles = StyleSheet.create({
     fundTop: {
         paddingTop: 20,
-        paddingBottom: 20,
+        paddingBottom: 10,
     },
     fundInfoHeader: {
         paddingLeft: 20,
@@ -198,7 +195,7 @@ const styles = StyleSheet.create({
     fundTitleText: {
         fontSize: 18,
         color: '#333',
-        fontWeight:'bold',
+        fontWeight: 'bold',
     },
     fundEchart: {
         justifyContent: 'center',
@@ -226,6 +223,8 @@ const styles = StyleSheet.create({
         color: '#707070'
     },
     echart: {
+        backgroundColor:'#fff',
+        paddingBottom: 20,
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -262,7 +261,7 @@ const styles = StyleSheet.create({
         paddingLeft: 5,
         fontSize: 16,
         color: '#333',
-        fontWeight:'bold',
+        fontWeight: 'bold',
     },
     fundlistBd: {
         paddingTop: 15,

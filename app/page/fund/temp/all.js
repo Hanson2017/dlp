@@ -9,7 +9,7 @@ import PieEcharts from '../../../echarts/pie';
 
 class List extends React.Component {
     render() {
-        const { listData, echartsData, type, navigation } = this.props;
+        const { listData, echartsData, type, navigation ,echartColor} = this.props;
         var len = 3;
         if (type == 3) {
             len = 5
@@ -38,7 +38,7 @@ class List extends React.Component {
                     </View>
                 </View>
                 <View style={styles.fundEchart}>
-                    <Echarts option={PieEcharts.pieFund(echartsData)} height={175} />
+                    <Echarts option={PieEcharts.pieFund(echartsData,echartColor)} height={175} />
                 </View>
                 <View style={styles.fundSm}>
                     <View style={[styles.fundSmList,styles.fundSmListZs]}>
@@ -177,7 +177,7 @@ export default class FundAll extends React.Component {
             <ScrollView>
                 <View style={[styles.fundTop, Theme.box]}>
                     <View style={styles.fundNote}>
-                        <Text style={styles.fundNoteText}>示范投资是贷罗盘运营团队发起的网贷领投基金，按照风险评估分为“稳健型”、“平衡型”、“收益型”三种，可供广大投资人参考。</Text>
+                        <Text style={styles.fundNoteText}>示范投资是贷罗盘运营团队发起的网贷领投项目，按照风险评估分为“稳健型”、“平衡型”、“收益型”三种，可供广大投资人参考。</Text>
                         <Text style={[styles.fundNoteText, { paddingTop: 6 }]}>示范投资目前投资总额为 <Text style={{ color: Theme.color }}>{data.investall}万</Text></Text>
                     </View>
                     <View style={styles.fundInstr}>
@@ -185,9 +185,9 @@ export default class FundAll extends React.Component {
                         <Text style={styles.fundInstrText}>※ 示范投资仅起到参考作用</Text>
                     </View>
                 </View>
-                <List listData={fund1} echartsData={fund1Data} navigation={navigation} type={1} />
-                <List listData={fund2} echartsData={fund2Data} navigation={navigation} type={2} />
-                <List listData={fund3} echartsData={fund3Data} navigation={navigation} type={3} />
+                <List listData={fund1} echartsData={fund1Data} echartColor={['#4847bf', '#7f7fff', '#006699', '#94c4e2', '#4d9dcf']} navigation={navigation} type={1} />
+                <List listData={fund2} echartsData={fund2Data} echartColor={['#ffc55c', '#e88613', '#9c6c33', '#e2b394', '#c69c6d']} navigation={navigation} type={2} />
+                <List listData={fund3} echartsData={fund3Data} echartColor={['#b19deb', '#9c45de', '#4d226d', '#8557a7', '#662d91', '#9a308d', '#9686ae', '#9b9fc3', '#8f71a6', '#6264d6']} navigation={navigation} type={3} />
 
 
             </ScrollView>
@@ -204,7 +204,7 @@ const styles = StyleSheet.create({
     },
     fundNoteText: {
         lineHeight: 18,
-        fontSize: 11,
+        fontSize: 12,
         color: '#999',
     },
     fundInstr: {
@@ -215,7 +215,7 @@ const styles = StyleSheet.create({
     },
     fundInstrText: {
         lineHeight: 16,
-        fontSize: 10,
+        fontSize: 11,
         color: '#bbb',
     },
     fundInfoHeader: {

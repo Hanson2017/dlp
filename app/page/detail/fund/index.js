@@ -197,11 +197,13 @@ export default class DetailFund extends React.Component {
     showActionSheet() {
         const { params } = this.props.navigation.state;
         let dataInfo = params.dataInfo;
+        let platId = params.platId;
+        
         let data = {
             type: 'news',
             title: dataInfo.plat_name + '评级／数据／健康度／流量（每日更新）',
             description: '包含：1.各个主流评级机构对' + dataInfo.plat_name + '的评级数据；2.' + dataInfo.plat_name + '运营数据监控、分析、诊断及未来趋势预测；' + '3.' + dataInfo.plat_name + '网站流量分析',
-            webpageUrl: 'http://m.dailuopan.com/detail/' + dataInfo.pre_id,
+            webpageUrl: 'http://m.dailuopan.com/detail/' + platId,
             imageUrl: 'http://dailuopan.com/images/shareDlp.png',
         }
         this.refs.ActionShare.show(data)

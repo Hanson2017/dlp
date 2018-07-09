@@ -41,7 +41,7 @@ export default class FindTab extends React.Component {
                                         />
                                     }
                                 >
-                                    <Fund navigation={navigation} data={dataSource.fundcount} />
+                                    <Fund navigation={navigation} data={{count:dataSource.fundcount,list:dataSource.fundlist}} />
                                     <Activity navigation={navigation} data={dataSource.flmf} />
                                 </ScrollView>
                         }
@@ -70,6 +70,7 @@ export default class FindTab extends React.Component {
                 if (response.ok) {
                     response.json()
                         .then((responseData) => {
+                            console.log(responseData)
                             if (responseData.result == 1) {
                                 that.setState({
                                     dataSource: responseData.data,

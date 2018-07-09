@@ -68,12 +68,12 @@ export default class DetailScreen extends React.Component {
                             <View style={styles.detailTop}>
                                 {
                                     dataInfo.platstatus != 1 ?
-                                        <Text style={styles.stateBlack}>黑名单，建议远离  |  更新：{dataInfo.updatetime}</Text>
+                                        <Text style={styles.stateZhengyi}><Text style={styles.bold}>黑名单，建议远离</Text>  |  更新：{dataInfo.updatetime}</Text>
                                         :
                                         dataInfo.negative_time == null ?
                                             <Text style={styles.stateNormal}>状态：正常运营  |  更新：{dataInfo.updatetime}</Text>
                                             :
-                                            <Text style={styles.stateZhengyi}>争议中，需谨慎  |  更新：{dataInfo.updatetime}</Text>
+                                            <Text style={styles.stateZhengyi}><Text style={styles.bold}>争议中，需谨慎</Text>  |  更新：{dataInfo.updatetime}</Text>
                                 }
                             </View>
                     }
@@ -162,12 +162,13 @@ export default class DetailScreen extends React.Component {
         this.refs.Toast.cancel();
     }
     showActionSheet() {
+        const { params } = this.props.navigation.state;
         let dataInfo = this.state.dataInfo;
         let data = {
             type: 'news',
             title: dataInfo.plat_name + '评级／数据／健康度／流量（每日更新）',
             description: '包含：1.各个主流评级机构对' + dataInfo.plat_name + '的评级数据；2.' + dataInfo.plat_name + '运营数据监控、分析、诊断及未来趋势预测；' + '3.' + dataInfo.plat_name + '网站流量分析',
-            webpageUrl: 'http://m.dailuopan.com/detail/' + dataInfo.pre_id,
+            webpageUrl: 'http://m.dailuopan.com/detail/' + params.id,
             imageUrl: 'http://dailuopan.com/images/shareDlp.png',
         }
         this.refs.ActionShare.show(data)
@@ -226,11 +227,11 @@ const styles = StyleSheet.create({
         color: '#707070',
     },
     stateNormal: {
-        fontSize: 10,
+        fontSize: 11,
         color: '#707070',
     },
     stateZhengyi: {
-        fontSize: 10,
+        fontSize: 11,
         color: '#E51C23',
     },
     stateBlack: {
@@ -250,5 +251,8 @@ const styles = StyleSheet.create({
         opacity: 0,
         paddingBottom: 10,
         zIndex: 998,
+    },
+    bold:{
+        fontWeight:'bold',
     },
 })

@@ -23,7 +23,7 @@ export default class TabBar extends Component {
         super(props)
         this.state = {
             selectedTab: 'home',
-            tabName: ['首页', '排行', '数据', '舆情', '发现']
+            tabName: ['首页', '评级', '数据', '舆情', '发现']
         }
     }
     render() {
