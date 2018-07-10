@@ -98,7 +98,7 @@ export default class FundList extends React.Component {
                 </View>
                 <View style={styles.echart}>
                    
-                    <Echarts option={PieEcharts.pieFund(fundData,echartColor)} height={175} width={Theme.screenWidth} />
+                    <Echarts option={PieEcharts.pieFund(fundData,echartColor)} height={175} width={320} />
                     <View style={styles.echartBtn}>
                         <Text style={styles.echartBtnText}>投资组成</Text>
                     </View>

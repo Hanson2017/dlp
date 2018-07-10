@@ -57,7 +57,7 @@ export default class DataScreen extends React.Component {
                                 >
                                     <View style={Theme.box}>
                                         <View style={styles.echarts}>
-                                            <Echarts option={PieEcharts.pieYulun(echartsData)} height={200} />
+                                            <Echarts option={PieEcharts.pieYulun(echartsData)} height={200} width={320} />
                                             <View style={styles.echartsTitle}><Text style={styles.echartsTitleText}>过去48小时舆论热点分布</Text></View>
                                         </View>
 

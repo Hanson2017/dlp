@@ -38,7 +38,7 @@ class List extends React.Component {
                     </View>
                 </View>
                 <View style={styles.fundEchart}>
-                    <Echarts option={PieEcharts.pieFund(echartsData,echartColor)} height={175} />
+                    <Echarts option={PieEcharts.pieFund(echartsData,echartColor)} height={175} width={320} />
                 </View>
                 <View style={styles.fundSm}>
                     <View style={[styles.fundSmList,styles.fundSmListZs]}>
