@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     },
     listNoText: {
         fontSize: 12,
-        color: '#666',
+        color: '#333',
     },
     listplatName: {
         paddingRight: 6,
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     },
     listplatNameText: {
         fontSize: Theme.screenWidth >= 375 ? 12 : 11,
-        color: '#666',
+        color: '#333',
     },
     listText: {
         fontSize: Theme.screenWidth >= 375 ? 14 : 12,

@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
         fontSize:12
     },
     C666: {
-        color: '#666',
+        color: '#333',
         fontSize:12
     },
     firstName:{
