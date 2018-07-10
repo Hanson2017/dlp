@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, View} from 'react-native';
+import { Text, StyleSheet, View } from 'react-native';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
 import Util from '../../../util/util';
 import TabBar from '../../../component/tabBar/detail';
@@ -13,14 +13,14 @@ export default class DetailInfo extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            tabNames: ['工商信息', '股东监控', '基础信息'],
+            tabNames: ['股东监控', '工商信息', '基础信息'],
             loading: true,
             dataSource: null
         };
     }
     render() {
         const { tabNames, dataSource, loading } = this.state;
-        const { platInfo ,navigation} = this.props;
+        const { platInfo, navigation } = this.props;
         return (
             <View style={styles.container}>
                 {
@@ -31,10 +31,11 @@ export default class DetailInfo extends React.Component {
                             renderTabBar={() => <TabBar tabNames={tabNames} />}
                         >
                             <View style={styles.content} tabLabel='key1'>
-                                <Gongshang data={dataSource.dataDetail}  />
+                                <Gudong data={dataSource.dataDetail} />
+
                             </View>
                             <View tabLabel='key2'>
-                                <Gudong  data={dataSource.dataDetail} />
+                                <Gongshang data={dataSource.dataDetail} />
                             </View>
                             <View tabLabel='key3'>
                                 <Jichu data={dataSource.dataDetail.baseinfo} />
@@ -46,7 +47,7 @@ export default class DetailInfo extends React.Component {
         )
     }
     componentDidMount() {
-        let id=this.props.platInfo.id;
+        let id = this.props.platInfo.id;
         Util.getDataDetail(this, 'com', id)
     }
 }

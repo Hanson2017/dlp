@@ -145,6 +145,10 @@ const styles = StyleSheet.create({
         width:70,
         lineHeight:16,
     },
+    dateTime:{
+        lineHeight:16,
+        width:100,
+    }
 })
 
 module.exports = styles

@@ -67,13 +67,11 @@ module.exports = {
         else {
             url = Api[ApiType.column] + '?type=' + ApiType.type + '&page=' + that.page + '&pagesize=' + 50;
         }
-
         fetch(url)
             .then((response) => {
                 if (response.ok) {
                     response.json()
                         .then((responseData) => {
-
                             if (type == 3) {
                                 that.setState({
                                     dataSource: []

@@ -170,6 +170,6 @@ const styles = StyleSheet.create({
     },
     nameText: {
         fontSize: 13,
-        color: '#999',
+        color: '#666',
     }
 })

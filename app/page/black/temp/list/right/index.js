@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, TouchableOpacity ,StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/Icomoon';
+import Util from '../../../../../util/util';
 import stylesList from '../../../../../css/listData';
 
 module.exports = {
@@ -14,7 +15,7 @@ module.exports = {
 
                 >
                     <Text style={[stylesList.tdName_black, stylesList.headerRowText]}></Text>
-                  
+                    <Text style={[stylesList.C2D3640, stylesList.dateTime]}>{Util.formatDate(item.blacktime)}</Text>
                     <Text style={[stylesList.C2D3640, stylesList.yygs]}>{item.info_yygs}</Text>
                     <Text style={[stylesList.C2D3640, stylesList.province]}>{item.province}</Text>
                     <Text style={[stylesList.C2D3640, stylesList.city]}>{item.city}</Text>
@@ -26,6 +27,7 @@ module.exports = {
         return (
             <View style={stylesList.headerRow}>
                 <Text style={[stylesList.tdName_black, stylesList.headerRowText]}></Text>
+                <Text style={[stylesList.dateTime, stylesList.headerRowText]}>出事时间</Text>
                 <Text style={[stylesList.yygs, stylesList.headerRowText]}>运营公司</Text>
                 <Text style={[stylesList.province, stylesList.headerRowText]}>省份</Text>
                 <Text style={[stylesList.city, stylesList.headerRowText]}>城市</Text>
