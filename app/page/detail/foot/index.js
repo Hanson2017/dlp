@@ -52,7 +52,7 @@ export default class DetailFoot extends React.Component {
                             </TouchableOpacity>
                             <TouchableOpacity style={styles.menuItem}
                                  onPress={() => {
-                                    navigation.navigate('Query',{tabId: { tab1: 0, tab2: 0 }})
+                                    navigation.navigate('QueryNav',{tabId: { tab1: 0, tab2: 0 }})
                                 }}
                             >
                                
