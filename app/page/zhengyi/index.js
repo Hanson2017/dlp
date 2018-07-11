@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, View } from 'react-native';
+import { Text, StyleSheet, View, StatusBar } from 'react-native';
 import { SafeAreaView } from "react-navigation";
 import Theme from '../../util/theme';
 import Header from '../../component/navBar'
@@ -32,7 +32,10 @@ export default class ZhengyiScreen extends React.Component {
         return (
             <SafeAreaView style={{ flex: 1, backgroundColor: '#1A1A1A' }}>
                 <View style={[Theme.container, { backgroundColor: '#1A1A1A' }]}>
-
+                    <StatusBar
+                        backgroundColor={'#1A1A1A'}
+                        barStyle="light-content"
+                    />
                     <Header headerOpt={{ back: '争议', title: '争议平台' }} navigation={navigation} black={true} />
                     <View style={styles.update}>
                         <Text style={styles.updateText}>更新时间：{upDateTime}</Text>

@@ -33,6 +33,7 @@ export default class HomeScreen extends React.Component {
            <SafeAreaView style={{flex:1,backgroundColor:Theme.color2}}>
             <View style={Theme.container}>
                 <StatusBar
+                    backgroundColor={Theme.color2}
                     barStyle="light-content"
                 />
                 <Header headerOpt={{ back: 'home' }} navigation={navigation} openControlPanel={this.openControlPanel.bind(this)} loginState={loginState} />

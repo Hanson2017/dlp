@@ -36,7 +36,7 @@ export default class SearchScreen extends React.Component {
             <SafeAreaView style={{ flex: 1, backgroundColor:Theme.color2 }}>
                 <View style={Theme.container}>
                     <StatusBar
-                        backgroundColor="#000"
+                        backgroundColor={Theme.color2}
                         barStyle="light-content"
                     />
                     <View style={[styles.headerContainer, Platform.OS == 'android' ? { marginTop: 0 } : null]}>

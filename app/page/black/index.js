@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, View } from 'react-native';
+import { Text, StyleSheet, View, StatusBar } from 'react-native';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
 import { SafeAreaView } from "react-navigation";
 
@@ -39,7 +39,10 @@ export default class BlackScreen extends React.Component {
         return (
             <SafeAreaView style={{ flex: 1, backgroundColor: '#1A1A1A' }}>
                 <View style={[Theme.container, { backgroundColor: '#1A1A1A' }]}>
-
+                    <StatusBar
+                        backgroundColor={'#1A1A1A'}
+                        barStyle="light-content"
+                    />
                     <Header headerOpt={{ back: '黑名单', title: '黑名单' }} navigation={navigation} black={true} />
                     <View style={styles.update}>
                         <Text style={styles.updateText}>更新时间：{upDateTime}</Text>

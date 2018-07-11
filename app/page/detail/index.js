@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, View, TouchableOpacity, Modal } from 'react-native';
+import { Text, StyleSheet, View, StatusBar, TouchableOpacity, Modal } from 'react-native';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
 import { SafeAreaView } from "react-navigation";
 
@@ -33,7 +33,7 @@ export default class DetailScreen extends React.Component {
             dataInfo: '',
             noBack: true,
             footNot: 0,
-            menuHide:true,
+            menuHide: true,
         };
     }
     isFootNot(index) {
@@ -41,21 +41,25 @@ export default class DetailScreen extends React.Component {
             footNot: index,
         })
     }
-    changeMenuHide(fn){
+    changeMenuHide(fn) {
         this.setState({
             menuHide: fn,
         })
     }
     render() {
         const { navigation } = this.props;
-        const { tabNames, dataInfo, noBack ,menuHide} = this.state;
+        const { tabNames, dataInfo, noBack, menuHide } = this.state;
         const { params } = navigation.state;
         return (
             <SafeAreaView style={{ flex: 1, backgroundColor: '#1A1A1A' }}>
                 <View style={[styles.container]}>
+                    <StatusBar
+                        backgroundColor={'#1A1A1A'}
+                        barStyle="light-content"
+                    />
                     <Header headerOpt={{ title: params.platName, noBack: noBack }} navigation={navigation} showActionSheet={this.showActionSheet.bind(this)} />
                     <ActionShare ref={'ActionShare'} />
-                    <Menu ref={'Menu'}  navigation={navigation} that={this} menuHide={menuHide} />
+                    <Menu ref={'Menu'} navigation={navigation} that={this} menuHide={menuHide} />
                     {
                         this.state.loading ?
                             null
@@ -125,7 +129,7 @@ export default class DetailScreen extends React.Component {
                             :
                             <Foot
                                 id={params.id}
-                                that={this}                              
+                                that={this}
                                 navigation={navigation}
                                 menuHide={menuHide}
                             />
@@ -138,7 +142,7 @@ export default class DetailScreen extends React.Component {
             </SafeAreaView>
         );
     }
-   
+
     noBack(flt) {
         this.setState({
             noBack: flt,
@@ -162,10 +166,10 @@ export default class DetailScreen extends React.Component {
         }
         this.refs.ActionShare.show(data)
     }
-    showMenu(){     
+    showMenu() {
         this.refs.Menu.show()
     }
-    hideMenu(){     
+    hideMenu() {
         this.refs.Menu.cancel()
     }
     componentDidMount() {
