@@ -20,19 +20,29 @@ export default class Num extends React.Component {
                     <Text style={[styles.text, styles.num]}>{data.Maincount_grade}</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.list}
-                    onPress={() => { navigation.navigate('Fund', {tabId: null}) }}
+                    onPress={() => {
+
+                        if (versionStatus != 1) {
+                            navigation.navigate('Fund', { tabId: null })
+                        }
+                    }}
                 >
                     <Text style={[styles.text, styles.label]}>示范投资</Text>
                     <Text style={[styles.text, styles.num]}>{data.Maincount_fund}</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.list}
-                     onPress={() => { navigation.navigate('FlmfList') }}
+                    onPress={() => { 
+                        if (versionStatus != 1) {
+                            navigation.navigate('FlmfList') 
+                        }
+                       
+                    }}
                 >
                     <Text style={[styles.text, styles.label]}>活动平台</Text>
                     <Text style={[styles.text, styles.num]}>{data.Maincount_Activity}</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.list}
-                     onPress={() => { navigation.navigate('PingjiJG') }}
+                    onPress={() => { navigation.navigate('PingjiJG') }}
                 >
                     <Text style={[styles.text, styles.label]}>评级监控</Text>
                     <Text style={[styles.text, styles.num]}>{data.Maincount_flow}</Text>

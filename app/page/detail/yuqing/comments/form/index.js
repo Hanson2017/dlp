@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, View, TextInput, TouchableOpacity, DeviceEventEmitter } from 'react-native';
+import { Text, StyleSheet, View, TextInput, TouchableOpacity, DeviceEventEmitter, Platform, Alert } from 'react-native';
 import { SafeAreaView } from "react-navigation";
 import { Toast } from 'antd-mobile';
 import Header from '../../../../../component/navBar/detail';
@@ -44,7 +44,13 @@ export default class CommentForm extends React.Component {
         const username = signState.r_username;
 
         if (value == '') {
-            Toast.fail('请输入评论', 1)
+            if (Platform.OS == 'android') {
+                Alert.alert('请输入评论')
+            }
+            else {
+                Toast.fail('请输入评论', 1)
+            }
+
             return false;
         }
 
@@ -69,7 +75,12 @@ export default class CommentForm extends React.Component {
                     response.json()
                         .then((responseData => {
                             if (responseData.result == 1) {
-                                Toast.success('提交成功!')
+                                if (Platform.OS == 'android') {
+                                    Alert.alert('提交成功!')
+                                }
+                                else {
+                                    Toast.success('提交成功!')
+                                }
                                 setTimeout(
                                     () => {
                                         that.goBackSuccee();
@@ -79,7 +90,12 @@ export default class CommentForm extends React.Component {
 
                             }
                             else {
-                                Toast.fail(responseData.resultmsg)
+                                if (Platform.OS == 'android') {
+                                    Alert.alert(responseData.resultmsg)
+                                }
+                                else {
+                                    Toast.fail(responseData.resultmsg)
+                                }
                             }
                         }))
                 }
@@ -118,6 +134,7 @@ const styles = StyleSheet.create({
         margin: 0,
         height: 180,
         fontSize: 14,
+        textAlignVertical: 'top',
     },
     submitBtn: {
         marginTop: 20,

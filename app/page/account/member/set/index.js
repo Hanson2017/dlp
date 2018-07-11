@@ -28,7 +28,7 @@ export default class Set extends React.Component {
         else {
             var data = {
                 type: 'news',
-                title: '邀请好友',
+                title: '推荐一个我天天用的网贷数据APP给你。你试试看！',
                 description: "我是" + signState.r_username + "，我在用贷罗盘，网贷行业最专业的数据分析工具，一起来用吧。",
                 webpageUrl: 'http://m.dailuopan.com/about/appdown',
                 imageUrl: 'http://dailuopan.com/images/shareDlp.png',
@@ -44,7 +44,13 @@ export default class Set extends React.Component {
                     <View style={[styles.setTopContainer, Theme.box]}>
                         <Image source={{ uri: signState.r_avatar_img }} style={styles.avatar} />
                         <Text style={styles.userNameText}>{signState.r_username}</Text>
-                        <Text style={styles.regDayText}>玩转罗盘 {day} 天</Text>
+                        {
+                            day != null ?
+                                <Text style={styles.regDayText}>玩转罗盘 {day} 天</Text>
+                                :
+                                null
+                        }
+
                     </View>
                     <View style={[styles.setBodyContainer, Theme.box, Theme.mt10]}>
                         <TouchableOpacity style={styles.list} activeOpacity={0.5}
@@ -202,8 +208,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         height: 45,
-        borderBottomWidth: 1,
-        borderBottomColor: '#ddd',
         backgroundColor: '#fff',
     },
     logoutBtnText: {

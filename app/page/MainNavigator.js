@@ -59,7 +59,7 @@ export default class DrawerScreen extends React.Component {
     }
     componentDidMount() {
         let that = this;
-        let url = 'http://www.dailuopan.com/MPAPI/GetVersion?version=3.0.0'
+        let url = 'http://www.dailuopan.com/MPAPI/GetVersion?version=3.0.1'
         fetch(url)
             .then((response) => {
                 if (response.ok) {

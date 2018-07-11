@@ -25,9 +25,7 @@ export default class ZonglanGudong extends React.Component {
                                                         null
                                                 }
                                             </View>
-                                            <View style={styles.gudongInfotype}>
-                                                <Text style={styles.gudongInfotypeText}>[{list.type}]</Text>
-                                            </View>
+                                          
                                             <View style={styles.gudongInfoBd}>
                                                 <Text style={[styles.gudongInfoBdText, styles.gudongInfoBdTextBili]}>
                                                     持股比例：
@@ -70,6 +68,7 @@ const styles = StyleSheet.create({
         borderBottomColor: '#eee',
     },
     gudongInfoHeader: {
+        marginBottom:12,
         flexDirection: 'row',
     },
     gudongInfoName: {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, View, TouchableOpacity } from 'react-native';
+import { Text, StyleSheet, View, TouchableOpacity, Modal } from 'react-native';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
 import { SafeAreaView } from "react-navigation";
 
@@ -21,6 +21,7 @@ import Data from './data/index';
 import Yuqing from './yuqing/index';
 import Activity from './activity/index';
 import Info from './info';
+import Menu from './foot/menu';
 
 
 export default class DetailScreen extends React.Component {
@@ -31,8 +32,8 @@ export default class DetailScreen extends React.Component {
             tabNames: ['总览', '评级', '健康度', '数据', '舆情', '活动', '信息'],
             dataInfo: '',
             noBack: true,
-            coverIsHidden: true,
             footNot: 0,
+            menuHide:true,
         };
     }
     isFootNot(index) {
@@ -40,27 +41,21 @@ export default class DetailScreen extends React.Component {
             footNot: index,
         })
     }
+    changeMenuHide(fn){
+        this.setState({
+            menuHide: fn,
+        })
+    }
     render() {
         const { navigation } = this.props;
-        const { tabNames, dataInfo, noBack, coverIsHidden } = this.state;
+        const { tabNames, dataInfo, noBack ,menuHide} = this.state;
         const { params } = navigation.state;
         return (
             <SafeAreaView style={{ flex: 1, backgroundColor: '#1A1A1A' }}>
                 <View style={[styles.container]}>
                     <Header headerOpt={{ title: params.platName, noBack: noBack }} navigation={navigation} showActionSheet={this.showActionSheet.bind(this)} />
                     <ActionShare ref={'ActionShare'} />
-                    {
-                        coverIsHidden ?
-                            null
-                            :
-                            <TouchableOpacity style={styles.detailCover}
-                                onPress={() => {
-                                    this.setState({
-                                        coverIsHidden: true,
-                                    })
-                                }}
-                            ></TouchableOpacity>
-                    }
+                    <Menu ref={'Menu'}  navigation={navigation} that={this} menuHide={menuHide} />
                     {
                         this.state.loading ?
                             null
@@ -123,33 +118,27 @@ export default class DetailScreen extends React.Component {
                         }
 
                     </View>
+
                     {
                         this.state.footNot == 'null' ?
-                            
                             null
                             :
                             <Foot
                                 id={params.id}
-                                toastShow={this.toastShow.bind(this)}
-                                toastHide={this.toastHide.bind(this)}
-                                noBack={this.noBack.bind(this)}
-                                coverIsShow={this.coverIsShow.bind(this)}
-                                coverIsHidden={coverIsHidden}
+                                that={this}                              
                                 navigation={navigation}
+                                menuHide={menuHide}
                             />
-                            
+
                     }
 
                     <Toast ref={'Toast'} />
+
                 </View>
             </SafeAreaView>
         );
     }
-    coverIsShow(flt) {
-        this.setState({
-            coverIsHidden: flt,
-        })
-    }
+   
     noBack(flt) {
         this.setState({
             noBack: flt,
@@ -172,6 +161,12 @@ export default class DetailScreen extends React.Component {
             imageUrl: 'http://dailuopan.com/images/shareDlp.png',
         }
         this.refs.ActionShare.show(data)
+    }
+    showMenu(){     
+        this.refs.Menu.show()
+    }
+    hideMenu(){     
+        this.refs.Menu.cancel()
     }
     componentDidMount() {
         this.getData()
@@ -248,11 +243,11 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         zIndex: 999,
         backgroundColor: "#ccc",
-        opacity: 0,
+        opacity: 1,
         paddingBottom: 10,
         zIndex: 998,
     },
-    bold:{
-        fontWeight:'bold',
+    bold: {
+        fontWeight: 'bold',
     },
 })

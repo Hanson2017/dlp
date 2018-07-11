@@ -16,58 +16,10 @@ export default class DetailFoot extends React.Component {
     }
     render() {
         const { isGuanzhu, isHidden } = this.state;
-        const {coverIsHidden,navigation}=this.props;
+        const { navigation, that, menuHide } = this.props;
         return (
             <View style={styles.container}>
-                {
-                    coverIsHidden ?
-                        null
-                        :
-                        <View style={styles.menu}>
-                            <View style={styles.triangDown}>
-                                <View style={styles.triangDownN}></View>
-                            </View>
-                            <TouchableOpacity style={styles.menuItem}
-                                onPress={() => {
-                                    navigation.navigate('Main')
-                                }}
-                            >
-                                <Text style={styles.menuText}>首页</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity style={styles.menuItem}
-                                 onPress={() => {
-                                    navigation.navigate('PingjiJG')
-                                }}
-                            >
-                                
-                                <Text style={styles.menuText}>机构评级</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity style={styles.menuItem}
-                                 onPress={() => {
-                                    navigation.navigate('Health')
-                                }}
-                            >
-                               
-                                <Text style={styles.menuText}>健康度分析</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity style={styles.menuItem}
-                                 onPress={() => {
-                                    navigation.navigate('QueryNav',{tabId: { tab1: 0, tab2: 0 }})
-                                }}
-                            >
-                               
-                                <Text style={styles.menuText}>多维度查询</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity style={[styles.menuItem, { borderBottomWidth: 0, }]}
-                                 onPress={() => {
-                                    navigation.navigate('Data')
-                                }}
-                            >
-                               
-                                <Text style={styles.menuText}>数据详情</Text>
-                            </TouchableOpacity>
-                        </View>
-                }
+
 
                 <TouchableOpacity style={[styles.btn, styles.btnGuanzhu]}
                     onPress={() => {
@@ -79,8 +31,17 @@ export default class DetailFoot extends React.Component {
                     <Text style={[styles.text]}>{isGuanzhu ? '取消关注' : '加关注'}</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={[styles.btn, styles.btnMenu]}
-                    onPress={()=>{
-                        this.showMenu();
+                    onPress={() => {
+
+                        if (menuHide) {
+                            that.showMenu();
+                        }
+                        else {
+
+                            that.hideMenu();
+                        }
+                        that.changeMenuHide(!menuHide)
+
                     }}
                 >
                     <Icon name={'ico-menu'} size={20} color={'#666'} />
@@ -89,9 +50,7 @@ export default class DetailFoot extends React.Component {
             </View>
         )
     }
-    showMenu(){
-        this.props.coverIsShow(!this.props.coverIsHidden)
-    }
+
     componentDidMount() {
         let id = this.props.id;
 
@@ -184,6 +143,7 @@ export default class DetailFoot extends React.Component {
     // 添加关注
     attentionAdd() {
         let that = this;
+        let thatt = this.props.that;
         let id = this.props.id;
         let memberid = null;
         if (signState != null) {
@@ -192,7 +152,7 @@ export default class DetailFoot extends React.Component {
         that.setState({
             disabled: true
         })
-        that.props.noBack(false);
+        thatt.noBack(false);
         let url = Api.attentionAdd + '?id_dlp=' + id + '&memberid=' + memberid;
         fetch(url)
             .then((response) => {
@@ -206,12 +166,12 @@ export default class DetailFoot extends React.Component {
                                 })
                                 window.EventEmitter.trigger('isAttention', '已关注')
                                 window.EventEmitter.trigger('isAttention2', '已关注')
-                                that.props.toastShow('关注成功')
+                                thatt.toastShow('关注成功')
 
                                 setTimeout(
                                     () => {
-                                        that.props.noBack(true);
-                                        that.props.toastHide()
+                                        thatt.noBack(true);
+                                        thatt.toastHide()
                                     },
                                     1000
                                 );
@@ -231,6 +191,7 @@ export default class DetailFoot extends React.Component {
     // 取消关注
     attentionDel() {
         let that = this;
+        let thatt = this.props.that;
         let id = this.props.id;
         let memberid = null;
         if (signState != null) {
@@ -239,7 +200,7 @@ export default class DetailFoot extends React.Component {
         that.setState({
             disabled: true
         })
-        that.props.noBack(false);
+        thatt.noBack(false);
         let url = Api.attentionDel + '?id_dlp=' + id + '&memberid=' + memberid;
         fetch(url)
             .then((response) => {
@@ -253,12 +214,12 @@ export default class DetailFoot extends React.Component {
                                 })
                                 window.EventEmitter.trigger('isAttention', '取消关注')
                                 window.EventEmitter.trigger('isAttention2', '取消关注')
-                                that.props.toastShow('已取消关注')
+                                thatt.toastShow('已取消关注')
 
                                 setTimeout(
                                     () => {
-                                        that.props.noBack(true);
-                                        that.props.toastHide()
+                                        thatt.noBack(true);
+                                        thatt.toastHide()
                                     },
                                     1000
                                 );
@@ -280,11 +241,11 @@ const styles = StyleSheet.create({
         paddingTop: 6,
         paddingBottom: 6,
         height: 46,
-        backgroundColor: '#fff',
         borderTopWidth: 1,
         borderTopColor: '#ddd',
         flexDirection: 'row',
         zIndex: 999,
+        backgroundColor: '#fff',
     },
     menu: {
         paddingLeft: 9,
@@ -298,6 +259,7 @@ const styles = StyleSheet.create({
         borderColor: '#bbb',
         borderRadius: 8,
         backgroundColor: '#fff',
+        zIndex: 1001,
     },
     triangDown: {
         position: 'absolute',

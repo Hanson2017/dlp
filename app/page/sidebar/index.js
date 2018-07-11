@@ -126,7 +126,7 @@ export default class ControlPanel extends React.Component {
                                                 let loginState = screenProps.loginState;
                                                 let data = {
                                                     type: 'news',
-                                                    title: '邀请好友',
+                                                    title: '推荐一个我天天用的网贷数据APP给你。你试试看！',
                                                     description: "我是" + signState.r_username + "，我在用贷罗盘，网贷行业最专业的数据分析工具，一起来用吧。",
                                                     webpageUrl: 'http://m.dailuopan.com/about/appdown',
                                                     imageUrl: 'http://dailuopan.com/images/shareDlp.png',
@@ -152,7 +152,7 @@ export default class ControlPanel extends React.Component {
                                                 let screenProps = this.props.screenProps;
                                                 let data = {
                                                     type: 'news',
-                                                    title: '邀请好友',
+                                                    title: '推荐一个我天天用的网贷数据APP给你。你试试看！',
                                                     description: '我在用贷罗盘，网贷行业最专业的数据分析工具，一起来用吧。',
                                                     webpageUrl: 'http://m.dailuopan.com/about/appdown',
                                                     imageUrl: 'http://dailuopan.com/images/shareDlp.png',
