@@ -36,7 +36,7 @@ export default class DetailHealthAllTop extends React.Component {
                         </View>
                     </View>
                     <View style={styles.echarts}>
-                        <Echarts option={RadarChart.radar(platName, platdata, platdata_ind)} height={300} />
+                        <Echarts option={RadarChart.radar(platName, platdata, platdata_ind)} height={300} width={320} />
                     </View>
                 </View>
             )
@@ -93,6 +93,8 @@ const styles = StyleSheet.create({
     },
     echarts: {
         position: 'relative',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     null: {
         backgroundColor: '#fff',

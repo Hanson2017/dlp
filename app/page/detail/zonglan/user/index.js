@@ -47,12 +47,14 @@ export default class ZonglanUser extends React.Component {
                                 dataReplat != null && dataReplat != '' && dataReplat.length > 0 ?
                                     dataReplat.map((item, i) => {
                                         return (
-                                            <TouchableOpacity key={i} style={styles.replatItem}
-                                                onPress={() => {
-                                                    navigation.navigate('Detail', { id: item.id_dlp, platName: item.plat_name })
-                                                }}
-                                            >
-                                                <Text style={styles.replatItemText}>{item.plat_name}</Text>
+                                            <View style={styles.replatItemContainer} key={i} >
+                                                <TouchableOpacity style={styles.replatItem}
+                                                    onPress={() => {
+                                                        navigation.navigate('Detail', { id: item.id_dlp, platName: item.plat_name })
+                                                    }}
+                                                >
+                                                    <Text style={styles.replatItemText}>{item.plat_name}</Text>
+                                                </TouchableOpacity>
                                                 {
                                                     item.fundtype ?
                                                         <View style={styles.fundtype}>
@@ -62,8 +64,7 @@ export default class ZonglanUser extends React.Component {
                                                         :
                                                         null
                                                 }
-
-                                            </TouchableOpacity>
+                                            </View>
                                         )
                                     })
                                     :
@@ -99,12 +100,12 @@ const styles = StyleSheet.create({
         fontSize: 12,
     },
     ageBili: {
-        paddingRight:8,
-        textAlign:'right',
+        paddingRight: 8,
+        textAlign: 'right',
         width: 40,
         fontSize: 14,
         color: '#4AB3FF',
-        
+
     },
 
     progressAge: {
@@ -127,18 +128,24 @@ const styles = StyleSheet.create({
         color: '#999',
     },
     replatList: {
-        paddingLeft:5,
-        flexDirection: 'row',        
+        paddingLeft: 5,
+        flexDirection: 'row',
         flexWrap: 'wrap',
     },
-    replatItem: {
-        position:'relative',
+    replatItemContainer:{
+        width: (Theme.screenWidth-35) / 3,
+        height: 22,
+        flexDirection: 'row',
+        alignItems: 'center',
         marginBottom: 20,
-        marginRight:21,
+    },
+    replatItem: {
+        position: 'relative',
+    
         justifyContent: 'center',
         alignItems: 'center',
         height: 22,
-        width: (Theme.screenWidth - 100) / 3,
+        width: (Theme.screenWidth - 105) / 3,
         backgroundColor: '#f5f5f5',
         borderRadius: 4,
     },
@@ -146,18 +153,16 @@ const styles = StyleSheet.create({
         fontSize: 11,
         color: '#bbb',
     },
-    fundtype:{
+    fundtype: {
         backgroundColor: 'rgba(0, 0, 0, 0)',
-        position:'absolute',
-        top:2,
-        right:-18,
+      
     },
-    fundtypeText:{
-        position:'absolute',
-        top:1,
-        left:5,
-        fontSize:11,
-        color:'#fff',
+    fundtypeText: {
+        position: 'absolute',
+        top: 1,
+        left: 5,
+        fontSize: 11,
+        color: '#fff',
     },
     null: {
 

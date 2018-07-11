@@ -98,12 +98,14 @@ export default class DetailDataUser extends React.Component {
                                         data.replat != null && data.replat != '' && data.replat.length > 0 ?
                                             data.replat.map((item, i) => {
                                                 return (
-                                                    <TouchableOpacity key={i} style={styles.replatItem}
-                                                        onPress={() => {
-                                                            navigation.navigate('Detail', { id: item.id_dlp, platName: item.plat_name })
-                                                        }}
-                                                    >
-                                                        <Text style={styles.replatItemText}>{item.plat_name}</Text>
+                                                    <View style={styles.replatItemContainer} key={i} >
+                                                        <TouchableOpacity style={styles.replatItem}
+                                                            onPress={() => {
+                                                                navigation.navigate('Detail', { id: item.id_dlp, platName: item.plat_name })
+                                                            }}
+                                                        >
+                                                            <Text style={styles.replatItemText}>{item.plat_name}</Text>
+                                                        </TouchableOpacity>
                                                         {
                                                             item.fundtype ?
                                                                 <View style={styles.fundtype}>
@@ -113,8 +115,7 @@ export default class DetailDataUser extends React.Component {
                                                                 :
                                                                 null
                                                         }
-
-                                                    </TouchableOpacity>
+                                                    </View>
                                                 )
                                             })
                                             :
@@ -172,8 +173,8 @@ const styles = StyleSheet.create({
         fontSize: 11,
     },
     ageBili: {
-        paddingRight:8,
-        textAlign:'right',
+        paddingRight: 8,
+        textAlign: 'right',
         width: 40,
         fontSize: 14,
         color: '#4AB3FF',
@@ -258,19 +259,26 @@ const styles = StyleSheet.create({
     },
     replatList: {
         paddingTop: 20,
-        paddingLeft: 25,
+        paddingLeft: 17,
         paddingRight: 25,
         flexDirection: 'row',
         justifyContent: 'space-between',
         flexWrap: 'wrap',
     },
+    replatItemContainer: {
+        width: (Theme.screenWidth - 45) / 3,
+        height: 22,
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginBottom: 20,
+    },
     replatItem: {
         position: 'relative',
-        marginBottom: 20,
+
         justifyContent: 'center',
         alignItems: 'center',
         height: 22,
-        width: (Theme.screenWidth - 100) / 3,
+        width: (Theme.screenWidth - 105) / 3,
         backgroundColor: '#f5f5f5',
         borderRadius: 4,
     },
@@ -280,9 +288,6 @@ const styles = StyleSheet.create({
     },
     fundtype: {
         backgroundColor: 'rgba(0, 0, 0, 0)',
-        position: 'absolute',
-        top: 2,
-        right: -18,
     },
     fundtypeText: {
         position: 'absolute',
