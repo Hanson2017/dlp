@@ -95,15 +95,15 @@ export default class DrawerScreen extends React.Component {
                 console.log('退出登陆', signState)
             })
         ]
-        if (Platform.OS === 'android') {
-            BackAndroid.addEventListener('hardwareBackPress', this.onBackAndroid);
-        }
+        // if (Platform.OS === 'android') {
+        //     BackAndroid.addEventListener('hardwareBackPress', this.onBackAndroid);
+        // }
     }
     componentWillUnmount() {
         this.subscriptions.forEach((sub) => sub.off());
-        if (Platform.OS === 'android') {
-            BackAndroid.removeEventListener('hardwareBackPress', this.onBackAndroid);
-        }
+        // if (Platform.OS === 'android') {
+        //     BackAndroid.removeEventListener('hardwareBackPress', this.onBackAndroid);
+        // }
     }
     onBackAndroid = () => {
         if (this.lastBackPressed && this.lastBackPressed + 4000 >= Date.now()) {

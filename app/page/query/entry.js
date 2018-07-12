@@ -11,9 +11,9 @@ import Title from '../../component/title'
 class List extends React.Component {
 
     render() {
-        const { titleText, navigation, navList, n } = this.props;
+        const { titleText, navigation, navList, n ,borderNot} = this.props;
         return (
-            <View style={styles.listContainer}>
+            <View style={[styles.listContainer,borderNot?{borderBottomWidth:0}:null]}>
                 <Text style={styles.listText}>{titleText}</Text>
                 <View style={styles.listBody}>
                     {
@@ -91,7 +91,7 @@ export default class DataScreen extends React.Component {
                                         <List titleText={'按业务类型'} navigation={navigation} navList={yewuNav} n={8} />
                                         <List titleText={'按地区'} navigation={navigation} navList={diquNav} n={Theme.screenWidth >= 375 ? 8 : 6} />
                                         <List titleText={'按时间'} navigation={navigation} navList={dateTimeNav} n={5} />
-                                        <List titleText={'按银行存管'} navigation={navigation} navList={cunguanNav} n={4} />
+                                        <List titleText={'按银行存管'} navigation={navigation} navList={cunguanNav} n={4} borderNot={true} />
                                     </View>
                             }
                         </ScrollView>

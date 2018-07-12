@@ -568,7 +568,7 @@ const styles = StyleSheet.create({
         color: '#999',
     },
     ordernum: {
-        width: Theme.screenWidth >= 375 ? 50 : 30,
+        width: Theme.screenWidth >= 375 ? 50 : 35,
         fontSize: Theme.screenWidth >= 375 ? 14 : 13,
         color: Theme.color,
     },
