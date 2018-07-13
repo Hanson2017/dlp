@@ -31,7 +31,7 @@ export default class TabBar extends Component {
         let tabText = this.props.activeTab == i ? styles.tabActiveText :this.props.black?styles.tabTextb: styles.tabText; 
         return (
             <TouchableOpacity onPress={() => this.props.goToPage(i)} style={tabSty} key={i}>
-                <Text style={[tabText]}>{this.props.tabNames[i]}</Text>
+                <Text style={[tabText,this.props.tabNames[i]=='融360'?styles.tabTextRong:null]}>{this.props.tabNames[i]}</Text>
                 {this.props.activeTab == i?
                     <Icon style={{position:'absolute',bottom:-6}} name={'triangle-up22'} size={15} color={'#fff'} />
                     :
@@ -83,5 +83,10 @@ const styles = StyleSheet.create({
     tabTextb:{
         color:'#A1A1A1',
         fontSize:12
+    },
+    tabTextRong:{
+        width:50,
+        textAlign:'center',
+
     },
 });

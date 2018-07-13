@@ -18,12 +18,12 @@ export default class Title extends React.Component {
                             :
                             null
                     }
-                    {
+                    {/* {
                         mfTag ?
                             <View style={styles.mfTag}><Text style={styles.mfTagText}>魔方保障</Text></View>
                             :
                             null
-                    }
+                    } */}
                 </View>
                 {
                     screenUrlInfo || linkUrl ?

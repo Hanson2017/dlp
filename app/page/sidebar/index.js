@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, Image, View, TouchableOpacity, ScrollView, FlatList, DeviceEventEmitter } from 'react-native';
+import { Text, StyleSheet, Image, View, TouchableOpacity, ScrollView, FlatList, DeviceEventEmitter, Platform } from 'react-native';
 import Icon from 'react-native-vector-icons/Icomoon';
 
 import Api from '../../util/api';
@@ -63,7 +63,7 @@ export default class ControlPanel extends React.Component {
                                         </TouchableOpacity>
                                         <View style={styles.listContainer}>
                                             {this.state.loading ?
-                                                <View style={{paddingTop:50,}}>
+                                                <View style={{ paddingTop: 50, }}>
                                                     <Loading />
                                                 </View>
                                                 :
@@ -301,6 +301,8 @@ export default class ControlPanel extends React.Component {
 const styles = StyleSheet.create({
     ControlPanelWp: {
         flex: 1,
+        borderRightWidth: Platform.OS == 'android' ? 1 : 0,
+        borderRightColor: Theme.color2,
     },
     ControlPaneHeader: {
         paddingLeft: 15,
@@ -324,7 +326,7 @@ const styles = StyleSheet.create({
     },
 
     userName: {
-        width:200,
+        width: 200,
         flex: 1,
         paddingLeft: 10,
         color: '#fff',
@@ -383,7 +385,7 @@ const styles = StyleSheet.create({
         width: 110,
     },
     platNameText: {
-        paddingBottom:6,
+        paddingBottom: 6,
         fontSize: 14,
         color: '#666',
     },
@@ -392,29 +394,29 @@ const styles = StyleSheet.create({
         fontSize: 11,
         color: '#bbb',
     },
-    stateZhengyi:{
+    stateZhengyi: {
 
-       width:50,
-       height:16,
-       backgroundColor:'#A81616', 
-       alignItems: 'center',
-       justifyContent: 'center',
-    },
-    
-    stateZhengyiText:{
-        fontSize:11,
-        color:'#fff',
-    },
-    stateBlack:{
-        width:50,
-        height:16,
-        backgroundColor:'#1A1A1A', 
+        width: 50,
+        height: 16,
+        backgroundColor: '#A81616',
         alignItems: 'center',
         justifyContent: 'center',
     },
-    stateBlackText:{
-        fontSize:11,
-        color:'#fff',
+
+    stateZhengyiText: {
+        fontSize: 11,
+        color: '#fff',
+    },
+    stateBlack: {
+        width: 50,
+        height: 16,
+        backgroundColor: '#1A1A1A',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    stateBlackText: {
+        fontSize: 11,
+        color: '#fff',
     },
     listOrder: {
         width: 80,

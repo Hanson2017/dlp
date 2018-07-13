@@ -3,6 +3,7 @@ import { Text, StyleSheet, View, TouchableOpacity, Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/Icomoon';
 import Theme from '../../../../util/theme';
 import Util from '../../../../util/util';
+import DashLine from '../../../../component/dashLine';
 
 
 export default class ZonglanTop extends React.Component {
@@ -50,7 +51,7 @@ export default class ZonglanTop extends React.Component {
 
                             }}
                         >
-                            <Text style={styles.platInfoLeftText}>官方网站：{data.siteurl}</Text>
+                            <Text style={[styles.platInfoLeftText]}>官方网站：<Text style={styles.siteurlText}>{data.siteurl}</Text></Text>
                         </TouchableOpacity>
                     </View>
                     {
@@ -148,17 +149,57 @@ export default class ZonglanTop extends React.Component {
                         :
                         null
                 }
+
                 {
                     data.dataInfo.platstatus != 1 ?
-                        <View style={styles.blackiTime}>
+
+                        <View style={styles.blackZoushi}>
+                            <View style={styles.dashLine}>
+                                <DashLine width={(Theme.screenWidth-120)} />
+                            </View>
+                            <View style={styles.blackZoushiItem}>
+                                <View style={[styles.blackZoushiYunYingTop, styles.blackZoushiTop]}>
+                                    <Text style={styles.blackZoushiYunYingTopText}>上线运营</Text>
+                                    <Icon name={'triangle-down'} style={styles.blackZoushiTopIcon} size={15} color={'#6addaa'} />
+                                </View>
+                                <View style={[styles.blackZoushiItemIconW]}>
+                                    <View style={styles.blackZoushiItemIconN}></View>
+                                </View>
+                                <View style={styles.blackZoushiItemTime}>
+                                    <Text style={styles.blackZoushiItemTimeText}>{data.uptime != '1900-01-01' ? data.uptime : '未知'}</Text>
+                                </View>
+                            </View>
                             {
-                                data.dataInfo.negative_time != null && data.dataInfo.negative_time != '' ?
-                                    <Text style={[styles.blackiTimeText, { color: '#A81616' }]}>争议时间：{Util.formatDate(data.dataInfo.negative_time)}</Text>
+                                data.dataInfo.platstatus == 1 && data.dataInfo.negative_time !== null && data.dataInfo.negative_time != '' ?
+
+                                    <View style={styles.blackZoushiItem}>
+                                        <View style={[styles.blackZoushiZhengyiTop, styles.blackZoushiTop]}>
+                                            <Text style={styles.blackZoushiYunYingTopText}>争议中</Text>
+                                            <Icon name={'triangle-down'} style={styles.blackZoushiTopIcon} size={15} color={'#A81616'} />
+                                        </View>
+                                        <View style={[styles.blackZoushiItemIconW, styles.blackZoushiItemIconWZhengyi]}>
+                                            <View style={[styles.blackZoushiItemIconN, styles.blackZoushiItemIconNZhengyi]}></View>
+                                        </View>
+                                        <View style={styles.blackZoushiItemTime}>
+                                            <Text style={[styles.blackZoushiItemTimeText, styles.blackZoushiItemTimeTextZhengyi]}>2012-11-11</Text>
+                                        </View>
+                                    </View>
                                     :
                                     null
                             }
+                            <View style={styles.blackZoushiItem}>
+                                <View style={[styles.blackZoushiBlackTop, styles.blackZoushiTop]}>
+                                    <Text style={styles.blackZoushiYunYingTopText}>{data.dataInfo.blackinfo}</Text>
+                                    <Icon name={'triangle-down'} style={styles.blackZoushiTopIcon} size={15} color={'#101010'} />
+                                </View>
+                                <View style={[styles.blackZoushiItemIconW, styles.blackZoushiItemIconWBlack]}>
+                                    <View style={[styles.blackZoushiItemIconN, styles.blackZoushiItemIconNBlack]}></View>
+                                </View>
+                                <View style={styles.blackZoushiItemTime}>
+                                    <Text style={[styles.blackZoushiItemTimeText, styles.blackZoushiItemTimeTextBlack]}>{Util.formatDate2(data.dataInfo.blacktime)}</Text>
+                                </View>
+                            </View>
 
-                            <Text style={styles.blackiTimeText}>出事时间：{Util.formatDate(data.dataInfo.blacktime)}</Text>
                         </View>
                         :
                         null
@@ -222,6 +263,10 @@ const styles = StyleSheet.create({
     platInfoLeftText: {
         fontSize: 11,
         color: '#999',
+
+    },
+    siteurlText: {
+        textDecorationLine: 'underline',
     },
     platInfoRightList: {
         paddingTop: 5,
@@ -374,5 +419,95 @@ const styles = StyleSheet.create({
     zhengyiText: {
         fontSize: 11,
         color: '#A81616',
+    },
+    blackZoushiTop: {
+
+        position: 'relative',
+        width: 58,
+        height: 25,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 4,
+    },
+    blackZoushiYunYingTop: {
+        backgroundColor: '#6addaa',
+    },
+    blackZoushiYunYingTopText: {
+        color: '#fff',
+        fontSize: 12,
+    },
+    blackZoushi: {
+        position: 'relative',
+        paddingBottom: 10,
+        paddingTop: 25,
+        marginTop: 12,
+        borderTopWidth: 1,
+        borderTopColor: '#eee',
+        paddingLeft: 30,
+        paddingRight: 30,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
+    dashLine:{
+        position:'absolute',
+        left:58,
+        top:70,
+    },
+    blackZoushiItem: {
+        width: 70,
+
+        alignItems: 'center',
+    },
+    blackZoushiTopIcon: {
+        position: 'absolute',
+        bottom: -9,
+        left: 21,
+        backgroundColor: 'rgba(52, 52, 52, 0)',
+    },
+    blackZoushiItemIconW: {
+        marginTop: 12,
+        marginBottom: 6,
+        width: 16,
+        height: 16,
+        borderRadius: 16,
+        backgroundColor: '#fff',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderColor: '#6addaa',
+        borderWidth: 2,
+    },
+    blackZoushiItemIconN: {
+        width: 6,
+        height: 6,
+        borderRadius: 6,
+        backgroundColor: '#6addaa',
+    },
+    blackZoushiItemTimeText: {
+        color: '#999',
+        fontSize: 11,
+    },
+    blackZoushiZhengyiTop: {
+        backgroundColor: '#A81616',
+    },
+    blackZoushiItemIconWZhengyi: {
+        borderColor: '#A81616',
+    },
+    blackZoushiItemIconNZhengyi: {
+        backgroundColor: '#A81616',
+    },
+    blackZoushiItemTimeTextZhengyi: {
+        color: '#A81616',
+    },
+    blackZoushiBlackTop: {
+        backgroundColor: '#101010',
+    },
+    blackZoushiItemIconWBlack: {
+        borderColor: '#101010',
+    },
+    blackZoushiItemIconNBlack: {
+        backgroundColor: '#101010',
+    },
+    blackZoushiItemTimeTextBlack: {
+        color: '#101010',
     },
 })

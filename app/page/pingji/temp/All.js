@@ -24,8 +24,8 @@ module.exports = {
                     <Text style={[stylesList.CABB7C4, { width: (Theme.screenWidth - 150) * 0.27 }]}>{item.score_p2peye != 0 ? item.score_p2peye : '暂无'}</Text>
                     <Text style={[stylesList.CABB7C4, { width: 80 }]}>{item.score_dlp != 0 ? item.score_dlp : '暂无'}</Text>
                     <Text style={[stylesList.CABB7C4, { width: 80 }]}>{item.level_r360 != null ? item.level_r360 : '暂无'}</Text>
-                   
                     <Text style={[stylesList.CABB7C4, { width: 80 }]}>{item.score_yifei != '' ? item.score_yifei : '暂无'}</Text>
+                    <Text style={[stylesList.CABB7C4, { width: 60 }]}>{item.level_yuanwang != '' ? item.level_yuanwang : '暂无'}</Text>
                     <Text style={[stylesList.CABB7C4, { width: 80 }]}>{item.level_xinghuo != null ? item.level_xinghuo : '暂无'}</Text>
                 </TouchableOpacity>
             </View>
@@ -40,6 +40,7 @@ module.exports = {
             { title: '融360' },
            
             { title: '羿飞' },
+            { title: '远望' ,width:60},
             { title: '星火' },
         ]
         return (
