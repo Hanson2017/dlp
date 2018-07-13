@@ -59,27 +59,6 @@ export default class Guanzhu extends React.Component {
             <View style={[Theme.box, styles.listContainer]}>
 
                 <View style={styles.header}>
-                    {
-                        guanzhuDel ?
-                            <TouchableOpacity style={styles.delBtn}
-                                onPress={()=>{
-                                    Alert.alert(
-                                        '提示',
-                                        '你确认要取消关注该平台吗',
-                                        [
-                                            { text: '取消' },
-                                            { text: '确认', onPress: this.attentionDel.bind(this,item.id_dlp) },
-                                        ]
-                                    )
-                                }}
-                            >
-                                <Icon name={'ico-del'} size={25} color={'#D51920'} />
-                            </TouchableOpacity>
-                            :
-                            null
-
-                    }
-
                     <View style={styles.headerLeft}>
                         <View style={styles.platNameContainer}>
                             <TouchableOpacity
@@ -143,6 +122,26 @@ export default class Guanzhu extends React.Component {
                             </View>
                             :
                             null
+                    }
+                    {
+                        guanzhuDel ?
+                            <TouchableOpacity style={styles.delBtn}
+                                onPress={()=>{
+                                    Alert.alert(
+                                        '提示',
+                                        '你确认要取消关注该平台吗',
+                                        [
+                                            { text: '取消' },
+                                            { text: '确认', onPress: this.attentionDel.bind(this,item.id_dlp) },
+                                        ]
+                                    )
+                                }}
+                            >
+                                <Icon name={'ico-del'} size={25} color={'#D51920'} />
+                            </TouchableOpacity>
+                            :
+                            null
+
                     }
                 </View>
                 <View style={styles.bd}>

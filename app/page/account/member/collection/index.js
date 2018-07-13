@@ -15,25 +15,7 @@ class Item extends React.Component {
         const plats = data.plats;
         return (
             <View style={[styles.listContainer, borderNot ? { borderBottomWidth: 0 } : null]}>
-                {
-                    collectionDel ?
-                        <TouchableOpacity style={styles.delBtn}
-                            onPress={() => {
-                                Alert.alert(
-                                    '提示',
-                                    '是否取消收藏?',
-                                    [
-                                        { text: '取消' },
-                                        { text: '确认', onPress: that.collectionDel.bind(that, article.id) },
-                                    ]
-                                )
-                            }}
-                        >
-                            <Icon name={'ico-del'} size={25} color={'#D51920'} />
-                        </TouchableOpacity>
-                        :
-                        null
-                }
+                
                 <TouchableOpacity style={[styles.listTitle, collectionDel ?{ paddingRight: 40, }:null]}
                     onPress={() => { navigation.navigate('PingCeDetail', { id: article.id }) }}
                 >
@@ -65,6 +47,25 @@ class Item extends React.Component {
                         <Text style={styles.listUpdatetimeText}>{Util.formatDate(article.updatetime)}</Text>
                     </View>
                 </View>
+                {
+                    collectionDel ?
+                        <TouchableOpacity style={styles.delBtn}
+                            onPress={() => {
+                                Alert.alert(
+                                    '提示',
+                                    '是否取消收藏?',
+                                    [
+                                        { text: '取消' },
+                                        { text: '确认', onPress: that.collectionDel.bind(that, article.id) },
+                                    ]
+                                )
+                            }}
+                        >
+                            <Icon name={'ico-del'} size={25} color={'#D51920'} />
+                        </TouchableOpacity>
+                        :
+                        null
+                }
             </View>
         )
     }

@@ -44,7 +44,7 @@ export default class HelpDetail extends React.Component {
                             this.state.loading ?
                                 <Loading />
                                 :
-                                <ScrollView
+                                <View
                                     style={styles.HelpDetailWp}
                                 >
                                     <View style={styles.header}>
@@ -77,7 +77,7 @@ export default class HelpDetail extends React.Component {
                                             </View>
                                         </View>
                                     </View>
-                                    <View>
+                                    <View style={{flex:1}}>
                                         <WebView
                                             style={{
                                                 height: Theme.screenHeight - 215,
@@ -86,7 +86,7 @@ export default class HelpDetail extends React.Component {
                                         />
                                     </View>
 
-                                </ScrollView>
+                                </View>
 
                         }
                         <Foot
@@ -182,6 +182,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
     },
     HelpDetailWp: {
+        flex:1,
         paddingTop: 20,
         paddingLeft: 15,
         paddingRight: 15
