@@ -51,6 +51,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     fundTypeText: {
+        width: 48,
+        textAlign:'center',
         fontSize: 16,
         color: '#fff',
         fontWeight: 'bold',

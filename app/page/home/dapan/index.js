@@ -13,8 +13,9 @@ class List extends React.Component {
             <View style={styles.list}>
                 <Text style={styles.listlabel}>{labelText}</Text>
                 <View style={styles.listCon}>
-                    <Text style={styles.listNum}>{data.valuenum}</Text>
                     <Icon name={data.preday.change} size={10} color={data.preday.change == 'up' ? Theme.upColor : Theme.downColor} />
+                    <Text style={styles.listNum}>{data.valuenum}</Text>
+           
                 </View>
             </View>
         )
@@ -253,10 +254,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     listNum: {
-        paddingRight: 5,
+        paddingLeft: 5,
         fontWeight: 'bold',
         fontSize: 14,
         color: '#666',
+        width: (Theme.screenWidth - 35) / 4-20,
     },
     listChangenum: {
         fontSize: 10,

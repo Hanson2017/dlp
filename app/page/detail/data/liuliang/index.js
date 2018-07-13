@@ -175,6 +175,8 @@ const styles = StyleSheet.create({
         color: '#999',
     },
     topScoreNum: {
+        width:100,
+        textAlign:'center',
         paddingTop: 6,
         paddingBottom: 6,
         fontSize: 26,
@@ -225,6 +227,7 @@ const styles = StyleSheet.create({
         fontSize: 12,
     },
     zhishuNum: {
+        width: 60,
         color: '#333',
         fontSize: 14,
         fontWeight: 'bold',

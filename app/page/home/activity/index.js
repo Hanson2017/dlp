@@ -95,10 +95,12 @@ const styles = StyleSheet.create({
         marginBottom: 7,
     },
     bodyText: {
+        width: 128,
         paddingTop: 5,
         fontSize: 14,
         color: '#666',
         fontWeight: 'bold',
+        textAlign:'center',
     },
     keywords: {
         width: 100,

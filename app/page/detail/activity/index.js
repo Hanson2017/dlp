@@ -29,11 +29,11 @@ class List extends React.Component {
                         </View>
                     </View>
                     <View style={styles.listinvest}>
-                        <Text style={styles.listinvestText}>{data.invest}</Text>
+                        <Text style={[styles.listinvestText,styles.listinvestText22]}>{data.invest}</Text>
                         <Text style={styles.listinvestText2}>出借金额</Text>
                     </View>
                     <View style={styles.listrebate}>
-                        <Text style={[styles.listinvestText, styles.rebateText]}>{data.rebate}</Text>
+                        <Text style={[styles.listinvestText, styles.rebateText,styles.listrebateText]}>{data.rebate}</Text>
                         <Text style={styles.listinvestText2}>获取回报</Text>
                     </View>
                     <View style={styles.listrate}>
@@ -193,7 +193,13 @@ const styles = StyleSheet.create({
     listinvest: {
         width: 85,
     },
+    listinvestText22:{
+        width: 85,
+    },
     listrebate: {
+        width: 80,
+    },
+    listrebateText:{
         width: 80,
     },
     listrate: {
@@ -219,12 +225,10 @@ const styles = StyleSheet.create({
         color: '#D51920'
     },
 
-    listrateText: {
-        fontSize: 12,
-        color: '#666',
-    },
+    
 
     listrateText: {
+        width: 75,
         fontSize: 18,
         color: '#999',
     },

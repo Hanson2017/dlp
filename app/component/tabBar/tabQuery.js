@@ -33,7 +33,7 @@ export default class TabBar extends Component {
             <TouchableOpacity onPress={() => this.props.goToPage(i)} style={tabSty} key={i}>
                 <Text style={tabText}>{this.props.tabNames[i]}</Text>
                 {this.props.activeTab == i ?
-                    <Icon style={{ position: 'absolute', bottom: -5 }} name={'triangle-up22'} size={15} color={'#f2f2f2'} />
+                    <Icon style={{ position: 'absolute', bottom: -6 }} name={'triangle-up22'} size={15} color={'#f2f2f2'} />
                     :
                     null
                 }

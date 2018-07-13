@@ -81,6 +81,9 @@ const styles = StyleSheet.create({
         color: '#999',
     },
     topScoreNum: {
+        width:80,
+        textAlign:'center',
+    
         paddingTop: 6,
         paddingBottom: 6,
         fontSize: 26,

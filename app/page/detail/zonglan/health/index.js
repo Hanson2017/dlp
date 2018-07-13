@@ -144,6 +144,7 @@ const styles = StyleSheet.create({
         color: '#999',
     },
     topLabelScore: {
+        width:60,
         fontSize: 18,
         color: '#333',
         fontWeight: 'bold',

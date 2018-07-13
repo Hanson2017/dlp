@@ -324,6 +324,7 @@ const styles = StyleSheet.create({
     },
 
     userName: {
+        width:200,
         flex: 1,
         paddingLeft: 10,
         color: '#fff',
@@ -440,6 +441,7 @@ const styles = StyleSheet.create({
         color: '#ccc',
     },
     listYulunText: {
+        width: 50,
         paddingTop: 6,
     },
     ControlPanefooter: {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, View, ScrollView, WebView, TextInput, TouchableOpacity, Keyboard } from 'react-native';
+import { Text, StyleSheet, View, ScrollView, WebView, TextInput, TouchableOpacity, Keyboard,StatusBar } from 'react-native';
 import { SafeAreaView } from "react-navigation";
 import Icon from 'react-native-vector-icons/Icomoon';
 import Theme from '../../../util/theme';
@@ -34,6 +34,10 @@ export default class HelpDetail extends React.Component {
         return (
             <SafeAreaView style={{ flex: 1, backgroundColor: Theme.color2 }}>
                 <View style={Theme.container}>
+                    <StatusBar
+                        backgroundColor={Theme.color2}
+                        barStyle="light-content"
+                    />
                     <Header headerOpt={{ back: '评测文章', title: '评测文章', search: 'null' }} navigation={navigation} />
                     <View style={styles.content}>
                         {

@@ -75,6 +75,8 @@ const styles = StyleSheet.create({
         marginBottom: 7,
     },
     bodyText: {
+        width:  (Theme.screenWidth-20*3)/2,
+        textAlign:'center',
         paddingTop: 5,
         fontSize: 12,
         color: '#666',

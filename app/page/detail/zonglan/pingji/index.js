@@ -167,6 +167,7 @@ const styles = StyleSheet.create({
         color: '#999',
     },
     ordernum: {
+        width:40,
         fontSize: 14,
         color: Theme.color,
     },

@@ -530,9 +530,11 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     yulun: {
+        width:120,
         color: '#666',
         fontSize: 11,
         fontWeight: 'bold',
+        textAlign:'right',
     },
     paiming: {
         flexDirection: 'row',

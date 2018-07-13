@@ -48,6 +48,8 @@ const styles = StyleSheet.create({
         height: 100,
     },
     versionText: {
+        width:160,
+        textAlign:'center',
         paddingTop: 10,
         fontWeight: 'bold',
         fontSize: 12,
