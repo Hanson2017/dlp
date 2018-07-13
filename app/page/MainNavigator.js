@@ -37,13 +37,14 @@ export default class DrawerScreen extends React.Component {
             return (
                 <Drawer
                     ref={(ref) => this._drawer = ref}
-                    type="overlay"
+                    type="displace"
                     content={<ControlPanel ref={'ControlPanel'} screenProps={{ loginState: this.state.loginState, navigation: this.props.navigation }} />}
                     openDrawerOffset={0.2}
                     closedDrawerOffset={-3}
                     styles={drawerStyles}
                     tapToClose={true}
                     panCloseMask={0.2}
+                    tweenHandler={(ratio) => ({main: { opacity:(2-ratio)/2 }})}
                 >
                     <MainTabBar screenProps={{ openControlPanel: this.openControlPanel.bind(this), loginState: this.state.loginState, navigation: this.props.navigation }} />
 
@@ -119,6 +120,6 @@ export default class DrawerScreen extends React.Component {
 
 
 const drawerStyles = {
-    drawer: { shadowColor: '#000', shadowOpacity: 0.4, shadowRadius: 3, backgroundColor: '#fff', opacity: 1  },
-    main: {},
+    drawer: { shadowColor: '#000', shadowOpacity: 0.4, shadowRadius: 4, backgroundColor: '#fff', opacity: 1  },
+    main: {paddingLeft: 0,backgroundColor: '#000',},
 }    

@@ -260,13 +260,11 @@ const styles = StyleSheet.create({
     replatList: {
         paddingTop: 20,
         paddingLeft: 17,
-        paddingRight: 25,
         flexDirection: 'row',
-        justifyContent: 'space-between',
         flexWrap: 'wrap',
     },
     replatItemContainer: {
-        width: (Theme.screenWidth - 45) / 3,
+        width: (Theme.screenWidth - 35) / 3,
         height: 22,
         flexDirection: 'row',
         alignItems: 'center',

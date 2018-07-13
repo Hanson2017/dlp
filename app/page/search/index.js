@@ -110,7 +110,7 @@ export default class SearchScreen extends React.Component {
                                                                 <Icon name={'ico-dateTime'} size={16} color={'#bbb'} />
                                                                 <Text style={styles.historyListText}>{item.platname}</Text>
                                                             </TouchableOpacity>
-                                                            <TouchableOpacity onPress={() => {
+                                                            <TouchableOpacity style={styles.clear} onPress={() => {
                                                                 this.clearHistory(i)
                                                             }}>
                                                                 <Icon name={'ico-closeX'} size={12} color={'#bbb'} />
@@ -349,6 +349,8 @@ const styles = StyleSheet.create({
         height: 42,
     },
     historyListLeft: {
+        height: 30,
+        flex:1,
         flexDirection: 'row',
         alignItems: 'center',
     },
@@ -356,5 +358,12 @@ const styles = StyleSheet.create({
         color: '#707070',
         fontSize: 12,
         paddingLeft: 6,
+    },
+    clear:{
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+        width:50,
+        height: 30,
     },
 })

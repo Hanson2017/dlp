@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
         color:'#999',
     },
     topLabelScore:{
-        width:60,
+        width:70,
        
         fontSize:18,
         color:'#333',

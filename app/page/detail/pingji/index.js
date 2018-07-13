@@ -23,7 +23,7 @@ export default class DetailPingji extends React.Component {
     render() {
         const { platInfo } = this.props;
         const { loading, dataSource, isHidden } = this.state;
-
+        console.log(dataSource)
         if (loading) {
             return (
                 <Loading />
@@ -461,7 +461,7 @@ export default class DetailPingji extends React.Component {
                                 <View style={styles.listHeader}>
                                     <Text style={styles.name}>远望评级</Text>
                                     {
-                                        rong360 !== null ?
+                                        yuanwang !== null ?
                                             <View style={styles.listHeaderCon}>
                                                 <Text style={styles.score}>{yuanwang.level}</Text>
                                                 <Text style={styles.totalNum}>统计{yuanwang.totalNum}家平台中排名</Text>

@@ -44,7 +44,7 @@ export default class Gudong extends React.Component {
                                                                     持股比例：
                                                                     <Text style={{ color: Theme.color, fontSize: 12, }}>{list.renjiaobili != '' ? list.renjiaobili : '--'}</Text>
                                                                 </Text>
-                                                                <Text style={[styles.gudongInfoBdText, styles.gudongInfoBdTextChuzi]}>认缴出资：{list.renjiao != '' ? list.renjiao : '--'}</Text>
+                                                                <Text style={[styles.gudongInfoBdText, styles.gudongInfoBdTextChuzi]}>认缴出资：{list.renjiao != '' ? list.renjiao +'万元': '--'}</Text>
                                                                 {
                                                                     list.renjiaoshijian != '-' ?
                                                                         <Text style={styles.gudongInfoBdText}>{list.renjiaoshijian}</Text>

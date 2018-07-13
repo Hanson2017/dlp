@@ -179,6 +179,7 @@ const styles = StyleSheet.create({
         paddingLeft: 15,
         paddingRight: 15,
         flexDirection: 'row',
+        justifyContent: 'space-between',
     },
     platInfoRight: {
         paddingLeft: 15,
