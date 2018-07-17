@@ -39,7 +39,7 @@ export default class PingceScreen extends React.Component {
                                 :
                                 <ScrollView>
                                     <View style={styles.totalNum}>
-                                        <Text style={styles.totalNumText}>活动平台数量 65</Text>
+                                        <Text style={styles.totalNumText}>活动平台数量 {this.state.totalNum}</Text>
                                     </View>
                                     <FlatList
                                         contentContainerStyle={styles.listViewContent}

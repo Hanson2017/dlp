@@ -170,7 +170,7 @@ export default class ZonglanTop extends React.Component {
                                 </View>
                             </View>
                             {
-                                data.dataInfo.platstatus == 1 && data.dataInfo.negative_time !== null && data.dataInfo.negative_time != '' ?
+                                data.dataInfo.negative_time !== null && data.dataInfo.negative_time != '' ?
 
                                     <View style={styles.blackZoushiItem}>
                                         <View style={[styles.blackZoushiZhengyiTop, styles.blackZoushiTop]}>
@@ -181,7 +181,7 @@ export default class ZonglanTop extends React.Component {
                                             <View style={[styles.blackZoushiItemIconN, styles.blackZoushiItemIconNZhengyi]}></View>
                                         </View>
                                         <View style={styles.blackZoushiItemTime}>
-                                            <Text style={[styles.blackZoushiItemTimeText, styles.blackZoushiItemTimeTextZhengyi]}>2012-11-11</Text>
+                                            <Text style={[styles.blackZoushiItemTimeText, styles.blackZoushiItemTimeTextZhengyi]}>{Util.formatDate(data.dataInfo.negative_time)}</Text>
                                         </View>
                                     </View>
                                     :
