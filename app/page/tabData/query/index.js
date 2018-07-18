@@ -17,7 +17,7 @@ const dataList = [
     { title: '个信类', tabId: { tab1: 1, tab2: 3 } },
     { title: '企业类', tabId: { tab1: 1, tab2: 4 } },
     { title: '网基类', tabId: { tab1: 1, tab2: 5 } },
-    { title: '活期类', tabId: { tab1: 1, tab2: 6 } },
+    { title: '其他类', tabId: { tab1: 1, tab2: 6 } },
     { title: '银行直连', tabId: { tab1: 4, tab2: 0 } },
     { title: '直接存管', tabId: { tab1: 4, tab2: 1 } },
     { title: '联合存管', tabId: { tab1: 4, tab2: 2 } },

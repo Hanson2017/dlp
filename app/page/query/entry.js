@@ -47,8 +47,7 @@ var yewuNav = [
     { name: '个信', tabId: { tab1: 1, tab2: 3 } },
     { name: '企业', tabId: { tab1: 1, tab2: 4 } },
     { name: '网基', tabId: { tab1: 1, tab2: 5 } },
-    { name: '活期', tabId: { tab1: 1, tab2: 6 } },
-    { name: '其他', tabId: { tab1: 1, tab2: 7 } },
+    { name: '其他', tabId: { tab1: 1, tab2: 6 } },
 ];
 
 var cunguanNav = [

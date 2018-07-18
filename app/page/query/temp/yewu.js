@@ -15,7 +15,7 @@ export default class QueryScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            tabNames: ['车贷', '房贷', '票据', '个信', '企业', '网基', '活期', '其它'],
+            tabNames: ['车贷', '房贷', '票据', '个信', '企业', '网基','其它'],
             upDateTime: Util.setDate(new Date()),
             loading: true,
             totalNum: [
@@ -150,20 +150,7 @@ export default class QueryScreen extends React.Component {
                                 <Update upDateTime={this.state.upDateTime} />
                             </ListPage>
                         </View>
-                        <View style={styles.content} tabLabel='key4'>
-                            <ListPage
-                                navigation={navigation}
-                                itemRow={List}
-                                changeTotalNum={this.changeTotalNum.bind(this)}
-                                changeUpDateTime={this.changeUpDateTime.bind(this)}
-                                type={{ column: 'yewu', type: 'huoqilicai', dataName: 'dataList' }}
-                                columnDb={false}
-                                update={true}
-                                Ttype={'活期'}
-                            >
-                                <Update upDateTime={this.state.upDateTime} />
-                            </ListPage>
-                        </View>
+                        
                         <View style={styles.content} tabLabel='key4'>
                             <ListPage
                                 navigation={navigation}
