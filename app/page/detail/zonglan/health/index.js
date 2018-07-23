@@ -50,30 +50,37 @@ export default class ZonglanHealth extends React.Component {
                     platstatus == 1 ?
                         dataDlp !== null ?
                             <View style={styles.content}>
-                                <View style={styles.top}>
-                                    <View style={styles.topLeft}>
-                                        <View style={styles.topList}>
-                                            <Text style={styles.topLabelText}>健康度指数</Text>
-                                            <Text style={styles.topLabelScore}>{dataDlp.score}</Text>
-                                        </View>
-                                        <View style={[styles.topList, { marginTop: 6, }]}>
-                                            <Text style={[styles.topText, styles.topTextBj]}>较上月</Text>
-                                            <Icon name={dataDlp.changnum >= 0 ? 'up' : 'down'} size={11} color={dataDlp.changnum >= 0 ? Theme.upColor : Theme.downColor} />
-                                            <Text style={styles.topText}>{Math.abs(dataDlp.changnum)}%</Text>
-                                        </View>
+                                {
+                                    dataDlp.ordernum > 0 ?
+                                        <View style={styles.top}>
+                                            <View style={styles.topLeft}>
+                                                <View style={styles.topList}>
+                                                    <Text style={styles.topLabelText}>健康度指数</Text>
+                                                    <Text style={styles.topLabelScore}>{dataDlp.score}</Text>
+                                                </View>
+                                                <View style={[styles.topList, { marginTop: 6, }]}>
+                                                    <Text style={[styles.topText, styles.topTextBj]}>较上月</Text>
+                                                    <Icon name={dataDlp.changnum >= 0 ? 'up' : 'down'} size={11} color={dataDlp.changnum >= 0 ? Theme.upColor : Theme.downColor} />
+                                                    <Text style={styles.topText}>{Math.abs(dataDlp.changnum)}%</Text>
+                                                </View>
 
-                                    </View>
-                                    <View style={styles.topRight}>
-                                        <View style={[styles.topList]}>
-                                            <Text style={styles.topLabelText}>健康度排名</Text>
-                                            <Text style={styles.topLabelScore}>{dataDlp.ordernum}</Text>
-                                        </View>
-                                        <View style={{ marginTop: 6, }}>
-                                            <Text style={styles.topLabelText}>在统计的{dataDlp.totalNum}家平台中</Text>
-                                        </View>
+                                            </View>
+                                            <View style={styles.topRight}>
+                                                <View style={[styles.topList]}>
+                                                    <Text style={styles.topLabelText}>健康度排名</Text>
+                                                    <Text style={styles.topLabelScore}>{dataDlp.ordernum}</Text>
+                                                </View>
+                                                <View style={{ marginTop: 6, }}>
+                                                    <Text style={styles.topLabelText}>在统计的{dataDlp.totalNum}家平台中</Text>
+                                                </View>
 
-                                    </View>
-                                </View>
+                                            </View>
+                                        </View>
+                                        :
+                                        <Text style={styles.nullData}>暂无</Text>
+                                }
+
+
                                 <View style={styles.body}>
                                     <List data={inamount} iconName={'zb-zijin'} title={'资金流'} />
                                     <List data={mobility} iconName={'zb-liudong'} title={'流动性'} />
@@ -144,7 +151,7 @@ const styles = StyleSheet.create({
         color: '#999',
     },
     topLabelScore: {
-        width:60,
+        width: 60,
         fontSize: 18,
         color: '#333',
         fontWeight: 'bold',
@@ -179,5 +186,10 @@ const styles = StyleSheet.create({
         fontSize: 14,
         color: '#ccc',
     },
+    nullData: {
+        padding: 17,
+        fontSize: 14,
+        color: '#ccc',
+    }
 
 })

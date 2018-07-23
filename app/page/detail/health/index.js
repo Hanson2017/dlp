@@ -24,7 +24,7 @@ export default class DetailHealth extends React.Component {
     }
     render() {
         const { tabNames, dataSource, loading } = this.state;
-        const { platInfo } = this.props;
+        const { platInfo,navigation } = this.props;
         return (
             <View style={styles.container}>
                 {
@@ -40,7 +40,7 @@ export default class DetailHealth extends React.Component {
                                 </View>
                              
                                 <View tabLabel='key3'>
-                                    <Fuzhu data={dataSource} />
+                                    <Fuzhu data={dataSource} navigation={navigation} />
                                 </View>
                                 <View tabLabel='key4'>
                                     <Other data={dataSource} />
@@ -114,13 +114,13 @@ export default class DetailHealth extends React.Component {
                                                     return (
                                                         <TouchableOpacity style={styles.fumianList}
                                                             onPress={() => {
-                                                                {
-                                                                    list[1] ?
-                                                                        Util.Linked(list[1])
-                                                                        :
-                                                                        null
-                                                                }
+                                                                list[1] ?
+                                                                navigation.navigate('DetailFumian', { url: list[1] }) 
+                                                                :
+                                                                null
+                                                                
                                                             }}
+
                                                         >
                                                             <Text style={styles.fumianListText}>{list[0]}</Text>
                                                         </TouchableOpacity>

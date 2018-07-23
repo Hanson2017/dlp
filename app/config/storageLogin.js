@@ -70,7 +70,6 @@ module.exports = {
             // 如果找到数据，则在then方法中返回
             
             historyKeyWords=ret;
-            console.log('historyKeyWords',historyKeyWords)
         }).catch(err => {
             //如果没有找到数据且没有sync方法，
             //或者有其他异常，则在catch中返回

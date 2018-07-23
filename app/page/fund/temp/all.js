@@ -9,7 +9,7 @@ import PieEcharts from '../../../echarts/pie';
 
 class List extends React.Component {
     render() {
-        const { listData, echartsData, type, navigation ,echartColor} = this.props;
+        const { listData, echartsData, type, navigation, echartColor } = this.props;
         var len = 3;
         if (type == 3) {
             len = 5
@@ -37,11 +37,17 @@ class List extends React.Component {
                         </View>
                     </View>
                 </View>
-                <View style={styles.fundEchart}>
-                    <Echarts option={PieEcharts.pieFund(echartsData,echartColor)} height={175} width={320} />
-                </View>
+                {
+                    listData.length > 0 ?
+                        <View style={styles.fundEchart}>
+                            <Echarts option={PieEcharts.pieFund(echartsData, echartColor)} height={175} width={320} />
+                        </View>
+                        :
+                        <View style={{ marginTop: 20, }}></View>
+                }
+
                 <View style={styles.fundSm}>
-                    <View style={[styles.fundSmList,styles.fundSmListZs]}>
+                    <View style={[styles.fundSmList, styles.fundSmListZs]}>
                         <Text style={styles.fundSmLabelText}>安全指数</Text>
                         <View style={styles.fundStart}>
                             <Icon name={'fund-dunpai'} size={14} color={'#FF9800'} />
@@ -83,64 +89,70 @@ class List extends React.Component {
                         </Text>
                     </View>
                 </View>
-                <View style={styles.fundList}>
-                    <View style={styles.fundListLeft}>
-                        <View style={styles.fundListHd}>
-                            <Text style={[styles.listHdText, styles.fundIc1]}>在投平台</Text>
-                            <Text style={[styles.listHdText, styles.fundIc2]}>利率</Text>
-                        </View>
-                        <View style={styles.fundListBd}>
-                            {
-                                listData.map((item, i) => {
-                                    if (i < len) {
-                                        return (
-                                            <View key={i} style={styles.list}>
-                                                <TouchableOpacity style={styles.fundIc1}
-                                                    onPress={() => {
-                                                        navigation.navigate('Detail', { id: item.id_dlp, platName: item.plat_name })
-                                                    }}
-                                                >
-                                                    <Text style={[styles.listPlatText, styles.listText]}>{item.plat_name}</Text>
-                                                </TouchableOpacity>
-                                                <Text style={[styles.fundIc2, styles.listRateText, styles['listRateText' + type]]}>{item.fund_rate}%</Text>
-                                            </View>
-                                        )
+                {
+                    listData.length > 0 ?
+                        <View style={styles.fundList}>
+                            <View style={styles.fundListLeft}>
+                                <View style={styles.fundListHd}>
+                                    <Text style={[styles.listHdText, styles.fundIc1]}>在投平台</Text>
+                                    <Text style={[styles.listHdText, styles.fundIc2]}>利率</Text>
+                                </View>
+                                <View style={styles.fundListBd}>
+                                    {
+                                        listData.map((item, i) => {
+                                            if (i < len) {
+                                                return (
+                                                    <View key={i} style={styles.list}>
+                                                        <TouchableOpacity style={styles.fundIc1}
+                                                            onPress={() => {
+                                                                navigation.navigate('Detail', { id: item.id_dlp, platName: item.plat_name })
+                                                            }}
+                                                        >
+                                                            <Text style={[styles.listPlatText, styles.listText]}>{item.plat_name}</Text>
+                                                        </TouchableOpacity>
+                                                        <Text style={[styles.fundIc2, styles.listRateText, styles['listRateText' + type]]}>{item.fund_rate}%</Text>
+                                                    </View>
+                                                )
+                                            }
+
+                                        })
                                     }
 
-                                })
-                            }
+                                </View>
+                            </View>
+                            <View style={styles.fundListRight}>
+                                <View style={styles.fundListHd}>
+                                    <Text style={[styles.listHdText, styles.fundIc1]}>在投平台</Text>
+                                    <Text style={[styles.listHdText, styles.fundIc2]}>利率</Text>
+                                </View>
+                                <View style={styles.fundListBd}>
+                                    {
+                                        listData.map((item, i) => {
+                                            if (i >= len) {
+                                                return (
+                                                    <View key={i} style={styles.list}>
+                                                        <TouchableOpacity style={styles.fundIc1}
+                                                            onPress={() => {
+                                                                navigation.navigate('Detail', { id: item.id_dlp, platName: item.plat_name })
+                                                            }}
+                                                        >
+                                                            <Text style={[styles.listPlatText, styles.listText]}>{item.plat_name}</Text>
+                                                        </TouchableOpacity>
+                                                        <Text style={[styles.fundIc2, styles.listRateText, styles['listRateText' + type]]}>{item.fund_rate}%</Text>
+                                                    </View>
+                                                )
+                                            }
 
-                        </View>
-                    </View>
-                    <View style={styles.fundListRight}>
-                        <View style={styles.fundListHd}>
-                            <Text style={[styles.listHdText, styles.fundIc1]}>在投平台</Text>
-                            <Text style={[styles.listHdText, styles.fundIc2]}>利率</Text>
-                        </View>
-                        <View style={styles.fundListBd}>
-                            {
-                                listData.map((item, i) => {
-                                    if (i >= len) {
-                                        return (
-                                            <View key={i} style={styles.list}>
-                                                <TouchableOpacity style={styles.fundIc1}
-                                                    onPress={() => {
-                                                        navigation.navigate('Detail', { id: item.id_dlp, platName: item.plat_name })
-                                                    }}
-                                                >
-                                                    <Text style={[styles.listPlatText, styles.listText]}>{item.plat_name}</Text>
-                                                </TouchableOpacity>
-                                                <Text style={[styles.fundIc2, styles.listRateText, styles['listRateText' + type]]}>{item.fund_rate}%</Text>
-                                            </View>
-                                        )
+                                        })
                                     }
 
-                                })
-                            }
-
+                                </View>
+                            </View>
                         </View>
-                    </View>
-                </View>
+                        :
+                        <Text style={styles.null}>暂无</Text>
+                }
+
             </View>
         )
     }
@@ -257,7 +269,7 @@ const styles = StyleSheet.create({
     fundTitleText: {
         fontSize: 16,
         color: '#333',
-        fontWeight:'bold',
+        fontWeight: 'bold',
     },
     fundInfoHeaderRight: {
         width: 50,
@@ -275,11 +287,11 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         flexDirection: 'row',
     },
-    fundSmListZs:{
+    fundSmListZs: {
         alignItems: 'center',
     },
     fundSmLabelText: {
-        width:55,
+        width: 55,
         paddingRight: 5,
         fontSize: 12,
         color: '#A1A1A1'
@@ -288,8 +300,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     fundSmText: {
-        paddingRight:10,
-        flex:1,
+        paddingRight: 10,
+        flex: 1,
         fontSize: 12,
         color: '#707070'
     },
@@ -341,6 +353,11 @@ const styles = StyleSheet.create({
     listRateText3: {
         color: Theme.fund3Color,
     },
-
+    null:{
+        paddingLeft:30,
+        paddingBottom:20,
+        color:'#bbb',
+        fontSize:12,
+    },
 
 })

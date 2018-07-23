@@ -19,8 +19,8 @@ class List extends React.Component {
         }
         return (
             <View style={styles.listItem}>
-                <Icon name={iconName} size={55} color={color} />
-                <Text style={styles.listItemText}>{title} <Text style={{ color: color}}> {data.status}</Text></Text>
+                <Icon name={iconName} size={title == '资金流' ? 56 : 45} color={color} />
+                <Text style={styles.listItemText}>{title} <Text style={{ color: color }}> {data.status}</Text></Text>
             </View>
         )
     }
@@ -28,8 +28,8 @@ class List extends React.Component {
 
 export default class DetailHealthAllFenxi extends React.Component {
     render() {
-        const {data } = this.props;
-        const dataDetail=data.dataDetail;
+        const { data } = this.props;
+        const dataDetail = data.dataDetail;
         const inamount = dataDetail.inamount; //资金流
         const mobility = dataDetail.mobility; //流动性
         const dispersion = dataDetail.dispersion; //分散度
@@ -39,7 +39,7 @@ export default class DetailHealthAllFenxi extends React.Component {
         const growth = dataDetail.growth; //成长性
         const rate = dataDetail.rate; //收益率
         return (
-            <View style={[Theme.box, Theme.mt10,{borderBottomWidth:0,}]}>
+            <View style={[Theme.box, Theme.mt10, { borderBottomWidth: 0, }]}>
                 <Title data={'健康度分析'} />
                 {
                     data.dlpDetail !== null && data.dlpDetail !== '' ?
@@ -67,26 +67,26 @@ export default class DetailHealthAllFenxi extends React.Component {
     }
 }
 const styles = StyleSheet.create({
-    note:{
-        paddingLeft:17,
-        paddingTop:15,
-        paddingBottom:15,
+    note: {
+        paddingLeft: 17,
+        paddingTop: 15,
+        paddingBottom: 15,
     },
-    noteText:{
-        fontSize:12,
-        color:'#999',
+    noteText: {
+        fontSize: 12,
+        color: '#999',
     },
     content: {
         paddingBottom: 10,
     },
-    
+
     body: {
         flexDirection: 'row',
         flexWrap: 'wrap',
     },
     listItem: {
         paddingBottom: 15,
-        justifyContent: 'center',
+        justifyContent: 'flex-end',
         alignItems: 'center',
         width: Theme.screenWidth / 4,
     },
@@ -95,10 +95,10 @@ const styles = StyleSheet.create({
         fontSize: 12,
         color: '#999',
     },
-    null:{
-        padding:17,
-        fontSize:14,
-        color:'#ccc',
+    null: {
+        padding: 17,
+        fontSize: 14,
+        color: '#ccc',
     },
 
 })

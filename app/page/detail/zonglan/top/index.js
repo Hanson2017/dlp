@@ -9,7 +9,7 @@ import DashLine from '../../../../component/dashLine';
 export default class ZonglanTop extends React.Component {
 
     render() {
-        const { data } = this.props;
+        const { data ,navigation} = this.props;
         return (
             <View style={[Theme.box, styles.container]}>
                 <View style={styles.platInfo}>
@@ -39,9 +39,11 @@ export default class ZonglanTop extends React.Component {
                                         {
                                             text: '前往', onPress: () => {
                                                 if (data.acurl != null && data.acurl != '') {
+                                                    // navigation.navigate('DetailFumian', { url: data.acurl }) 
                                                     Util.Linked(data.acurl)
                                                 }
                                                 else {
+                                                    // navigation.navigate('DetailFumian', { url: 'http://' + data.siteurl }) 
                                                     Util.Linked('http://' + data.siteurl)
                                                 }
                                             }

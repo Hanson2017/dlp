@@ -7,7 +7,7 @@ import Header from '../../component/navBar';
 import Loading from '../../component/loading';
 import Fund from './fund';
 import Activity from './activity';
-
+import Mianze from '../mianze';
 
 
 
@@ -43,6 +43,7 @@ export default class FindTab extends React.Component {
                                 >
                                     <Fund navigation={navigation} data={{count:dataSource.fundcount,list:dataSource.fundlist}} />
                                     <Activity navigation={navigation} data={dataSource.flmf} />
+                                    <Mianze />
                                 </ScrollView>
                         }
                     </View>

@@ -62,7 +62,7 @@ export default class ZonglanPingji extends React.Component {
                     <View style={styles.list}>
                         <Text style={styles.name}>贷罗盘指数</Text>
                         {
-                            dlp !== null && platInfo.platstatus == 1 ?
+                            dlp !== null && platInfo.platstatus == 1 && dlp.ordernum > 0 ?
                                 <View style={styles.listCon}>
                                     <Text style={styles.score}>{dlp.score}</Text>
                                     <Text style={styles.totalNum}>统计{dlp.totalNum}家平台中排名</Text>
@@ -167,7 +167,7 @@ const styles = StyleSheet.create({
         color: '#999',
     },
     ordernum: {
-        width:40,
+        width: 40,
         fontSize: 14,
         color: Theme.color,
     },

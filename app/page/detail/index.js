@@ -96,7 +96,7 @@ export default class DetailScreen extends React.Component {
                                         <Pingji platInfo={{ id: params.id, platName: params.platName, platstatus: dataInfo.platstatus }} />
                                     </View>
                                     <View style={styles.content} tabLabel='key2'>
-                                        <Health platInfo={{ id: params.id, platName: params.platName, platstatus: dataInfo.platstatus }} />
+                                        <Health platInfo={{ id: params.id, platName: params.platName, platstatus: dataInfo.platstatus }} navigation={navigation} />
                                     </View>
                                     <View style={styles.content} tabLabel='key3'>
                                         <Data platInfo={{ id: params.id, platName: params.platName, platstatus: dataInfo.platstatus }} navigation={navigation} />

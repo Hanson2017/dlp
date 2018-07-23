@@ -168,13 +168,14 @@ module.exports = {
             })
     },
     getDataDetail(that, type, id) {
-        let url = Api['detail'] + '?type=' + type + '&id_dlp=' + id
+        let url = Api['detail'] + '?type=' + type + '&id_dlp=' + id+'&d'
+        console.log(url)
         fetch(url)
             .then((response) => {
                 if (response.ok) {
                     response.json()
                         .then((responseData) => {
-                            
+                            console.log(responseData)
                             that.setState({
                                 loading: false,
                                 dataSource: responseData,

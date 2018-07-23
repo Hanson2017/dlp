@@ -16,6 +16,7 @@ export default class HomeFundItem extends React.Component {
                 </TouchableOpacity>
                 <View style={[styles.fundRight,borderBottomNot?{borderBottomWidth:0}:null]}>
                     {
+                        data.length>0?
                         data.map((item, i) => {
                             return (
                                 <TouchableOpacity key={i} style={styles.platName} activeOpacity={0.6}
@@ -27,6 +28,8 @@ export default class HomeFundItem extends React.Component {
                                 </TouchableOpacity>
                             )
                         })
+                        :
+                        <Text style={styles.null}>暂无</Text>
                     }
                 </View>
             </View>
@@ -78,5 +81,9 @@ const styles = StyleSheet.create({
         fontSize: 14,
         color: '#666',
         lineHeight: 24,
-    }
+    },
+    null:{
+        fontSize: 14,
+        color: '#999',
+    },
 })

@@ -27,7 +27,7 @@ export default class FundList extends React.Component {
     }
     render() {
 
-        const { navigation, data,echartColor } = this.props;
+        const { navigation, data, echartColor } = this.props;
         const { fundData } = this.state;
         const type = this.props.fundType;
         return (
@@ -93,67 +93,80 @@ export default class FundList extends React.Component {
                                 }
                             </Text>
                         </View>
-                       
-                    </View>
-                </View>
-                <View style={styles.echart}>
-                   
-                    <Echarts option={PieEcharts.pieFund(fundData,echartColor)} height={175} width={320} />
-                    <View style={styles.echartBtn}>
-                        <Text style={styles.echartBtnText}>投资组成</Text>
+                        {
+                            data.length <= 0 ?
+                            <Text style={styles.null}>暂无</Text>
+                            :
+                            null
+                        }            
                     </View>
                 </View>
                 {
-                    data.map((item, j) => {
-                        return (
-                            <View key={j} style={[styles.fundlist, Theme.box, Theme.mt10]}>
-                                <TouchableOpacity style={styles.fundlistHd} activeOpacity={0.5}
-                                    onPress={() => {
-                                        navigation.navigate('Detail', { id: item.id_dlp, platName: item.plat_name })
-                                    }}
-                                >
-                                    <View style={styles.fundlistHdLeft}>
-                                        <Icon name={'fund-icon'} size={17} color={Theme['fund' + type + 'Color']} />
-                                        <Text style={styles.platnameText}>{item.plat_name}</Text>
-                                    </View>
-                                    <View style={styles.fundlistHdLeft}>
-                                        <Icon name={'triangle-right22'} size={12} color={'#bbb'} />
-                                    </View>
-                                </TouchableOpacity>
-                                <View style={styles.fundlistBd}>
-                                    <View style={styles.fundlistBdHd}>
-                                        <Text style={[styles.listIc1, styles.listHdText]}>[在投项目]</Text>
-                                        <Text style={[styles.listIc2, styles.listHdText]}>[投资额]</Text>
-                                        <Text style={[styles.listIc3, styles.listHdText]}>[年化收益率]</Text>
-                                    </View>
-                                    {
-                                        item.investlist.map((list, i) => {
-                                            return (
-                                                <View style={styles.fundlistBdList} key={i}>
-                                                    <Text style={[styles.listIc1, styles.listXM]}>{list.name}</Text>
-                                                    <Text style={[styles.listIc2, styles.listTZE]}>{list.invest}万</Text>
-                                                    <Text style={[styles.listIc3, styles.listRate, , styles['listRate' + type]]}>{list.rate}%</Text>
-                                                </View>
-                                            )
-                                        })
-                                    }
-                                </View>
-                                <View style={styles.fundlistReasons}>
-                                    <Text style={styles.fundlistReasonsTitleText}>[投资理由]</Text>
-                                    <View style={styles.fundlistReasonsBox}>
+                    data.length > 0 ?
+                        <View style={styles.echart}>
+
+                            <Echarts option={PieEcharts.pieFund(fundData, echartColor)} height={175} width={320} />
+                            <View style={styles.echartBtn}>
+                                <Text style={styles.echartBtnText}>投资组成</Text>
+                            </View>
+                        </View>
+                        :
+                        null
+                }
+
+                {
+                    data.length > 0 ?
+                        data.map((item, j) => {
+                            return (
+                                <View key={j} style={[styles.fundlist, Theme.box, Theme.mt10]}>
+                                    <TouchableOpacity style={styles.fundlistHd} activeOpacity={0.5}
+                                        onPress={() => {
+                                            navigation.navigate('Detail', { id: item.id_dlp, platName: item.plat_name })
+                                        }}
+                                    >
+                                        <View style={styles.fundlistHdLeft}>
+                                            <Icon name={'fund-icon'} size={17} color={Theme['fund' + type + 'Color']} />
+                                            <Text style={styles.platnameText}>{item.plat_name}</Text>
+                                        </View>
+                                        <View style={styles.fundlistHdLeft}>
+                                            <Icon name={'triangle-right22'} size={12} color={'#bbb'} />
+                                        </View>
+                                    </TouchableOpacity>
+                                    <View style={styles.fundlistBd}>
+                                        <View style={styles.fundlistBdHd}>
+                                            <Text style={[styles.listIc1, styles.listHdText]}>[在投项目]</Text>
+                                            <Text style={[styles.listIc2, styles.listHdText]}>[投资额]</Text>
+                                            <Text style={[styles.listIc3, styles.listHdText]}>[年化收益率]</Text>
+                                        </View>
                                         {
-                                            item.fund_reasons.split('<br />').map((list, z) => {
+                                            item.investlist.map((list, i) => {
                                                 return (
-                                                    <Text style={styles.fundlistReasonsText} key={z}>{list}</Text>
+                                                    <View style={styles.fundlistBdList} key={i}>
+                                                        <Text style={[styles.listIc1, styles.listXM]}>{list.name}</Text>
+                                                        <Text style={[styles.listIc2, styles.listTZE]}>{list.invest}万</Text>
+                                                        <Text style={[styles.listIc3, styles.listRate, , styles['listRate' + type]]}>{list.rate}%</Text>
+                                                    </View>
                                                 )
                                             })
                                         }
                                     </View>
-                                </View >
-                            </View>
-                        )
-                    })
-
+                                    <View style={styles.fundlistReasons}>
+                                        <Text style={styles.fundlistReasonsTitleText}>[投资理由]</Text>
+                                        <View style={styles.fundlistReasonsBox}>
+                                            {
+                                                item.fund_reasons.split('<br />').map((list, z) => {
+                                                    return (
+                                                        <Text style={styles.fundlistReasonsText} key={z}>{list}</Text>
+                                                    )
+                                                })
+                                            }
+                                        </View>
+                                    </View >
+                                </View>
+                            )
+                        })
+                        :
+                        null
                 }
             </ScrollView>
         )
@@ -223,7 +236,7 @@ const styles = StyleSheet.create({
         color: '#707070'
     },
     echart: {
-        backgroundColor:'#fff',
+        backgroundColor: '#fff',
         paddingBottom: 20,
         justifyContent: 'center',
         alignItems: 'center',
@@ -331,6 +344,11 @@ const styles = StyleSheet.create({
         lineHeight: 18,
         fontSize: 12,
         color: '#A1A1A1'
+    },
+    null:{
+        paddingTop:15,
+        color:'#bbb',
+        fontSize:12,
     },
 
 })

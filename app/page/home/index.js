@@ -14,6 +14,7 @@ import Pingce from './pingce';
 import Yulun from './yulun';
 import Comment from './comment';
 import Report from './report';
+import Mianze from '../mianze';
 
 export default class HomeScreen extends React.Component {
     constructor(props) {
@@ -70,6 +71,7 @@ export default class HomeScreen extends React.Component {
                                     :
                                     null
                                 }
+                                <Mianze />
                             </ScrollView>
                     }
                 </View>

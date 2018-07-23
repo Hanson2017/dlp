@@ -306,7 +306,7 @@ export default class DetailPingji extends React.Component {
                                 <View style={styles.listHeader}>
                                     <Text style={styles.name}>贷罗盘指数</Text>
                                     {
-                                        dlp !== null && platInfo.platstatus == 1 ?
+                                        dlp !== null && platInfo.platstatus == 1 && dlp.totalNum>0 ?
                                             <View style={styles.listHeaderCon}>
                                                 <Text style={styles.score}>{dlp.score}</Text>
                                                 <Text style={styles.totalNum}>统计{dlp.totalNum}家平台中排名</Text>

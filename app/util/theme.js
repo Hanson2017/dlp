@@ -22,7 +22,6 @@ module.exports = {
     },
     box:{
         backgroundColor: '#fff',
-        borderBottomColor:'#ddd',
     },
     flexDrow: {
         flexDirection: 'row',

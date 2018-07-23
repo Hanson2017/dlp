@@ -43,7 +43,7 @@ export default class Zonglan extends React.Component {
                         />
                     }
                 >
-                    <Top data={{
+                    <Top navigation={navigation} data={{
                         platName: platInfo.platName,
                         fundType: dataSource.fund == null ? null : dataSource.fund.fund_type,
                         uptime: dataSource.uptime,

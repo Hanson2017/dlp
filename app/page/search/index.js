@@ -28,10 +28,11 @@ export default class SearchScreen extends React.Component {
                 searchDemoList += '"' + this.state.searchDemoList[index].plat_name + '"'
             }
         }
-        var historys = historyKeyWords.reverse();
+        var historys = historyKeyWords;
         if (historys.length > 10) {
             historys = historys.slice(0, 10)
         }
+
         return (
             <SafeAreaView style={{ flex: 1, backgroundColor:Theme.color2 }}>
                 <View style={Theme.container}>
@@ -131,7 +132,7 @@ export default class SearchScreen extends React.Component {
                                 renderItem={this.renderItem.bind(this)}
                             />
                         </ScrollView>
-
+                                        
                     </View>
                 </View>
             </SafeAreaView>
@@ -154,6 +155,7 @@ export default class SearchScreen extends React.Component {
         )
     }
     componentDidMount() {
+       
         let that = this;
         this.getHotSearch();
         const { params } = this.props.navigation.state;
@@ -237,13 +239,12 @@ export default class SearchScreen extends React.Component {
             historyKeyWords.splice(index, 1)
         }
         keywords = historyKeyWords.concat({ id: id, platname: platname });
-        StorageLoginInfo.storageSaveKeyWord(keywords);
+        StorageLoginInfo.storageSaveKeyWord(keywords.reverse());
         DeviceEventEmitter.emit('storageSaveKeyWord', '存储历史记录')
     }
     clearHistory(index) {
-        let historyky = [];
-        historyky = historyKeyWords.splice(index, 1)
-        StorageLoginInfo.storageSaveKeyWord(historyky);
+        historyKeyWords.splice(index, 1)
+        StorageLoginInfo.storageSaveKeyWord(historyKeyWords);
         this.setState({
             ref: !this.state.ref
         })

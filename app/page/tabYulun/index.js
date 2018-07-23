@@ -10,6 +10,7 @@ import TabTop from '../../component/tabTop';
 import Pingce from './pingce';
 import Yulun from './yulun';
 import Comment from './comment';
+import Mianze from '../mianze';
 
 var data = [
     { title: '评测监控', iconName: 'nav-pingce', fontSize: 30, screenUrl: 'PingCe', tabId: null },
@@ -51,6 +52,7 @@ export default class YulunTab extends React.Component {
                                     <Pingce navigation={navigation} data={dataSource.mplist} />
                                     <Yulun navigation={navigation} data={dataSource.sentlist} />
                                     <Comment navigation={navigation} data={dataSource.commentlist} />
+                                    <Mianze />
                                 </ScrollView>
                         }
                     </View>

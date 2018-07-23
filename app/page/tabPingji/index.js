@@ -7,6 +7,7 @@ import Header from '../../component/navBar';
 import Loading from '../../component/loading';
 import TabTop from '../../component/tabTop';
 import Title from '../../component/title';
+import Mianze from '../mianze';
 
 
 var data = [
@@ -142,7 +143,7 @@ export default class PingjiTab extends React.Component {
                                             }
                                         </View>
                                     </View>
-
+                                    <Mianze />
                                 </ScrollView>
                         }
                     </View>

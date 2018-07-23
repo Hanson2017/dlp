@@ -31,6 +31,7 @@ import About from '../page/about';
 import FriendsShare from '../page/friendsShare';
 import Search from '../page/search';
 import Detail from '../page/detail';
+import DetailFumian from '../page/detail/fumian';
 import DetailFund from '../page/detail/fund';
 import CommentForm from '../page/detail/yuqing/comments/form';
 import PingCeCommentForm from '../page/pingCe/comments/footForm/index'
@@ -113,7 +114,7 @@ const AppDlp = StackNavigator({
     HelpDetail: {
         screen: HelpDetail
     },
-    About:{
+    About: {
         screen: About
     },
     FriendsShare: {
@@ -125,6 +126,9 @@ const AppDlp = StackNavigator({
     Detail: {
         screen: Detail
     },
+    DetailFumian: {
+        screen: DetailFumian
+    },
     DetailFund: {
         screen: DetailFund
     },
@@ -134,11 +138,11 @@ const AppDlp = StackNavigator({
     PingCeCommentForm: {
         screen: PingCeCommentForm
     },
-    
+
     Login: {
         screen: Login
     },
-   
+
 }, {
         headerMode: 'none'
     })

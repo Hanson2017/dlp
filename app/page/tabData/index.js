@@ -9,6 +9,7 @@ import TabTop from '../../component/tabTop';
 import Data from './data';
 import Query from './query';
 import Report from './report';
+import Mianze from '../mianze';
 
 var data = [
     { title: '数据详情', iconName: 'nav-data', fontSize: 24, screenUrl: 'Data', tabId: null },
@@ -52,6 +53,7 @@ export default class DataTab extends React.Component {
                                     <Data navigation={navigation} data={dataSource.datalist} />
                                     <Query navigation={navigation} />
                                     <Report navigation={navigation} data={dataSource.reportslist} />
+                                    <Mianze />
                                 </ScrollView>
                         }
                     </View>

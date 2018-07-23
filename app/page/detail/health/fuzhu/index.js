@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, View, ScrollView ,TouchableOpacity} from 'react-native';
+import { Text, StyleSheet, View, ScrollView, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Icomoon';
 import Echarts from 'native-echarts';
 import Theme from '../../../../util/theme';
@@ -23,8 +23,7 @@ export default class DetailHealthFuzhu extends React.Component {
         return color;
     }
     render() {
-
-        let data = this.props.data;
+        const { data, navigation } = this.props;
 
         if (data.listdata != null && data.listdata.length > 0) {
             var dateTimeAll = [] //时间列表
@@ -342,12 +341,11 @@ export default class DetailHealthFuzhu extends React.Component {
                                                 return (
                                                     <TouchableOpacity style={styles.fumianList}
                                                         onPress={() => {
-                                                            {
-                                                                list[1] ?
-                                                                    Util.Linked(list[1])
-                                                                    :
-                                                                    null
-                                                            }
+                                                            list[1] ?
+                                                                navigation.navigate('DetailFumian', { url: list[1] })
+                                                                :
+                                                                null
+
                                                         }}
                                                     >
                                                         <Text style={styles.fumianListText}>{list[0]}</Text>
@@ -457,16 +455,16 @@ const styles = StyleSheet.create({
         color: '#bbb',
         lineHeight: 18,
     },
-    fumianBox:{
-        paddingTop:15,
-        paddingBottom:15,
+    fumianBox: {
+        paddingTop: 15,
+        paddingBottom: 15,
     },
     fumianListText: {
-        paddingTop:6,
-        paddingBottom:6,
+        paddingTop: 6,
+        paddingBottom: 6,
         fontSize: 12,
         color: '#707070',
-        textDecorationLine:'underline',
+        textDecorationLine: 'underline',
     },
     fumianNull: {
         fontSize: 12,
