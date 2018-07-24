@@ -9,7 +9,7 @@ import DashLine from '../../../../component/dashLine';
 export default class ZonglanTop extends React.Component {
 
     render() {
-        const { data ,navigation} = this.props;
+        const { data ,navigation,thatt} = this.props;
         return (
             <View style={[Theme.box, styles.container]}>
                 <View style={styles.platInfo}>
@@ -31,26 +31,9 @@ export default class ZonglanTop extends React.Component {
                         <TouchableOpacity
                             style={styles.siteurl}
                             onPress={() => {
-                                Alert.alert(
-                                    '',
-                                    '即将前往平台官网',
-                                    [
-                                        { text: '稍后' },
-                                        {
-                                            text: '前往', onPress: () => {
-                                                if (data.acurl != null && data.acurl != '') {
-                                                    // navigation.navigate('DetailFumian', { url: data.acurl }) 
-                                                    Util.Linked(data.acurl)
-                                                }
-                                                else {
-                                                    // navigation.navigate('DetailFumian', { url: 'http://' + data.siteurl }) 
-                                                    Util.Linked('http://' + data.siteurl)
-                                                }
-                                            }
-                                        },
-                                    ]
-                                )
-
+                                thatt.setState({
+                                    isHiddenMianze: false,
+                                })
                             }}
                         >
                             <Text style={[styles.platInfoLeftText]}>官方网站：<Text style={styles.siteurlText}>{data.siteurl}</Text></Text>

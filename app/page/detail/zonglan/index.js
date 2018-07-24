@@ -26,7 +26,7 @@ export default class Zonglan extends React.Component {
         };
     }
     render() {
-        const { platInfo, dataInfo, navigation } = this.props;
+        const { platInfo, dataInfo, navigation,thatt } = this.props;
         const { loading, dataSource } = this.state;
         if (loading) {
             return (
@@ -43,7 +43,7 @@ export default class Zonglan extends React.Component {
                         />
                     }
                 >
-                    <Top navigation={navigation} data={{
+                    <Top navigation={navigation} thatt={thatt} data={{
                         platName: platInfo.platName,
                         fundType: dataSource.fund == null ? null : dataSource.fund.fund_type,
                         uptime: dataSource.uptime,
@@ -54,7 +54,8 @@ export default class Zonglan extends React.Component {
                         sentcount: dataSource.sentcount,
                         platinfo: dataSource.platinfo,
                         flmllist: dataSource.flmllist,
-                        dataInfo: dataInfo
+                        dataInfo: dataInfo,
+                        
                     }} />
                     {
                         versionStatus != 1 && platInfo.platstatus == 1 && dataSource.fund !== null ?

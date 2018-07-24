@@ -22,6 +22,7 @@ import Yuqing from './yuqing/index';
 import Activity from './activity/index';
 import Info from './info';
 import Menu from './foot/menu';
+import Mianze from './mianze';
 
 
 export default class DetailScreen extends React.Component {
@@ -34,6 +35,7 @@ export default class DetailScreen extends React.Component {
             noBack: true,
             footNot: 0,
             menuHide: true,
+            isHiddenMianze: true,
         };
     }
     isFootNot(index) {
@@ -48,7 +50,7 @@ export default class DetailScreen extends React.Component {
     }
     render() {
         const { navigation } = this.props;
-        const { tabNames, dataInfo, noBack, menuHide } = this.state;
+        const { tabNames, dataInfo, noBack, menuHide,isHiddenMianze } = this.state;
         const { params } = navigation.state;
         return (
             <SafeAreaView style={{ flex: 1, backgroundColor: '#1A1A1A' }}>
@@ -90,7 +92,7 @@ export default class DetailScreen extends React.Component {
                                     }}
                                 >
                                     <View style={styles.content} tabLabel='key0'>
-                                        <All platInfo={{ id: params.id, platName: params.platName, platstatus: dataInfo.platstatus }} dataInfo={dataInfo} navigation={navigation} />
+                                        <All platInfo={{ id: params.id, platName: params.platName, platstatus: dataInfo.platstatus }} dataInfo={dataInfo} navigation={navigation} thatt={this} />
                                     </View>
                                     <View style={styles.content} tabLabel='key1'>
                                         <Pingji platInfo={{ id: params.id, platName: params.platName, platstatus: dataInfo.platstatus }} />
@@ -122,7 +124,15 @@ export default class DetailScreen extends React.Component {
                         }
 
                     </View>
-
+                    {
+                        isHiddenMianze ?
+                            null
+                            :
+                            this.state.loading?
+                                null
+                                : 
+                                <Mianze siteUrl={dataInfo.acurl != '' && dataInfo.acurl != null ?dataInfo.acurl: 'http://' + dataInfo.siteurl} that={this} />
+                    }        
                     {
                         this.state.footNot == 'null' ?
                             null
@@ -189,7 +199,9 @@ export default class DetailScreen extends React.Component {
             .then((response) => {
                 if (response.ok) {
                     response.json()
+                      
                         .then((responseData) => {
+                            console.log(responseData)
                             that.setState({
                                 dataInfo: responseData,
                                 loading: false
