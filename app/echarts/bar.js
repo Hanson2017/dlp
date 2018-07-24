@@ -136,6 +136,80 @@ module.exports = {
 
         };
         return option;
+    },
+    // 主要给总览资金流
+    bar3(title,name, xdata, data, x) {
+        /**/
+        var option = {
+            
+            tooltip: {},
+            calculable: true,
+            grid: {
+                borderWidth: 0,
+                x: 1,
+                x2: 20,
+                y: 5,
+                y2: 2
+            },
+            xAxis: [
+                {
+                    type: 'category',
+                    axisLabel: {
+                        rotate: 30,
+                        textStyle: {
+                            color: '#777'
+                        }
+                    },
+                    axisLine: {
+                        show: true,
+
+                        lineStyle: {
+                            color: '#a0cdfa',
+                            width: 1,
+                            type: 'solid'
+                        }
+
+                    },
+                    axisTick: {
+
+                        lineStyle: {
+                            color: '#ccc'
+                        }
+                    },
+                    data: xdata
+                }
+            ],
+            yAxis: [
+                {
+                    type: 'value',
+                    splitNumber: 3,
+                    axisLine: {
+                        show: true,
+                        lineStyle: {
+                            color: '#999',
+                            width: 1,
+                            type: 'solid'
+                        }
+
+                    }
+
+                }
+            ],
+            series: [
+                {
+                    name: name,
+                    type: 'bar',
+                    itemStyle: {
+                        normal: {
+                            color: '#a0cdfa'
+                        }
+                    },
+                    data: data
+                }
+            ]
+
+        };
+        return option;
     }
 
 

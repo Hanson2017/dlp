@@ -66,7 +66,7 @@ export default class Zonglan extends React.Component {
                     <Pingji data={dataSource.dataDetail} navigation={navigation} platInfo={platInfo} />
                     {
                         platInfo.platstatus == 1 ?
-                            <Health data={dataSource.healthDetail} dataDlp={dataSource.dataDetail.dlp} platstatus={platInfo.platstatus} navigation={navigation} />
+                            <Health data={dataSource.healthDetail} dataDlp={dataSource.dataDetail.dlp} listdata={dataSource.listdata} platstatus={platInfo.platstatus} navigation={navigation} />
                             :
                             null
                     }

@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { Text, StyleSheet, View, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Icomoon';
+import Echarts from 'native-echarts';
 import Theme from '../../../../util/theme';
 import Title from '../../../../component/title';
+import BarChart from '../../../../echarts/bar';
 
 class List extends React.Component {
     render() {
@@ -28,7 +30,7 @@ class List extends React.Component {
 
 export default class ZonglanHealth extends React.Component {
     render() {
-        const { navigation, data, dataDlp, platstatus } = this.props;
+        const { navigation, data, dataDlp, listdata, platstatus } = this.props;
 
         if (data != null && data != '') {
             var inamount = data.inamount; //资金流
@@ -39,6 +41,30 @@ export default class ZonglanHealth extends React.Component {
             var loyalty = data.loyalty; //忠诚度
             var growth = data.growth; //成长性
             var rate = data.rate; //收益率
+
+            if (inamount != '' && inamount != null) {
+                var color;
+                if (inamount.status == '强' || inamount.status == '偏强' || inamount.status == '极强') {
+                    color = '#39B54A';
+                }
+                else if (inamount.status == '偏若' || inamount.status == '正常') {
+                    color = '#FFA500';
+                }
+                else {
+                    color = '#ED1C24';
+                }
+            }
+
+
+        }
+        if (listdata != null && listdata.length > 0) {
+            var dateTimeAll = [] //时间列表
+            var dataInamount = []   //资金流
+            for (var i = 0; i < listdata.length; i++) {
+                dateTimeAll.push(listdata[i].date_str.substring(5));
+                dataInamount.push(listdata[i].inamount)
+            }
+
         }
 
 
@@ -79,10 +105,24 @@ export default class ZonglanHealth extends React.Component {
                                         :
                                         <Text style={styles.nullData}>暂无</Text>
                                 }
+                                {
+                                    listdata != null && listdata.length > 0 ?
+                                        <View style={styles.zijinliuContainer}>
+                                            <View style={styles.zijinliuLeft}>
+                                                <Icon name={'zb-zijin'} size={77} color={color} />
+                                                <Text style={styles.listItemText}>资金流 <Text style={{ color: color }}> {inamount.status}</Text></Text>
+                                            </View>
+                                            <View style={styles.zijinliuRight}>
+                                                <Echarts option={BarChart.bar3('资金流(万元)', '资金流', dateTimeAll, dataInamount, 52)} height={96} />
+                                            </View>
+                                        </View>
 
+                                        :
+                                        null
+                                }
 
                                 <View style={styles.body}>
-                                    <List data={inamount} iconName={'zb-zijin'} title={'资金流'} />
+                                    {/* <List data={inamount} iconName={'zb-zijin'} title={'资金流'} /> */}
                                     <List data={mobility} iconName={'zb-liudong'} title={'流动性'} />
                                     <List data={dispersion} iconName={'zb-fenshan'} title={'分散度'} />
                                     <List data={popularity} iconName={'zb-renqi'} title={'人气'} />
@@ -130,6 +170,8 @@ const styles = StyleSheet.create({
         paddingBottom: 15,
     },
     top: {
+        marginLeft:10,
+        marginRight:10,
         marginBottom: 15,
         paddingTop: 20,
         paddingLeft: 17,
@@ -167,6 +209,8 @@ const styles = StyleSheet.create({
         fontSize: 12,
     },
     body: {
+        paddingLeft:10,
+        paddingRight:10,
         flexDirection: 'row',
         flexWrap: 'wrap',
     },
@@ -174,12 +218,29 @@ const styles = StyleSheet.create({
         paddingBottom: 15,
         justifyContent: 'center',
         alignItems: 'center',
-        width: Theme.screenWidth / 4,
+        width: (Theme.screenWidth-20) / 4,
     },
     listItemText: {
         paddingTop: 5,
         fontSize: 12,
         color: '#999',
+    },
+    zijinliuContainer:{
+        marginLeft:10,
+        marginRight:10,
+        marginBottom:15,
+        paddingBottom:15,
+        borderBottomWidth: 1,
+        borderBottomColor: '#eee',
+        flexDirection: 'row',
+    },
+    zijinliuLeft:{
+        marginRight:10,
+        width: (Theme.screenWidth-20) / 4,
+        alignItems: 'center',
+    },
+    zijinliuRight:{
+        flex:1,
     },
     null: {
         padding: 17,

@@ -168,7 +168,7 @@ module.exports = {
             })
     },
     getDataDetail(that, type, id) {
-        let url = Api['detail'] + '?type=' + type + '&id_dlp=' + id+'&d'
+        let url = Api['detail'] + '?type=' + type + '&id_dlp=' + id;
         console.log(url)
         fetch(url)
             .then((response) => {

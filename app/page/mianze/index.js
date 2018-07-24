@@ -7,7 +7,7 @@ export default class MianzeTab extends React.Component {
     render() {
         return (
             <View style={[styles.container,Theme.box,Theme.mt10]}>
-                <View style={styles.title}><Text style={styles.titleText}>※风险提示及免责声明※</Text></View>
+                <View style={styles.title}><Text style={styles.titleText}>风险提示及免责声明</Text></View>
                 <View style={styles.content}>
                     <Text style={styles.text}>1、贷罗盘仅为信息提供平台，贷罗盘不参与用户在任何网贷平台出借交易的过程，也不接受、不触碰、不吸纳任何用户的出借资金。</Text>
                     <Text style={styles.text}>2、贷罗盘仅提供各网贷平台的信息，不构成对任何网贷平台的安全性的评价或出借建议。任何平台都存在不同程度的出借风险，用户应自行、谨慎评估各平台的风险，自行决策是否出借，并自行承担全部风险。</Text>
