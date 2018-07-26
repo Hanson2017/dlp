@@ -9,7 +9,7 @@ import Theme from '../../../util/theme';
 import Loading from '../../../component/loading';
 import Header from '../../../component/navBar';
 
-import Item from '../../../page/comment/item';
+import Item from '../../../page/comment/item/index2';
 
 import stylesList from '../../../css/listData';
 
@@ -98,7 +98,7 @@ export default class CommentsList extends React.Component {
     renderItemL({ item, index }) {
         let navigation = this.props.navigation;
         return (
-            <Item data={item} navigation={navigation} />
+            <Item data={item} navigation={navigation} leftNo={true} />
         )
     }
     ListFooterComponent() {
