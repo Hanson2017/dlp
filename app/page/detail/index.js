@@ -74,7 +74,7 @@ export default class DetailScreen extends React.Component {
                                         dataInfo.negative_time == null ?
                                             <Text style={styles.stateNormal}>状态：正常运营  |  更新：{dataInfo.updatetime}</Text>
                                             :
-                                            <Text style={styles.stateZhengyi}><Text style={styles.bold}>争议中，需谨慎</Text>  |  更新：{dataInfo.updatetime}</Text>
+                                            <Text style={styles.stateZhengyi}><Text style={styles.bold}>争议中，需特别谨慎</Text>  |  更新：{dataInfo.updatetime}</Text>
                                 }
                             </View>
                     }
