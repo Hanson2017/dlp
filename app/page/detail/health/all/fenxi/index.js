@@ -11,7 +11,7 @@ class List extends React.Component {
         if (data.status == '强' || data.status == '偏强' || data.status == '极强') {
             color = '#39B54A';
         }
-        else if (data.status == '偏若' || data.status == '正常') {
+        else if (data.status == '偏弱' || data.status == '正常') {
             color = '#FFA500';
         }
         else {
@@ -53,8 +53,8 @@ export default class DetailHealthAllFenxi extends React.Component {
                                 <List data={dispersion} iconName={'zb-fenshan'} title={'分散度'} />
                                 <List data={popularity} iconName={'zb-renqi'} title={'人气'} />
                                 <List data={stayStill} iconName={'zb-tiliang'} title={'体量'} />
-                                <List data={loyalty} iconName={'zb-chengzhang'} title={'忠诚度'} />
-                                <List data={growth} iconName={'zb-zhongchengdu'} title={'成长性'} />
+                                <List data={loyalty} iconName={'zb-zhongchengdu'} title={'忠诚度'} />
+                                <List data={growth} iconName={'zb-chengzhang'} title={'成长性'} />
                                 <List data={rate} iconName={'zb-shouyi'} title={'收益率'} />
                             </View>
                         </View>
