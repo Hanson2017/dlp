@@ -53,8 +53,8 @@ export default class DetailHealthAllFenxi extends React.Component {
                                 <List data={dispersion} iconName={'zb-fenshan'} title={'分散度'} />
                                 <List data={popularity} iconName={'zb-renqi'} title={'人气'} />
                                 <List data={stayStill} iconName={'zb-tiliang'} title={'体量'} />
-                                <List data={loyalty} iconName={'zb-chengzhang'} title={'忠诚度'} />
-                                <List data={growth} iconName={'zb-zhongchengdu'} title={'成长性'} />
+                                <List data={loyalty} iconName={'zb-zhongchengdu'} title={'忠诚度'} />
+                                <List data={growth} iconName={'zb-chengzhang'} title={'成长性'} />
                                 <List data={rate} iconName={'zb-shouyi'} title={'收益率'} />
                             </View>
                         </View>
