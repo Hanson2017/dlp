@@ -74,7 +74,7 @@ export default class ZonglanHealth extends React.Component {
                 <Title data={'健康度'} navigation={navigation} />
                 {
                     platstatus == 1 ?
-                        dataDlp !== null ?
+                        dataDlp !== null && data !== null ?
                             <View style={styles.content}>
                                 {
                                     dataDlp.ordernum > 0 ?

@@ -26,14 +26,14 @@ module.exports = {
                         }
 
                     </View>
-                    <Text style={[stylesList.CABB7C4, { width: (Theme.screenWidth - 150) * 0.29 }]}>{item.inamount}</Text>
-                    <Text style={[stylesList.CABB7C4, { width: (Theme.screenWidth - 150) * 0.29 }]}>{item.dispersion}</Text>
-                    <Text style={[stylesList.CABB7C4, { width: 80 }]}>{item.mobility}</Text>
-                    <Text style={[stylesList.CABB7C4, { width: 80 }]}>{item.rate_d}</Text>
-                    <Text style={[stylesList.CABB7C4, { width: 80 }]}>{item.popularity}</Text>
-                    <Text style={[stylesList.CABB7C4, { width: 80 }]}>{item.stayStill}</Text>
-                    <Text style={[stylesList.CABB7C4, { width: 80 }]}>{item.loyalty}</Text>
-                    <Text style={[stylesList.CABB7C4, { width: 80 }]}>{item.growth}</Text>
+                    <Text style={[stylesList.CABB7C4, { width: (Theme.screenWidth - 150) * 0.29 }]}>{item.hasdata !== 0 ?item.inamount:'暂无'}</Text>
+                    <Text style={[stylesList.CABB7C4, { width: (Theme.screenWidth - 150) * 0.29 }]}>{item.hasdata !== 0 ?item.dispersion:'暂无'}</Text>
+                    <Text style={[stylesList.CABB7C4, { width: 80 }]}>{item.hasdata !== 0 ?item.mobility:'暂无'}</Text>
+                    <Text style={[stylesList.CABB7C4, { width: 80 }]}>{item.hasdata !== 0 ?item.rate_d:'暂无'}</Text>
+                    <Text style={[stylesList.CABB7C4, { width: 80 }]}>{item.hasdata !== 0 ?item.popularity:'暂无'}</Text>
+                    <Text style={[stylesList.CABB7C4, { width: 80 }]}>{item.hasdata !== 0 ?item.stayStill:'暂无'}</Text>
+                    <Text style={[stylesList.CABB7C4, { width: 80 }]}>{item.hasdata !== 0 ?item.loyalty:'暂无'}</Text>
+                    <Text style={[stylesList.CABB7C4, { width: 80 }]}>{item.hasdata !== 0 ?item.growth:'暂无'}</Text>
                 </TouchableOpacity>
             </View>
         )

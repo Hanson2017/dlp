@@ -336,16 +336,22 @@ export default class DetailPingji extends React.Component {
                                                 <Icon name={dlp.changnum >= 0 ? 'up' : 'down'} size={11} color={dlp.changnum >= 0 ? Theme.upColor : Theme.downColor} />
                                                 <Text style={[styles.bijiaoText, dlp.changnum >= 0 ? { color: Theme.upColor } : { color: Theme.downColor }]}> {dlp.changnum >= 0 ? dlp.changnum : -dlp.changnum}%</Text>
                                             </View>
-                                            <View style={styles.info}>
-                                                <Text style={styles.infoText}>资金流：{dlp.inamount}</Text>
-                                                <Text style={styles.infoText}>人    气：{dlp.popularity}</Text>
-                                                <Text style={styles.infoText}>收益率：{dlp.rate}</Text>
-                                                <Text style={styles.infoText}>流动性：{dlp.mobility}</Text>
-                                                <Text style={styles.infoText}>分散度：{dlp.dispersion}</Text>
-                                                <Text style={styles.infoText}>忠诚度：{dlp.loyalty}</Text>
-                                                <Text style={styles.infoText}>体    量：{dlp.stayStill}</Text>
-                                                <Text style={styles.infoText}>成长性：{dlp.growth}</Text>
-                                            </View>
+                                            {
+                                                dlp.hasdata !== 0?
+                                                <View style={styles.info}>
+                                                    <Text style={styles.infoText}>资金流：{dlp.inamount}</Text>
+                                                    <Text style={styles.infoText}>人    气：{dlp.popularity}</Text>
+                                                    <Text style={styles.infoText}>收益率：{dlp.rate}</Text>
+                                                    <Text style={styles.infoText}>流动性：{dlp.mobility}</Text>
+                                                    <Text style={styles.infoText}>分散度：{dlp.dispersion}</Text>
+                                                    <Text style={styles.infoText}>忠诚度：{dlp.loyalty}</Text>
+                                                    <Text style={styles.infoText}>体    量：{dlp.stayStill}</Text>
+                                                    <Text style={styles.infoText}>成长性：{dlp.growth}</Text>
+                                                </View>
+                                                :
+                                                null
+                                            }
+                                            
                                             <View style={styles.echartContainer}>
                                                 <Echarts option={LineChart.line1('贷罗盘指数', '贷罗盘指数', echartDataTimeDlp, echartDataDlp)} height={160} />
 
