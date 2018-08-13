@@ -26,7 +26,7 @@ module.exports = {
                     <Text style={[stylesList.CABB7C4, { width: 80 }]}>{item.level_r360 != null ? item.level_r360 : '暂无'}</Text>
                     <Text style={[stylesList.CABB7C4, { width: 80 }]}>{item.score_yifei != '' ? item.score_yifei : '暂无'}</Text>
                     <Text style={[stylesList.CABB7C4, { width: 60 }]}>{item.level_yuanwang != '' ? item.level_yuanwang : '暂无'}</Text>
-                    <Text style={[stylesList.CABB7C4, { width: 80 }]}>{item.level_xinghuo != null ? item.level_xinghuo : '暂无'}</Text>
+                    
                 </TouchableOpacity>
             </View>
         )
@@ -41,7 +41,7 @@ module.exports = {
            
             { title: '羿飞' },
             { title: '远望' ,width:60},
-            { title: '星火' },
+           
         ]
         return (
             <View style={stylesList.headerRow}>

@@ -13,7 +13,7 @@ export default class ReportsList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            tabNames: ['汇总', '之家', '天眼', '贷罗盘', '融360', '星火', '羿飞', '其他']
+            tabNames: ['汇总', '之家', '天眼', '贷罗盘', '融360', '羿飞', '其他']
         };
     }
     render() {
@@ -42,9 +42,7 @@ export default class ReportsList extends React.Component {
                             <View style={styles.content} tabLabel='key5'>
                                 <List navigation={navigation} type={'rong360'} />
                             </View>
-                            <View style={styles.content} tabLabel='key6'>
-                                <List navigation={navigation} type={'xinghuo'} />
-                            </View>
+                           
                             <View style={styles.content} tabLabel='key7'>
                                 <List navigation={navigation} type={'yifei'} />
                             </View>

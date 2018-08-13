@@ -225,21 +225,7 @@ export default class Guanzhu extends React.Component {
                                     <Text style={styles.null}>暂无</Text>
                             }
                         </View>
-                        <View style={styles.paimingList}>
-                            <View style={styles.paimingLabel}>
-                                <Text style={[styles.paimingText]}>星火评级: </Text>
-                            </View>
-                            {
-                                item.xinghuo != null ?
-                                    <View style={{ flexDirection: 'row', }}>
-                                        <Text style={[styles.paimingText, styles.paimingNo]}>{item.xinghuo.ordernum}名</Text>
-                                        <Icon name={item.xinghuo.changenum > 0 ? 'up' : 'down'} size={10} color={item.xinghuo.changenum > 0 ? '#ff0063' : '#009963'} />
-                                        <Text style={styles.paimingText2}> (共{item.xinghuo.countnum}家)</Text>
-                                    </View>
-                                    :
-                                    <Text style={styles.null}>暂无</Text>
-                            }
-                        </View>
+                       
                         <View style={styles.paimingList}>
                             <View style={styles.paimingLabel}>
                                 <Text style={[styles.paimingText]}>羿飞: </Text>
