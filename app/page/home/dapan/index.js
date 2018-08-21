@@ -415,7 +415,7 @@ const styles = StyleSheet.create({
     biangengText:{
         paddingTop:5,
         paddingBottom:5,
-        fontSize:10,
+        fontSize:11,
        color:'#0096E6', 
     },
     biangengIconW:{

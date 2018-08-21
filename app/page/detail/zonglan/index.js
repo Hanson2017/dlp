@@ -14,6 +14,7 @@ import Yulun from './yulun';
 import Flow from './flow';
 import User from './user';
 import Gudong from './gudong';
+import GongshangBG from './gongshangBG';
 import Shouyiren from './shouyiren';
 
 export default class Zonglan extends React.Component {
@@ -76,6 +77,7 @@ export default class Zonglan extends React.Component {
                     <Yulun data={dataSource.sentlist} navigation={navigation} />
                     <Comment data={dataSource.commentlist} navigation={navigation} />
                     <Gudong data={dataSource.gudongxinxi} navigation={navigation} />
+                    <GongshangBG data={dataSource.gongshangbiangeng} navigation={navigation} />
                     <Shouyiren data={dataSource.shouyiren} navigation={navigation} />
                     
                     <Flow data={dataSource.flow} navigation={navigation} />

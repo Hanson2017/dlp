@@ -10,9 +10,13 @@ export default class GongshangbiangengList extends React.Component {
     render() {
         const { navigation } = this.props;
         return (
-            <SafeAreaView style={{ flex: 1, backgroundColor: Theme.color2 }}>
-                <View style={[Theme.container]}>
-                    <Header headerOpt={{ back: '争议', title: '工商变更监控' }} navigation={navigation} />
+            <SafeAreaView style={{ flex: 1, backgroundColor: '#1A1A1A' }}>
+                <StatusBar
+                    backgroundColor={'#1A1A1A'}
+                    barStyle="light-content"
+                />
+                <View style={[Theme.container, { backgroundColor: '#1A1A1A' }]}>
+                    <Header headerOpt={{ back: '工商变更监控', title: '工商变更监控' }} navigation={navigation} black={true} />
                     <View style={styles.content}>
                         <List
                             navigation={navigation}
@@ -30,7 +34,7 @@ export default class GongshangbiangengList extends React.Component {
 
 const styles = StyleSheet.create({
     content: {
-        paddingTop:5,
+        paddingTop: 5,
         flex: 1,
         backgroundColor: '#fff',
     }
