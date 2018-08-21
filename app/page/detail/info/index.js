@@ -31,7 +31,7 @@ export default class DetailInfo extends React.Component {
                             renderTabBar={() => <TabBar tabNames={tabNames} />}
                         >
                             <View style={styles.content} tabLabel='key1'>
-                                <Gudong data={dataSource.dataDetail} />
+                                <Gudong data={dataSource.dataDetail} navigation={navigation} />
 
                             </View>
                             <View tabLabel='key2'>

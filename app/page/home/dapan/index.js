@@ -3,6 +3,7 @@ import { Text, StyleSheet, View, Image, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Icomoon';
 import Echarts from 'native-echarts';
 import Theme from '../../../util/theme';
+import Util from '../../../util/util';
 import Title from '../../../component/title';
 import PieEcharts from '../../../echarts/pie';
 
@@ -15,7 +16,7 @@ class List extends React.Component {
                 <View style={styles.listCon}>
                     <Icon name={data.preday.change} size={10} color={data.preday.change == 'up' ? Theme.upColor : Theme.downColor} />
                     <Text style={styles.listNum}>{data.valuenum}</Text>
-           
+
                 </View>
             </View>
         )
@@ -40,7 +41,6 @@ export default class Dapan extends React.Component {
         for (let i = 0; i < echartsDataList.length; i++) {
             echartsData.push({ value: echartsDataList[i].date_snum, name: echartsDataList[i].platname })
         }
-
         return (
             <View style={[styles.container, Theme.box, Theme.mt10]}>
                 <Title data={'行业动态'} />
@@ -145,7 +145,46 @@ export default class Dapan extends React.Component {
                                         >
                                             <Text style={styles.newBlackPlatText} numberOfLines={1}>{item.plat_name}</Text>
                                         </TouchableOpacity>
+                                        
                                         <Text style={styles.newBlackDateText}>{item.platback}</Text>
+                                    </View>
+                                )
+                            })
+                        }
+                    </View>
+                </View>
+                <View style={styles.newBlackContainer}>
+                    <View style={styles.newBlackTitle}>
+                        <View style={styles.newBlackTitleLeft}>
+                            <View style={styles.biangengIconW}>
+                                <View style={styles.biangengIconN}>
+                                    <Icon name={'ico-collectionAl'} size={9} color={'#025faa'} />
+                                </View>
+                            </View>
+
+                            <Text style={styles.newBlackTitleLeftText}>最新工商变更</Text>
+                        </View>
+                        <TouchableOpacity style={styles.newBlackTitleRight}
+                            onPress={() => { navigation.navigate('GongshangBG') }}
+                        >
+                            <Text style={styles.moreText}>查看更多</Text>
+                            <Icon name={'triangle-right22'} size={14} color={'#bbb'} />
+                        </TouchableOpacity>
+                    </View>
+                    <View style={styles.newBlackCon}>
+                        {
+                            data.gongshang.map((item, i) => {
+                                return (
+                                    <View style={styles.biangengItem} key={i}>
+                                        <TouchableOpacity style={styles.newBlackPlat}
+                                            onPress={() => {
+                                                navigation.navigate('Detail', { id: item.id_dlp, platName: item.plat_name })
+                                            }}
+                                        >
+                                            <Text style={styles.newBlackPlatText} numberOfLines={1}>{item.plat_name}</Text>
+                                        </TouchableOpacity>
+                                        <Text style={styles.biangengText}>[{item.type}]</Text>
+                                        <Text style={styles.biangengDateText}>{Util.formatDate3(item.updatetime)}</Text>
                                     </View>
                                 )
                             })
@@ -258,7 +297,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 14,
         color: '#666',
-        width: (Theme.screenWidth - 35) / 4-20,
+        width: (Theme.screenWidth - 35) / 4 - 20,
     },
     listChangenum: {
         fontSize: 10,
@@ -349,11 +388,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginBottom: 10,
     },
+
     newBlackPlat: {
         marginRight: 5,
         width: 65,
         height: 20,
-        borderRadius:4,
+        borderRadius: 4,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#F5F5F5',
@@ -363,9 +403,39 @@ const styles = StyleSheet.create({
         color: '#666',
     },
     newBlackDateText: {
-        width:34,
+        width: 34,
         fontSize: 11,
         color: '#bbb',
     },
 
+    biangengItem:{
+        marginBottom:10,
+        width:(Theme.screenWidth-34)/3,
+    },
+    biangengText:{
+        paddingTop:5,
+        paddingBottom:5,
+        fontSize:10,
+       color:'#0096E6', 
+    },
+    biangengIconW:{
+        width:16,
+        height:16,
+        backgroundColor:'#025faa',
+        borderRadius:6,
+        justifyContent:'center',
+        alignItems:'center',
+    },
+    biangengIconN:{
+        width:11,
+        height:11,
+        backgroundColor:'#fff',
+        borderRadius:5,
+        justifyContent:'center',
+        alignItems:'center', 
+    },
+    biangengDateText:{
+        fontSize:11,
+        color:'#999',
+    },
 })

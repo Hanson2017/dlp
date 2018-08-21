@@ -53,7 +53,7 @@ export default class HomeScreen extends React.Component {
                             >
                                 <Num data={dataSource.homenum} navigation={navigation} />
                                 <Nav navigation={navigation} />
-                                <Dapan navigation={navigation}  data={{ inamount: dataSource.inamount, markent: dataSource.markent,echartYulun:dataSource.sentviewlist,numYulun:dataSource.sentday,newBlack:dataSource.reblacklist,newZhengyi:dataSource.rezhengyilist }} />
+                                <Dapan navigation={navigation}  data={{ inamount: dataSource.inamount, markent: dataSource.markent,echartYulun:dataSource.sentviewlist,numYulun:dataSource.sentday,newBlack:dataSource.reblacklist,newZhengyi:dataSource.rezhengyilist,gongshang:dataSource.gongshanglist }} />
                                 
                                 <Pingce data={dataSource.mplisttop} navigation={navigation} />
                                 <Yulun data={{list:dataSource.sentlist,echart:dataSource.sentviewlist,num:dataSource.sentday}} navigation={navigation} />

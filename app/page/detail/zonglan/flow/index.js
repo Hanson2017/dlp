@@ -22,7 +22,7 @@ export default class ZonglanFlow extends React.Component {
                                     <View style={[styles.topList,{marginTop:6,}]}>
                                         <Text style={[styles.topText,styles.topTextBj]}>较上月</Text>
                                         <Icon name={data.changnum >=0 ?'up':'down'} size={11} color={data.changnum >= 0 ? Theme.upColor : Theme.downColor} />
-                                        <Text style={styles.topText}>4.31%</Text>
+                                        <Text style={styles.topText}>{Math.abs(data.changnum)}%</Text>
                                     </View>
 
                                 </View>

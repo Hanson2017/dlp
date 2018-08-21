@@ -11,13 +11,36 @@ module.exports = {
         var year = date.getFullYear()
         var month = date.getMonth() + 1
         var day = date.getDate()
+        if(month<10){
+            month='0'+month;
+        }
+        if(day<10){
+            day='0'+day;
+        }
         return year + '/' + month + '/' + day
     },
     setDate2(date) {
         var year = date.getFullYear()
         var month = date.getMonth() + 1
         var day = date.getDate()
+        if(month<10){
+            month='0'+month;
+        }
+        if(day<10){
+            day='0'+day;
+        }
         return year + '-' + month + '-' + day
+    },
+    setDate3(date) {
+        var month = date.getMonth() + 1
+        var day = date.getDate()
+        if(month<10){
+            month='0'+month;
+        }
+        if(day<10){
+            day='0'+day;
+        }
+        return month + '-' + day
     },
     formatDate(date) {
         let d = this.setDate(new Date(parseInt(date.replace("/Date(", "").replace(")/", ""))));
@@ -25,6 +48,10 @@ module.exports = {
     },
     formatDate2(date) {
         let d = this.setDate2(new Date(parseInt(date.replace("/Date(", "").replace(")/", ""))));
+        return d;
+    },
+    formatDate3(date) {
+        let d = this.setDate3(new Date(parseInt(date.replace("/Date(", "").replace(")/", ""))));
         return d;
     },
     cutText(str, word) {

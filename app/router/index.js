@@ -24,6 +24,7 @@ import FlmfList from '../page/activity';
 import Fund from '../page/fund';
 import Zhengyi from '../page/zhengyi';
 import Black from '../page/black';
+import GongshangBG from '../page/gongshangbiangeng';
 import Account from '../page/account';
 import Help from '../page/help';
 import HelpDetail from '../page/help/detail';
@@ -33,6 +34,7 @@ import Search from '../page/search';
 import Detail from '../page/detail';
 import DetailFumian from '../page/detail/fumian';
 import DetailFund from '../page/detail/fund';
+import DetailBiangeng from '../page/detail/info/gudong/biangengList';
 import CommentForm from '../page/detail/yuqing/comments/form';
 import PingCeCommentForm from '../page/pingCe/comments/footForm/index'
 
@@ -105,6 +107,9 @@ const AppDlp = StackNavigator({
     Black: {
         screen: Black
     },
+    GongshangBG: {
+        screen: GongshangBG
+    },
     Account: {
         screen: Account
     },
@@ -131,6 +136,9 @@ const AppDlp = StackNavigator({
     },
     DetailFund: {
         screen: DetailFund
+    },
+    DetailBiangeng: {
+        screen: DetailBiangeng
     },
     CommentForm: {
         screen: CommentForm

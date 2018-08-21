@@ -1,16 +1,40 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, View, ScrollView } from 'react-native';
+import { Text, StyleSheet, View, ScrollView, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Icomoon';
 import Theme from '../../../../util/theme';
+import Util from '../../../../util/util';
 import Title from '../../../../component/title';
 
 export default class Gudong extends React.Component {
-    render() {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isHidden: [],
+            ref: false
+        };
+    }
+    componentWillMount() {
         let data = this.props.data;
+        if (data != null) {
+            const biangeng = data.gongshangbiangeng;
+            const isHiddenNew = [];
+
+            for (let i = 0; i < biangeng.length; i++) {
+                isHiddenNew.push(true)
+            }
+            this.setState({
+                isHidden: isHiddenNew,
+            })
+        }
+    }
+    render() {
+        const { data, navigation } = this.props;
+        const { isHidden } = this.state;
         if (data != null) {
             var gudongxinxi = data.gudongxinxi;
             var gudongchengyuan = data.zhuyaorenyuan;
             var shouyiren = data.shouyiren;
+            var biangeng = data.gongshangbiangeng;
         }
 
         return (
@@ -38,13 +62,13 @@ export default class Gudong extends React.Component {
                                                                         null
                                                                 }
                                                             </View>
-                                                          
+
                                                             <View style={styles.gudongInfoBd}>
                                                                 <Text style={[styles.gudongInfoBdText, styles.gudongInfoBdTextBili]}>
                                                                     持股比例：
                                                                     <Text style={{ color: Theme.color, fontSize: 12, }}>{list.renjiaobili != '' ? list.renjiaobili : '--'}</Text>
                                                                 </Text>
-                                                                <Text style={[styles.gudongInfoBdText, styles.gudongInfoBdTextChuzi]}>认缴出资：{list.renjiao != '' ? list.renjiao +'万元': '--'}</Text>
+                                                                <Text style={[styles.gudongInfoBdText, styles.gudongInfoBdTextChuzi]}>认缴出资：{list.renjiao != '' ? list.renjiao + '万元' : '--'}</Text>
                                                                 {
                                                                     list.renjiaoshijian != '-' ?
                                                                         <Text style={styles.gudongInfoBdText}>{list.renjiaoshijian}</Text>
@@ -62,6 +86,84 @@ export default class Gudong extends React.Component {
                                         <Text style={styles.null2}>暂无股权信息</Text>
                                 }
                             </View>
+
+                            <View style={[Theme.box, Theme.mt10]}>
+                                <Title data={'变更记录'} navigation={navigation} screenUrlInfo={biangeng.length > 5 ? { screenUrl: 'DetailBiangeng', tabId: biangeng } : null} />
+                                {
+                                    biangeng.length > 0 ?
+                                        biangeng.map((item, i) => {
+                                            if (i < 5) {
+                                                return (
+                                                    <View style={styles.biangengBox} key={i}>
+                                                        <View style={styles.biangengBoxHd}>
+                                                            <View style={styles.biangengBoxHdLeft}>
+                                                                <Text style={styles.biangengNo}>[{i + 1}]</Text>
+                                                                <Text style={styles.biangengName}>{item.type == 'gudong' ? '股东变更' : '法定代表人变更'}</Text>
+                                                            </View>
+                                                            <View style={styles.biangengBoxHdRight}>
+                                                                <Text style={styles.biangengDate}>{Util.formatDate2(item.updatetime)}</Text>
+                                                                <TouchableOpacity onPress={() => {
+                                                                    isHidden[i] = !this.state.isHidden[i]
+                                                                    this.setState({
+                                                                        ref: !this.state.ref
+                                                                    })
+                                                                }}>
+                                                                    <Icon name={'triangleCircle-down'} size={22} color={'#bbb'} />
+                                                                </TouchableOpacity>
+                                                            </View>
+                                                        </View>
+                                                        {
+                                                            isHidden[i] ?
+                                                                null
+                                                                :
+                                                                <View style={styles.biangengBoxBd}>
+                                                                    <Text style={styles.biangengNote}>带有*标记的为法定代表人</Text>
+                                                                    <View style={styles.biangengBoxBdCon}>
+                                                                        <View style={styles.biangengBoxBdConL}>
+                                                                            <View style={styles.biangengBoxBdConHd}><Text style={styles.biangengBoxBdConHdText}>变更前</Text></View>
+                                                                            <View style={styles.biangengBoxBdConLBd}>
+                                                                                {
+                                                                                    item.detail_pre.length > 0 ?
+                                                                                        item.detail_pre.map((list, j) => {
+                                                                                            return (
+                                                                                                <Text style={[styles.biangengBoxBdConBdText, list.type !== 0 ? styles.red : null]} key={j}>{list.detail}{list.type !== 0 ? '[退出]' : null}</Text>
+                                                                                            )
+                                                                                        })
+                                                                                        :
+                                                                                        null
+                                                                                }
+                                                                            </View>
+                                                                        </View>
+                                                                        <View style={styles.biangengBoxBdConR}>
+                                                                            <View style={styles.biangengBoxBdConHd}><Text style={styles.biangengBoxBdConHdText}>变更后</Text></View>
+                                                                            <View style={styles.biangengBoxBdConRBd}>
+                                                                                {
+                                                                                    item.detail.length > 0 ?
+                                                                                        item.detail.map((list, j) => {
+                                                                                            return (
+                                                                                                <Text style={[styles.biangengBoxBdConBdText, list.type !== 0 ? styles.red : null]} key={j}>{list.detail}{list.type !== 0 ? '[新增]' : null}</Text>
+                                                                                            )
+                                                                                        })
+                                                                                        :
+                                                                                        null
+                                                                                }
+                                                                            </View>
+                                                                        </View>
+                                                                    </View>
+                                                                </View>
+                                                        }
+                                                    </View>
+                                                )
+                                            }
+
+                                        })
+                                        :
+                                        <Text style={styles.null2}>暂无变更信息</Text>
+                                }
+                            </View>
+
+
+
                             <View style={[Theme.box, Theme.mt10, { borderBottomWidth: 0, }]}>
                                 <Title data={'主要成员'} />
                                 {
@@ -100,7 +202,7 @@ export default class Gudong extends React.Component {
                                                     shouyiren.map((list, i) => {
 
                                                         return (
-                                                            <View style={[styles.shouyirenList,shouyiren.length-1==i?{borderBottomWidth:0}:null]}>
+                                                            <View style={[styles.shouyirenList, shouyiren.length - 1 == i ? { borderBottomWidth: 0 } : null]}>
                                                                 <Text style={[styles.shouyirenListText, styles.shouyirenListNumText]}>[{list.number}]</Text>
                                                                 <Text style={styles.shouyirenListText}>最终受益人：<Text style={styles.shouyirenListTextC}>{list.name}</Text></Text>
                                                                 <Text style={styles.shouyirenListText}>持股比例：<Text style={styles.shouyirenListTextC}>{list.bili}</Text></Text>
@@ -172,7 +274,7 @@ const styles = StyleSheet.create({
         borderBottomColor: '#eee',
     },
     gudongInfoHeader: {
-        marginBottom:12,
+        marginBottom: 12,
         flexDirection: 'row',
     },
     gudongInfoName: {
@@ -257,20 +359,20 @@ const styles = StyleSheet.create({
     shouyirenBox: {
         padding: 17,
     },
-    shouyirenList:{
-        borderBottomWidth:1,
-        borderBottomColor:'#eee',
-        marginBottom:10,
-        paddingBottom:5,
+    shouyirenList: {
+        borderBottomWidth: 1,
+        borderBottomColor: '#eee',
+        marginBottom: 10,
+        paddingBottom: 5,
     },
     shouyirenListText: {
-        paddingTop:4,
-        paddingBottom:4,
+        paddingTop: 4,
+        paddingBottom: 4,
         color: '#999',
         fontSize: 12,
     },
     shouyirenListNumText: {
-        paddingBottom:10,
+        paddingBottom: 10,
         color: '#666',
         fontSize: 14,
         fontWeight: 'bold',
@@ -281,34 +383,34 @@ const styles = StyleSheet.create({
     },
     guquanlianList: {
         marginBottom: 10,
-        
+
         backgroundColor: '#F5F5F5',
     },
-    guquanlianListLujing:{
-        paddingLeft:10,
-        height:30,
-        backgroundColor:'#eee',
-        justifyContent:'center',
-    
+    guquanlianListLujing: {
+        paddingLeft: 10,
+        height: 30,
+        backgroundColor: '#eee',
+        justifyContent: 'center',
+
     },
-    guquanlianListCon:{
-        padding:10,
+    guquanlianListCon: {
+        padding: 10,
     },
     guquanlianListText: {
         color: '#999',
         fontSize: 12,
     },
-    guquanlianBili:{
-        paddingTop:6,
-        paddingBottom:6,
-        flexDirection:'row',
+    guquanlianBili: {
+        paddingTop: 6,
+        paddingBottom: 6,
+        flexDirection: 'row',
         alignItems: 'center',
     },
-    guquanlianBiliText:{
+    guquanlianBiliText: {
         color: Theme.color,
         fontSize: 11,
     },
-    guquanlianBiliName:{
+    guquanlianBiliName: {
         color: '#666',
         fontSize: 12,
     },
@@ -327,5 +429,91 @@ const styles = StyleSheet.create({
         fontSize: 14,
         color: '#bbb',
     },
+    biangengBox: {
+        paddingTop: 15,
+        paddingBottom: 15,
+        marginLeft: 17,
+        paddingRight: 15,
+        borderBottomWidth: 1,
+        borderBottomColor: '#eee',
+    },
+    biangengBoxHd: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
+    biangengBoxHdLeft: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    biangengBoxHdRight: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    biangengNo: {
+        paddingRight: 6,
+        fontSize: 14,
+        color: '#666',
+        fontWeight: 'bold',
+    },
+    biangengName: {
+        fontSize: 14,
+        color: '#666',
+    },
+    biangengDate: {
+        paddingRight: 6,
+        fontSize: 11,
+        color: '#999',
+    },
+    biangengBoxBd: {
+        marginTop: 20,
+    },
+    biangengNote: {
+        paddingLeft: 10,
+        paddingBottom: 15,
+        fontSize: 12,
+        color: '#999',
+    },
+    biangengBoxBdCon: {
+        flexDirection: 'row',
+        backgroundColor: '#F5F5F5'
+    },
+    biangengBoxBdConHd: {
+        height: 28,
+        justifyContent: 'center',
+        backgroundColor: '#eee',
+        paddingLeft: 10,
+    },
+    biangengBoxBdConHdText: {
+        fontSize: 12,
+        color: '#999',
+    },
+    biangengBoxBdConL: {
+        borderRightWidth: 1,
+        borderRightColor: '#ddd',
+        width: (Theme.screenWidth - 34) / 2,
+    },
+    biangengBoxBdConR: {
 
+        width: (Theme.screenWidth - 34) / 2,
+    },
+    biangengBoxBdConLBd: {
+        paddingLeft: 10,
+        paddingRight: 10,
+        paddingTop: 15,
+        paddingBottom: 15,
+    },
+    biangengBoxBdConRBd: {
+        paddingLeft: 10,
+        paddingRight: 10,
+        paddingTop: 15,
+        paddingBottom: 15,
+    },
+    biangengBoxBdConBdText: {
+        marginBottom: 8,
+        fontSize: 12,
+        color: '#666',
+    },
+    red: {
+        color: '#0096E6',
+    }
 })

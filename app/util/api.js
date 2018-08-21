@@ -21,6 +21,7 @@ module.exports = {
     diqu: host + '/GetPlatListAll',//地区、上线时间、存管
     black: host + '/GetBlackList',//黑名单
     zhengyi: host + '/GetYujingList',//争议
+    gongshangList: host + '/GetGongshangList',//工商变更列表
     flmfList: host + '/GetFlmfListAll',//优惠活动
     fund: host + '/GetFundList',//示范资金
     yulun: host + '/GetYulunList',//舆论监控
