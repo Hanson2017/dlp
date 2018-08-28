@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
         color: '#bbb',
     },
     listUpdatetime:{
-        width:60,
+        width:70,
         flexDirection: 'row',
         justifyContent: 'flex-end',
     },
