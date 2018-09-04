@@ -60,7 +60,7 @@ module.exports = {
     bbsHome:'http://bbs.dailuopan.com/',
     bbsHejUrl:'http://bbs.dailuopan.com/forum.php?mod=forumdisplay&fid=2', //论坛华尔街的旗帜板块
     bbsBgtUrl:'http://bbs.dailuopan.com/forum.php?mod=forumdisplay&fid=36', //论坛曝光台板块
-    bbsHejIconUrl:'http://bbs.dailuopan.com/data/attachment/common/c8/common_2_icon.gif', //论坛华尔街的旗帜板块
-    bbsBgtIconUrl:'http://bbs.dailuopan.com/data/attachment/common/19/common_36_icon.png', //论坛曝光台板块
+    bbsHejIconUrl:'http://m.dailuopan.com/images/hejicon.gif', //论坛华尔街的旗帜板块
+    bbsBgtIconUrl:'http://m.dailuopan.com/images/bgticon.png', //论坛曝光台板块
     synLogin:'http://www.dailuopan.com/member/login/App_reurl?'
 }

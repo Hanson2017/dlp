@@ -73,28 +73,7 @@ export default class ZonglanTop extends React.Component {
                     }
                 </View>
 
-                {
-                    data.platinfo.length > 0 ?
-                        <View style={styles.tags}>
-                            {data.platinfo.map((item, i) => {
-                                return (
-                                    <View style={styles.tag} key={i}>
-                                        <Text key={i} style={styles.tagText}>{item}</Text>
-                                        {
-                                            data.platinfo.length - 1 !== i ?
-                                                <Text style={[styles.tagText, styles.tagLine]}>|</Text>
-                                                :
-                                                null
-                                        }
-
-                                    </View>
-                                )
-                            })
-                            }
-                        </View>
-                        :
-                        null
-                }
+               
 
                 {
                     data.dataInfo.platstatus == 1 && ((data.goodtag !== null && data.goodtag !== '' && data.goodtag.length > 0) || (data.badtag !== null && data.badtag !== '' && data.badtag.length > 0)) ?
