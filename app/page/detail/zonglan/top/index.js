@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, View, TouchableOpacity, Alert } from 'react-native';
+import { Text, StyleSheet, View, TouchableOpacity, Alert, Image } from 'react-native';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/Icomoon';
 import Theme from '../../../../util/theme';
 import Util from '../../../../util/util';
@@ -9,7 +10,7 @@ import DashLine from '../../../../component/dashLine';
 export default class ZonglanTop extends React.Component {
 
     render() {
-        const { data ,navigation,thatt} = this.props;
+        const { data, navigation, thatt } = this.props;
         return (
             <View style={[Theme.box, styles.container]}>
                 <View style={styles.platInfo}>
@@ -96,6 +97,59 @@ export default class ZonglanTop extends React.Component {
                 }
 
                 {
+                    data.dataInfo.platstatus == 1 && ((data.goodtag !== null && data.goodtag !== '' && data.goodtag.length > 0) || (data.badtag !== null && data.badtag !== '' && data.badtag.length > 0)) ?
+                        <View style={styles.tagsNewContainer}>
+                            <View style={styles.tagsNew}>
+                                <View style={styles.tagsNewIcon}>
+                                    <Image source={{ uri: 'http://m.dailuopan.com/images/icon-gtag.png' }} style={styles.icontag} />
+                                </View>
+                                <View style={styles.tagsNewCon}>
+                                    {
+                                        data.goodtag !== null && data.goodtag !== '' && data.goodtag.length > 0 ?
+                                            data.goodtag.map((item, i) => {
+                                                return (
+                                                    <View style={styles.tagNew}>
+                                                        <Text style={styles.tagNewText}>{item.tags}</Text>
+                                                        {
+                                                            item.tags == '一线平台' ?
+                                                                <Ionicons name={'md-thumbs-up'} size={15} color={'#fff'} />
+                                                                :
+                                                                null
+                                                        }
+
+                                                    </View>
+                                                )
+                                            })
+                                            :
+                                            <Text style={styles.tagNull}>暂无</Text>
+                                    }
+
+                                </View>
+                            </View>
+                            <View style={[styles.tagsNew, styles.tagsNewBad]}>
+                                <View style={styles.tagsNewIcon}>
+                                    <Image source={{ uri: 'http://m.dailuopan.com/images/icon-btag.png' }} style={styles.icontag2} />
+                                </View>
+                                <View style={styles.tagsNewCon}>
+                                    {
+                                        data.badtag !== null && data.badtag !== '' && data.badtag.length > 0 ?
+                                            data.badtag.map((item, i) => {
+                                                return (
+                                                    <View style={[styles.tagNew, styles.tagNewBad]}><Text style={styles.tagNewText}>{item.tags}</Text></View>
+                                                )
+                                            })
+                                            :
+                                            <Text style={styles.tagNull}>暂无</Text>
+                                    }
+
+                                </View>
+                            </View>
+                        </View>
+                        :
+                        null
+                }
+
+                {
                     data.flmllist != null && versionStatus != 1 ?
                         <View style={styles.activityList}>
                             {
@@ -129,7 +183,24 @@ export default class ZonglanTop extends React.Component {
                             <View style={styles.zhengyiTag}>
                                 <Text style={styles.zhengyiTagText}>争议中</Text>
                             </View>
-                            <Text style={styles.zhengyiText}>争议时间：{Util.formatDate(data.dataInfo.negative_time)}</Text>
+                            <View style={styles.zhengyiYY}>
+                                <Text style={styles.zhengyiText}>争议时间：{Util.formatDate(data.dataInfo.negative_time)}</Text>
+                                {
+                                    data.zylinktitle !== null ?
+                                        <TouchableOpacity onPress={() => {
+                                            if (data.zylinkurl) {
+                                                Util.Linked(data.zylinkurl)
+                                            }
+
+                                        }}>
+                                            <Text style={styles.zhengyiText} numberOfLines={1} >争议原因：<Text style={styles.zhengyiLink}>{data.zylinktitle}</Text></Text>
+                                        </TouchableOpacity>
+                                        :
+                                        null
+                                }
+
+                            </View>
+
                         </View>
                         :
                         null
@@ -140,7 +211,7 @@ export default class ZonglanTop extends React.Component {
 
                         <View style={styles.blackZoushi}>
                             <View style={styles.dashLine}>
-                                <DashLine width={(Theme.screenWidth-120)} />
+                                <DashLine width={(Theme.screenWidth - 120)} />
                             </View>
                             <View style={styles.blackZoushiItem}>
                                 <View style={[styles.blackZoushiYunYingTop, styles.blackZoushiTop]}>
@@ -168,6 +239,19 @@ export default class ZonglanTop extends React.Component {
                                         <View style={styles.blackZoushiItemTime}>
                                             <Text style={[styles.blackZoushiItemTimeText, styles.blackZoushiItemTimeTextZhengyi]}>{Util.formatDate(data.dataInfo.negative_time)}</Text>
                                         </View>
+                                        {
+                                            data.zylinktitle !== null ?
+                                                <TouchableOpacity onPress={() => {
+                                                    if (data.zylinkurl) {
+                                                        Util.Linked(data.zylinkurl)
+                                                    }
+
+                                                }}>
+                                                    <Text style={styles.blackZoushiItemLinkZy}>查看相关资料</Text>
+                                                </TouchableOpacity>
+                                                :
+                                                null
+                                        }
                                     </View>
                                     :
                                     null
@@ -183,6 +267,19 @@ export default class ZonglanTop extends React.Component {
                                 <View style={styles.blackZoushiItemTime}>
                                     <Text style={[styles.blackZoushiItemTimeText, styles.blackZoushiItemTimeTextBlack]}>{Util.formatDate2(data.dataInfo.blacktime)}</Text>
                                 </View>
+                                {
+                                    data.blacklinktitle !== null ?
+                                        <TouchableOpacity onPress={() => {
+                                            if (data.blacklinkurl) {
+                                                Util.Linked(data.blacklinkurl)
+                                            }
+
+                                        }}>
+                                            <Text style={styles.blackZoushiItemLinkBlack}>查看相关资料</Text>
+                                        </TouchableOpacity>
+                                        :
+                                        null
+                                }
                             </View>
 
                         </View>
@@ -392,18 +489,28 @@ const styles = StyleSheet.create({
     zhengyiTag: {
         marginRight: 10,
         width: 50,
-        height: 16,
+        height: 34,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#A81616',
+        borderRadius: 4,
     },
     zhengyiTagText: {
         fontSize: 11,
         color: '#fff',
     },
+    zhengyiYY: {
+        flex: 1,
+    },
     zhengyiText: {
+        paddingRight: 10,
         fontSize: 11,
         color: '#A81616',
+        lineHeight: 17,
+    },
+    zhengyiLink: {
+        flex: 1,
+        textDecorationLine: 'underline',
     },
     blackZoushiTop: {
 
@@ -433,10 +540,10 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
     },
-    dashLine:{
-        position:'absolute',
-        left:58,
-        top:70,
+    dashLine: {
+        position: 'absolute',
+        left: 58,
+        top: 70,
     },
     blackZoushiItem: {
         width: 70,
@@ -471,6 +578,18 @@ const styles = StyleSheet.create({
         color: '#999',
         fontSize: 11,
     },
+    blackZoushiItemLinkZy: {
+        paddingTop: 5,
+        fontSize: 11,
+        color: '#A81616',
+        textDecorationLine: 'underline',
+    },
+    blackZoushiItemLinkBlack: {
+        paddingTop: 5,
+        fontSize: 11,
+        color: '#101010',
+        textDecorationLine: 'underline',
+    },
     blackZoushiZhengyiTop: {
         backgroundColor: '#A81616',
     },
@@ -494,5 +613,63 @@ const styles = StyleSheet.create({
     },
     blackZoushiItemTimeTextBlack: {
         color: '#101010',
+    },
+    tagsNewContainer: {
+        paddingLeft: 15,
+        marginTop: 15,
+        paddingTop: 15,
+        borderTopWidth: 1,
+        borderTopColor: '#eee',
+    },
+    tagsNew: {
+        marginBottom: 5,
+        flexDirection: 'row',
+
+    },
+    tagsNewIcon: {
+        height: 22,
+        width: 22,
+        justifyContent: 'center',
+    },
+    icontag: {
+        width: 18,
+        height: 18,
+    },
+    icontag2: {
+        width: 20,
+        height: 18,
+    },
+    tagsNewCon: {
+        flex: 1,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+    },
+    tagNew: {
+        flexDirection: 'row',
+        marginLeft: 6,
+        marginBottom: 6,
+        paddingLeft: 5,
+        paddingRight: 5,
+        height: 20,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#00D6E6',
+        borderRadius: 4,
+    },
+    tagNewText: {
+        color: '#fff',
+        fontSize: 12,
+    },
+    tagsNewBad: {
+        marginBottom: 0,
+    },
+    tagNewBad: {
+        backgroundColor: '#bbb',
+    },
+    tagNull: {
+        paddingLeft: 6,
+        color: '#999',
+        fontSize: 14,
+        lineHeight: 20,
     },
 })

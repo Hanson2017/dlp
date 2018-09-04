@@ -6,7 +6,6 @@ import Theme from '../../util/theme';
 export default class Header extends React.Component {
     render() {
         const { navigation, headerOpt, black } = this.props;
-        console.log('this.props.children',this.props.children)
         return (
             <View style={[styles.headerContainer, Platform.OS == 'android' ? { marginTop: 0 } : null, black ? { backgroundColor: '#1A1A1A' } : null]}>
                 {

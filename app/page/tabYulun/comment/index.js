@@ -27,8 +27,8 @@ export default class Report extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    reportContainer:{
-        paddingLeft:17,
-        paddingBottom:15,
+    reportContainer: {
+        paddingLeft: 17,
+        paddingBottom: 15,
     }
 })

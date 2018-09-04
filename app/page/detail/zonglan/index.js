@@ -27,7 +27,7 @@ export default class Zonglan extends React.Component {
         };
     }
     render() {
-        const { platInfo, dataInfo, navigation,thatt } = this.props;
+        const { platInfo, dataInfo, navigation, thatt } = this.props;
         const { loading, dataSource } = this.state;
         if (loading) {
             return (
@@ -56,7 +56,12 @@ export default class Zonglan extends React.Component {
                         platinfo: dataSource.platinfo,
                         flmllist: dataSource.flmllist,
                         dataInfo: dataInfo,
-                        
+                        goodtag: dataSource.goodtag,
+                        badtag: dataSource.badtag,
+                        zylinktitle: dataSource.zylinktitle,
+                        zylinkurl: dataSource.zylinkurl,
+                        blacklinktitle: dataSource.blacklinktitle,
+                        blacklinkurl: dataSource.blacklinkurl
                     }} />
                     {
                         versionStatus != 1 && platInfo.platstatus == 1 && dataSource.fund !== null ?
@@ -79,11 +84,11 @@ export default class Zonglan extends React.Component {
                     <Gudong data={dataSource.gudongxinxi} navigation={navigation} />
                     <GongshangBG data={dataSource.gongshangbiangeng} navigation={navigation} />
                     <Shouyiren data={dataSource.shouyiren} navigation={navigation} />
-                    
+
                     <Flow data={dataSource.flow} navigation={navigation} />
                     <User dataAge={dataSource.age} dataReplat={dataSource.replat} navigation={navigation} platName={platInfo.platName} />
 
-                    
+
                 </ScrollView>
             )
         }

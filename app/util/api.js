@@ -1,6 +1,7 @@
 'use strict';
 
 const host = 'http://www.dailuopan.com/MPAPI';
+const hostbbs = 'http://bbs.dailuopan.com/api/';
 // const host = 'http://192.168.1.18:8080/MPAPI';
 
 module.exports = {
@@ -55,4 +56,11 @@ module.exports = {
     collectionAdd:host+'/Member_collection_addmp', //添加收藏(?memberid=3&cid=4701)
     collectiondel:host+'/Member_collection_delmp', //取消收藏(?memberid=3&cid=4701)
     collectionList:host+'/Member_collection_getmplist', //获取用户收藏列表(?memberid=3&page=1&pagesize=10)
+    bbs:hostbbs+'dlp_getapp.php?',  //论坛
+    bbsHome:'http://bbs.dailuopan.com/',
+    bbsHejUrl:'http://bbs.dailuopan.com/forum.php?mod=forumdisplay&fid=2', //论坛华尔街的旗帜板块
+    bbsBgtUrl:'http://bbs.dailuopan.com/forum.php?mod=forumdisplay&fid=36', //论坛曝光台板块
+    bbsHejIconUrl:'http://bbs.dailuopan.com/data/attachment/common/c8/common_2_icon.gif', //论坛华尔街的旗帜板块
+    bbsBgtIconUrl:'http://bbs.dailuopan.com/data/attachment/common/19/common_36_icon.png', //论坛曝光台板块
+    synLogin:'http://www.dailuopan.com/member/login/App_reurl?'
 }

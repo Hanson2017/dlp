@@ -13,19 +13,22 @@ export default class Gudongbiangeng extends React.Component {
         this.state = {
             isHidden: [],
             ref: false,
-            data: '',
+            data: [],
         };
     }
     componentWillMount() {
         const { data } = this.props;
         const isHiddenNew = [];
-        for (let i = 0; i < data.length; i++) {
-            isHiddenNew.push(true)
+        if (data !== '' && data !== null && data.length > 0) {
+            for (let i = 0; i < data.length; i++) {
+                isHiddenNew.push(true)
+            }
+            this.setState({
+                isHidden: isHiddenNew,
+                data: data
+            })
         }
-        this.setState({
-            isHidden: isHiddenNew,
-            data: data
-        })
+
 
     }
     render() {
@@ -35,6 +38,7 @@ export default class Gudongbiangeng extends React.Component {
             <View style={[Theme.box, Theme.mt10]}>
                 <Title data={'工商变更监控'} navigation={navigation} screenUrlInfo={data.length > 5 ? { screenUrl: 'DetailBiangeng', tabId: data } : null} />
                 {
+                    data.length>0?
                     data.map((item, i) => {
                         if (i < 5) {
                             return (
@@ -101,6 +105,8 @@ export default class Gudongbiangeng extends React.Component {
                         }
 
                     })
+                    :
+                    <Text style={styles.null}>暂无工商变更</Text>
                 }
 
             </View>
@@ -195,5 +201,10 @@ const styles = StyleSheet.create({
     },
     red: {
         color: '#0096E6',
-    }
+    },
+    null:{
+        padding: 17,
+        fontSize: 14,
+        color: '#bbb',
+    },
 })

@@ -36,7 +36,11 @@ import DetailFumian from '../page/detail/fumian';
 import DetailFund from '../page/detail/fund';
 import DetailBiangeng from '../page/detail/info/gudong/biangengList';
 import CommentForm from '../page/detail/yuqing/comments/form';
-import PingCeCommentForm from '../page/pingCe/comments/footForm/index'
+import PingCeCommentForm from '../page/pingCe/comments/footForm/index';
+
+import BBsDetail from '../page/bbs/detail';
+import BBs from '../page/bbs';
+
 
 import Login from '../page/account/login';
 
@@ -150,6 +154,12 @@ const AppDlp = StackNavigator({
     Login: {
         screen: Login
     },
+    BBs: {
+        screen: BBs
+    },
+    BBsDetail: {
+        screen: BBsDetail
+    }
 
 }, {
         headerMode: 'none'

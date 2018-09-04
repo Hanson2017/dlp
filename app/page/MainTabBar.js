@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Text, StyleSheet, Image, View } from 'react-native';
 import TabNavigator from 'react-native-tab-navigator';
 import Icon from 'react-native-vector-icons/Icomoon';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Theme from '../util/theme';
 
 import Home from './home';
@@ -14,7 +15,7 @@ import FindTab from './tabFind';
 
 export default class TabBar extends Component {
     static defaultProps = {
-        selectedColor: Theme.color,
+        selectedColor: '#666',
         normalColor: '#7a7e84',
         size: 23,
         normalColorText: '#666'
@@ -32,7 +33,7 @@ export default class TabBar extends Component {
 
         const { selectedColor, normalColor, size, normalColorText } = this.props;
         return (
-            <TabNavigator>
+            <TabNavigator tabBarShadowStyle={{height:0}}>
                 <TabNavigator.Item
                     title={this.state.tabName[0]}
                     renderIcon={() => <Icon name='tab-home' size={size} color={normalColor} />}
@@ -66,6 +67,23 @@ export default class TabBar extends Component {
                     <PingjiTab navigation={navigation} openControlPanel={screenProps.openControlPanel} loginState={screenProps.loginState} />
                 </TabNavigator.Item>
                 <TabNavigator.Item
+                   
+                    title={this.state.tabName[3]}
+                    renderIcon={() => <View style={[styles.iconCon]}><MaterialCommunityIcons name='file-document-box' size={26} color={'#fff'} /></View> }
+                    renderSelectedIcon={() => <View style={[styles.iconCon]}><MaterialCommunityIcons name='file-document-box' size={26} color={'#fff'} /></View>}
+                    selected={this.state.selectedTab === 'health'}
+                    titleStyle={{ color: normalColorText }}
+                    selectedTitleStyle={{ color: selectedColor }}
+                    onPress={() => {
+                        this.setState({
+                            selectedTab: 'health'
+                        })
+                    }}
+                >
+                    <YulunTab navigation={navigation} openControlPanel={screenProps.openControlPanel} loginState={screenProps.loginState} />
+
+                </TabNavigator.Item>
+                <TabNavigator.Item
                     title={this.state.tabName[2]}
                     renderIcon={() => <Icon name='tab-data' size={size} color={normalColor} />}
                     renderSelectedIcon={() => <Icon name='tab-dataOn' size={size} color={selectedColor} />}
@@ -80,22 +98,7 @@ export default class TabBar extends Component {
                 >
                     <DataTab navigation={navigation} openControlPanel={screenProps.openControlPanel} loginState={screenProps.loginState} />
                 </TabNavigator.Item>
-                <TabNavigator.Item
-                    title={this.state.tabName[3]}
-                    renderIcon={() => <Icon name='tab-yulun' size={size} color={normalColor} />}
-                    renderSelectedIcon={() => <Icon name='tab-yulunOn' size={size} color={selectedColor} />}
-                    selected={this.state.selectedTab === 'health'}
-                    titleStyle={{ color: normalColorText }}
-                    selectedTitleStyle={{ color: selectedColor }}
-                    onPress={() => {
-                        this.setState({
-                            selectedTab: 'health'
-                        })
-                    }}
-                >
-                    <YulunTab navigation={navigation} openControlPanel={screenProps.openControlPanel} loginState={screenProps.loginState} />
-
-                </TabNavigator.Item>
+                
                 {
                     versionStatus != 1 ?
                         <TabNavigator.Item
@@ -129,3 +132,15 @@ export default class TabBar extends Component {
     }
 
 }
+
+const styles = StyleSheet.create({
+    iconCon:{
+        width:40,
+        height:40,
+        backgroundColor:Theme.color,
+        borderRadius:30,
+        justifyContent: 'center',
+        alignItems: 'center',
+        zIndex:9999,
+    }
+})

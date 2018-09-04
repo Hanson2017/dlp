@@ -9,6 +9,12 @@ import TabTop from '../../component/tabTop';
 import Title from '../../component/title';
 import Mianze from '../mianze';
 
+import List from './list';
+
+import PjTemp from './list/temp/pj';
+import HealthTemp from './list/temp/health';
+import FlowTemp from './list/temp/flow';
+
 
 var data = [
     { title: '机构评级', iconName: 'nav-pingjiJG', fontSize: 26, screenUrl: 'PingjiJG', tabId: null },
@@ -16,40 +22,6 @@ var data = [
     { title: '健康度分析', iconName: 'nav-health', fontSize: 26, screenUrl: 'Health', tabId: null },
     { title: '流量监控', iconName: 'nav-flow', fontSize: 26, screenUrl: 'Flow', tabId: null },
 ];
-
-class List extends React.Component {
-    render() {
-        const { index, data, navigation, borderNot } = this.props;
-        var platback = '暂无背景';
-        if (data.platback.indexOf('上市') != -1) {
-            platback = '上市系';
-        }
-        else if (data.platback.indexOf('国资') != -1) {
-            platback = '国资系';
-        }
-        else if (data.platback.indexOf('银行') != -1) {
-            platback = '银行系';
-        }
-        return (
-            <TouchableOpacity style={[styles.listContainer, borderNot ? { borderBottomWidth: 0 } : null]}
-                onPress={() => { navigation.navigate('Detail', { id: data.id_dlp, platName: data.plat_name }) }}
-            >
-                <View style={styles.listNo}><Text style={styles.listNoText}>{index + 1}</Text></View>
-                <View style={styles.listplatName}><Text style={styles.listplatNameText}>{data.plat_name}</Text></View>
-                <View style={styles.listscore}><Text style={styles.listscoreText}>{data['score']}</Text></View>
-                <View style={styles.listKeywords}>
-                    <View style={[styles.key, data.platback == '民营' ? styles.keyNull : null]}>
-
-                        <Text style={styles.keyText}>{platback}</Text>
-                    </View>
-                    <View style={[styles.key, styles.key2, data.financing == '暂无融资' ? styles.keyNull : null]}>
-                        <Text style={styles.keyText}>{data.financing}{data.financing !== '暂无融资' && data.financing !== 'IPO' ? '轮' : null}{data.financing_num != '' ? '-' : null}{data.financing_num}</Text>
-                    </View>
-                </View>
-            </TouchableOpacity>
-        )
-    }
-}
 
 
 export default class PingjiTab extends React.Component {
@@ -86,62 +58,25 @@ export default class PingjiTab extends React.Component {
 
                                     <View style={[styles.container, Theme.box, Theme.mt10]}>
                                         <Title data={'机构评级概况'} navigation={navigation} screenUrlInfo={{ screenUrl: 'PingjiJG', tabId: null }} />
-                                        <View style={styles.listBox}>
-                                            <View style={styles.hdContainer}>
-                                                <View style={styles.listNo}><Text style={styles.hdText}>排名</Text></View>
-                                                <View style={styles.listplatName}><Text style={styles.hdText}>平台名称</Text></View>
-                                                <View style={styles.listscore}><Text style={styles.hdText}>综合指数</Text></View>
-                                                <View style={styles.listKeywords}><Text style={styles.hdText}>关键字</Text></View>
-
-                                            </View>
-                                            {
-                                                dataSource.gradelist.map((item, i) => {
-                                                    return (
-                                                        <List data={item} index={i} key={i} navigation={navigation} borderNot={dataSource.flowlist.length - 1 == i ? true : false} />
-                                                    )
-                                                })
-                                            }
-                                        </View>
+                                        <List navigation={navigation} data={dataSource.gradelist}>
+                                            <PjTemp navigation={navigation} data={dataSource.gradelist} />
+                                        </List>
+                                       
                                     </View>
 
                                     <View style={[styles.container, Theme.box, Theme.mt10]}>
                                         <Title data={'健康度分析'} navigation={navigation} screenUrlInfo={{ screenUrl: 'Health', tabId: null }} />
-                                        <View style={styles.listBox}>
-                                            <View style={styles.hdContainer}>
-                                                <View style={styles.listNo}><Text style={styles.hdText}>排名</Text></View>
-                                                <View style={styles.listplatName}><Text style={styles.hdText}>平台名称</Text></View>
-                                                <View style={styles.listscore}><Text style={styles.hdText}>综合健康度</Text></View>
-                                                <View style={styles.listKeywords}><Text style={styles.hdText}>关键字</Text></View>
-
-                                            </View>
-                                            {
-                                                dataSource.dlplist.map((item, i) => {
-                                                    return (
-                                                        <List data={item} index={i} key={i} navigation={navigation} borderNot={dataSource.flowlist.length - 1 == i ? true : false} />
-                                                    )
-                                                })
-                                            }
-                                        </View>
+                                        <List navigation={navigation} data={dataSource.gradelist}>
+                                            <HealthTemp navigation={navigation} data={dataSource.dlplist} />
+                                        </List>
+                                        
                                     </View>
 
                                     <View style={[styles.container, Theme.box, Theme.mt10]}>
                                         <Title data={'流量监控'} navigation={navigation} screenUrlInfo={{ screenUrl: 'Flow', tabId: null }} />
-                                        <View style={styles.listBox}>
-                                            <View style={styles.hdContainer}>
-                                                <View style={styles.listNo}><Text style={styles.hdText}>排名</Text></View>
-                                                <View style={styles.listplatName}><Text style={styles.hdText}>平台名称</Text></View>
-                                                <View style={styles.listscore}><Text style={styles.hdText}>综合指数</Text></View>
-                                                <View style={styles.listKeywords}><Text style={styles.hdText}>关键字</Text></View>
-
-                                            </View>
-                                            {
-                                                dataSource.flowlist.map((item, i) => {
-                                                    return (
-                                                        <List data={item} index={i} key={i} navigation={navigation} borderNot={dataSource.flowlist.length - 1 == i ? true : false} />
-                                                    )
-                                                })
-                                            }
-                                        </View>
+                                        <List navigation={navigation} data={dataSource.gradelist}>
+                                            <FlowTemp navigation={navigation} data={dataSource.flowlist} />
+                                        </List>                                       
                                     </View>
                                     <Mianze />
                                 </ScrollView>
