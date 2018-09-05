@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { Text, StyleSheet, View, ScrollView, WebView, StatusBar, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from "react-navigation";
+import Icon from 'react-native-vector-icons/Icomoon';
+import ActionShare from '../../../component/actionShare';
 import Theme from '../../../util/theme';
+import Api from '../../../util/api';
 import Header from '../../../component/navBar'
 import Loading from '../../../component/loading'
 
@@ -11,11 +14,16 @@ export default class YulunDetail extends React.Component {
         super(props);
         this.state = {
             url: null,
+            shareUrl: '',
+            type: '',
         };
     }
     componentWillMount() {
+        const { params } = this.props.navigation.state;
         this.setState({
-            url: this.props.navigation.state.params.url
+            url: params.url,
+            shareUrl: params.shareUrl,
+            type: params.type,
         })
     }
     render() {
@@ -32,9 +40,17 @@ export default class YulunDetail extends React.Component {
                         <View style={styles.textContainer}>
                             <Text style={styles.headerText}>贷罗盘论坛</Text>
                         </View>
-                        <TouchableOpacity style={styles.backBtn} onPress={() => { navigation.goBack() }}>
-                            <Text style={styles.backBtnText}>返回APP</Text>
-                        </TouchableOpacity>
+                        <View style={styles.headerRight}>
+                            <TouchableOpacity style={styles.backBtn} onPress={() => { navigation.goBack() }}>
+                                <Text style={styles.backBtnText}>返回APP</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.shareBtn} onPress={() => {
+                                this.showActionSheet()
+                            }}>
+                                <Icon name={'ico-share'} size={22} color={'#fff'} />
+                            </TouchableOpacity>
+                        </View>
+
 
                     </View>
                     <View style={Theme.content}>
@@ -46,6 +62,7 @@ export default class YulunDetail extends React.Component {
                         />
                     </View>
                 </View>
+                <ActionShare ref={'ActionShare'} />
             </SafeAreaView>
         )
     }
@@ -54,10 +71,46 @@ export default class YulunDetail extends React.Component {
             <Loading />
         )
     }
+    showActionSheet() {
+        var description;
+        var title;
+        var webpageUrl;
+        const { shareUrl, type } = this.state;
+        if (signState) {
+            description = '我是' + signState.r_username + '，我在看贷罗盘论坛，优质的网贷行业交流社区，一起来看吧。'
+        }
+        else {
+            description = '我在看贷罗盘论坛，优质的网贷行业交流社区，一起来看吧。'
+        }
+
+        if (type == 'hej') {
+            title = '我正在看贷罗盘论坛-华尔街的旗帜。推荐你也看看！';
+            webpageUrl = shareUrl;
+        }
+        else if (type == 'bgt') {
+            title = '我正在看贷罗盘论坛-曝光台。推荐你也看看！';
+            webpageUrl = shareUrl;
+        }
+        else {
+            title = '我正在看贷罗盘论坛。推荐你也看看！';
+            webpageUrl = Api.bbsHome;
+        }
+
+        let data = {
+            type: 'news',
+            title: title,
+            description: description,
+            webpageUrl: webpageUrl,
+            imageUrl: 'http://dailuopan.com/images/shareDlpBBs.jpg',
+        }
+
+        this.refs.ActionShare.show(data)
+
+    }
 }
 
 const styles = StyleSheet.create({
-    headerContainer:{
+    headerContainer: {
         height: 42,
         backgroundColor: '#8F6546',
         flexDirection: 'row',
@@ -65,30 +118,41 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     textContainer: {
-        paddingLeft:70,
+        paddingLeft: 100,
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
     },
-    headerText:{
+    headerText: {
         color: '#fff',
         fontSize: 16.5,
         fontWeight: 'bold',
     },
-    backBtn:{
-        marginRight:10,
-        width:60,
-        height:22,
-        justifyContent:'center',
-        alignItems:'center',
-        borderWidth:1,
-        borderColor:'#fff',
-        borderRadius:5,
+    headerRight: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: 100,
     },
-    backBtnText:{
-        fontSize:12,
-        color:'#fff',
+    shareBtn: {
+        paddingRight: 5,
+        width: 50,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    backBtn: {
+        width: 60,
+        height: 22,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderWidth: 1,
+        borderColor: '#fff',
+        borderRadius: 5,
+    },
+    backBtnText: {
+        fontSize: 12,
+        color: '#fff',
     },
 
 })

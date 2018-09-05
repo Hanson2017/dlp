@@ -16,7 +16,7 @@ export default class Report extends React.Component {
                 <View style={styles.bbsContainer}>
                     <TouchableOpacity style={styles.bbshead}
                         onPress={() => { 
-                            Util.goBBs(navigation,Api.bbsHejUrl);
+                            Util.goBBs(navigation,Api.bbsHejUrl,'hej');
                         }}
                     >
                         <View style={styles.iconL}>
@@ -54,7 +54,7 @@ export default class Report extends React.Component {
                     </View>
                     <TouchableOpacity style={styles.bbshead}
                         onPress={() => { 
-                            Util.goBBs(navigation,Api.bbsBgtUrl);
+                            Util.goBBs(navigation,Api.bbsBgtUrl,'bgt');
                          }}
                     >
                         <View style={styles.iconL}>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, Image, View } from 'react-native';
+import { Text, StyleSheet, Image, View, Platform } from 'react-native';
 import TabNavigator from 'react-native-tab-navigator';
 import Icon from 'react-native-vector-icons/Icomoon';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -33,7 +33,7 @@ export default class TabBar extends Component {
 
         const { selectedColor, normalColor, size, normalColorText } = this.props;
         return (
-            <TabNavigator tabBarShadowStyle={{height:0}}>
+            <TabNavigator tabBarShadowStyle={{ height: 0 }}>
                 <TabNavigator.Item
                     title={this.state.tabName[0]}
                     renderIcon={() => <Icon name='tab-home' size={size} color={normalColor} />}
@@ -67,10 +67,10 @@ export default class TabBar extends Component {
                     <PingjiTab navigation={navigation} openControlPanel={screenProps.openControlPanel} loginState={screenProps.loginState} />
                 </TabNavigator.Item>
                 <TabNavigator.Item
-                   
+
                     title={this.state.tabName[3]}
-                    renderIcon={() => <View style={[styles.iconCon]}><MaterialCommunityIcons name='file-document-box' size={26} color={'#fff'} /></View> }
-                    renderSelectedIcon={() => <View style={[styles.iconCon]}><MaterialCommunityIcons name='file-document-box' size={26} color={'#fff'} /></View>}
+                    renderIcon={() => <View style={[styles.iconCon]}><MaterialCommunityIcons name='file-document-box' size={Platform.OS == 'android' ? 20 : 26} color={'#fff'} /></View>}
+                    renderSelectedIcon={() => <View style={[styles.iconCon]}><MaterialCommunityIcons name='file-document-box' size={Platform.OS == 'android' ? 20 : 26} color={'#fff'} /></View>}
                     selected={this.state.selectedTab === 'health'}
                     titleStyle={{ color: normalColorText }}
                     selectedTitleStyle={{ color: selectedColor }}
@@ -98,7 +98,7 @@ export default class TabBar extends Component {
                 >
                     <DataTab navigation={navigation} openControlPanel={screenProps.openControlPanel} loginState={screenProps.loginState} />
                 </TabNavigator.Item>
-                
+
                 {
                     versionStatus != 1 ?
                         <TabNavigator.Item
@@ -134,13 +134,13 @@ export default class TabBar extends Component {
 }
 
 const styles = StyleSheet.create({
-    iconCon:{
-        width:40,
-        height:40,
-        backgroundColor:Theme.color,
-        borderRadius:30,
+    iconCon: {
+        width: Platform.OS == 'android' ? 30 : 40,
+        height: Platform.OS == 'android' ? 30 : 40,
+        backgroundColor: Theme.color,
+        borderRadius: 30,
         justifyContent: 'center',
         alignItems: 'center',
-        zIndex:9999,
+        zIndex: 9999,
     }
 })

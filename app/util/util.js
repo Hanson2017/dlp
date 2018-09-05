@@ -4,16 +4,23 @@ import { Linking } from 'react-native';
 import Api from './api';
 
 module.exports = {
-    goBBs(navigation,seturl) {
+    goBBs(navigation, seturl,type) {
         var url = '';
-        if (signState && signState.r_Userid) {
-            url = Api.synLogin + 'memberid=' + signState.r_id + '&Userid=' + signState.r_Userid + '&password=' + signState.r_password + '&reurl=' + encodeURIComponent(seturl)
-            
+        if (signState) {
+            var memberid = '';
+            var Userid = '';
+            var password = '';
+            memberid = signState.r_id ? signState.r_id : 0;
+            Userid = signState.r_Userid ? signState.r_Userid : '';
+            password = signState.r_password ? signState.r_password : '';
+
+            url = Api.synLogin + 'memberid=' + memberid + '&Userid=' + Userid + '&password=' + password + '&reurl=' + encodeURIComponent(seturl)
+
         }
         else {
             url = seturl;
         }
-        navigation.navigate('BBsDetail', { url: url })
+        navigation.navigate('BBsDetail', { url: url, shareUrl: seturl,type:type })
     },
     Linked(url) {
         Linking.openURL(url).catch(err => console.error('An error occurred', err));

@@ -17,7 +17,7 @@ export default class HomeBBs extends React.Component {
                     <View style={styles.bbsHead}>
                         <TouchableOpacity style={[styles.bbsHeadLink, styles.bbsHeadLinkHej]}
                             onPress={() => {
-                                Util.goBBs(navigation,Api.bbsHejUrl);
+                                Util.goBBs(navigation,Api.bbsHejUrl,'hej');
                             }}
                         >
                             <View style={styles.bbsHeadLinkLeft}>
@@ -31,7 +31,7 @@ export default class HomeBBs extends React.Component {
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.bbsHeadLink}
                             onPress={() => {
-                                Util.goBBs(navigation,Api.bbsBgtUrl);
+                                Util.goBBs(navigation,Api.bbsBgtUrl,'bgt');
                             }}
                         >
                             <View style={styles.bbsHeadLinkLeft}>
