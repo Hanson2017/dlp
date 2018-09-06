@@ -35,6 +35,7 @@ import Detail from '../page/detail';
 import DetailFumian from '../page/detail/fumian';
 import DetailFund from '../page/detail/fund';
 import DetailBiangeng from '../page/detail/info/gudong/biangengList';
+import DetailBuiltBrowsing from '../page/detail/builtBrowsing';
 import CommentForm from '../page/detail/yuqing/comments/form';
 import PingCeCommentForm from '../page/pingCe/comments/footForm/index';
 
@@ -143,6 +144,9 @@ const AppDlp = StackNavigator({
     },
     DetailBiangeng: {
         screen: DetailBiangeng
+    },
+    DetailBuiltBrowsing:{
+        screen:DetailBuiltBrowsing
     },
     CommentForm: {
         screen: CommentForm

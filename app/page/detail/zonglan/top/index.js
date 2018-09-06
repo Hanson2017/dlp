@@ -168,7 +168,7 @@ export default class ZonglanTop extends React.Component {
                                     data.zylinktitle !== null ?
                                         <TouchableOpacity onPress={() => {
                                             if (data.zylinkurl) {
-                                                Util.Linked(data.zylinkurl)
+                                                navigation.navigate('DetailBuiltBrowsing', { url: data.zylinkurl })
                                             }
 
                                         }}>
@@ -222,7 +222,7 @@ export default class ZonglanTop extends React.Component {
                                             data.zylinktitle !== null ?
                                                 <TouchableOpacity onPress={() => {
                                                     if (data.zylinkurl) {
-                                                        Util.Linked(data.zylinkurl)
+                                                        navigation.navigate('DetailBuiltBrowsing', { url: data.zylinkurl })
                                                     }
 
                                                 }}>
@@ -250,7 +250,7 @@ export default class ZonglanTop extends React.Component {
                                     data.blacklinktitle !== null ?
                                         <TouchableOpacity onPress={() => {
                                             if (data.blacklinkurl) {
-                                                Util.Linked(data.blacklinkurl)
+                                                navigation.navigate('DetailBuiltBrowsing', { url: data.blacklinkurl })
                                             }
 
                                         }}>
