@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Text, StyleSheet, View, TouchableOpacity, Animated, Dimensions, Easing, Platform } from 'react-native';
+import Util from '../../../util/util';
+import Api from '../../../util/api';
 
 
 const { width, height } = Dimensions.get('window');
@@ -59,6 +61,13 @@ export default class Share extends Component {
                                 }}
                             >
                                 <Text style={styles.menuText}>首页</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.menuItem}
+                                onPress={() => {
+                                    Util.goBBs(navigation,Api.bbsHejUrl); 
+                                }}
+                            >
+                                <Text style={styles.menuText}>论坛</Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={styles.menuItem}
                                 onPress={() => {
@@ -193,7 +202,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         bottom: Platform.OS == 'android' ? 80 : 70,
         right: (width / 2 - 100) / 2,
-        height: 237,
+        height: 282,
         width: 100,
     },
 
@@ -203,7 +212,7 @@ const styles = StyleSheet.create({
         paddingRight: 9,
         position: 'relative',
         width: 100,
-        height: 225,
+        height: 270,
         borderWidth: 1,
         borderColor: '#bbb',
         borderRadius: 8,
