@@ -18,6 +18,12 @@ export default class Title extends React.Component {
                             :
                             null
                     }
+                    {
+                        this.props.children ?
+                            this.props.children
+                            :
+                            null
+                    }
                     {/* {
                         mfTag ?
                             <View style={styles.mfTag}><Text style={styles.mfTagText}>魔方保障</Text></View>
@@ -78,16 +84,16 @@ const styles = StyleSheet.create({
     text: {
         color: '#333',
         fontSize: 16,
-        fontWeight:'bold',
+        fontWeight: 'bold',
     },
     right: {
-        paddingRight:10,
+        paddingRight: 10,
         width: 100,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'flex-end',
     },
-    moreText:{
+    moreText: {
         color: '#999',
         fontSize: 13,
     },

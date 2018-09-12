@@ -5,7 +5,7 @@ import Theme from '../../../util/theme';
 import Loading from '../../../component/loading';
 
 import Top from './top';
-import Fund from './fund';
+import Fund from './fund/index';
 import Pingji from './pingji';
 import Health from './health';
 import Pingce from './pingce';

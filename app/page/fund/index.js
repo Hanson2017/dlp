@@ -10,6 +10,7 @@ import Header from '../../component/navBar'
 import TabBar from '../../component/tabBar';
 
 import All from './temp/all';
+import All2 from './temp/all2';
 import List from './temp/list';
 
 
@@ -39,6 +40,7 @@ export default class FundScreen extends React.Component {
                             this.state.loading ?
                                 <Loading />
                                 :
+                                // <All2 data={dataSource} navigation={navigation} />
                                 <ScrollableTabView
                                     renderTabBar={() => <TabBar tabNames={tabNames} />}
                                     initialPage={params.tabId ? params.tabId : 0}

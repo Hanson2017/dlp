@@ -48,7 +48,7 @@ export default class Num extends React.Component {
                     <Text style={[styles.text, styles.num]}>{data.Maincount_flow}</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.list}
-                    onPress={() => { navigation.navigate('PingjiJG') }}
+                    onPress={() => { navigation.navigate('GongshangBG') }}
                 >
                     <Text style={[styles.text, styles.label]}>工商监控</Text>
                     <Text style={[styles.text, styles.num]}>{data.Maincount_gongshang}</Text>
