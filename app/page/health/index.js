@@ -65,6 +65,7 @@ export default class HealthScreen extends React.Component {
                                     changeTotalNum={this.changeTotalNum.bind(this)}
                                     changeUpDateTime={this.changeUpDateTime.bind(this)}
                                     type={{ column: 'health', type: 'all', dataName: 'dataList' }}
+                                    isTags={true}
                                 >
                                     <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
                                 </ListPage>
@@ -76,6 +77,7 @@ export default class HealthScreen extends React.Component {
                                     changeTotalNum={this.changeTotalNum.bind(this)}
                                     changeUpDateTime={this.changeUpDateTime.bind(this)}
                                     type={{ column: 'health', type: 'zijin', dataName: 'dataList' }}
+                                    isTags={true}
                                 >
                                     <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
                                 </ListPage>
@@ -87,6 +89,7 @@ export default class HealthScreen extends React.Component {
                                     changeTotalNum={this.changeTotalNum.bind(this)}
                                     changeUpDateTime={this.changeUpDateTime.bind(this)}
                                     type={{ column: 'health', type: 'fensan', dataName: 'dataList' }}
+                                    isTags={true}
                                 >
                                     <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
                                 </ListPage>
@@ -98,6 +101,7 @@ export default class HealthScreen extends React.Component {
                                     changeTotalNum={this.changeTotalNum.bind(this)}
                                     changeUpDateTime={this.changeUpDateTime.bind(this)}
                                     type={{ column: 'health', type: 'liudong', dataName: 'dataList' }}
+                                    isTags={true}
                                 >
                                     <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
                                 </ListPage>
@@ -109,6 +113,7 @@ export default class HealthScreen extends React.Component {
                                     changeTotalNum={this.changeTotalNum.bind(this)}
                                     changeUpDateTime={this.changeUpDateTime.bind(this)}
                                     type={{ column: 'health', type: 'shouyi', dataName: 'dataList' }}
+                                    isTags={true}
                                 >
                                     <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
                                 </ListPage>
@@ -120,6 +125,7 @@ export default class HealthScreen extends React.Component {
                                     changeTotalNum={this.changeTotalNum.bind(this)}
                                     changeUpDateTime={this.changeUpDateTime.bind(this)}
                                     type={{ column: 'health', type: 'renqi', dataName: 'dataList' }}
+                                    isTags={true}
                                 >
                                     <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
                                 </ListPage>
@@ -131,6 +137,7 @@ export default class HealthScreen extends React.Component {
                                     changeTotalNum={this.changeTotalNum.bind(this)}
                                     changeUpDateTime={this.changeUpDateTime.bind(this)}
                                     type={{ column: 'health', type: 'tiliang', dataName: 'dataList' }}
+                                    isTags={true}
                                 >
                                     <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
                                 </ListPage>
@@ -142,6 +149,7 @@ export default class HealthScreen extends React.Component {
                                     changeTotalNum={this.changeTotalNum.bind(this)}
                                     changeUpDateTime={this.changeUpDateTime.bind(this)}
                                     type={{ column: 'health', type: 'zhongcheng', dataName: 'dataList' }}
+                                    isTags={true}
                                 >
                                     <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
                                 </ListPage>
@@ -153,6 +161,7 @@ export default class HealthScreen extends React.Component {
                                     changeTotalNum={this.changeTotalNum.bind(this)}
                                     changeUpDateTime={this.changeUpDateTime.bind(this)}
                                     type={{ column: 'health', type: 'chengzhang', dataName: 'dataList' }}
+                                    isTags={true}
                                 >
                                     <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
                                 </ListPage>

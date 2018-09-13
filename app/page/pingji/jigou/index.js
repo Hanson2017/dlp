@@ -65,6 +65,7 @@ export default class PingjiScreen extends React.Component {
                                     changeUpDateTime={this.changeUpDateTime.bind(this)}
                                     type={{ column: 'pingji', type: 'all', dataName: 'gradeList' }}
                                     columnDb={false}
+                                    isTags={true}
                                 >
                                     <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
                                 </ListPage>

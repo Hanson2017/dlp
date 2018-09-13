@@ -44,6 +44,14 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
     },
+    tdUp2: {
+        
+        flexDirection: 'row',
+    },
+    iconArrow:{
+        position:'relative',
+        top:2,
+    },
     C2D3640: {
         color: '#28323c',
         fontSize:12
@@ -78,6 +86,13 @@ const styles = StyleSheet.create({
         position: 'relative',
         justifyContent: 'center',
         height: 66,
+        borderBottomColor: '#eee',
+        borderBottomWidth: 1
+    },
+    itemRow2:{
+        position: 'relative',
+        paddingTop:12,
+        height: 70,
         borderBottomColor: '#eee',
         borderBottomWidth: 1
     },
@@ -148,7 +163,61 @@ const styles = StyleSheet.create({
     dateTime:{
         lineHeight:16,
         width:100,
-    }
+    },
+
+    tagsNewContainer: {
+        paddingRight:15,
+    },
+    tagsNew: {
+        flexDirection: 'row',
+
+    },
+    tagsNewIcon: {
+        height: 22,
+        width: 22,
+        justifyContent: 'center',
+    },
+    icontag: {
+        width: 18,
+        height: 18,
+    },
+    icontag2: {
+        width: 20,
+        height: 18,
+    },
+    tagsNewCon: {
+        flex: 1,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+    },
+    tagNew: {
+        flexDirection: 'row',
+        marginLeft: 6,
+        marginBottom: 6,
+        paddingLeft: 5,
+        paddingRight: 5,
+        height: 18,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#00D6E6',
+        borderRadius: 4,
+    },
+    tagNewText: {
+        color: '#fff',
+        fontSize: 10,
+    },
+    tagsNewBad: {
+        marginTop: 2,
+    },
+    tagNewBad: {
+        backgroundColor: '#bbb',
+    },
+    tagNull: {
+        paddingLeft: 6,
+        color: '#999',
+        fontSize: 12,
+        lineHeight: 20,
+    },
 })
 
 module.exports = styles

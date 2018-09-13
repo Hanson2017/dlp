@@ -7,6 +7,7 @@ import Util from '../../util/util'
 import stylesList from '../../css/listData';
 
 import Left from './left';
+import Left2 from './left/index2';
 
 
 export default class PingjiAll extends React.Component {
@@ -25,7 +26,7 @@ export default class PingjiAll extends React.Component {
         };
     }
     render() {
-        const {navigation,itemRow,columnDb}=this.props;
+        const { navigation, itemRow, columnDb, isTags } = this.props;
         if (this.state.loading) {
             return (
                 <Loading />
@@ -44,7 +45,13 @@ export default class PingjiAll extends React.Component {
                     {this.props.children}
                     <View style={[styles.container]}>
                         <View style={[styles.leftContainer, this.state.isFixed ? styles.fixed : null]}>
-                            <Left data={this.state.dataSource} navigation={navigation} columnDb={columnDb} />
+                            {
+                                isTags ?
+                                    <Left2 data={this.state.dataSource} navigation={navigation} columnDb={columnDb} />
+                                    :
+                                    <Left data={this.state.dataSource} navigation={navigation} columnDb={columnDb} />
+                            }
+
                         </View>
                         <View style={[styles.rightContainer]}>
                             <ScrollView horizontal={true} onScroll={this._onScroll.bind(this)}>
@@ -117,7 +124,7 @@ const styles = StyleSheet.create({
         left: 0,
         top: 0,
         zIndex: 99,
-        backgroundColor:'#fff',
+        backgroundColor: '#fff',
     },
     rightContainer: {
         flex: 1,

@@ -10,7 +10,7 @@ import TabBar from '../../../component/tabBar/tabQuery';
 import ListPage from '../../listData'
 import Update from './update'
 
-import List from '../../pingji/temp/All'
+import List from './list'
 
 
 export default class QueryScreen extends React.Component {

@@ -6,9 +6,9 @@ import ScrollableTabView from 'react-native-scrollable-tab-view';
 import Util from '../../../util/util';
 import Loading from '../../../component/loading';
 import TabBar from '../../../component/tabBar/tabQuery';
-import ListPage from '../../listData'
+import ListPage from '../../listData';
 import Update from './update';
-import List from '../../pingji/temp/All'
+import List from './list';
 
 
 export default class QueryScreen extends React.Component {

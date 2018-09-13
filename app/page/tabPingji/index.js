@@ -59,23 +59,23 @@ export default class PingjiTab extends React.Component {
                                     <View style={[styles.container, Theme.box, Theme.mt10]}>
                                         <Title data={'机构评级概况'} navigation={navigation} screenUrlInfo={{ screenUrl: 'PingjiJG', tabId: null }} />
                                         <List navigation={navigation} data={dataSource.gradelist}>
-                                            <PjTemp navigation={navigation} data={dataSource.gradelist} />
+                                            <PjTemp navigation={navigation} data={dataSource.gradelist} field={'score'} fieldText={'综合指数'} width={45} />
                                         </List>
                                        
                                     </View>
 
                                     <View style={[styles.container, Theme.box, Theme.mt10]}>
                                         <Title data={'健康度分析'} navigation={navigation} screenUrlInfo={{ screenUrl: 'Health', tabId: null }} />
-                                        <List navigation={navigation} data={dataSource.gradelist}>
-                                            <HealthTemp navigation={navigation} data={dataSource.dlplist} />
+                                        <List navigation={navigation} data={dataSource.dlplist}>
+                                            <PjTemp navigation={navigation} data={dataSource.dlplist} field={'score'} fieldText={'健康度综指'} width={50} />
                                         </List>
                                         
                                     </View>
 
                                     <View style={[styles.container, Theme.box, Theme.mt10]}>
                                         <Title data={'流量监控'} navigation={navigation} screenUrlInfo={{ screenUrl: 'Flow', tabId: null }} />
-                                        <List navigation={navigation} data={dataSource.gradelist}>
-                                            <FlowTemp navigation={navigation} data={dataSource.flowlist} />
+                                        <List navigation={navigation} data={dataSource.flowlist}>
+                                            <PjTemp navigation={navigation} data={dataSource.flowlist} field={'score'} fieldText={'综合流量指数'} width={53} />
                                         </List>                                       
                                     </View>
                                     <Mianze />
@@ -112,6 +112,7 @@ export default class PingjiTab extends React.Component {
                                     loading: false,
                                     isRefreshing: false,
                                 })
+                                console.log(responseData)
                             }
                         })
                 }

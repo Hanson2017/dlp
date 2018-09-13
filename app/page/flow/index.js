@@ -62,6 +62,7 @@ export default class FlowScreen extends React.Component {
                                     changeUpDateTime={this.changeUpDateTime.bind(this)}
                                     type={{ column: 'flow', type: 'all', dataName: 'dataList' }}
                                     columnDb={false}
+                                    isTags={true}
                                 >
                                     <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
                                 </ListPage>
@@ -74,6 +75,7 @@ export default class FlowScreen extends React.Component {
                                     changeUpDateTime={this.changeUpDateTime.bind(this)}
                                     type={{ column: 'flow', type: 'baidu', dataName: 'dataList' }}
                                     columnDb={false}
+                                    isTags={true}
                                 >
                                     <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
                                 </ListPage>
@@ -86,6 +88,7 @@ export default class FlowScreen extends React.Component {
                                     changeUpDateTime={this.changeUpDateTime.bind(this)}
                                     type={{ column: 'flow', type: 'haosou', dataName: 'dataList' }}
                                     columnDb={false}
+                                    isTags={true}
                                 >
                                     <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
                                 </ListPage>
@@ -98,7 +101,10 @@ export default class FlowScreen extends React.Component {
                                     changeUpDateTime={this.changeUpDateTime.bind(this)}
                                     type={{ column: 'flow', type: 'zhanzhang', dataName: 'dataList' }}
                                     columnDb={false}
-                                />
+                                    isTags={true}
+                                >
+                                <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
+                                </ListPage>
                             </View>
                             <View style={styles.content} tabLabel='key5'>
                                 <ListPage
@@ -108,6 +114,7 @@ export default class FlowScreen extends React.Component {
                                     changeUpDateTime={this.changeUpDateTime.bind(this)}
                                     type={{ column: 'flow', type: 'aizhan', dataName: 'dataList' }}
                                     columnDb={false}
+                                    isTags={true}
                                 >
                                     <Update upDateTime={upDateTime} totalNum={this.state.totalNum[this.state.index]} />
                                 </ListPage>
