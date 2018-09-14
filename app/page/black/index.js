@@ -15,7 +15,7 @@ export default class BlackScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            tabNames: ['列表', '按省份', '按首字母', '按出事时间'],
+            tabNames: ['列表', '按地区', '按首字母', '按出事时间'],
             totalNum: 0,
             index: 0,
             ref: false,
