@@ -74,7 +74,7 @@ export default class YulunTab extends React.Component {
     }
     componentDidMount() {
         this.getData()
-        this.getDataBBS();
+        
     }
     onRefresh() {
         this.setState({
@@ -86,10 +86,7 @@ export default class YulunTab extends React.Component {
     getData() {
         let that = this;
         let url = Api.sentHome;
-        this.setState({
-            loading: true,
-            isRefreshing: true,
-        })
+        
         fetch(url)
             .then((response) => {
                 if (response.ok) {
@@ -98,9 +95,9 @@ export default class YulunTab extends React.Component {
                             if (responseData.result == 1) {
                                 that.setState({
                                     dataSource: responseData.data,
-                                    loading: false,
-                                    isRefreshing: false,
+                                   
                                 })
+                                that.getDataBBS();
                             }
                         })
                 }
@@ -115,10 +112,7 @@ export default class YulunTab extends React.Component {
     getDataBBS() {
         let that = this;
         let url = Api.bbs + 'gettype=yqhome&getnum=5';
-        this.setState({
-            loading: true,
-            isRefreshing: true,
-        })
+      
         fetch(url)
             .then((response) => {
                 if (response.ok) {

@@ -86,7 +86,7 @@ export default class HomeScreen extends React.Component {
     }
     componentDidMount() {
         this.getData();
-        this.getDataBBs();
+       
     }
     openControlPanel() {
         this.props.openControlPanel();
@@ -109,10 +109,8 @@ export default class HomeScreen extends React.Component {
 
                             that.setState({
                                 dataSource: responseData,
-                                loading: false,
-                                isRefreshing: false,
                             })
-
+                            that.getDataBBs()
                         })
                 }
                 else {
@@ -126,10 +124,6 @@ export default class HomeScreen extends React.Component {
     getDataBBs() {
         let that = this;
         let url = Api.bbs+'gettype=apphome&getnum=5';
-        this.setState({
-            loading: true,
-            isRefreshing: true,
-        })
         fetch(url)
             .then((response) => {
                 if (response.ok) {
