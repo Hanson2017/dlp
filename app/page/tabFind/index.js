@@ -6,6 +6,7 @@ import Theme from '../../util/theme';
 import Header from '../../component/navBar';
 import Loading from '../../component/loading';
 import Fund from './fund';
+import FundLiuc from '../home/fund/liucheng';
 import Activity from './activity';
 import Mianze from '../mianze';
 
@@ -41,7 +42,8 @@ export default class FindTab extends React.Component {
                                         />
                                     }
                                 >
-                                    <Fund navigation={navigation} data={{count:dataSource.fundcount,list:dataSource.fundlist}} />
+                                    <FundLiuc navigation={navigation} data={dataSource.fund_process}  />
+                                    <Fund navigation={navigation} data={{ count: dataSource.fundcount, list: dataSource.fundlist_firm }} />
                                     <Activity navigation={navigation} data={dataSource.flmf} />
                                     <Mianze />
                                 </ScrollView>
@@ -71,13 +73,14 @@ export default class FindTab extends React.Component {
                 if (response.ok) {
                     response.json()
                         .then((responseData) => {
-                            console.log(responseData)
+                           
                             if (responseData.result == 1) {
                                 that.setState({
                                     dataSource: responseData.data,
                                     loading: false,
                                     isRefreshing: false,
                                 })
+                                
                             }
                         })
                 }

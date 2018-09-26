@@ -5,7 +5,7 @@ import Theme from '../../../util/theme';
 import Loading from '../../../component/loading';
 
 import Top from './top';
-import Fund from './fund/index';
+import Fund from './fund/index2';
 import Pingji from './pingji';
 import Health from './health';
 import Pingce from './pingce';
@@ -64,8 +64,8 @@ export default class Zonglan extends React.Component {
                         blacklinkurl: dataSource.blacklinkurl
                     }} />
                     {
-                        versionStatus != 1 && platInfo.platstatus == 1 && dataSource.fund !== null ?
-                            <Fund data={dataSource.fund} dataInfo={dataInfo} fundelse={dataSource.fundelse} platName={platInfo.platName} platId={platInfo.id} navigation={navigation} />
+                        versionStatus != 1 && platInfo.platstatus == 1 && dataSource.fund_firm !== null ?
+                            <Fund data={dataSource.fund_firm} dataInfo={dataInfo} platName={platInfo.platName} platId={platInfo.id} navigation={navigation} />
                             :
                             null
                     }

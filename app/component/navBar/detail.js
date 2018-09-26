@@ -39,4 +39,5 @@ const styless = StyleSheet.create({
     headerContainer: {
         backgroundColor: '#1A1A1A',
     },
+    
 })

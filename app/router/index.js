@@ -23,6 +23,7 @@ import CommentPlat from '../page/comment';
 import FlmfList from '../page/activity';
 import Fund from '../page/fund';
 import ShowPic from '../page/fund/showPic';
+import PicList from '../page/fund/picList';
 import Zhengyi from '../page/zhengyi';
 import Black from '../page/black';
 import GongshangBG from '../page/gongshangbiangeng';
@@ -34,7 +35,7 @@ import FriendsShare from '../page/friendsShare';
 import Search from '../page/search';
 import Detail from '../page/detail';
 import DetailFumian from '../page/detail/fumian';
-import DetailFund from '../page/detail/fund/index';
+import DetailFund from '../page/detail/fund/index2';
 import DetailBiangeng from '../page/detail/info/gudong/biangengList';
 import DetailBuiltBrowsing from '../page/detail/builtBrowsing';
 import CommentForm from '../page/detail/yuqing/comments/form';
@@ -112,6 +113,9 @@ const AppDlp = StackNavigator({
     },
     Zhengyi: {
         screen: Zhengyi
+    },
+    PicList:{
+        screen:PicList
     },
     Black: {
         screen: Black

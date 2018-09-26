@@ -10,6 +10,7 @@ import Nav from './nav';
 import Dapan from './dapan';
 import Activity from './activity';
 import Fund from './fund';
+import FundLiuc from './fund/liucheng';
 import Pingce from './pingce';
 import Yulun from './yulun';
 import Comment from './comment';
@@ -33,7 +34,7 @@ export default class HomeScreen extends React.Component {
     }
     render() {
         const { navigation, loginState } = this.props;
-        const { loading, dataSource,bbsData,bbsDataNum1,bbsDataNum2 } = this.state;
+        const { loading, dataSource, bbsData, bbsDataNum1, bbsDataNum2 } = this.state;
         return (
             <SafeAreaView style={{ flex: 1, backgroundColor: Theme.color2 }}>
                 <View style={Theme.container}>
@@ -57,7 +58,7 @@ export default class HomeScreen extends React.Component {
                                 >
                                     <Num data={dataSource.homenum} navigation={navigation} />
                                     <Nav navigation={navigation} />
-                                    <Dapan navigation={navigation} data={{ inamount: dataSource.inamount, markent: dataSource.markent, echartYulun: dataSource.sentviewlist, numYulun: dataSource.sentday, newBlack: dataSource.reblacklist, newZhengyi: dataSource.rezhengyilist, gongshang: dataSource.gongshanglist }} />                                  
+                                    <Dapan navigation={navigation} data={{ inamount: dataSource.inamount, markent: dataSource.markent, echartYulun: dataSource.sentviewlist, numYulun: dataSource.sentday, newBlack: dataSource.reblacklist, newZhengyi: dataSource.rezhengyilist, gongshang: dataSource.gongshanglist }} />
                                     <BBs data={bbsData} bbsDataNum1={bbsDataNum1} bbsDataNum2={bbsDataNum2} navigation={navigation} />
                                     <Pingce data={dataSource.mplisttop} navigation={navigation} />
                                     <Yulun data={{ list: dataSource.sentlist, echart: dataSource.sentviewlist, num: dataSource.sentday }} navigation={navigation} />
@@ -69,9 +70,13 @@ export default class HomeScreen extends React.Component {
                                             :
                                             null
                                     }
+                                    <View style={Theme.mt10}>
+                                        <FundLiuc navigation={navigation} data={dataSource.fund_process} />
+                                    </View>
+
                                     {
                                         versionStatus != 1 ?
-                                            <Fund data={dataSource.listfund} navigation={navigation} />
+                                            <Fund data={dataSource.listfund_firm} navigation={navigation} />
                                             :
                                             null
                                     }
@@ -86,7 +91,7 @@ export default class HomeScreen extends React.Component {
     }
     componentDidMount() {
         this.getData();
-       
+
     }
     openControlPanel() {
         this.props.openControlPanel();
@@ -111,6 +116,7 @@ export default class HomeScreen extends React.Component {
                                 dataSource: responseData,
                             })
                             that.getDataBBs()
+                            console.log(responseData)
                         })
                 }
                 else {
@@ -123,7 +129,7 @@ export default class HomeScreen extends React.Component {
     }
     getDataBBs() {
         let that = this;
-        let url = Api.bbs+'gettype=apphome&getnum=5';
+        let url = Api.bbs + 'gettype=apphome&getnum=5';
         fetch(url)
             .then((response) => {
                 if (response.ok) {

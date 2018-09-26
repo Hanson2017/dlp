@@ -20,18 +20,21 @@ const styles = StyleSheet.create({
    
 
     list: {
+        flexDirection:'row',
         padding: 10,
         paddingLeft: 0,
         borderBottomWidth: 1,
         borderBottomColor: '#f2f2f2',
     },
     listTitle: {
+        paddingRight:15,
+        flex:1,
         lineHeight: 20,
         color: '#101010',
         fontSize: 14,
     },
     listDate: {
-        marginTop: 10,
+        lineHeight: 20,
         color: '#bbb',
         fontSize: 11,
     },

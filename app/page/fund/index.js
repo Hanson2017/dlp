@@ -40,24 +40,24 @@ export default class FundScreen extends React.Component {
                             this.state.loading ?
                                 <Loading />
                                 :
-                                // <All2 data={dataSource} navigation={navigation} />
-                                <ScrollableTabView
-                                    renderTabBar={() => <TabBar tabNames={tabNames} />}
-                                    initialPage={params.tabId ? params.tabId : 0}
-                                >
-                                    <View style={styles.content} tabLabel='key1'>
-                                        <All data={dataSource} navigation={navigation} />
-                                    </View>
-                                    <View style={styles.content} tabLabel='key2'>
-                                        <List data={dataSource.fund1} fundType={1} navigation={navigation}  echartColor={['#4847bf', '#7f7fff', '#006699', '#94c4e2', '#4d9dcf']} />
-                                    </View>
-                                    <View style={styles.content} tabLabel='key3'>
-                                        <List data={dataSource.fund2} fundType={2} navigation={navigation} echartColor={['#ffc55c', '#e88613', '#9c6c33', '#e2b394', '#c69c6d']}  />
-                                    </View>
-                                    <View style={styles.content} tabLabel='key4'>
-                                        <List data={dataSource.fund3} fundType={3} navigation={navigation}echartColor={['#b19deb', '#9c45de', '#4d226d', '#8557a7', '#662d91', '#9a308d', '#9686ae', '#9b9fc3', '#8f71a6', '#6264d6']} />
-                                    </View>
-                                </ScrollableTabView>
+                                <All2 data={dataSource} navigation={navigation} />
+                                // <ScrollableTabView
+                                //     renderTabBar={() => <TabBar tabNames={tabNames} />}
+                                //     initialPage={params.tabId ? params.tabId : 0}
+                                // >
+                                //     <View style={styles.content} tabLabel='key1'>
+                                //         <All data={dataSource} navigation={navigation} />
+                                //     </View>
+                                //     <View style={styles.content} tabLabel='key2'>
+                                //         <List data={dataSource.fund1} fundType={1} navigation={navigation}  echartColor={['#4847bf', '#7f7fff', '#006699', '#94c4e2', '#4d9dcf']} />
+                                //     </View>
+                                //     <View style={styles.content} tabLabel='key3'>
+                                //         <List data={dataSource.fund2} fundType={2} navigation={navigation} echartColor={['#ffc55c', '#e88613', '#9c6c33', '#e2b394', '#c69c6d']}  />
+                                //     </View>
+                                //     <View style={styles.content} tabLabel='key4'>
+                                //         <List data={dataSource.fund3} fundType={3} navigation={navigation}echartColor={['#b19deb', '#9c45de', '#4d226d', '#8557a7', '#662d91', '#9a308d', '#9686ae', '#9b9fc3', '#8f71a6', '#6264d6']} />
+                                //     </View>
+                                // </ScrollableTabView>
                         }
 
                     </View>
@@ -70,8 +70,7 @@ export default class FundScreen extends React.Component {
     }
     getData() {
         let that = this;
-        let url = Api.fund;
-
+        let url = Api.fund+'?type=firm';
         fetch(url)
             .then((response) => {
 
@@ -82,6 +81,7 @@ export default class FundScreen extends React.Component {
                                 loading: false,
                                 dataSource: responseData,
                             })
+                            
 
                         })
                 }

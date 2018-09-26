@@ -9,13 +9,13 @@ export default class Fund extends React.Component {
     render() {
         const { navigation, data } = this.props;
         return (
-            <View style={[styles.container, Theme.box]}>
+            <View style={[styles.container, Theme.box,Theme.mt10]}>
                 <Title data={'示范投资'} navigation={navigation} screenUrlInfo={{ screenUrl: 'Fund', tabId: null }} />
                 <View style={styles.fundContainer}>
-                    <View style={styles.fundIntroduce}>
+                    {/* <View style={styles.fundIntroduce}>
                         <Text style={styles.fundIntroduceText}>示范投资是贷罗盘运营团队发起的网贷领投项目，按照风险评估分为“稳健型”、“平衡型”、“收益型”三种，可供广大投资人参考。</Text>
                         <Text style={styles.fundIntroduceText}>示范投资目前投资总额为 <Text style={{ color: Theme.color }}>{data.count}万</Text></Text>
-                    </View>
+                    </View> */}
 
                    <View style={styles.fundList}>
                         <Item typeNo={1} type={'稳健型'} navigation={navigation} data={data.list.Listfund1} />
@@ -24,8 +24,9 @@ export default class Fund extends React.Component {
                     </View>      
 
                     <View style={styles.fundNote}>
-                        <Text style={styles.fundNoteText}>※ 建议合理分配资金，选择优质平台分散投资</Text>
-                        <Text style={styles.fundNoteText}>※ 示范投资仅起到参考作用</Text>
+                        <Text style={styles.fundNoteText}>示范投资是贷罗盘运营团队发起的网贷领投项目，按照风险评估分为“稳健型”、“平衡型”、“收益型”三种，可供广大投资人参考。</Text>
+                        {/* <Text style={styles.fundNoteText}>※ 建议合理分配资金，选择优质平台分散投资</Text>
+                        <Text style={styles.fundNoteText}>※ 示范投资仅起到参考作用</Text> */}
                     </View>
                 </View>
 
@@ -35,7 +36,6 @@ export default class Fund extends React.Component {
 }
 const styles = StyleSheet.create({
     container: {
-        paddingTop: 10,
     },
     fundContainer: {
         paddingLeft: 17,
@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
         marginTop: 8,
         paddingTop: 6,
         paddingBottom: 10,
+        paddingRight:10,
         borderTopWidth: 1,
         borderTopColor: '#f2f2f2',
     },

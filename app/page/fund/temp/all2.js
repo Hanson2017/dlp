@@ -1,22 +1,26 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, View, TouchableOpacity, ScrollView, Image } from 'react-native';
+import { Text, StyleSheet, View, TouchableOpacity, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/Icomoon';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Echarts from 'native-echarts';
-import Util from '../../../util/util';
 import Theme from '../../../util/theme';
 import Title from '../../../component/title';
 import PieEcharts from '../../../echarts/pie';
 
+import Liucheng from '../liucheng';
+
 class List extends React.Component {
     render() {
-        const { type, navigation, dataList, borderNot } = this.props;
+        const { type, navigation, listData, borderNot } = this.props;
+        var len = 3;
+        if (type == 3) {
+            len = 5
+        }
         return (
-            <View style={[styles.fundList, borderNot ? { borderBottomWidth: 0, } : null]}>
-                <View style={styles.fundListHd}>
+            <View style={[styles.fundInfo, borderNot ? { borderBottomWidth: 0, } : null]}>
+                <View style={styles.fundInfotHd}>
 
-                    <View style={[styles.fundListHdType, styles['fundType' + type]]}><Text style={styles.fundListHdTypeText}>{type}号</Text></View>
-                    <Text style={styles.fundListHdTypeTText}>
+                    <View style={[styles.fundInfotHdType, styles['fundType' + type]]}><Text style={styles.fundInfotHdTypeText}>{type}号</Text></View>
+                    <Text style={styles.fundInfotHdTText}>
                         {
                             type == 1 ?
                                 '稳健型'
@@ -28,8 +32,8 @@ class List extends React.Component {
                         }
                     </Text>
                 </View>
-                <View style={styles.fundListBdLi}>
-                    <Text style={styles.fundListBdLiLabel}>安全指数</Text>
+                <View style={styles.fundInfoBdLi}>
+                    <Text style={styles.fundInfoBdLiLabel}>安全指数</Text>
                     <View style={styles.fundStart}>
                         <Icon name={'fund-dunpai'} size={14} color={'#FF9800'} />
                         <Icon name={'fund-dunpai'} size={14} color={'#FF9800'} />
@@ -55,9 +59,9 @@ class List extends React.Component {
 
                     </View>
                 </View>
-                <View style={styles.fundListBdLi}>
-                    <Text style={styles.fundListBdLiLabel}>适合人群</Text>
-                    <Text style={styles.fundListBdLiText}>
+                <View style={styles.fundInfoBdLi}>
+                    <Text style={styles.fundInfoBdLiLabel}>适合人群</Text>
+                    <Text style={styles.fundInfoBdLiText}>
                         {
                             type == 1 ?
                                 '适合以稳健安全为首选目标，风险厌恶型的人群。'
@@ -69,7 +73,76 @@ class List extends React.Component {
                         }
                     </Text>
                 </View>
-                <View style={styles.fundListBdLi}>
+                {
+                    listData.length > 0 ?
+                        <View style={styles.fundList}>
+                            <View style={[styles.fundListLeft,listData.length<len?{borderRightWidth:0}:null]}>
+                                <View style={styles.fundListHd}>
+                                    <Text style={[styles.listHdText, styles.fundIc1]}>在投平台</Text>
+                                    <Text style={[styles.listHdText, styles.fundIc2]}>利率</Text>
+                                </View>
+                                <View style={styles.fundListBd}>
+                                    {
+                                        listData.map((item, i) => {
+                                            if (i < len) {
+                                                return (
+                                                    <View key={i} style={styles.list}>
+                                                        <TouchableOpacity style={styles.fundIc1}
+                                                            onPress={() => {
+                                                                navigation.navigate('Detail', { id: item.id_dlp, platName: item.plat_name })
+                                                            }}
+                                                        >
+                                                            <Text style={[styles.listPlatText, styles.listText]}>{item.plat_name}</Text>
+                                                        </TouchableOpacity>
+                                                        <Text style={[styles.fundIc2, styles.listRateText, styles['listRateText' + type]]}>{item.fund_rate}%</Text>
+                                                    </View>
+                                                )
+                                            }
+
+                                        })
+                                    }
+
+                                </View>
+                            </View>
+                            {
+                                listData.length >= len ?
+                                    <View style={styles.fundListRight}>
+                                        <View style={styles.fundListHd}>
+                                            <Text style={[styles.listHdText, styles.fundIc1]}>在投平台</Text>
+                                            <Text style={[styles.listHdText, styles.fundIc2]}>利率</Text>
+                                        </View>
+                                        <View style={styles.fundListBd}>
+                                            {
+                                                listData.map((item, i) => {
+                                                    if (i >= len) {
+                                                        return (
+                                                            <View key={i} style={styles.list}>
+                                                                <TouchableOpacity style={styles.fundIc1}
+                                                                    onPress={() => {
+                                                                        navigation.navigate('Detail', { id: item.id_dlp, platName: item.plat_name })
+                                                                    }}
+                                                                >
+                                                                    <Text style={[styles.listPlatText, styles.listText]}>{item.plat_name}</Text>
+                                                                </TouchableOpacity>
+                                                                <Text style={[styles.fundIc2, styles.listRateText, styles['listRateText' + type]]}>{item.fund_rate}%</Text>
+                                                            </View>
+                                                        )
+                                                    }
+
+                                                })
+                                            }
+
+                                        </View>
+                                    </View>
+                                    :
+                                    null
+                            }
+
+                        </View>
+                        :
+                        <Text style={styles.null}>暂无</Text>
+                }
+                {/* <View style={styles.fundListBdLi}>
                     <Text style={[styles.fundListBdLiLabel, styles.fundListBdLiLabel2]}>在投平台</Text>
                     <View style={styles.fundListBdLiPlats}>
                         {
@@ -83,7 +156,7 @@ class List extends React.Component {
                                 <Text style={styles.null}>暂无</Text>
                         }
                     </View>
-                </View>
+                </View> */}
             </View>
         )
     }
@@ -100,10 +173,15 @@ export default class FundAll extends React.Component {
     render() {
         const { navigation, data } = this.props;
         const { isHidden } = this.state;
+        const fund_process = data.fund_process;
+        const fundAll = data.fundall;
         const fund1 = data.fund1;
-        let fund1Data = [];
-        for (let i = 0; i < data.fund1.length; i++) {
-            fund1Data.push({ value: data.fund1[i].fund_amount, name: data.fund1[i].plat_name + '\n' + '(' + data.fund1[i].fund_amount + '万)' })
+        const fund2 = data.fund2;
+        const fund3 = data.fund3;
+
+        let fundData = [];
+        for (let i = 0; i < fundAll.length; i++) {
+            fundData.push({ value: fundAll[i].fund_amount, name: fundAll[i].plat_name + '\n' + '(' + fundAll[i].fund_amount + '万)' })
         }
         return (
             <ScrollView>
@@ -115,97 +193,29 @@ export default class FundAll extends React.Component {
                     </View>
                     <Title data={'投资整体分布'} borderNot={true} />
                     <View style={styles.fundEchart}>
-                        <Echarts option={PieEcharts.pieFund(fund1Data, ['#4847bf', '#7f7fff', '#006699', '#94c4e2', '#4d9dcf'])} height={175} width={320} />
+                        <Echarts option={PieEcharts.pieFund(fundData, ['#4847bf', '#7f7fff', '#006699', '#94c4e2', '#4d9dcf', '#ffc55c', '#e88613', '#9c6c33', '#e2b394', '#c69c6d', '#b19deb', '#9c45de', '#4d226d', '#8557a7', '#662d91', '#9a308d', '#9686ae', '#9b9fc3', '#8f71a6', '#6264d6'])} height={175} width={320} />
                     </View>
                     <TouchableOpacity style={styles.openMore} activeOpacity={0.6} onPress={() => {
                         this.setState({
                             isHidden: !this.state.isHidden
                         })
                     }}>
-                        <Text style={styles.openMoreText}>展开详细分布</Text>
+                        <Text style={styles.openMoreText}>{isHidden ? '展开详细分布' : '收起详细分布'}</Text>
                     </TouchableOpacity>
                     {
                         isHidden ?
                             null
                             :
-                            <View style={styles.fundListContainer}>
-                                <List type={1} navigation={navigation} dataList={[{ plat_name: '陆金所', id: 1 }, { plat_name: '积木盒子', id: 2 }, { plat_name: '宜人贷', id: 1 }]} />
-                                <List type={2} navigation={navigation} dataList={[{ plat_name: '陆金所', id: 1 }, { plat_name: '积木盒子', id: 2 }, { plat_name: '宜人贷', id: 1 }, { plat_name: '积木盒子', id: 2 }, { plat_name: '宜人贷', id: 1 }]} />
-                                <List type={3} navigation={navigation} dataList={[]} borderNot={true} />
+                            <View style={styles.fundContainer}>
+                                <List type={1} navigation={navigation} listData={fund1} />
+                                <List type={2} navigation={navigation} listData={fund2} />
+                                <List type={3} navigation={navigation} listData={fund3} borderNot={true} />
                             </View>
                     }
                 </View>
 
+                <Liucheng title={'实盘最新动态'} navigation={navigation} data={fund_process} />
 
-                <View style={[Theme.mt10]}>
-                    <View style={[Theme.box, styles.fundLiuc]}>
-                        <Title data={'实盘最新动态'} />
-                    </View>
-                    <View style={[Theme.box, styles.fundLiucList]}>
-                        <View style={styles.fundLiucListDate}>
-                            <FontAwesome name={'calendar'} size={15} color={'#999'} />
-                            <Text style={styles.fundLiucListDateText}>2018.10.25</Text>
-                        </View>
-                        <View style={styles.fundLiucListContent}>
-                            <TouchableOpacity style={styles.platNameLc}>
-                                <Text style={styles.platNameLcText}>桔子理财</Text>
-                            </TouchableOpacity>
-                            <View style={styles.fundLiucListCC}>
-                                <Text style={styles.fundLiucListCCText}>注册新账户，充值20000元，</Text>
-                                <Text style={styles.fundLiucListCCText}>投资项目为“财富汇”，周期为3个月，年化收益率为9%。</Text>
-                            </View>
-                        </View>
-                    </View>
-                    <View style={[Theme.box, styles.fundLiucList, Theme.mt10]}>
-                        <View style={styles.fundLiucListDate}>
-                            <FontAwesome name={'calendar'} size={15} color={'#999'} />
-                            <Text style={styles.fundLiucListDateText}>2018.10.25</Text>
-                        </View>
-                        <View style={styles.fundLiucListContent}>
-                            <TouchableOpacity style={styles.platNameLc}>
-                                <Text style={styles.platNameLcText}>积木盒子</Text>
-                            </TouchableOpacity>
-                            <View style={styles.fundLiucListCC}>
-                                <Text style={styles.fundLiucListCCText}>注册新账户，充值20000元，</Text>
-                                <Text style={styles.fundLiucListCCText}>投资项目为“财富汇”，周期为3个月，年化收益率为9%。</Text>
-                            </View>
-                            <View style={styles.fundLiucListBz}>
-                                <Text style={styles.fundLiucListBzText}>备注：</Text>
-                                <Text style={styles.fundLiucListBzText}>需先消耗3000桔子购买VIP，VIP产品里可获取0.5%加息</Text>
-                                <Text style={styles.fundLiucListBzText}>该项目满90天后可债转，管理费1%。</Text>
-                            </View>
-                            <View style={styles.fundLiucListPic}>
-                                <View style={styles.fundLiucListPicTit}>
-                                    <Text style={styles.fundLiucListPicTitText}>相关截图</Text>
-                                </View>
-                                <View style={styles.fundLiucListPicCon}>
-                                    <View style={styles.fundLiucListPicLi}>
-                                        <Image source={{ uri: 'https://facebook.github.io/react/logo-og.png' }} style={styles.pic} />
-                                    </View>
-                                    <View style={styles.fundLiucListPicLi}>
-                                        <Image source={{ uri: 'https://facebook.github.io/react/logo-og.png' }} style={styles.pic} />
-                                    </View>
-                                    <TouchableOpacity style={styles.fundLiucListPicMore} activeOpacity={0.4}
-                                        onPress={()=>{
-                                            navigation.navigate('ShowPic')
-                                        }}
-                                    >
-                                        <Text style={styles.fundLiucListPicMoreText}>查看全部</Text>
-                                        <Text style={styles.fundLiucListPicMoreText}>相关截图</Text>
-                                    </TouchableOpacity>
-                                </View>
-                            </View>
-                            <View style={styles.fundLiucListHt}>
-                                <View style={styles.fundLiucListPicTit}>
-                                    <Text style={styles.fundLiucListPicTitText}>相关合同</Text>
-                                </View>
-                                <TouchableOpacity style={styles.fundhtdown}>
-                                    <Text style={styles.fundhtdownText}>查看出借合同</Text>
-                                </TouchableOpacity>
-                            </View>
-                        </View>
-                    </View>
-                </View>
             </ScrollView>
         )
     }
@@ -250,22 +260,22 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontSize: 12,
     },
-    fundListContainer: {
+    fundContainer: {
 
         paddingLeft: 10,
     },
-    fundList: {
+    fundInfo: {
         paddingLeft: 7,
         borderBottomColor: '#eee',
         borderBottomWidth: 1,
         marginBottom: 15,
     },
-    fundListHd: {
+    fundInfotHd: {
         marginBottom: 12,
         flexDirection: 'row',
         alignItems: 'center',
     },
-    fundListHdType: {
+    fundInfotHdType: {
         marginRight: 10,
         width: 48,
         height: 24,
@@ -283,22 +293,22 @@ const styles = StyleSheet.create({
     fundType3: {
         backgroundColor: Theme.fund3Color,
     },
-    fundListHdTypeText: {
+    fundInfotHdTypeText: {
         fontSize: 16,
         color: '#fff',
         fontWeight: 'bold',
     },
-    fundListHdTypeTText: {
+    fundInfotHdTText: {
         fontSize: 16,
         color: '#666',
         fontWeight: 'bold',
     },
-    fundListBdLi: {
+    fundInfoBdLi: {
         flexDirection: 'row',
         marginBottom: 12,
 
     },
-    fundListBdLiLabel: {
+    fundInfoBdLiLabel: {
         width: 55,
         paddingRight: 5,
         fontSize: 12,
@@ -310,7 +320,7 @@ const styles = StyleSheet.create({
     fundStart: {
         flexDirection: 'row',
     },
-    fundListBdLiText: {
+    fundInfoBdLiText: {
         paddingRight: 10,
         flex: 1,
         fontSize: 12,
@@ -334,96 +344,58 @@ const styles = StyleSheet.create({
         color: '#999',
     },
 
-    fundLiuc: {
-        paddingBottom: 10,
-    },
-    fundLiucListDate: {
-        paddingLeft: 17,
-        flexDirection: 'row',
-        alignItems: 'center',
-        height: 30,
-        borderBottomColor: '#eee',
-        borderBottomWidth: 1,
-    },
-    fundLiucListDateText: {
-        paddingLeft: 5,
-        color: '#A1A1A1',
-        fontSize: 12,
-    },
-    fundLiucListContent: {
-        paddingTop: 15,
-        paddingBottom: 15,
-        paddingLeft: 17,
-        paddingRight: 15,
-    },
-    fundLiucListCCText: {
-        fontSize: 12,
-        color: '#666',
-        fontWeight: 'bold',
-        lineHeight: 18,
-    },
-    fundLiucListBz: {
-        paddingTop: 15,
-        marginTop: 15,
-        borderTopColor: '#eee',
-        borderTopWidth: 1,
-    },
-    fundLiucListBzText: {
-        color: '#999',
-        fontSize: 12,
-        lineHeight: 18,
-    },
-    fundLiucListPic: {
-        paddingTop: 15,
-        marginTop: 15,
-        borderTopColor: '#eee',
-        borderTopWidth: 1,
-    },
-    fundLiucListPicTit: {
-        marginBottom: 8,
-    },
-    fundLiucListPicTitText: {
-        fontSize: 12,
-        fontWeight: 'bold',
-        color: '#666',
-    },
-    fundLiucListPicCon: {
 
+    fundList: {
+        marginTop: 5,
+        marginBottom: 25,
         flexDirection: 'row',
     },
-    pic: {
-        marginRight: 10,
-        width: (Theme.screenWidth - 70) / 3,
-        height: (Theme.screenWidth - 70) / 3,
-        borderWidth: 1,
-        borderColor: '#eee',
+    fundListLeft: {
+        paddingRight: 5,
+        marginRight: 25,
+        borderRightWidth: 1,
+        borderRightColor: '#f2f2f2',
     },
-    fundLiucListPicMore: {
-        width: (Theme.screenWidth - 70) / 3,
-        height: (Theme.screenWidth - 70) / 3,
-        backgroundColor: '#eee',
-        justifyContent: 'center',
+    fundListHd: {
+        marginBottom: 5,
+        flexDirection: 'row',
+    },
+    list: {
+        flexDirection: 'row',
+        marginTop: 5,
         alignItems: 'center',
     },
-    fundLiucListPicMoreText: {
-        color: '#999',
+    fundIc1: {
+        width: 84,
+    },
+    fundIc2: {
+        width: 60,
+    },
+    listHdText: {
         fontSize: 12,
-        lineHeight: 20,
+        color: '#A1A1A1'
     },
-    fundLiucListHt: {
-        marginTop: 25,
+    listPlatText: {
+        fontSize: 14,
+        color: '#707070'
     },
-    fundhtdownText: {
+    listRateText: {
+        fontSize: 14,
+        color: Theme.fund1Color,
+    },
+    listRateText1: {
+        color: Theme.fund1Color,
+    },
+    listRateText2: {
+        color: Theme.fund2Color,
+    },
+    listRateText3: {
+        color: Theme.fund3Color,
+    },
+    null: {
+
+        paddingBottom: 20,
+        color: '#bbb',
         fontSize: 12,
-        color: '#999',
-        textDecorationLine: 'underline',
     },
-    platNameLc: {
-        marginBottom: 15,
-    },
-    platNameLcText: {
-        fontSize: 16,
-        color: '#0096E6',
-        fontWeight: 'bold',
-    }
 })

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Text, StyleSheet, View, Image, Dimensions, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from "react-navigation";
 import { Carousel } from 'antd-mobile';
+import Api from '../../../util/api';
 import Theme from '../../../util/theme';
 const { width, height } = Dimensions.get('window');
 
@@ -10,21 +11,29 @@ export default class ShowPic extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: ['1', '2', '3'],
+            data: [],
             imgHeight: 176,
             index: 0
         }
     }
+    componentWillMount() {
+        const { navigation } = this.props;
+        const { params } = navigation.state;
+        let tab = 0
+        if (params != undefined) {
+            tab = params.index
+        }
+        this.setState({
+            data:params.data,
+            index: tab,
+        })
+    }
     componentDidMount() {
-        // simulate img loading
-        setTimeout(() => {
-            this.setState({
-                data: ['AiyWuByWklrrUDlFignR', 'TekJlZRVCjLFexlOCuWn', 'IJOtIlfsYdTyaDTRVrLI'],
-            });
-        }, 100);
+        
     }
     render() {
         const { navigation } = this.props;
+        const { index,data } = this.state;
         return (
             <SafeAreaView style={{ flex: 1, backgroundColor: '#000' }}>
                 <View style={styles.container}>
@@ -32,17 +41,18 @@ export default class ShowPic extends React.Component {
                         <TouchableOpacity style={{ flex: 1 }} onPress={() => { navigation.goBack() }}></TouchableOpacity>
                     </View>
                     <View style={styles.page}>
-                        <Text style={styles.pageText}>{this.state.index + 1}/3</Text>
+                        <Text style={styles.pageText}>{this.state.index + 1}/{data.length}</Text>
                     </View>
                     <Carousel
+                        selectedIndex={index}
                         // dots={false}
                         autoplay={false}
                         infinite
                         beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
                         afterChange={index => { this.setState({ index: index }) }}
                     >
-                        {this.state.data.map(val => (
-                            <Image source={{ uri: `https://zos.alipayobjects.com/rmsportal/${val}.png` }} style={styles.pic} />
+                        {data.map((val,i) => (
+                            <Image source={{ uri: Api.domain+val.file_url}} style={styles.pic} key={i} resizeMode={'contain'} />
                         ))}
                     </Carousel>
                 </View>
@@ -79,7 +89,7 @@ const styles = StyleSheet.create({
         fontSize: 14,
     },
     pic: {
-        width: Theme.screenWidth,
-        height: 200,
+       width: Theme.screenWidth,
+       height:300,
     }
 })
