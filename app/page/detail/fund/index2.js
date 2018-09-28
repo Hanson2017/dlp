@@ -40,7 +40,7 @@ export default class DetailFund extends React.Component {
         return (
             <SafeAreaView style={{ flex: 1, backgroundColor: '#1A1A1A' }}>
                 <View style={[styles.container]}>
-                    <Header headerOpt={{ title: platName + ' 示范投资实盘', noBack: true, search: 'null' }} navigation={navigation} />
+                    <Header headerOpt={{ title: platName + ' 示范出借', noBack: true, search: 'null' }} navigation={navigation} />
                     <ActionShare ref={'ActionShare'} />
                     <View style={Theme.content}>
                         {
@@ -52,7 +52,7 @@ export default class DetailFund extends React.Component {
                                         <View style={[styles.titleContainer]}>
                                             <View style={styles.titleLeft}>
                                                 <View style={styles.titleIcon}></View>
-                                                <View style={styles.titleLeftCon}><Text style={styles.titleLeftText}>实盘概况</Text></View>
+                                                <View style={styles.titleLeftCon}><Text style={styles.titleLeftText}>示范出借概况</Text></View>
 
                                             </View>
                                             <TouchableOpacity
@@ -62,8 +62,8 @@ export default class DetailFund extends React.Component {
                                                     navigation.navigate('Fund')
                                                 }}
                                             >
-                                                <View style={[styles.titleTypeNum, styles['fundType' + firmDetail.type]]}><Text style={styles.titleTypeNumText}>{firmDetail.type}号</Text></View>
-                                                <Text style={styles.titleMoreText}>
+                                                {/* <View style={[styles.titleTypeNum, styles['fundType' + firmDetail.type]]}><Text style={styles.titleTypeNumText}></Text></View> */}
+                                                <Text style={styles.titleMoreText}>{firmDetail.type}号
                                                     {
                                                         firmDetail.type == 1 ?
                                                             '稳健型'
@@ -73,7 +73,7 @@ export default class DetailFund extends React.Component {
                                                                 :
                                                                 '收益型'
                                                     }
-                                                    示范投资</Text>
+                                                    示范出借</Text>
                                                 <Icon name={'triangle-right22'} size={14} color={'#bbb'} />
                                             </TouchableOpacity>
                                         </View>
@@ -97,10 +97,10 @@ export default class DetailFund extends React.Component {
                                             <View style={styles.fundInfoList}>
                                                 <View style={styles.fundInfoListCon}>
                                                     <View style={styles.fundInfoListHd}>
-                                                        <Text style={[styles.fundInfoListHdText, styles.listIc1]}>投入本金</Text>
-                                                        <Text style={[styles.fundInfoListHdText, styles.listIc2]}>在投项目</Text>
+                                                        <Text style={[styles.fundInfoListHdText, styles.listIc1]}>出借本金</Text>
+                                                        <Text style={[styles.fundInfoListHdText, styles.listIc2]}>出借项目</Text>
                                                         <Text style={[styles.fundInfoListHdText, styles.listIc3]}>年华收益率</Text>
-                                                        <Text style={[styles.fundInfoListHdText, styles.listIc4]}>已复投次数</Text>
+                                                        <Text style={[styles.fundInfoListHdText, styles.listIc4]}>已重复出借</Text>
                                                     </View>
                                                     <View style={styles.fundInfoListBd}>
                                                         <Text style={[styles.fundInfoListBdText, styles.listIc1]}>{firmDetail.invest_num}万</Text>
@@ -112,7 +112,7 @@ export default class DetailFund extends React.Component {
                                                 <View style={[styles.fundInfoListCon, { marginTop: 20, }]}>
                                                     <View style={styles.fundInfoListHd}>
                                                         <Text style={[styles.fundInfoListHdText, styles.listIc1]}>已回收</Text>
-                                                        <Text style={[styles.fundInfoListHdText, styles.listIc2]}>首次投资日期</Text>
+                                                        <Text style={[styles.fundInfoListHdText, styles.listIc2]}>首次出借日期</Text>
                                                         <Text style={[styles.fundInfoListHdText, styles.listIc3]}>本金到期日期</Text>
                                                     </View>
                                                     <View style={styles.fundInfoListBd}>
@@ -124,7 +124,7 @@ export default class DetailFund extends React.Component {
                                             </View>
                                             <View style={styles.fundReason}>
 
-                                                <Text style={styles.fundReasonText}>投资理由：</Text>
+                                                <Text style={styles.fundReasonText}>出借理由：</Text>
                                                 <Text style={styles.fundReasonText}>{firmDetail.invest_reason}</Text>
 
                                             </View>
@@ -137,7 +137,7 @@ export default class DetailFund extends React.Component {
                                             </TouchableOpacity>
                                         </View>
                                     </View>
-                                    <Liucheng data={processlist} title={'详细出借流程'} plat={true} navigation={navigation} />
+                                    <Liucheng data={processlist} title={'示范出借动态'} plat={true} navigation={navigation} />
 
                                 </ScrollView>
                         }

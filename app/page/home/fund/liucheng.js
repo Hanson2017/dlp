@@ -11,12 +11,12 @@ export default class Fund extends React.Component {
         const { data, navigation } = this.props;
         return (
             <View style={[styles.container, Theme.box]}>
-                <Title data={'实盘最新动态'} navigation={navigation} screenUrlInfo={{ screenUrl: 'Fund', tabId: null }} />
+                <Title data={'示范出借动态'} navigation={navigation} screenUrlInfo={{ screenUrl: 'Fund', tabId: null }} />
                 <View style={styles.liucContainer}>
                     {
                         data.map((item, i) => {
                             return (
-                                <View style={[styles.fundLiucList]} key={i}>
+                                <View style={[styles.fundLiucList,data.length-1==i?{borderBottomWidth:0}:null]} key={i}>
                                     <View style={styles.fundLiucListDate}>
                                         <FontAwesome name={'calendar'} size={15} color={'#999'} />
                                         <Text style={styles.fundLiucListDateText}>{Util.formatDate2(item.showday)}</Text>

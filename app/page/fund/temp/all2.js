@@ -187,11 +187,11 @@ export default class FundAll extends React.Component {
             <ScrollView>
                 <View style={[Theme.box]}>
                     <View style={styles.fundNote}>
-                        <Text style={styles.fundNoteText}>※ 示范投资目前投资总额为 <Text style={{ color: Theme.color }}>{data.investall}万</Text>。</Text>
-                        <Text style={[styles.fundNoteText]}>※ 建议合理分配资金，选择优质平台分散投资。</Text>
-                        <Text style={styles.fundNoteText}>※ 示范投资仅起到参考作用，不构成安全性评价或投资建议，任何风险用户自行承担。</Text>
+                        <Text style={styles.fundNoteText}>※ 示范出借目前出借总额为 <Text style={{ color: Theme.color }}>{data.investall}万</Text>。</Text>
+                        <Text style={[styles.fundNoteText]}>※ 建议合理分配资金，选择优质平台分散出借。</Text>
+                        <Text style={styles.fundNoteText}>※ 示范出借仅起到参考作用，不构成安全性评价或出借建议，任何风险用户自行承担。</Text>
                     </View>
-                    <Title data={'投资整体分布'} borderNot={true} />
+                    <Title data={'出借整体分布'} borderNot={true} />
                     <View style={styles.fundEchart}>
                         <Echarts option={PieEcharts.pieFund(fundData, ['#4847bf', '#7f7fff', '#006699', '#94c4e2', '#4d9dcf', '#ffc55c', '#e88613', '#9c6c33', '#e2b394', '#c69c6d', '#b19deb', '#9c45de', '#4d226d', '#8557a7', '#662d91', '#9a308d', '#9686ae', '#9b9fc3', '#8f71a6', '#6264d6'])} height={175} width={320} />
                     </View>
@@ -214,7 +214,7 @@ export default class FundAll extends React.Component {
                     }
                 </View>
 
-                <Liucheng title={'实盘最新动态'} navigation={navigation} data={fund_process} />
+                <Liucheng title={'示范出借最新动态'} navigation={navigation} data={fund_process} />
 
             </ScrollView>
         )

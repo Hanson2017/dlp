@@ -31,7 +31,7 @@ export default class FundScreen extends React.Component {
         return (
             <SafeAreaView style={{ flex: 1, backgroundColor: Theme.color2 }}>
                 <View style={Theme.container}>
-                    <Header headerOpt={{ back: '示范投资', title: '示范投资' }} navigation={navigation} />
+                    <Header headerOpt={{ back: '示范出借', title: '示范出借' }} navigation={navigation} />
                     <View style={styles.update}>
                         <Text style={[styles.updateText]}>更新时间：{updatetime}</Text>
                     </View>

@@ -632,7 +632,7 @@ const styles = StyleSheet.create({
         height: 20,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#00D6E6',
+        backgroundColor: '#0096E6',
         borderRadius: 4,
     },
     tagNewText: {

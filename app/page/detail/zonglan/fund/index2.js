@@ -11,7 +11,7 @@ export default class ZonglanFund2 extends React.Component {
 
         return (
             <View style={[Theme.box, Theme.mt10]}>
-                <Title data={'示范投资实盘'} screenUrlInfo={{ screenUrl: 'DetailFund', tabId: { platId: platId, platName: platName } }} navigation={navigation}>
+                <Title data={'示范出借概况'} screenUrlInfo={{ screenUrl: 'DetailFund', tabId: { platId: platId, platName: platName } }} navigation={navigation}>
                     <View style={styles.typeCon}>
                         {/* <View style={[styles.typeNum, styles['fundType' + data.type]]}><Text style={styles.typeNumText}>{data.type}号</Text></View> */}
                         <Text style={styles.typeTxt}> [{data.type}号                         
@@ -35,8 +35,8 @@ export default class ZonglanFund2 extends React.Component {
                     </View>
                     <View style={styles.fundInfo}>
                         <View style={styles.fundInfoBodyHd}>
-                            <Text style={[styles.fundInfoBodyHdText, styles.listIc1]}>投入本金</Text>
-                            <Text style={[styles.fundInfoBodyHdText, styles.listIc2]}>在投项目</Text>
+                            <Text style={[styles.fundInfoBodyHdText, styles.listIc1]}>出借本金</Text>
+                            <Text style={[styles.fundInfoBodyHdText, styles.listIc2]}>出借项目</Text>
                             <Text style={[styles.fundInfoBodyHdText, styles.listIc3]}>本金到期</Text>
                         </View>
                         <View style={styles.fundInfoBodyBd}>

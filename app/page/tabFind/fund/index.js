@@ -10,7 +10,7 @@ export default class Fund extends React.Component {
         const { navigation, data } = this.props;
         return (
             <View style={[styles.container, Theme.box,Theme.mt10]}>
-                <Title data={'示范投资'} navigation={navigation} screenUrlInfo={{ screenUrl: 'Fund', tabId: null }} />
+                <Title data={'示范出借概况'} navigation={navigation} screenUrlInfo={{ screenUrl: 'Fund', tabId: null }} />
                 <View style={styles.fundContainer}>
                     {/* <View style={styles.fundIntroduce}>
                         <Text style={styles.fundIntroduceText}>示范投资是贷罗盘运营团队发起的网贷领投项目，按照风险评估分为“稳健型”、“平衡型”、“收益型”三种，可供广大投资人参考。</Text>
