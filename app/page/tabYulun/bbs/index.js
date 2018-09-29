@@ -62,7 +62,7 @@ export default class Report extends React.Component {
                         </View>
                         <View style={styles.bbsheadRight}>
                             <Text style={styles.bbsheadRightHd}>曝光台</Text>
-                            <Text style={styles.bbsheadRightNote}>各类投资信息曝光，由管理员审核真实证据后进行发布。</Text>
+                            <Text style={styles.bbsheadRightNote}>各类信息曝光，由管理员审核真实证据后进行发布。</Text>
                             <View style={styles.bbsheadRightBt}>
                                 <View style={styles.bbsheadRightBtL}>
                                     {/* <Text style={styles.bbsheadRightBtText}>今日: {data.bbsBgttoday}</Text>
