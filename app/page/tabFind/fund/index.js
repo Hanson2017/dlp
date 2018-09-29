@@ -24,7 +24,7 @@ export default class Fund extends React.Component {
                     </View>      
 
                     <View style={styles.fundNote}>
-                        <Text style={styles.fundNoteText}>示范投资是贷罗盘运营团队发起的网贷领投项目，按照风险评估分为“稳健型”、“平衡型”、“收益型”三种，可供广大投资人参考。</Text>
+                        <Text style={styles.fundNoteText}>示范出借是贷罗盘运营团队发起的网贷项目出借组合，按照风险评估分为“稳健型”、“平衡型”、“收益型”三种，可供广大用户参考。</Text>
                         {/* <Text style={styles.fundNoteText}>※ 建议合理分配资金，选择优质平台分散投资</Text>
                         <Text style={styles.fundNoteText}>※ 示范投资仅起到参考作用</Text> */}
                     </View>

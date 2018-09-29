@@ -80,7 +80,7 @@ export default class ZonglanTop extends React.Component {
                         <View style={styles.tagsNewContainer}>
                             <View style={styles.tagsNew}>
                                 <View style={styles.tagsNewIcon}>
-                                    <Image source={{ uri: 'http://m.dailuopan.com/images/icon-gtag.png' }} style={styles.icontag} />
+                                    <Image source={{ uri: 'http://m.dailuopan.com/images/icon-gtag.png?20180929' }} style={styles.icontag} />
                                 </View>
                                 <View style={styles.tagsNewCon}>
                                     {

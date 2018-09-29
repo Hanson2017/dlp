@@ -25,7 +25,7 @@ module.exports = {
                             <View style={stylesList.tagsNewContainer}>
                                 <View style={stylesList.tagsNew}>
                                     <View style={stylesList.tagsNewIcon}>
-                                        <Image source={{ uri: 'http://m.dailuopan.com/images/icon-gtag.png' }} style={stylesList.icontag} />
+                                        <Image source={{ uri: 'http://m.dailuopan.com/images/icon-gtag.png?20180929' }} style={stylesList.icontag} />
                                     </View>
                                     <View style={stylesList.tagsNewCon}>
                                         {
