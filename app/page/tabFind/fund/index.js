@@ -9,7 +9,7 @@ export default class Fund extends React.Component {
     render() {
         const { navigation, data } = this.props;
         return (
-            <View style={[styles.container, Theme.box,Theme.mt10]}>
+            <View style={[styles.container, Theme.box]}>
                 <Title data={'示范出借概况'} navigation={navigation} screenUrlInfo={{ screenUrl: 'Fund', tabId: null }} />
                 <View style={styles.fundContainer}>
                     {/* <View style={styles.fundIntroduce}>

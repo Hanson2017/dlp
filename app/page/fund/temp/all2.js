@@ -78,7 +78,7 @@ class List extends React.Component {
                         <View style={styles.fundList}>
                             <View style={[styles.fundListLeft,listData.length<len?{borderRightWidth:0}:null]}>
                                 <View style={styles.fundListHd}>
-                                    <Text style={[styles.listHdText, styles.fundIc1]}>在投平台</Text>
+                                    <Text style={[styles.listHdText, styles.fundIc1]}>出借平台</Text>
                                     <Text style={[styles.listHdText, styles.fundIc2]}>利率</Text>
                                 </View>
                                 <View style={styles.fundListBd}>
@@ -108,7 +108,7 @@ class List extends React.Component {
                                 listData.length >= len ?
                                     <View style={styles.fundListRight}>
                                         <View style={styles.fundListHd}>
-                                            <Text style={[styles.listHdText, styles.fundIc1]}>在投平台</Text>
+                                            <Text style={[styles.listHdText, styles.fundIc1]}>出借平台</Text>
                                             <Text style={[styles.listHdText, styles.fundIc2]}>利率</Text>
                                         </View>
                                         <View style={styles.fundListBd}>

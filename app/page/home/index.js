@@ -70,16 +70,14 @@ export default class HomeScreen extends React.Component {
                                             :
                                             null
                                     }
-                                    <View style={Theme.mt10}>
-                                        <FundLiuc navigation={navigation} data={dataSource.fund_process} />
-                                    </View>
-
                                     {
                                         versionStatus != 1 ?
                                             <Fund data={dataSource.listfund_firm} navigation={navigation} />
                                             :
                                             null
                                     }
+                                    <FundLiuc navigation={navigation} data={dataSource.fund_process} />
+                                    
                                     <Mianze />
                                 </ScrollView>
                         }
