@@ -76,11 +76,13 @@ const styles = StyleSheet.create({
     },
     platName: {
         width: 67,
+        height:24,
+        justifyContent:'center',
+        alignItems:'center',
     },
     platNameText: {
         fontSize: 14,
         color: '#666',
-        lineHeight: 24,
     },
     null:{
         fontSize: 14,
