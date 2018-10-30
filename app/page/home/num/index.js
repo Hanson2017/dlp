@@ -27,7 +27,7 @@ export default class Num extends React.Component {
                         }
                     }}
                 >
-                    <Text style={[styles.text, styles.label]}>示范投资</Text>
+                    <Text style={[styles.text, styles.label]}>示范出借</Text>
                     <Text style={[styles.text, styles.num]}>{data.Maincount_fund}</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.list}
