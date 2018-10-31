@@ -17,10 +17,10 @@ import FlowTemp from './list/temp/flow';
 
 
 var data = [
-    { title: '机构评级', iconName: 'nav-pingjiJG', fontSize: 26, screenUrl: 'PingjiJG', tabId: null },
-    { title: '媒体评级', iconName: 'nav-pingjiMT', fontSize: 26, screenUrl: 'PingjiMT', tabId: null },
-    { title: '健康度分析', iconName: 'nav-health', fontSize: 26, screenUrl: 'Health', tabId: null },
-    { title: '流量监控', iconName: 'nav-flow', fontSize: 26, screenUrl: 'Flow', tabId: null },
+    { title: '机构评级', iconName: 'nav-pingjiJG', fontSize: 32, screenUrl: 'PingjiJG', tabId: null },
+   
+    { title: '健康度分析', iconName: 'nav-health', fontSize: 32, screenUrl: 'Health', tabId: null },
+    { title: '流量监控', iconName: 'nav-flow', fontSize: 32, screenUrl: 'Flow', tabId: null },
 ];
 
 

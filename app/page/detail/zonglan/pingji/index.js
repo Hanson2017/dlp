@@ -88,34 +88,8 @@ export default class ZonglanPingji extends React.Component {
 
                     </View>
 
-                    <View style={styles.list}>
-                        <Text style={styles.name}>羿飞评级</Text>
-                        {
-                            yifei !== null ?
-                                <View style={styles.listCon}>
-                                    <Text style={styles.score}>{yifei.score}</Text>
-                                    <Text style={styles.totalNum}>统计{yifei.totalNum}家平台中排名</Text>
-                                    <Text style={styles.ordernum}>{yifei.ordernum}</Text>
-                                </View>
-                                :
-                                <Text style={styles.null}>暂无</Text>
-                        }
-
-                    </View>
-                    <View style={styles.list}>
-                        <Text style={styles.name}>远望评级</Text>
-                        {
-                            yuanwang !== null ?
-                                <View style={styles.listCon}>
-                                    <Text style={styles.score}>{yuanwang.level}</Text>
-                                    <Text style={styles.totalNum}>统计{yuanwang.totalNum}家平台中排名</Text>
-                                    <Text style={styles.ordernum}>{yuanwang.ordernum}</Text>
-                                </View>
-                                :
-                                <Text style={styles.null}>暂无</Text>
-                        }
-
-                    </View>
+                    
+                    
                     
                 </View>
             </View>
