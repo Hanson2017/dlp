@@ -14,7 +14,7 @@ export default class Title extends React.Component {
                     <View style={styles.textCon}><Text style={styles.text}>{data}</Text></View>
                     {
                         mfTag ?
-                            <View style={styles.mfTag}><Text style={styles.mfTagText}>全网领先</Text></View>
+                            <View style={styles.mfTag}><Text style={styles.mfTagText}>全网较高</Text></View>
                             :
                             null
                     }

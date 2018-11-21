@@ -16,9 +16,15 @@ class List extends React.Component {
             >
                 <Text style={styles.platnameText}>{data.platname}</Text>
                 <Text style={styles.investInfoText}>{data.investtype == 0 ? '首投' : '复投'}{data.invest}获得{data.rebate}</Text>
-                <View style={styles.keywords}>
-                    <Text style={styles.keywordsText}>{data.keywords.split(',')[0]}</Text>
-                </View>
+                {
+                    data.keywords.split(',')[0] !== '' ?
+                        <View style={styles.keywords}>
+                            <Text style={styles.keywordsText}>{data.keywords.split(',')[0]}</Text>
+                        </View>
+                        :
+                        null
+                }
+
             </TouchableOpacity>
         )
     }

@@ -34,9 +34,15 @@ export default class Dapan extends React.Component {
                                         <Text style={styles.bodyText}>{item.investtype == 0 ? '首投' : '复投'}{item.invest}</Text>
                                         <Text style={styles.bodyText}>获得{item.rebate}</Text>
                                     </View>
-                                    <View style={styles.keywords}>
+                                    {
+                                        item.keywords.split(',')[0] !== ''?
+                                        <View style={styles.keywords}>
                                         <Text style={styles.keywordsText}>{item.keywords.split(',')[0]}</Text>
                                     </View>
+                                    :
+                                    null
+                                    }
+                                    
                                 </TouchableOpacity>
                             )
                         })

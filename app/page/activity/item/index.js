@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, View, TouchableOpacity} from 'react-native';
+import { Text, StyleSheet, View, TouchableOpacity } from 'react-native';
 
 import Theme from '../../../util/theme';
 import Util from '../../../util/util';
@@ -21,13 +21,19 @@ export default class Item extends React.Component {
                     <Text style={styles.headerText}>{data.platname}</Text>
                 </View>
 
-                <DashLine width={ (Theme.screenWidth-15*3)/2-2} />
+                <DashLine width={(Theme.screenWidth - 15 * 3) / 2 - 2} />
                 <View style={styles.body}>
                     <Text style={styles.bodyText}>{data.investtype == 0 ? '首投' : '复投'}{data.invest}获得{data.rebate}</Text>
                 </View>
-                <View style={styles.keywords}>
-                    <Text style={styles.keywordsText}>{data.keywords.split(',')[0]}</Text>
-                </View>
+                {
+                    data.keywords.split(',')[0] !== '' ?
+                        <View style={styles.keywords}>
+                            <Text style={styles.keywordsText}>{data.keywords.split(',')[0]}</Text>
+                        </View>
+                        :
+                        null
+                }
+
             </TouchableOpacity>
         )
     }
@@ -38,8 +44,8 @@ const styles = StyleSheet.create({
     item: {
         position: 'relative',
         marginRight: 15,
-        marginBottom:15,
-        width: (Theme.screenWidth-15*3)/2,
+        marginBottom: 15,
+        width: (Theme.screenWidth - 15 * 3) / 2,
         height: 100,
         borderWidth: 1,
         borderColor: '#ddd',
@@ -59,7 +65,7 @@ const styles = StyleSheet.create({
         borderRightColor: 'transparent',
     },
     header: {
-        width:  (Theme.screenWidth-15*3)/2,
+        width: (Theme.screenWidth - 15 * 3) / 2,
         justifyContent: 'center',
         alignItems: 'center',
         height: 36,
@@ -75,8 +81,8 @@ const styles = StyleSheet.create({
         marginBottom: 7,
     },
     bodyText: {
-        width:  (Theme.screenWidth-20*3)/2,
-        textAlign:'center',
+        width: (Theme.screenWidth - 20 * 3) / 2,
+        textAlign: 'center',
         paddingTop: 5,
         fontSize: 12,
         color: '#666',

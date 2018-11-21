@@ -179,11 +179,11 @@ export default class DetailPingji extends React.Component {
                                                         </View>
                                                         <View style={styles.compareLine}>
                                                             <View style={styles.progress}></View>
-                                                            <Text style={styles.compareLineText}>行业最高 {gradecompareArr[2]}</Text>
+                                                            <Text style={styles.compareLineText}>行业高 {gradecompareArr[2]}</Text>
                                                         </View>
                                                         <View style={styles.compareLine}>
                                                             <View style={[styles.progress, { width: (Theme.screenWidth / 2) * (gradecompareArr[3] / gradecompareArr[2]) }]}></View>
-                                                            <Text style={styles.compareLineText}>行业最低 {gradecompareArr[3]}</Text>
+                                                            <Text style={styles.compareLineText}>行业低 {gradecompareArr[3]}</Text>
                                                         </View>
                                                     </View>
                                                     :
