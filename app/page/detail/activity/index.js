@@ -108,7 +108,7 @@ export default class Activity extends React.Component {
                                 <View style={styles.appDownRight}>
 
                                     <Text style={styles.appdownText}>
-                                        我们推荐使用“返利魔方APP”参加平台活动，以助于将您的投资收益最大化。
+                                        我们推荐使用“返利魔方APP”参加平台活动，以大幅度提升您的出借回报率。
                                     </Text>
                                     <TouchableOpacity style={styles.appdownBtn}
                                         onPress={() => {
