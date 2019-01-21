@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/Icomoon';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import stylesList from '../../../../css/listData';
 import Theme from '../../../../util/theme';
+import Util from '../../../../util/util';
 
 export default class TabPingjiListPJ extends React.Component {
     render() {
@@ -19,7 +20,7 @@ export default class TabPingjiListPJ extends React.Component {
                 {
                     data.map((item, i) => {
                         return (
-                            <View style={stylesList.itemRow2} key={i} >
+                            <View style={[stylesList.itemRow2,Util.isbest(item.goodtag) ?{backgroundColor:'#E3F3FB'}:{backgroundColor:null}]} key={i} >
                                 <TouchableOpacity style={{ flexDirection: 'row', }}
                                     onPress={() => { navigation.navigate('Detail', { id: item.id_dlp, platName: item.plat_name }) }}
                                 >

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Text, StyleSheet, View, TouchableOpacity, ScrollView } from 'react-native';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import stylesList from '../../../../css/listData';
+import Util from '../../../../util/util';
 
 export default class TabPingjiListLeft extends React.Component {
     render() {
@@ -14,12 +16,12 @@ export default class TabPingjiListLeft extends React.Component {
                 {
                     data.map((item, i) => {
                         return (
-                            <View style={stylesList.itemRow2} key={i}>
+                            <View style={[stylesList.itemRow2,Util.isbest(item.goodtag) ?{backgroundColor:'#E3F3FB'}:{backgroundColor:null}]} key={i}>
                                 <TouchableOpacity key={i} style={{ flexDirection: 'row' }}
                                     onPress={() => { navigation.navigate('Detail', { id: item.id_dlp, platName: item.plat_name }) }}
                                 >
                                     <Text style={[stylesList.tdID, stylesList.C666, styles.tdID]}>{i + 1}</Text>
-                                    <Text style={[stylesList.tdName, stylesList.C666]}>{item.plat_name}</Text>
+                                    <Text style={[stylesList.tdName, stylesList.C666,Util.isbest(item.goodtag) ?{fontWeight:'bold'}:null]}>{item.plat_name} {Util.isbest(item.goodtag) ?<Ionicons name={'md-star'} size={14} color={'#DBAF74'} />:null}</Text>
                                 </TouchableOpacity>
                                 {
                                     item.flmllist.length && versionStatus != 1 > 0 ?

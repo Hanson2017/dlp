@@ -4,7 +4,19 @@ import { Linking } from 'react-native';
 import Api from './api';
 
 module.exports = {
-    goBBs(navigation, seturl,type) {
+    // 判断是否为一线平台
+    isbest(val) {
+        var isbest = false;
+        if (val !== null && val !== '' && val.length > 0) {
+            for (let i = 0; i < val.length; i++) {
+                if (val[i].tags == '一线平台') {
+                    isbest = true;
+                }
+            }
+        }
+        return isbest;
+    },
+    goBBs(navigation, seturl, type) {
         var url = '';
         if (signState) {
             var memberid = '';
@@ -20,7 +32,7 @@ module.exports = {
         else {
             url = seturl;
         }
-        navigation.navigate('BBsDetail', { url: url, shareUrl: seturl,type:type })
+        navigation.navigate('BBsDetail', { url: url, shareUrl: seturl, type: type })
     },
     Linked(url) {
         Linking.openURL(url).catch(err => console.error('An error occurred', err));

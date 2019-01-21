@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text, StyleSheet, View, FlatList, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Icomoon';
-
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import Util from '../../../util/util'
 import stylesList from '../../../css/listData';
 
@@ -29,14 +29,14 @@ export default class Left extends React.Component {
         let navigation = this.props.navigation;
         let flmllist = item.flmllist;
         return (
-            <View style={stylesList.itemRow2} key={index}>
+            <View style={[stylesList.itemRow2,Util.isbest(item.goodtag) ?{backgroundColor:'#E3F3FB'}:{backgroundColor:null}]} key={index}>
                 <TouchableOpacity
                     style={{ flexDirection: 'row', }}
                     onPress={() => { navigation.navigate('Detail', { id: item.id_dlp, platName: item.plat_name}) }}
 
                 >
                     <Text style={[stylesList.tdID, stylesList.C666]}>{index + 1}</Text>
-                    <Text style={[stylesList.tdName, stylesList.C666]}>{item.plat_name}</Text>
+                    <Text style={[stylesList.tdName, stylesList.C666,Util.isbest(item.goodtag) ?{fontWeight:'bold'}:null]}>{item.plat_name} {Util.isbest(item.goodtag) ?<Ionicons name={'md-star'} size={14} color={'#DBAF74'} />:null}</Text>
                 </TouchableOpacity>
                 {
                     (this.props.Ttype || flmllist.length) && versionStatus != 1 > 0 ?

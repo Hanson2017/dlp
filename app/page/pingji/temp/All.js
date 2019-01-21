@@ -4,12 +4,13 @@ import Icon from 'react-native-vector-icons/Icomoon';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import stylesList from '../../../css/listData';
 import Theme from '../../../util/theme';
+import Util from '../../../util/util';
 
 module.exports = {
     renderItemR({ item, index }) {
         let navigation = this.props.navigation;
         return (
-            <View style={stylesList.itemRow2} key={index} >
+            <View style={[stylesList.itemRow2,Util.isbest(item.goodtag) ?{backgroundColor:'#E3F3FB'}:{backgroundColor:null}]} key={index} >
                 <TouchableOpacity
                     style={{ flexDirection: 'row', }}
                     onPress={() => { navigation.navigate('Detail', { id: item.id_dlp, platName: item.plat_name, fundType: item.fund_type }) }}
