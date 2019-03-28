@@ -30,17 +30,7 @@ export default class Num extends React.Component {
                     <Text style={[styles.text, styles.label]}>示范出借</Text>
                     <Text style={[styles.text, styles.num]}>{data.Maincount_fund}</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.list}
-                    onPress={() => { 
-                        if (versionStatus != 1) {
-                            navigation.navigate('FlmfList') 
-                        }
-                       
-                    }}
-                >
-                    <Text style={[styles.text, styles.label]}>活动平台</Text>
-                    <Text style={[styles.text, styles.num]}>{data.Maincount_Activity}</Text>
-                </TouchableOpacity>
+                
                 <TouchableOpacity style={styles.list}
                     onPress={() => { navigation.navigate('PingjiJG') }}
                 >

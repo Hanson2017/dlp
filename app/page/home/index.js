@@ -64,12 +64,7 @@ export default class HomeScreen extends React.Component {
                                     <Yulun data={{ list: dataSource.sentlist, echart: dataSource.sentviewlist, num: dataSource.sentday }} navigation={navigation} />
                                     <Comment data={dataSource.commentlist} navigation={navigation} />
                                     <Report data={dataSource.reportslist} navigation={navigation} />
-                                    {
-                                        versionStatus != 1 ?
-                                            <Activity data={dataSource.flmf} navigation={navigation} />
-                                            :
-                                            null
-                                    }
+                                    
                                     {
                                         versionStatus != 1 ?
                                             <Fund data={dataSource.listfund_firm} navigation={navigation} />

@@ -30,7 +30,7 @@ export default class DetailScreen extends React.Component {
         super(props);
         this.state = {
             loading: true,
-            tabNames: ['总览', '评级', '健康度', '数据', '舆情', '活动', '信息'],
+            tabNames: ['总览', '评级', '健康度', '数据', '舆情', '信息'],
             dataInfo: '',
             noBack: true,
             footNot: 0,
@@ -107,14 +107,7 @@ export default class DetailScreen extends React.Component {
                                     <View style={styles.content} tabLabel='key5'>
                                         <Yuqing platInfo={{ id: params.id, platName: params.platName }} navigation={navigation} isFootNot={this.isFootNot.bind(this)} />
                                     </View>
-                                    {
-                                        versionStatus != 1 ?
-                                            <View style={styles.content} tabLabel='key4'>
-                                                <Activity platInfo={{ id: params.id, platName: params.platName }} navigation={navigation} />
-                                            </View>
-                                            :
-                                            null
-                                    }
+                                    
 
                                     <View style={styles.content} tabLabel='key6'>
                                         <Info platInfo={{ id: params.id, platName: params.platName }} navigation={navigation} />

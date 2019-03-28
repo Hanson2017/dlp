@@ -45,7 +45,7 @@ export default class FindTab extends React.Component {
                                     <Fund navigation={navigation} data={{ count: dataSource.fundcount, list: dataSource.fundlist_firm }} />
                                     <FundLiuc navigation={navigation} data={dataSource.fund_process}  />
                                     
-                                    <Activity navigation={navigation} data={dataSource.flmf} />
+                                   
                                     <Mianze />
                                 </ScrollView>
                         }
