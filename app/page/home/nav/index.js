@@ -11,7 +11,8 @@ var data = [
     { title: '健康度分析', iconName: 'nav-health', screenUrl: 'Health', tabId: null },
     { title: '数据详情', iconName: 'nav-data', screenUrl: 'Data', tabId: null },
     { title: '示范投资', iconName: 'nav-fund', screenUrl: 'Fund', tabId: null },
-   
+    { title: '数据报表', iconName: 'nav-report', screenUrl: 'ReportsList' },
+    
     { title: '评测监控', iconName: 'nav-pingce', screenUrl: 'PingCe', tabId: null },
     { title: '舆论监控', iconName: 'nav-yulun', screenUrl: 'Yulun', tabId: null },
     { title: '点评监控', iconName: 'nav-dianping', screenUrl: 'CommentPlat', tabId: null },
@@ -19,7 +20,7 @@ var data = [
     { title: '多维度查询', iconName: 'nav-query', screenUrl: 'QueryNav', tabId: { tab1: 0, tab2: 0 } },
     
     { title: '贷罗盘论坛', iconName: 'null',ionicons: 'ios-people', screenUrl: 'PingjiMT', tabId: null },
-    { title: '数据报表', iconName: 'nav-report', screenUrl: 'ReportsList' },
+    
     { title: '黑名单', iconName: 'nav-black', screenUrl: 'Black' },
     { title: '争议名单', iconName: 'nav-zhengyi', screenUrl: 'Zhengyi' },
     { title: '个人中心', iconName: 'nav-personal', screenUrl: 'Account' ,tabId: 0 },
