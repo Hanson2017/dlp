@@ -14,7 +14,7 @@ import BBS from './bbs';
 import Mianze from '../mianze';
 
 var data = [
-    { title: '贷罗盘论坛', iconName: 'ios-people', fontSize: 40, screenUrl: 'BBs', tabId: null,Ionicons:true,top:-7 },
+   
     { title: '评测监控', iconName: 'nav-pingce', fontSize: 30, screenUrl: 'PingCe', tabId: null },
     { title: '舆论监控', iconName: 'nav-yulun', fontSize: 30, screenUrl: 'Yulun', tabId: null },
     { title: '平台点评', iconName: 'nav-dianping', fontSize: 30, screenUrl: 'CommentPlat', tabId: null },
@@ -57,7 +57,7 @@ export default class YulunTab extends React.Component {
                                     }
                                 >
                                     <TabTop navigation={navigation} data={data} />
-                                    <BBS navigation={navigation} data={{bbsHejList:bbsHejList,bbsBgtList:bbsBgtList,bbsHejthread:bbsHejthread,bbsBgtthread:bbsBgtthread,bbsHejtoday:bbsHejtoday,bbsBgttoday:bbsBgttoday}}  />
+                                    {/* <BBS navigation={navigation} data={{bbsHejList:bbsHejList,bbsBgtList:bbsBgtList,bbsHejthread:bbsHejthread,bbsBgtthread:bbsBgtthread,bbsHejtoday:bbsHejtoday,bbsBgttoday:bbsBgttoday}}  /> */}
                                     <Pingce navigation={navigation} data={dataSource.mplist} />
                                     <Yulun navigation={navigation} data={dataSource.sentlist} />
                                     <Comment navigation={navigation} data={dataSource.commentlist} />

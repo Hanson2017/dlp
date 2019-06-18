@@ -15,20 +15,7 @@ export default class HomeBBs extends React.Component {
                 <Title data={'论坛动态'} navigation={navigation} />
                 <View style={styles.bbsContainer}>
                     <View style={styles.bbsHead}>
-                        <TouchableOpacity style={[styles.bbsHeadLink, styles.bbsHeadLinkHej]}
-                            onPress={() => {
-                                Util.goBBs(navigation,Api.bbsHejUrl,'hej');
-                            }}
-                        >
-                            <View style={styles.bbsHeadLinkLeft}>
-                                <Image source={{ uri: Api.bbsHejIconUrl }} style={styles.iconImg} />
-                            </View>
-                            <View style={styles.bbsHeadLinkRight}>
-                                <Text style={styles.bbsHeadTitText}>华尔街的旗帜</Text>
-                                {/* <Text style={styles.bbsHeadNumText}>今日: {bbsDataNum1}</Text> */}
-                            </View>
-
-                        </TouchableOpacity>
+                        
                         <TouchableOpacity style={styles.bbsHeadLink}
                             onPress={() => {
                                 Util.goBBs(navigation,Api.bbsBgtUrl,'bgt');

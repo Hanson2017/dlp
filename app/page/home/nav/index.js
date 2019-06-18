@@ -19,7 +19,7 @@ var data = [
     { title: '流量监控', iconName: 'nav-flow', screenUrl: 'Flow', tabId: null },
     { title: '多维度查询', iconName: 'nav-query', screenUrl: 'QueryNav', tabId: { tab1: 0, tab2: 0 } },
     
-    { title: '贷罗盘论坛', iconName: 'null',ionicons: 'ios-people', screenUrl: 'PingjiMT', tabId: null },
+   
     
     { title: '黑名单', iconName: 'nav-black', screenUrl: 'Black' },
     { title: '争议名单', iconName: 'nav-zhengyi', screenUrl: 'Zhengyi' },
