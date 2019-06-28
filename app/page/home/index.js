@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, View, StatusBar, ScrollView, RefreshControl } from 'react-native';
+import { Text, StyleSheet, View, StatusBar, ScrollView, RefreshControl, Image, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from "react-navigation";
 import Api from '../../util/api';
 import Theme from '../../util/theme';
+import Util from '../../util/util';
 import Header from '../../component/navBar';
 import Loading from '../../component/loading';
 import Num from './num';
@@ -57,15 +58,23 @@ export default class HomeScreen extends React.Component {
                                     }
                                 >
                                     <Num data={dataSource.homenum} navigation={navigation} />
+                                    <TouchableOpacity activeOpacity={0.8} onPress={() => {
+                                        Util.Linked('https://www.51tuodao.com/html5/extension?source=dlp-app')
+                                    }}>
+                                        <Image
+                                            style={{ width: Theme.screenWidth, height: Theme.screenWidth * (160 / 1000), marginTop: 10 }}
+                                            source={{ uri: 'http://www.dailuopan.com/images/advertising/51tuodao-dlpApp.jpg' }}
+                                        />
+                                    </TouchableOpacity>
                                     <Nav navigation={navigation} />
                                     <Dapan navigation={navigation} data={{ inamount: dataSource.inamount, markent: dataSource.markent, echartYulun: dataSource.sentviewlist, numYulun: dataSource.sentday, newBlack: dataSource.reblacklist, newZhengyi: dataSource.rezhengyilist, gongshang: dataSource.gongshanglist }} />
-                                    
+
                                     <Pingce data={dataSource.mplisttop} navigation={navigation} />
                                     <Yulun data={{ list: dataSource.sentlist, echart: dataSource.sentviewlist, num: dataSource.sentday }} navigation={navigation} />
                                     <Comment data={dataSource.commentlist} navigation={navigation} />
                                     <BBs data={bbsData} bbsDataNum1={bbsDataNum1} bbsDataNum2={bbsDataNum2} navigation={navigation} />
                                     <Report data={dataSource.reportslist} navigation={navigation} />
-                                    
+
                                     {
                                         versionStatus != 1 ?
                                             <Fund data={dataSource.listfund_firm} navigation={navigation} />
@@ -73,7 +82,7 @@ export default class HomeScreen extends React.Component {
                                             null
                                     }
                                     <FundLiuc navigation={navigation} data={dataSource.fund_process} />
-                                    
+
                                     <Mianze />
                                 </ScrollView>
                         }
