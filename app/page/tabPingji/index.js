@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, View, ScrollView, TouchableOpacity, RefreshControl } from 'react-native';
+import { Text, StyleSheet, View, ScrollView, TouchableOpacity,Image, RefreshControl } from 'react-native';
 import { SafeAreaView } from "react-navigation";
 import Api from '../../util/api';
+import Util from '../../util/util';
 import Theme from '../../util/theme';
 import Header from '../../component/navBar';
 import Loading from '../../component/loading';
@@ -55,7 +56,14 @@ export default class PingjiTab extends React.Component {
                                     }
                                 >
                                     <TabTop navigation={navigation} data={data} />
-
+                                    <TouchableOpacity activeOpacity={0.8} onPress={() => {
+                                        Util.Linked('https://www.yinchengjinfu.com/ind/h5/act1.html?channel=dlp')
+                                    }}>
+                                        <Image
+                                            style={{ width: Theme.screenWidth, height: Theme.screenWidth * (160 / 1000) }}
+                                            source={{ uri: 'http://www.dailuopan.com/images/advertising/yinchengjinfu-dlpapp.png' }}
+                                        />
+                                    </TouchableOpacity>   
                                     <View style={[styles.container, Theme.box, Theme.mt10]}>
                                         <Title data={'机构评级概况'} navigation={navigation} screenUrlInfo={{ screenUrl: 'PingjiJG', tabId: null }} />
                                         <List navigation={navigation} data={dataSource.gradelist}>

@@ -868,7 +868,7 @@
 					};
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = BL4S7A2TL2;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1427,12 +1427,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = dlp/dlp.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Hua Li (D9WT8Y25PT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Hua Li (D9WT8Y25PT)";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = BL4S7A2TL2;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../node_modules/react-native-qq/ios/RCTQQAPI";
 				HEADER_SEARCH_PATHS = (
@@ -1461,7 +1461,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.box.dailuopan;
 				PRODUCT_NAME = dlp;
 				PROVISIONING_PROFILE = "7c0deb6f-41f9-4f43-b198-6d58100f2418";
-				PROVISIONING_PROFILE_SPECIFIER = dlpTest;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1472,11 +1472,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = dlp/dlp.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Hua Li (D9WT8Y25PT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Hua Li (D9WT8Y25PT)";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = BL4S7A2TL2;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../node_modules/react-native-qq/ios/RCTQQAPI";
 				HEADER_SEARCH_PATHS = (
@@ -1505,7 +1505,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.box.dailuopan;
 				PRODUCT_NAME = dlp;
 				PROVISIONING_PROFILE = "7c0deb6f-41f9-4f43-b198-6d58100f2418";
-				PROVISIONING_PROFILE_SPECIFIER = dlpTest;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
@@ -1772,11 +1772,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = dlp/dlp.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Hua Li (D9WT8Y25PT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Hua Li (D9WT8Y25PT)";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = BL4S7A2TL2;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../node_modules/react-native-qq/ios/RCTQQAPI";
 				HEADER_SEARCH_PATHS = (
@@ -1805,7 +1805,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.box.dailuopan;
 				PRODUCT_NAME = dlp;
 				PROVISIONING_PROFILE = "7c0deb6f-41f9-4f43-b198-6d58100f2418";
-				PROVISIONING_PROFILE_SPECIFIER = dlpTest;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Staging;
