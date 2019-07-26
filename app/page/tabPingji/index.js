@@ -57,7 +57,7 @@ export default class PingjiTab extends React.Component {
                                 >
                                     <TabTop navigation={navigation} data={data} />
                                     <TouchableOpacity activeOpacity={0.8} onPress={() => {
-                                        Util.Linked('https://www.yinchengjinfu.com/ind/h5/act1.html?channel=dlp')
+                                        Util.Linked('https://www.yinchengjinfu.com/ind/h5/act.html?channel=dlp')
                                     }}>
                                         <Image
                                             style={{ width: Theme.screenWidth, height: Theme.screenWidth * (160 / 1000) }}
