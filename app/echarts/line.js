@@ -236,6 +236,90 @@ module.exports = {
             ]
         }
         return option;
+    },
+    line4 (name, dateTime,dataSource,dataSource2) {
+       
+        let option = {
+            tooltip : {
+                trigger: 'axis'
+            },
+            grid: {
+                y: 15,
+                y2: 5,
+                x:32,
+                x2:10
+                
+            },
+            calculable : true,
+            xAxis : [
+                {
+                    type : 'category',
+                    axisLine:{
+                        show: true,
+                        lineStyle: {
+                            color: '#a0cdfa',
+                            width: 1,
+                            type: 'solid'
+                        }
+                        
+                    },
+                    axisTick: {
+                        lineStyle: {
+                            color: '#ccc'
+                        }
+                    },
+                    boundaryGap : false,
+                    data :dateTime
+                }
+            ],
+            yAxis : [
+                {
+                    type : 'value',
+                    axisLine:{
+                        show: true,
+                        lineStyle: {
+                            color: '#a0cdfa',
+                            width: 1,
+                            type: 'solid'
+                        }
+                        
+                    },
+                    axisLabel : {
+                        formatter: '{value}'
+                    },
+                    scale:true
+                }
+            ],
+            series : [
+                {
+                    name:name[0],
+                    type:'line',
+                    data:dataSource,      
+                    symbol:'none',
+                    itemStyle: {
+                        normal: {
+                            lineStyle: {
+                                color: '#a0cdfa'
+                            }
+                        }
+                    },
+                },
+                {
+                    name:name[1],
+                    type:'line',
+                    data: dataSource2,
+                    symbol:'none',
+                    itemStyle: {
+                        normal: {
+                            lineStyle: {
+                                color: '#A65719'
+                            }
+                        }
+                    },  
+                }
+            ]
+        }
+        return option;
     }
 
 }

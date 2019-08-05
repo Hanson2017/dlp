@@ -73,10 +73,10 @@ export default class ZonglanTop extends React.Component {
                     }
                 </View>
 
-               
+
 
                 {
-                    data.dataInfo.platstatus == 1 && ((data.goodtag !== null && data.goodtag !== '' && data.goodtag.length > 0) || (data.badtag !== null && data.badtag !== '' && data.badtag.length > 0)) ?
+                    data.dataInfo.platstatus == 1 && data.dataInfo.stopbid !== 1 && ((data.goodtag !== null && data.goodtag !== '' && data.goodtag.length > 0) || (data.badtag !== null && data.badtag !== '' && data.badtag.length > 0)) ?
                         <View style={styles.tagsNewContainer}>
                             <View style={styles.tagsNew}>
                                 <View style={styles.tagsNewIcon}>
@@ -128,34 +128,7 @@ export default class ZonglanTop extends React.Component {
                         null
                 }
 
-                {
-                    data.flmllist != null && versionStatus != 1 ?
-                        <View style={styles.activityList}>
-                            {
-                                data.flmllist.map((list, i) => {
-                                    let url = 'http://m.fanlimofang.com/Activity/Detail/' + list.activityid;
-                                    return (
-                                        <TouchableOpacity key={i} style={[styles.activityContainer, list.investtype == 1 ? styles.activityContainerFt : null]}
-                                            onPress={() => {
-                                                Util.Linked(url)
-                                            }}
-                                        >
-                                            <View style={styles.activityIconOut}>
-                                                <View style={styles.activityIconIn}></View>
-                                            </View>
-                                            <View style={styles.activityTextCon}>
-                                                <Text style={styles.activityText}>
-                                                    {list.investtype == 0 ? '首投' : '复投'}{list.invest}奖{list.rebate}
-                                                </Text>
-                                            </View>
-                                        </TouchableOpacity>
-                                    )
-                                })
-                            }
-                        </View>
-                        :
-                        null
-                }
+
                 {
                     data.dataInfo.platstatus == 1 && data.dataInfo.negative_time !== null && data.dataInfo.negative_time != '' ?
                         <View style={styles.zhengyiTime}>
@@ -182,7 +155,14 @@ export default class ZonglanTop extends React.Component {
 
                         </View>
                         :
-                        null
+                        data.dataInfo.platstatus == 1 && data.dataInfo.stopbid == 1 ?
+                            <View style={styles.zhengyiTime}>
+                                <View style={styles.zhengyiTag}>
+                                    <Text style={styles.zhengyiTagText}>停止发标</Text>
+                                </View>
+                            </View>
+                            :
+                            null
                 }
 
                 {

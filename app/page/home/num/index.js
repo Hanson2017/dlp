@@ -45,6 +45,12 @@ export default class Num extends React.Component {
                     <Text style={[styles.text, styles.num]}>{data.Maincount_flow}</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.list}
+                    onPress={() => { navigation.navigate('StopSent') }}
+                >
+                    <Text style={[styles.text, styles.label]}>停止发标</Text>
+                    <Text style={[styles.text, styles.num]}>{data.Maincount_stopbid}</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.list}
                     onPress={() => { navigation.navigate('Zhengyi') }}
                 >
                     <Text style={[styles.text, styles.label]}>争议平台</Text>

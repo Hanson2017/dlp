@@ -1,9 +1,41 @@
 import React, { Component } from 'react';
-import { Linking } from 'react-native';
+import { Linking ,Dimensions,Platform} from 'react-native';
+
+let screenW = Dimensions.get('window').width;
+let screenH = Dimensions.get('window').height;
+
+// iPhoneX,iPhoneXS
+const X_WIDTH = 375;
+const X_HEIGHT = 812;
+
+// iPhoneXR,iPhoneXS Max
+const XR_WIDTH = 414;
+const XR_HEIGHT = 896;
+
 
 import Api from './api';
 
 module.exports = {
+    // IphoneX系列
+    isIphoneX() {
+        return (
+            Platform.OS === 'ios' &&
+            ((screenH === X_HEIGHT && screenW === X_WIDTH) || (screenH === X_WIDTH && screenW === X_HEIGHT) || (screenH === XR_HEIGHT && screenW === XR_WIDTH) || (screenH === XR_WIDTH && screenW === XR_HEIGHT))
+
+        )
+    },
+    ifIphoneX(iphoneXStyle, iosStyle, androidStyle) {
+        if (this.isIphoneX()) {
+            return iphoneXStyle;
+        }
+        else if (Platform.OS === 'ios') {
+            return iosStyle
+        }
+        else {
+            if (androidStyle) return androidStyle;
+            return iosStyle
+        }
+    },
     // 判断是否为一线平台
     isbest(val) {
         var isbest = false;

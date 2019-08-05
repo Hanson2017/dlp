@@ -12,6 +12,7 @@ import Dapan from './dapan';
 import Activity from './activity';
 import Fund from './fund';
 import FundLiuc from './fund/liucheng';
+import Licai from './licai';
 import Pingce from './pingce';
 import Yulun from './yulun';
 import Comment from './comment';
@@ -58,17 +59,10 @@ export default class HomeScreen extends React.Component {
                                     }
                                 >
                                     <Num data={dataSource.homenum} navigation={navigation} />
-                                    <TouchableOpacity activeOpacity={0.8} onPress={() => {
-                                        Util.Linked('https://www.51tuodao.com/html5/extension?source=dlp-app')
-                                    }}>
-                                        <Image
-                                            style={{ width: Theme.screenWidth, height: Theme.screenWidth * (160 / 1000), marginTop: 10 }}
-                                            source={{ uri: 'http://www.dailuopan.com/images/advertising/51tuodao-dlpApp.jpg' }}
-                                        />
-                                    </TouchableOpacity>
+                                    
                                     <Nav navigation={navigation} />
                                     <Dapan navigation={navigation} data={{ inamount: dataSource.inamount, markent: dataSource.markent, echartYulun: dataSource.sentviewlist, numYulun: dataSource.sentday, newBlack: dataSource.reblacklist, newZhengyi: dataSource.rezhengyilist, gongshang: dataSource.gongshanglist }} />
-
+                                    <Licai data={dataSource.lc_info_index} navigation={navigation} />
                                     <Pingce data={dataSource.mplisttop} navigation={navigation} />
                                     <Yulun data={{ list: dataSource.sentlist, echart: dataSource.sentviewlist, num: dataSource.sentday }} navigation={navigation} />
                                     <Comment data={dataSource.commentlist} navigation={navigation} />

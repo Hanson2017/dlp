@@ -44,6 +44,11 @@ import PingCeCommentForm from '../page/pingCe/comments/footForm/index';
 import BBsDetail from '../page/bbs/detail';
 import BBs from '../page/bbs';
 
+import LicaiList from '../page/licai/list/';
+import LicaiDetail from '../page/licai/detail';
+import LicaiContrast from '../page/licai/contrast';
+import StopSent from '../page/stopSent';
+
 
 import Login from '../page/account/login';
 
@@ -171,7 +176,19 @@ const AppDlp = StackNavigator({
     },
     BBsDetail: {
         screen: BBsDetail
-    }
+    },
+    LicaiList: {
+        screen: LicaiList
+    },
+    LicaiDetail:{
+        screen:LicaiDetail
+    },
+    LicaiContrast:{
+        screen:LicaiContrast
+    },
+    StopSent:{
+        screen:StopSent
+    },
 
 }, {
         headerMode: 'none'

@@ -29,5 +29,6 @@ global.storage = storage;
 global.signState=null;
 global.versionStatus=0;
 global.historyKeyWords=[];
+global.contrastHistory=[];
 
 

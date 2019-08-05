@@ -62,5 +62,9 @@ module.exports = {
     bbsBgtUrl:'http://bbs.dailuopan.com/forum.php?mod=forumdisplay&fid=36', //论坛曝光台板块
     bbsHejIconUrl:'http://m.dailuopan.com/images/hejicon.gif', //论坛华尔街的旗帜板块
     bbsBgtIconUrl:'http://m.dailuopan.com/images/bgticon.png', //论坛曝光台板块
-    synLogin:'http://www.dailuopan.com/member/login/App_reurl?'
+    synLogin:'http://www.dailuopan.com/member/login/App_reurl?',
+    licaiList: host + '/GetLcinfoList_search?tdsourcetag=s_pcqq_aiomsg&',  //银行理财列表
+    licaiDetail: host + '/GetLcinfo_Detail',  //银行理财详情
+    licaiContrast: host + '/GetLcinfo_Contrast',  //银行理财对比
+    stopSent: host + '/GetStopbidList',  //停止发标
 }
