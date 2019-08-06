@@ -11,8 +11,8 @@ import Header from '../../../component/navBar';
 import Loading from '../../../component/loading';
 import Filter from './filter';
 import Contrast from './contrast';
-import stylesList from '../../../css/listData';
 
+import List from './list';
 
 var fields = [
     {
@@ -149,8 +149,8 @@ export default class LicaiIndexScreen extends React.Component {
         this.state = {
             loading: true,
             isLoadMoreIng: false,
-            isLoadMore: true,
-            refreshing: false,
+            isLoadMore: false,
+            isRefreshing: false,
             page: 1,
             pageSize: 20,
             pageCount: 0,
@@ -171,7 +171,7 @@ export default class LicaiIndexScreen extends React.Component {
     }
     render() {
         const { navigation } = this.props;
-        const { dataSource, contrastList, loading,updatetime } = this.state;
+        const { dataSource, contrastList, loading, updatetime } = this.state;
         return (
             <Drawer
                 sidebar={<Filter fields={fields} that={this} />}
@@ -183,7 +183,7 @@ export default class LicaiIndexScreen extends React.Component {
             >
                 <SafeAreaView style={{ flex: 1, backgroundColor: Theme.color2 }} forceInset={{ bottom: 'never' }}>
                     <View style={Theme.container}>
-                        <Header headerOpt={{ back: '银行理财产品', title: '银行理财产品' }} navigation={navigation} />
+                        <Header headerOpt={{ back: '银行理财产品', title: '银行理财产品', search: true }} navigation={navigation} />
                         <View style={styles.update}>
                             <Text style={[styles.updateText]}>数据来源: 中国理财网 | 更新时间：{updatetime}</Text>
                         </View>
@@ -223,18 +223,8 @@ export default class LicaiIndexScreen extends React.Component {
                                                 <Text style={styles.fliterBtnText}>筛选</Text>
                                             </TouchableOpacity>
                                         </View>
-                                        <ScrollView contentContainerStyle={styles.contentContainer} horizontal={true}>
-                                            <FlatList
-                                                data={dataSource}
-                                                ListHeaderComponent={this.ListHeaderComponent}
-                                                ListFooterComponent={this.ListFooterComponent}
-                                                renderItem={this.renderItem}
-                                                onEndReached={this.onEndReached}
-                                                onEndReachedThreshold={0.1}
-                                                ListEmptyComponent={this.ListEmptyComponent}
-                                            />
-                                        </ScrollView>
-
+                                        <List that={this} dataSource={dataSource} isLoadMore={this.state.isLoadMore} isLoadMoreIng={this.state.isLoadMoreIng} isRefreshing={this.state.isRefreshing} fields={this.state.fields} navigation={navigation} />
+                                    
                                         <View style={styles.footer}>
                                             <View style={styles.footerLeft}>
                                                 <Text style={styles.contrastText}>产品对比：</Text>
@@ -260,7 +250,7 @@ export default class LicaiIndexScreen extends React.Component {
         )
     }
     componentDidMount() {
-        this.getData()
+        this.getData(1)
     }
     addContrast = (item) => {
         if (this.state.contrastList.length >= 4) {
@@ -287,102 +277,33 @@ export default class LicaiIndexScreen extends React.Component {
             }
         });
     }
-    ListHeaderComponent = () => {
-        return (
-            <View style={styles.header}>
-                <Text style={[styles.headerText, styles.wduibi]}>对比</Text>
-                {
-                    this.state.fields.map((item, i) => {
-                        if (item.isShow) {
-                            return (
-                                <Text style={[styles.headerText, styles['w' + item.val]]}>{item.name}</Text>
-                            )
-                        }
-
-                    })
-                }
-
-            </View>
-        )
-    }
-    renderItem = ({ item, index }) => {
-        const { navigation } = this.props;
-        return (
-            <View style={styles.item}>
-                <TouchableOpacity style={styles.wduibi} onPress={() => {
-                    this.addContrast({ 'id': item.id, 'cpms': item.cpms, 'yjbjjz': item.yjbjjz })
-                }}>
-                    <Ionicons name={'ios-add-circle-outline'} size={24} color={'#999'} />
-                </TouchableOpacity>
-                {
-                    this.state.fields.map((list, j) => {
-                        if (list.isShow) {
-                            if (list.val == 'cpms') {
-                                return (
-                                    <TouchableOpacity key={j} onPress={() => {
-                                        navigation.navigate('LicaiDetail', { id: item.id, })
-                                    }}>
-                                        <Text style={[styles.itemText, styles.noikcpmsText, styles['w' + list.val]]}>{item[list.val]}</Text>
-                                    </TouchableOpacity>
-                                )
-                            }
-                            return (
-                                <Text style={[styles.itemText, styles['w' + list.val]]}>
-                                    {item[list.val] !== '' && item[list.val] !== 'N/A' ? (item[list.val] + '').indexOf("/Date") == -1 ? item[list.val] : Util.formatDate2(item[list.val]) : '--'}
-                                </Text>
-                            )
-                        }
-
-                    })
-                }
-
-            </View>
-        )
-    }
-    ListEmptyComponent = () => {
-        return (
-            <Text>暂无数据</Text>
-        )
-    }
-    ListFooterComponent = () => {
-        const { isLoadMoreIng } = this.state;
-        if (isLoadMoreIng) {
-            return (
-                <View style={styles.loadMore}>
-                    <ActivityIndicator size="small" color="#999" />
-                </View>
-            )
-        }
-        else {
-            return null
-        }
-
-    }
+    
     // 排序
     onSort = (val) => {
 
         this.setState({
             orderby: this.state.orderby !== val ? val : val + '_desc'
         }, () => {
-            this.getData()
+            this.getData(1)
         })
     }
-    onEndReached = () => {
-        if (!this.state.isLoadMoreIng) {
-            this.getData(2)
-        }
 
-    }
-    _onRefresh = () => {
-
-    }
     getData(type) {
         const that = this;
-        const { page, pageCount, pageSize, surl, orderby } = this.state;
+        let url;
+        const { page, pageSize, surl, orderby, isLoadMore } = this.state;
 
-        if (type == 2) {
-            if (pageCount > page) {
-       
+
+        if (type == 1) {
+            that.setState({
+                dataSource: [],
+                loading: true,
+                page: 1,
+            })
+        }
+        else if (type == 2) {
+
+            if (isLoadMore) {
                 this.setState({
                     isLoadMoreIng: true
                 })
@@ -392,38 +313,61 @@ export default class LicaiIndexScreen extends React.Component {
             }
 
         }
+        else if (type == 3) {
+            this.setState({
+                isRefreshing: true,
+                isLoadMore: false,
+                page: 1
+            })
+        }
 
+        setTimeout(() => {
+            
+            url = Api.licaiList + 'page=' + this.state.page + '&pageSize=' + pageSize + surl + '&orderby=' + orderby
+         
 
-        const url = Api.licaiList + 'page=' + page + '&pageSize=' + pageSize + surl + '&orderby=' + orderby
+            fetch(url)
+                .then((response) => {
+                    if (response.ok) {
+                        response.json()
+                            .then((responseData) => {
 
-        fetch(url)
-            .then((response) => {
-                if (response.ok) {
-                    response.json()
-                        .then((responseData) => {
+                                if (type == 3) {
+                                    that.setState({
+                                        dataSource: []
+                                    })
+                                }
+                                let dataSource = that.state.dataSource;
 
-                            let dataSource = that.state.dataSource;
+                                dataSource = dataSource.concat(responseData.dataList);
 
-                            dataSource = dataSource.concat(responseData.dataList);
-
-                            that.setState({
-                                dataSource: type !== 2 ? responseData.dataList : dataSource,
-                                pageCount: responseData.pageCount,
-                                page: responseData.page + 1
+                                that.setState({
+                                    dataSource: dataSource,
+                                    pageCount: responseData.pageCount,
+                                    page: responseData.page + 1,
+                                    isLoadMore: responseData.pageCount > responseData.page ? true : false
+                                })
                             })
-                        })
-                }
-                else {
-                    console.log('网络请求失败')
-                }
-                that.setState({
-                    loading: false,
-                    isLoadMoreIng: false,
+                    }
+                    else {
+                        console.log('网络请求失败')
+                    }
+                    that.setState({
+                        loading: false,
+                        isLoadMoreIng: false,
+                        isRefreshing: false,
+                    })
                 })
-            })
-            .catch((error) => {
-                console.log('error:', error)
-            })
+                .catch((error) => {
+                    console.log('error:', error)
+                })
+        }, 10)
+
+
+
+
+
+
     }
 }
 
@@ -496,121 +440,8 @@ const styles = StyleSheet.create({
         fontSize: 14,
         color: '#515151',
     },
-    contentContainer: {
-        marginTop: 10,
-        backgroundColor: '#fff',
-        minWidth: Theme.screenWidth,
-    },
-    header: {
-        paddingLeft: 10,
-        flexDirection: 'row',
-        alignItems: 'center',
-        height: 40,
-        borderBottomColor: '#eee',
-        borderBottomWidth: 1,
-        backgroundColor: '#fff',
-    },
-    headerText: {
-        paddingRight: 10,
-        color: '#999',
-        fontSize: 12,
-    },
-    itemText: {
-        paddingRight: 10,
-        lineHeight: 16,
-        fontSize: 12,
-        color: '#666',
-    },
-    noikcpmsText: {
-        color: '#101010',
-    },
-    wduibi: {
-        width: 40,
-    },
-    wcpms: {
-        width: 185,
-    },
-    wmjjsrq: {
-        width: 90,
-    },
-    wqxms: {
-        width: 90,
-    },
-    wyjbjjz: {
-        width: 110,
-    },
-    wfxjgms: {
-        width: 120,
-    },
-    wcpdjbm: {
-        width: 120,
-    },
-    wmjfsms: {
-        width: 65,
-    },
-    wcplxms: {
-        width: 100,
-    },
-    wcptzxzms: {
-        width: 90,
-    },
-    wmjbz: {
-        width: 90,
-    },
-    wfxdjms: {
-        width: 75,
-    },
-    wmjqsrq: {
-        width: 90,
-    },
-    wcpqsrq: {
-        width: 90,
-    },
-    wcpyjzzrq: {
-        width: 90,
-    },
-    wkfzqqsr: {
-        width: 90,
-    },
-    wkfzqjsr: {
-        width: 90,
-    },
-    wcpqx: {
-        width: 85,
-    },
-    wcsjz: {
-        width: 65,
-    },
-    wcpjz: {
-        width: 65,
-    },
-    wljjz: {
-        width: 65,
-    },
-    wsyl: {
-        width: 145,
-    },
-    wcpsylxms: {
-        width: 100,
-    },
-    wtzlxms: {
-        width: 95,
-    },
-    wyjkhzgnsyl: {
-        width: 120,
-    },
-    wyjkhzdnsyl: {
-        width: 120,
-    },
-    item: {
-        paddingTop: 10,
-        paddingBottom: 10,
-        paddingLeft: 10,
-        flexDirection: 'row',
-        borderBottomColor: '#eee',
-        borderBottomWidth: 1,
-        backgroundColor: '#fff',
-    },
+   
+
     footer: {
         height: 50,
         borderTopColor: '#ccc',

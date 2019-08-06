@@ -297,11 +297,13 @@ module.exports = {
                     data:dataSource,      
                     symbol:'none',
                     itemStyle: {
+                        
                         normal: {
+                            color: "#a0cdfa",
                             lineStyle: {
                                 color: '#a0cdfa'
                             }
-                        }
+                        },
                     },
                 },
                 {
@@ -311,6 +313,7 @@ module.exports = {
                     symbol:'none',
                     itemStyle: {
                         normal: {
+                            color: "#A65719",
                             lineStyle: {
                                 color: '#A65719'
                             }

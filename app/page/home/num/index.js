@@ -48,7 +48,7 @@ export default class Num extends React.Component {
                     onPress={() => { navigation.navigate('StopSent') }}
                 >
                     <Text style={[styles.text, styles.label]}>停止发标</Text>
-                    <Text style={[styles.text, styles.num]}>{data.Maincount_stopbid}</Text>
+                    <Text style={[styles.text, styles.num, { color: '#A81616' }]}>{data.Maincount_stopbid}</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.list}
                     onPress={() => { navigation.navigate('Zhengyi') }}

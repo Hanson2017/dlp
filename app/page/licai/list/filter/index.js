@@ -562,7 +562,7 @@ export default class LicaiIndexFilterComponent extends React.Component {
                                 this.state.fields.map((item, i) => {
                                     if (i < 5) {
                                         return (
-                                            <TouchableOpacity style={[styles.fieldBtn, item.isShow ? styles.fieldBtnActivity : null]} key={i} onPress={() => { this._onPress(i) }}>
+                                            <TouchableOpacity disabled={i === 0 ? true : false} style={[styles.fieldBtn, item.isShow ? styles.fieldBtnActivity : null]} key={i} onPress={() => { this._onPress(i) }}>
                                                 <Text style={[styles.fieldBtnText, item.isShow ? styles.fieldBtnTextActivity : null]} numberOfLines={1}>{item.name}</Text>
                                             </TouchableOpacity>
                                         )
@@ -679,7 +679,7 @@ export default class LicaiIndexFilterComponent extends React.Component {
             fields: this.state.fields,
             surl: surl
         }, () => {
-            that.getData();
+            that.getData(1);
             that.setState({
                 open: false,
             })
