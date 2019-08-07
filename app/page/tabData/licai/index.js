@@ -19,8 +19,6 @@ class List extends React.Component {
     }
 }
 
-
-
 export default class Data extends React.Component {
     render() {
         const { navigation, data } = this.props;

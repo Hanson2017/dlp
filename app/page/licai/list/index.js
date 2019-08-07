@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, View, TouchableOpacity, FlatList, ScrollView, ActivityIndicator, RefreshControl, StatusBar } from 'react-native';
+import { Text, StyleSheet, View, TouchableOpacity, StatusBar } from 'react-native';
 import { SafeAreaView } from "react-navigation";
 import { Drawer, Toast } from 'antd-mobile';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -224,26 +224,32 @@ export default class LicaiIndexScreen extends React.Component {
                                             </TouchableOpacity>
                                         </View>
                                         <List that={this} dataSource={dataSource} isLoadMore={this.state.isLoadMore} isLoadMoreIng={this.state.isLoadMoreIng} isRefreshing={this.state.isRefreshing} fields={this.state.fields} navigation={navigation} />
+                                        {
+                                            contrastList.length > 0 ?
+                                                <View style={styles.footer}>
+                                                    <View style={styles.footerLeft}>
+                                                        <Text style={styles.contrastText}>产品对比：</Text>
+                                                        <TouchableOpacity disabled={contrastList.length > 0 ? false : true} style={[styles.contrastNum, contrastList.length > 0 ? styles.contrastNumActivity : null]} onPress={() => {
+                                                            this.refs.contrast.show();
+                                                        }}>
+                                                            <Text style={styles.contrastNumText}>{contrastList.length}</Text>
+                                                        </TouchableOpacity>
+                                                    </View>
+                                                    <TouchableOpacity disabled={contrastList.length > 1 ? false : true} style={[styles.contrastBegin, contrastList.length > 1 ? styles.contrastBeginActivity : null]} onPress={() => {
+                                                        navigation.push('LicaiContrast', { contrastList: this.state.contrastList })
+                                                    }}>
+                                                        <Text style={[styles.contrastBeginText, contrastList.length > 1 ? styles.contrastBeginTextActivity : null]}>开始对比</Text>
+                                                    </TouchableOpacity>
+                                                </View>
+                                                :
+                                                null
+                                        }
 
-                                        <View style={styles.footer}>
-                                            <View style={styles.footerLeft}>
-                                                <Text style={styles.contrastText}>产品对比：</Text>
-                                                <TouchableOpacity disabled={contrastList.length > 0 ? false : true} style={[styles.contrastNum, contrastList.length > 0 ? styles.contrastNumActivity : null]} onPress={() => {
-                                                    this.refs.contrast.show();
-                                                }}>
-                                                    <Text style={styles.contrastNumText}>{contrastList.length}</Text>
-                                                </TouchableOpacity>
-                                            </View>
-                                            <TouchableOpacity disabled={contrastList.length > 1 ? false : true} style={[styles.contrastBegin, contrastList.length > 1 ? styles.contrastBeginActivity : null]} onPress={() => {
-                                                navigation.push('LicaiContrast', { contrastList: this.state.contrastList })
-                                            }}>
-                                                <Text style={[styles.contrastBeginText, contrastList.length > 1 ? styles.contrastBeginTextActivity : null]}>开始对比</Text>
-                                            </TouchableOpacity>
-                                        </View>
                                     </View>
                             }
                         </View>
                     </View>
+
                     <Contrast ref="contrast" that={this} contrastList={this.state.contrastList} />
                 </SafeAreaView>
             </Drawer>

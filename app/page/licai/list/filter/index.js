@@ -449,7 +449,7 @@ export default class LicaiIndexFilterComponent extends React.Component {
                                 <Text style={styles.filterItemLeftText}>登记编码:</Text>
                             </View>
                             <View style={styles.filterItemRight}>
-                                <TextInput style={styles.inputText} value={this.state.cpdjbm} onChangeText={(text) => { this.onChangeInput('cpdjbm', text) }} />
+                                <TextInput style={styles.inputText} underlineColorAndroid="transparent" value={this.state.cpdjbm} onChangeText={(text) => { this.onChangeInput('cpdjbm', text) }} />
                             </View>
                         </View>
                         <View style={[styles.filterItem, styles.filterItemInput]}>
@@ -457,7 +457,7 @@ export default class LicaiIndexFilterComponent extends React.Component {
                                 <Text style={styles.filterItemLeftText}>产品名称:</Text>
                             </View>
                             <View style={styles.filterItemRight}>
-                                <TextInput style={styles.inputText} value={this.state.cpms} onChangeText={(text) => { this.onChangeInput('cpms', text) }} />
+                                <TextInput style={styles.inputText} underlineColorAndroid="transparent" value={this.state.cpms} onChangeText={(text) => { this.onChangeInput('cpms', text) }} />
                             </View>
                         </View>
                         <View style={[styles.filterItem, styles.filterItemInput]}>
@@ -465,7 +465,7 @@ export default class LicaiIndexFilterComponent extends React.Component {
                                 <Text style={styles.filterItemLeftText}>发行机构:</Text>
                             </View>
                             <View style={styles.filterItemRight}>
-                                <TextInput style={styles.inputText} value={this.state.fxjgms} onChangeText={(text) => { this.onChangeInput('fxjgms', text) }} />
+                                <TextInput style={styles.inputText} underlineColorAndroid="transparent" value={this.state.fxjgms} onChangeText={(text) => { this.onChangeInput('fxjgms', text) }} />
                             </View>
                         </View>
                         {
