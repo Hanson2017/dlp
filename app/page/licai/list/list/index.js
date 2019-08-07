@@ -13,17 +13,19 @@ export default class LicaiListComponent extends React.Component {
         };
     }
     render() {
-        const { dataSource,isLoadMore ,isLoadMoreIng,isRefreshing} = this.props;
+        const { dataSource, isLoadMore, isLoadMoreIng, isRefreshing } = this.props;
+
         return (
             <ScrollView
-            contentContainerStyle={styles.contentContainer}
-            refreshControl={
-                <RefreshControl
-                    refreshing={isRefreshing}
-                    onRefresh={this.onRefresh}
-                />
-            }
+                contentContainerStyle={styles.contentContainer}
+                refreshControl={
+                    <RefreshControl
+                        refreshing={isRefreshing}
+                        onRefresh={this.onRefresh}
+                    />
+                }
             >
+
                 <View style={[styles.container]}>
                     <View style={[styles.leftContainer, this.state.isFixed ? styles.fixed : null]}>
                         <FlatList
@@ -46,13 +48,14 @@ export default class LicaiListComponent extends React.Component {
                         </ScrollView>
                     </View>
                 </View>
+
                 {
                     isLoadMore ?
                         <TouchableOpacity disabled={isLoadMoreIng ? true : false} style={stylesList.getMore} onPress={this.getMore}>
                             <Text style={stylesList.getMoreText}>{isLoadMoreIng ? '正在加载...' : '加载更多'}</Text>
                         </TouchableOpacity>
                         :
-                       null
+                        null
                 }
 
             </ScrollView>
@@ -106,7 +109,7 @@ export default class LicaiListComponent extends React.Component {
     }
     renderItem = ({ item, index }) => {
         const { that, navigation, fields } = this.props;
-       
+
         return (
             <View style={styles.item}>
                 <TouchableOpacity style={styles.wduibi}>
@@ -142,23 +145,8 @@ export default class LicaiListComponent extends React.Component {
             <Text>暂无数据</Text>
         )
     }
-    ListFooterComponent = () => {
-        const { isLoadMoreIng } = this.state;
-        if (isLoadMoreIng) {
-            return (
-                <View style={styles.loadMore}>
-                    <ActivityIndicator size="small" color="#999" />
-                </View>
-            )
-        }
-        else {
-            return null
-        }
 
-    }
-
-
-    _onScroll=(e)=> {
+    _onScroll = (e) => {
         var offsetX = e.nativeEvent.contentOffset.x;
         if (offsetX > 0) {
             this.setState({
@@ -171,18 +159,18 @@ export default class LicaiListComponent extends React.Component {
             })
         }
     }
-    
-    onRefresh=()=> {
-        const {that}=this.props;    
+
+    onRefresh = () => {
+        const { that } = this.props;
         that.getData(3)
     }
-    getMore=() =>{
-        const {that}=this.props;    
+    getMore = () => {
+        const { that } = this.props;
         that.getData(2)
     }
 }
 const styles = StyleSheet.create({
-    contentContainer:{
+    contentContainer: {
         marginTop: 10,
         backgroundColor: '#fff',
     },

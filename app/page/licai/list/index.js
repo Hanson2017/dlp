@@ -224,7 +224,7 @@ export default class LicaiIndexScreen extends React.Component {
                                             </TouchableOpacity>
                                         </View>
                                         <List that={this} dataSource={dataSource} isLoadMore={this.state.isLoadMore} isLoadMoreIng={this.state.isLoadMoreIng} isRefreshing={this.state.isRefreshing} fields={this.state.fields} navigation={navigation} />
-                                    
+
                                         <View style={styles.footer}>
                                             <View style={styles.footerLeft}>
                                                 <Text style={styles.contrastText}>产品对比：</Text>
@@ -277,7 +277,7 @@ export default class LicaiIndexScreen extends React.Component {
             }
         });
     }
-    
+
     // 排序
     onSort = (val) => {
 
@@ -322,15 +322,17 @@ export default class LicaiIndexScreen extends React.Component {
         }
 
         setTimeout(() => {
-            
+
             url = Api.licaiList + 'page=' + this.state.page + '&pageSize=' + pageSize + surl + '&orderby=' + orderby
-         
+
 
             fetch(url)
                 .then((response) => {
                     if (response.ok) {
                         response.json()
                             .then((responseData) => {
+
+                                console.log(responseData)
 
                                 if (type == 3) {
                                     that.setState({
@@ -339,7 +341,7 @@ export default class LicaiIndexScreen extends React.Component {
                                 }
                                 let dataSource = that.state.dataSource;
 
-                                dataSource = dataSource.concat(responseData.dataList);
+                                dataSource = responseData.dataList !== null ? dataSource.concat(responseData.dataList) : dataSource;
 
                                 that.setState({
                                     dataSource: dataSource,
@@ -440,7 +442,7 @@ const styles = StyleSheet.create({
         fontSize: 14,
         color: '#515151',
     },
-   
+
 
     footer: {
         height: 50,

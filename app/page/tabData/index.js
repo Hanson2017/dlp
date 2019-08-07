@@ -7,6 +7,7 @@ import Header from '../../component/navBar';
 import Loading from '../../component/loading';
 import TabTop from '../../component/tabTop/index2';
 import Data from './data';
+import Licai from './licai';
 import Query from './query';
 import Report from './report';
 import Mianze from '../mianze';
@@ -53,6 +54,7 @@ export default class DataTab extends React.Component {
                                 >
                                     <TabTop navigation={navigation} data={data} />
                                     <Data navigation={navigation} data={dataSource.datalist} />
+                                    <Licai navigation={navigation} data={dataSource.lc_info_list} />
                                     <Query navigation={navigation} />
                                     <Report navigation={navigation} data={dataSource.reportslist} />
                                     <Mianze />
