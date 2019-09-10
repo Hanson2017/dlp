@@ -3,7 +3,7 @@ import { Text, StyleSheet, View, TouchableOpacity } from 'react-native';
 
 import Theme from '../../../util/theme';
 import Title from '../../../component/title';
-import Item from '../../home/fund/item';
+import Item from '../../p2phome/fund/item';
 
 export default class Fund extends React.Component {
     render() {

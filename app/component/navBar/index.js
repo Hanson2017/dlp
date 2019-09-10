@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Text, StyleSheet, View, TouchableOpacity, Image, Platform } from 'react-native';
 import Icon from 'react-native-vector-icons/Icomoon';
 import Theme from '../../util/theme';
+import Util from '../../util/util';
 
 export default class Header extends React.Component {
     render() {
@@ -23,11 +24,11 @@ export default class Header extends React.Component {
                                 {
                                     this.props.loginState ?
                                         <Image source={{ uri: signState.r_avatar_img }} style={styles.avatar} />
+                                       
                                         :
                                         <Image source={require('../../../resources/images/portrait2.jpg')} style={styles.avatar} />
                                 }
-
-
+                                 
                             </TouchableOpacity>
                             :
                             <TouchableOpacity style={styles.backBtn} onPress={() => { navigation.goBack() }}>

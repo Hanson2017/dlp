@@ -180,6 +180,44 @@ module.exports = {
         if (str.length > word) return str.substr(0, word) + "...";
         return str;
     },
+    formatSymbol(str) {
+        let strs;
+        strs = str.replace('，', ',')
+        return strs.split(',');
+    },
+    countTime(val, dateDiff) {
+
+        //获取当前时间  
+        var date = new Date();
+        var now = date.getTime() + dateDiff;
+        //设置截止时间  
+
+        var endDate = new Date(parseInt(val.replace("/Date(", "").replace(")/", "")));
+        var end = endDate.getTime();
+
+        //时间差  
+        var leftTime = end - now;
+
+        if (leftTime <= 0) {
+            return '活动已结束';
+        }
+
+        //定义变量 d,h,m,s保存倒计时的时间  
+        var d, h, m, s;
+        if (leftTime >= 0) {
+            d = Math.floor(leftTime / 1000 / 60 / 60 / 24) * 24;
+            h = Math.floor(leftTime / 1000 / 60 / 60 % 24) + d;
+            m = Math.floor(leftTime / 1000 / 60 % 60);
+            s = Math.floor(leftTime / 1000 % 60);
+        }
+        //将倒计时赋值到div中  
+
+        var mm = m < 10 ? '0' + m : m;
+        var ss = s < 10 ? '0' + s : s;
+
+        return h + ':' + mm + ':' + ss
+
+    },
     // 去掉所有的html标记
     delHtmlTag(str) {
         var strH = str.replace(/<[^>]+>/g, "");

@@ -1,11 +1,15 @@
 'use strict';
 
-const host = 'http://www.dailuopan.com/MPAPI';
+const domain="http://www.dailuopan.com";
+// const domain="http://192.168.1.18:8080";
+
+const host = domain+"/MPAPI";
 const hostbbs = 'http://bbs.dailuopan.com/api/';
-// const host = 'http://192.168.1.18:8080/MPAPI';
+
 
 module.exports = {
-    domain: 'http://www.dailuopan.com',
+    domain: domain,
+    home_all:host+'/GetHome_all',
     home:host+'/GetHome',
     gradeHome:host+'/GetGradeHome',
     dataHome:host+'/GetdataHome',
@@ -67,4 +71,28 @@ module.exports = {
     licaiDetail: host + '/GetLcinfo_Detail',  //银行理财详情
     licaiContrast: host + '/GetLcinfo_Contrast',  //银行理财对比
     stopSent: host + '/GetStopbidList',  //停止发标
+
+    trustlist: host + '/GetTrustinfoList',  //信托列表
+    trustDetail: host + '/GetTrustinfo_Detail',  //信托详情
+    trustYuqing_list: host + '/GetTrust_newsList',  //信托舆情列表
+    trustYuqing_detail: host + '/GetTrust_newsdetail',  //信托舆情详情
+
+    loanlist: host + '/GetLoan_productList?',  //贷款列表
+    loanDetail: host + '/GetLoan_productdetail?',  //贷款详情
+
+    activitylist: host + '/GetActivityList?',  //返利列表
+    activityDetail: host + '/GetActivityDetail?',  //返利详情
+    activityDetailComment: host + '/GetActivityCommentList',//返利详情评论
+    activityDetailAddComment: host + '/Addcommentmulti',//返利详情提交回帖
+
+    memberSet: host + '/memberSet?memberid=',
+    memberModSet_alipay:host+'/memberModSet_alipay', //快捷设置修改支付宝
+    memberModSet_contact:host+'/memberModSet_contact', //快捷设置修改设置或添加设置（id  当新增时id=0）
+    memberModSet_contact_del:host+'/memberModSet_contact_del', //快捷设置删除（memberid，id）
+
+    getActivityRecordList: host + '/Getmemberlist',//返利记录列表
+    delActivityComment:host+'/memberdelcomment',//删除返利记录
+    getActivityComment: host + '/GetmembercommentRow',//获取编辑返利记录数据
+    saveActivityComment: host + '/membermodcomment',//保存编辑返利记录数据
+    
 }

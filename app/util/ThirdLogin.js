@@ -31,7 +31,7 @@ module.exports = {
                                             if (ress.ok) {
                                                 ress.json()
                                                     .then((ressData) => {
-                                                        
+                                                       
                                                         if (ressData.ret == 0) {
                                                             let figureurl_qq;
                                                             if (ressData.figureurl_qq_2 != '' && ressData.figureurl_qq_2.length > 0) {
@@ -41,9 +41,8 @@ module.exports = {
                                                                 figureurl_qq = ressData.figureurl_qq_1;
                                                             }
 
-                                                            let urlN = Api.getUserinfo + '?fromtype=qq&connectid=' + result.openid + '&username=' + ressData.nickname + '&avatar=' + figureurl_qq+'&unionid=' + callbackData.unionid;
-                                                            
-                                                            
+                                                            let urlN = Api.getUserinfo + '?fromtype=qq&connectid=' + result.openid + '&username=' + ressData.nickname + '&avatar=' + encodeURIComponent(figureurl_qq)+'&unionid=' + callbackData.unionid;
+
                                                             fetch(urlN)
                                                                 .then((res) => {
                                                                     if (res.ok) {

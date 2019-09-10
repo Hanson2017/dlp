@@ -72,6 +72,9 @@ export default class DetailScreen extends React.Component {
                                         <Text style={styles.stateZhengyi}><Text style={styles.bold}>黑名单，建议远离</Text>  |  更新：{dataInfo.updatetime}</Text>
                                         :
                                         dataInfo.negative_time == null ?
+                                            dataInfo.stopbid == 1?
+                                            <Text style={styles.stateZhengyi}>状态：停止发标  |  更新：{dataInfo.updatetime}</Text>
+                                            :
                                             <Text style={styles.stateNormal}>状态：正常运营  |  更新：{dataInfo.updatetime}</Text>
                                             :
                                             <Text style={styles.stateZhengyi}><Text style={styles.bold}>争议中，需特别谨慎</Text>  |  更新：{dataInfo.updatetime}</Text>

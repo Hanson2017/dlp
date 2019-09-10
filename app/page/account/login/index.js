@@ -15,10 +15,11 @@ import styleshd from '../../../css/header';
 export default class Login extends Component {
     render() {
         let navigation = this.props.navigation;
+        console.log(navigation)
         return (
-            <SafeAreaView style={{ flex: 1, backgroundColor: Theme.color2 }}>
+            <SafeAreaView style={{ flex: 1, backgroundColor: Theme.color2 }} forceInset={{ bottom: 'never' }}>
                 <View style={Theme.container}>
-                    <Header headerOpt={{ back: '个人中心', title: '登录', search: true }} navigation={navigation} />
+                    <Header headerOpt={{ back: navigation.state.routeName !== 'Main'?'登录':'null', title: '登录', search: true }} navigation={navigation} />
                     <View style={[Theme.content]}>
                         <ScrollView style={styles.content}>
 

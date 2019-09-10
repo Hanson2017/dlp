@@ -11,12 +11,15 @@ import Guanzhu from './guanzhu';
 import Comments from './comments';
 import Collection from './collection';
 import Set from './set';
+import ActivitySet from './activitySet';
+import ActivityList from './activityList';
+
 
 export default class AccountScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            tabNames: ['关注平台', '我的评论', '收藏夹', '个人设置'],
+            tabNames: ['关注平台', '我的评论', '收藏夹', '个人设置', '返利设置', '返利记录'],
             index: 0,
             guanzhuDel: false,
             collectionDel: false,
@@ -42,9 +45,9 @@ export default class AccountScreen extends React.Component {
             tab = params.tabId
         }
         return (
-            <SafeAreaView style={{ flex: 1, backgroundColor: Theme.color2 }}>
+            <SafeAreaView style={{ flex: 1, backgroundColor: Theme.color2 }} forceInset={{ bottom: 'never' }}>
                 <View style={Theme.container}>
-                    <Header headerOpt={{ back: '个人中心', title: '个人中心', search: true }} navigation={navigation}>
+                    <Header headerOpt={{ back: navigation.state.routeName !== 'Main'?'登录':'null', title: '个人中心', search: true }} navigation={navigation}>
                         {
                             index == 0 ?
                                 <TouchableOpacity style={styles.headerRight}
@@ -92,9 +95,16 @@ export default class AccountScreen extends React.Component {
                             <View style={styles.content} tabLabel='key3'>
                                 <Collection navigation={navigation} collectionDel={collectionDel} that={this} />
                             </View>
+                           
 
-                            <View style={styles.content} tabLabel='key4'>
+                            <View style={styles.content} tabLabel='key6'>
                                 <Set navigation={navigation} />
+                            </View>
+                            <View style={styles.content} tabLabel='key4'>
+                                <ActivitySet navigation={navigation} />
+                            </View>
+                            <View style={styles.content} tabLabel='key5'>
+                                <ActivityList navigation={navigation} />
                             </View>
                         </ScrollableTabView>
                     </View>

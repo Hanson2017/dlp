@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/Icomoon';
 
 import Api from '../../util/api';
 import Theme from '../../util/theme';
+import Util from '../../util/util';
 import Loading from '../../component/loading';
 import ThirdLogin from '../../util/ThirdLogin'
 
@@ -303,6 +304,8 @@ const styles = StyleSheet.create({
         flex: 1,
         borderRightWidth: Platform.OS == 'android' ? 1 : 0,
         borderRightColor: Theme.color2,
+        
+
     },
     ControlPaneHeader: {
         paddingLeft: 15,
@@ -313,6 +316,15 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         height: 85,
         backgroundColor: Theme.color2,
+        ...Util.ifIphoneX(
+            {
+                height: 94,
+                paddingTop: 28
+            },
+            {
+
+            }
+        )
     },
     ControlPaneHeaderlogin: {
         flexDirection: 'row',
