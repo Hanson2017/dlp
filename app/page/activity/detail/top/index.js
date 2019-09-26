@@ -40,10 +40,7 @@ export default class DetailTop extends Component {
                         </View>
                        
                     </View>
-                    <View style={styles.reasonContainer}>
-                        <Text style={[styles.reasonText, styles.reasonTit]}>上架理由：</Text>
-                        <Text style={styles.reasonText}>{Util.delHtmlTag(activity.reasons)}</Text>
-                    </View>
+                    
                 </View>
             </View>
         )
