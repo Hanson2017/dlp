@@ -67,13 +67,13 @@ export default class HomeScreen extends React.Component {
                                     <BBs data={bbsData} bbsDataNum1={bbsDataNum1} bbsDataNum2={bbsDataNum2} navigation={navigation} />
                                     <Report data={dataSource.reportslist} navigation={navigation} />
 
-                                    {
+                                    {/* {
                                         versionStatus != 1 ?
                                             <Fund data={dataSource.listfund_firm} navigation={navigation} />
                                             :
                                             null
-                                    }
-                                    <FundLiuc navigation={navigation} data={dataSource.fund_process} />
+                                    } */}
+                                    {/* <FundLiuc navigation={navigation} data={dataSource.fund_process} /> */}
 
                                     <Mianze />
                                 </ScrollView>

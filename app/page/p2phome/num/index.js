@@ -19,7 +19,7 @@ export default class Num extends React.Component {
                     <Text style={[styles.text, styles.label]}>数据监控</Text>
                     <Text style={[styles.text, styles.num]}>{data.Maincount_grade}</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.list}
+                {/* <TouchableOpacity style={styles.list}
                     onPress={() => {
 
                         if (versionStatus != 1) {
@@ -29,7 +29,7 @@ export default class Num extends React.Component {
                 >
                     <Text style={[styles.text, styles.label]}>示范出借</Text>
                     <Text style={[styles.text, styles.num]}>{data.Maincount_fund}</Text>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
                 
                 
                 <TouchableOpacity style={styles.list}

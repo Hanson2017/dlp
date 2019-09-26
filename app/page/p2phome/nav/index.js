@@ -23,7 +23,7 @@ var data = [
     { title: '点评监控', iconName: 'nav-dianping', screenUrl: 'CommentPlat', tabId: null },
     { title: '数据报表', iconName: 'nav-report', screenUrl: 'ReportsList' },
 
-    { title: '示范出借', iconName: 'nav-fund', screenUrl: 'Fund', tabId: null },
+    // { title: '示范出借', iconName: 'nav-fund', screenUrl: 'Fund', tabId: null },
 
     { title: '停止发标', iconName: 'null', iconType: 'MaterialCommunityIcons', iconOtherName: 'file-lock', screenUrl: 'StopSent' },
     { title: '黑名单', iconName: 'nav-black', screenUrl: 'Black' },

@@ -63,12 +63,12 @@ export default class Zonglan extends React.Component {
                         blacklinktitle: dataSource.blacklinktitle,
                         blacklinkurl: dataSource.blacklinkurl
                     }} />
-                    {
+                    {/* {
                         versionStatus != 1 && platInfo.platstatus == 1 && dataSource.fund_firm !== null ?
                             <Fund data={dataSource.fund_firm} dataInfo={dataInfo} platName={platInfo.platName} platId={platInfo.id} navigation={navigation} />
                             :
                             null
-                    }
+                    } */}
 
                     <Pingji data={dataSource.dataDetail} navigation={navigation} platInfo={platInfo} />
                     {
